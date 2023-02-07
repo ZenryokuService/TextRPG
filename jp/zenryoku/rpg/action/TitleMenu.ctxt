@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=TitleMenu
+comment0.text=\r\n\ \u30AF\u30E9\u30B9\ TitleMenu\ \u306E\u6CE8\u91C8\u3092\u3053\u3053\u306B\u66F8\u304D\u307E\u3059.\r\n\ \u30C6\u30AD\u30B9\u30C8RPG\u306E\u9078\u629E\u3092\u3059\u308B\u3068\u304D\u306B\u4F7F\u7528\u3059\u308B\u30AF\u30E9\u30B9\u3002\r\n\ \ \r\n\ @author\ (Takunoji)\r\n\ @version\ (1.0)\r\n
+comment1.params=
+comment1.target=TitleMenu()
+comment2.params=str
+comment2.target=TitleMenu(java.lang.String)
+comment3.params=event
+comment3.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment3.text=\r\n\ \ \ \ \r\n\ \ \ \ public\ void\ addPropertyChangeListener(PropertyChangeListener\ listener)\ {\r\n\ \ \ \ \ \ \ \ \r\n\ \ \ \ }\r\n\ \ \ \ \r\n\ \ \ \ public\ void\ removePropertyChangeListener(PropertyChangeListener\ listener)\ {\r\n\ \ \ \ \ \ \ \ \r\n\ \ \ \ }\r\n\ \ \ \ \r\n\ \ \ \ public\ boolean\ isEnabled()\ {\r\n\ \ \ \ \ \ \ \ return\ false;\r\n\ \ \ \ }\r\n\ \ \ \ \r\n\ \ \ \ public\ void\ putValue(String\ key,\ Object\ value)\ {\r\n\ \ \ \ \ \ \ \ \r\n\ \ \ \ }\r\n\ \ \ \ \r\n\ \ \ \ public\ void\ setEnabled(boolean\ b)\ {\r\n\ \ \ \ \ \ \ \ \r\n\ \ \ \ }\r\n\ \ \ \ \r\n\ \ \ \ public\ Object\ getValue(String\ key)\ {\r\n\ \ \ \ \ \ \ \ return\ null;\r\n\ \ \ \ }\r\n\ \ \ public\ void\ init()\ {\r\n\ \ \ \ \ \ \ \r\n\ \ \ }\r\n
+numComments=4

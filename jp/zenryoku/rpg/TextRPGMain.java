@@ -34,7 +34,6 @@ public class TextRPGMain extends JFrame
         TitleLabel titleLabel = new TitleLabel("Text RPG", windowSize);
         RpgTextArea textarea = new RpgTextArea(windowSize);
 
-
         JPanel titlePanel = new JPanel();
         titlePanel.add(titleLabel);
         
@@ -46,5 +45,8 @@ public class TextRPGMain extends JFrame
         contentPane.add(textPanel, BorderLayout.CENTER);
 
         setVisible(true);
+        
+        RpgStory story = new RpgStory(textarea);
+        story.run(textPanel, xPos + 200, yPos + 100);
     }
 }

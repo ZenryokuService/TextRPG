@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=RpgStory
+comment0.text=\r\n\ \u30AF\u30E9\u30B9\ RpgStory\ \u306E\u6CE8\u91C8\u3092\u3053\u3053\u306B\u66F8\u304D\u307E\u3059.\r\n\ \r\n\ @author\ (Takunoji)\r\n\ @version\ (1.0)\r\n
+comment1.params=view
+comment1.target=RpgStory(RpgTextArea)
+comment1.text=\u30B3\u30F3\u30B9\u30C8\u30E9\u30AF\u30BF
+comment2.params=comp\ x\ y
+comment2.target=void\ run(javax.swing.JComponent,\ int,\ int)
+comment2.text=\r\n\ \u30C6\u30AD\u30B9\u30C8RPG\u306E\u30B7\u30FC\u30F3\u3092\u547C\u3073\u51FA\u3057\u5B9F\u884C\u3059\u308B\u3002\r\n\ \u30D7\u30ED\u30B0\u30E9\u30E0\u306E\u30E1\u30A4\u30F3\u51E6\u7406\u30D5\u30ED\u30FC\u3092\u5B9F\u88C5\u3002\r\n
+comment3.params=comp\ x\ y
+comment3.target=void\ openSelects(javax.swing.JComponent,\ int,\ int)
+numComments=4
