@@ -32,7 +32,7 @@
 | Job.xml | 各職業の技、魔法などの習得レベルを記述 |
 | Commands.xml | 各キャラクターが実行するコマンド|
 | STM.xml | 技(Skill, Tech), 魔法(Magic)の効果などを定義 |
-| MonseterType.xml モンスターの技、魔法などの習得レベルを記述 |
+| MonseterType.xml | モンスターの技、魔法などの習得レベルを記述 |
 | Monsters.xml モンスターの名前、HPやMPなどを記述する |
 | Shops.xml | ショップの定義、販売しているものと値段のリスト |
 | Items.xml | アイテム(武具も含む)の定義、販売しているものと値段のリスト、非売品は値段を「-」にする |
