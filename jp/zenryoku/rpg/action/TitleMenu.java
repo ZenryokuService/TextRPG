@@ -19,37 +19,9 @@ public class TitleMenu extends AbstractAction
     public TitleMenu(String str) {
         super(str);
     }
-    /*
-    
-    public void addPropertyChangeListener(PropertyChangeListener listener) {
-        
-    }
-    
-    public void removePropertyChangeListener(PropertyChangeListener listener) {
-        
-    }
-    
-    public boolean isEnabled() {
-        return false;
-    }
-    
-    public void putValue(String key, Object value) {
-        
-    }
-    
-    public void setEnabled(boolean b) {
-        
-    }
-    
-    public Object getValue(String key) {
-        return null;
-    }
-   public void init() {
-       
-   }
-    */
-   
+ 
    public void actionPerformed(ActionEvent event) {
-        System.out.println("Message: ");
+        String selectedStr =  event.getActionCommand();
+        
    }
 }

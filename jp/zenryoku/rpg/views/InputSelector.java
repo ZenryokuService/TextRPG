@@ -18,12 +18,30 @@ public class InputSelector extends JPopupMenu
      * @param selects 配列の要素一つが選択肢一つに当たる
      */
     public InputSelector(String[] selects) {
+        super();
+        addSeparator();
 
         for(String sel : selects) {
             TitleMenu act = new TitleMenu(sel);
             JMenuItem menu = new JMenuItem(act);
             add(menu);
+            addSeparator();
         }
+    }
+    
+    /**
+     * 選択肢のポップアップを作成する。
+     * @param selects 配列の要素一つが選択肢一つに当たる
+     */
+    public InputSelector(String title, String[] selects) {
+        super(title);
+        addSeparator();
+        for(String sel : selects) {
+            TitleMenu act = new TitleMenu(sel);
+            JMenuItem menu = new JMenuItem(act);
+            add(menu);
+            addSeparator();
+         }
     }
     
     public void show(JFrame frame, int xPos, int yPos) {

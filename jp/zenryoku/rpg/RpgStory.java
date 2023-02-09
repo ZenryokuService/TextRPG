@@ -2,6 +2,8 @@ package jp.zenryoku.rpg;
 
 import javax.swing.JComponent;
 import jp.zenryoku.rpg.utils.FileReaderUtil;
+import jp.zenryoku.rpg.utils.StoryBuffer;
+
 import jp.zenryoku.rpg.views.InputSelector;
 /**
  * クラス RpgStory の注釈をここに書きます.
@@ -11,12 +13,17 @@ import jp.zenryoku.rpg.views.InputSelector;
  */
 public class RpgStory
 {
-    private RpgTextArea view;
+    /** テキストエリア */
+    private RpgTextArea fView;
+    /** ストーリーのテキストを保持するバッファ */
+    private StoryBuffer fBuf;
     
     /** コンストラクタ */
     public RpgStory(RpgTextArea view) {
         // ここに実行するための準備を実装する
-        this.view = view;
+        this.fView = view;
+        // StoryBufferをセット
+        fBuf = StoryBuffer.getInstance();
     }
 
     /**
@@ -26,7 +33,7 @@ public class RpgStory
     public void run(JComponent comp, int x, int y) {
          // - 1. Storyの表示
          StringBuilder build = FileReaderUtil.readFile("title.txt", true);
-         view.setText(build.toString());
+         fView.setText(build.toString());
          // - 2. 入力を受ける
          openSelects(comp, x, y);
          // - 3. 結果の表委
@@ -35,7 +42,7 @@ public class RpgStory
     
     private void openSelects(JComponent comp, int x, int y) {
         String[] yesNo = new String[] {"start", "continue"};
-        InputSelector pop = new InputSelector(yesNo);
+        InputSelector pop = new InputSelector("First", yesNo);
         pop.show(comp, x, y);
     }
 }

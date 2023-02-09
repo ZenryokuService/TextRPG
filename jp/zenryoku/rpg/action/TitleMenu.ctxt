@@ -7,5 +7,4 @@ comment2.params=str
 comment2.target=TitleMenu(java.lang.String)
 comment3.params=event
 comment3.target=void\ actionPerformed(java.awt.event.ActionEvent)
-comment3.text=\r\n\ \ \ \ \r\n\ \ \ \ public\ void\ addPropertyChangeListener(PropertyChangeListener\ listener)\ {\r\n\ \ \ \ \ \ \ \ \r\n\ \ \ \ }\r\n\ \ \ \ \r\n\ \ \ \ public\ void\ removePropertyChangeListener(PropertyChangeListener\ listener)\ {\r\n\ \ \ \ \ \ \ \ \r\n\ \ \ \ }\r\n\ \ \ \ \r\n\ \ \ \ public\ boolean\ isEnabled()\ {\r\n\ \ \ \ \ \ \ \ return\ false;\r\n\ \ \ \ }\r\n\ \ \ \ \r\n\ \ \ \ public\ void\ putValue(String\ key,\ Object\ value)\ {\r\n\ \ \ \ \ \ \ \ \r\n\ \ \ \ }\r\n\ \ \ \ \r\n\ \ \ \ public\ void\ setEnabled(boolean\ b)\ {\r\n\ \ \ \ \ \ \ \ \r\n\ \ \ \ }\r\n\ \ \ \ \r\n\ \ \ \ public\ Object\ getValue(String\ key)\ {\r\n\ \ \ \ \ \ \ \ return\ null;\r\n\ \ \ \ }\r\n\ \ \ public\ void\ init()\ {\r\n\ \ \ \ \ \ \ \r\n\ \ \ }\r\n
 numComments=4
