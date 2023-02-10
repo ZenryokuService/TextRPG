@@ -1,0 +1,245 @@
+<?xml version="1.0"?>
+<!--
+    モンスタータイプ：マスタカテゴリのMTPの下に定義する形で設定する。サンプル参照
+    OTH = 固定のモンスター、イベントなどに使用する。
+    BST = ４足歩行の獣の類
+    BRD = 鳥類
+    HUM = 人型モンスター
+-->
+<class>
+    <!-- 1. 選抜試合１人目 -->
+    <monster>
+        <id>1</id>
+        <name>ならずもの</name>
+        <lv>1</lv>
+        <type>OTH</type>
+        <hp>5</hp>
+        <mp>0</mp>
+        <pow>1</pow>
+        <agi>1</agi>
+        <int>1</int>
+        <dex>1</dex>
+        <ksm>1</ksm>
+        <atk>1</atk>
+        <def>1</def>
+        <isTalk>true</isTalk>
+        <message>しょうきんは、おれが、もらう！</message>
+        <commandList>ATK</commandList>
+        <exp>1</exp>
+        <money>1</money>
+    </monster>
+    <!-- 2. 選抜試合２人目 -->
+    <monster>
+        <id>2</id>
+        <name>いかついおとこ</name>
+        <lv>1</lv>
+        <type>OTH</type>
+        <hp>7</hp>
+        <mp>0</mp>
+        <pow>2</pow>
+        <agi>2</agi>
+        <int>2</int>
+        <dex>2</dex>
+        <ksm>2</ksm>
+        <atk>2</atk>
+        <def>2</def>
+        <isTalk>true</isTalk>
+        <message>しょうきんは、わたさぬぞ！</message>
+        <commandList>ATK</commandList>
+        <exp>2</exp>
+        <money>2</money>
+    </monster>
+    <!-- 3. 選抜試合３人目 -->
+    <monster>
+        <id>3</id>
+        <name>しょうねんけんし</name>
+        <lv>1</lv>
+        <type>OTH</type>
+        <hp>8</hp>
+        <mp>0</mp>
+        <pow>3</pow>
+        <agi>3</agi>
+        <int>3</int>
+        <dex>4</dex>
+        <ksm>3</ksm>
+        <atk>3</atk>
+        <def>3</def>
+        <isTalk>true</isTalk>
+        <message>どこまで、いけるか？いざ！</message>
+        <commandList>ATK</commandList>
+        <exp>3</exp>
+        <money>3</money>
+    </monster>
+    <!-- 4. 午前試合1人目 -->
+    <monster>
+        <id>4</id>
+        <name>ベイジン</name>
+        <lv>2</lv>
+        <type>OTH</type>
+        <hp>10</hp>
+        <mp>2</mp>
+        <pow>3</pow>
+        <agi>4</agi>
+        <int>4</int>
+        <dex>4</dex>
+        <ksm>3</ksm>
+        <atk>3</atk>
+        <def>3</def>
+        <isTalk>true</isTalk>
+        <message></message>
+        <commandList>ATK</commandList>
+        <exp>5</exp>
+        <money>0</money>
+    </monster>
+    <!-- 5. 午前試合2人目 -->
+    <monster>
+        <id>5</id>
+        <name>ころう</name>
+        <lv>3</lv>
+        <type>OTH</type>
+        <hp>15</hp>
+        <mp>2</mp>
+        <pow>4</pow>
+        <agi>4</agi>
+        <int>4</int>
+        <dex>4</dex>
+        <ksm>3</ksm>
+        <atk>5</atk>
+        <def>5</def>
+        <isTalk>true</isTalk>
+        <message>がんりゅう！ころうともうす。いざじんじょうに！</message>
+        <commandList>ATK</commandList>
+        <exp>5</exp>
+        <money>0</money>
+    </monster>
+    <!-- ６. 午前試合3人目 -->
+    <monster>
+        <id>6</id>
+        <name>おが</name>
+        <lv>4</lv>
+        <type>HUM</type>
+        <hp>20</hp>
+        <mp>2</mp>
+        <pow>6</pow>
+        <agi>3</agi>
+        <int>2</int>
+        <dex>4</dex>
+        <ksm>1</ksm>
+        <atk>7</atk>
+        <def>5</def>
+        <isTalk>true</isTalk>
+        <message>「とのさまは、目の前だぁ！かくごしろぉ！」</message>
+        <commandList>ATK</commandList>
+        <exp>5</exp>
+        <money>0</money>
+    </monster>
+    <!-- 7. ミナの村　門番 -->
+    <monster>
+        <id>7</id>
+        <name>門番モンスター</name>
+        <lv>5</lv>
+        <type>OTH</type>
+        <hp>25</hp>
+        <mp>6</mp>
+        <pow>6</pow>
+        <agi>5</agi>
+        <int>2</int>
+        <dex>4</dex>
+        <ksm>1</ksm>
+        <atk>10</atk>
+        <def>8</def>
+        <isTalk>true</isTalk>
+        <message>「この村に入りたくば、われをたおしてからにするんだなぁ」</message>
+        <commandList>ATK</commandList>
+        <exp>5</exp>
+        <money>0</money>
+    </monster>
+
+    <!-- 8. ヒガの町　うろついているモンスター１ -->
+    <monster>
+        <id>8</id>
+        <name>バトルラビット</name>
+        <lv>5</lv>
+        <type>BST</type>
+        <hp>23</hp>
+        <mp>6</mp>
+        <pow>4</pow>
+        <agi>7</agi>
+        <int>4</int>
+        <dex>4</dex>
+        <ksm>5</ksm>
+        <atk>10</atk>
+        <def>8</def>
+        <isTalk>false</isTalk>
+        <message></message>
+        <commandList>ATK</commandList>
+        <exp>5</exp>
+        <money>6</money>
+    </monster>
+
+    <!-- 9. ヒガの町　うろついているモンスター２ -->
+    <monster>
+        <id>9</id>
+        <name>バトルクロウ</name>
+        <lv>5</lv>
+        <type>CRW</type>
+        <hp>23</hp>
+        <mp>6</mp>
+        <pow>7</pow>
+        <agi>7</agi>
+        <int>4</int>
+        <dex>2</dex>
+        <ksm>1</ksm>
+        <atk>10</atk>
+        <def>8</def>
+        <isTalk>false</isTalk>
+        <message></message>
+        <commandList>ATK, STK</commandList>
+        <exp>5</exp>
+        <money>6</money>
+    </monster>
+
+    <!-- 10. ヒガの町　うろついているモンスター３ -->
+    <monster>
+        <id>10</id>
+        <name>バトルドック</name>
+        <lv>5</lv>
+        <type>BST</type>
+        <hp>23</hp>
+        <mp>6</mp>
+        <pow>5</pow>
+        <agi>7</agi>
+        <int>4</int>
+        <dex>5</dex>
+        <ksm>5</ksm>
+        <atk>11</atk>
+        <def>9</def>
+        <isTalk>false</isTalk>
+        <message></message>
+        <commandList>ATK, BAT</commandList>
+        <exp>5</exp>
+        <money>6</money>
+    </monster>
+
+    <!-- 11. まおう -->
+    <monster>
+        <id>11</id>
+        <name>まおP</name>
+        <lv>5</lv>
+        <type>OTH</type>
+        <hp>23</hp>
+        <mp>6</mp>
+        <pow>5</pow>
+        <agi>7</agi>
+        <int>4</int>
+        <dex>5</dex>
+        <ksm>5</ksm>
+        <atk>11</atk>
+        <def>9</def>
+        <isTalk>false</isTalk>
+        <message></message>
+        <commandList>ATK, BAT</commandList>
+        <exp>5</exp>
+        <money>6</money>
+    </monster>
+</class>

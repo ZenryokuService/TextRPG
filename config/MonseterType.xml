@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+　　　＜モンスター向け職業マップ＞
+ 　　・Ver1.5以上で実装予定。
+
+ -->
+
+<class>
+    <!-- その他・タイプ -->
+    <monsterType>
+        <id>OTH</id>
+        <name>その他</name>
+        <discription>タイプにはまらないモンスター。</discription>
+        <commandList>ATK, DEF, BAT</commandList>
+    </monsterType>
+    <!-- スライム・タイプ -->
+    <monsterType>
+        <id>SLM</id>
+        <name>スライムタイプ</name>
+        <discription>スライムタイプのモンスター。</discription>
+        <commandList>ATK, DEF, BAT</commandList>
+    </monsterType>
+    <!-- カラス・タイプ -->
+    <monsterType>
+        <id>CRW</id>
+        <name>カラスタイプ</name>
+        <discription>カラスタイプのモンスター。</discription>
+        <commandList>ATK, DEF, STC</commandList>
+    </monsterType>
+    <!-- 人間・タイプ -->
+    <monsterType>
+        <id>HUM</id>
+        <name>人間タイプ</name>
+        <discription>人間タイプのモンスター。</discription>
+        <commandList>ATK, DEF</commandList>
+    </monsterType>
+    <!-- 獣・タイプ -->
+    <monsterType>
+        <id>BST</id>
+        <name>獣タイプ</name>
+        <discription>獣タイプのモンスター。</discription>
+        <commandList>ATK, DEF</commandList>
+    </monsterType>
+</class>

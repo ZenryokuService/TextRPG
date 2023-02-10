@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<!-- 世界観 -->
+<class>
+    <world>
+        <!-- name: 世界の名前 -->
+        <name>ちきゅう</name>
+        <!-- 世界地図(画像ファイル) -->
+        <img>https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYR-1XE6ThYpnNcdE0Rt55fKVfMOkZQdVhpg&usqp=CAU</img>
+        <!-- nature: 自然 -->
+        <nature>
+            <climate>
+                <name>寒帯気候(かんたいきこう)</name>
+                <creatures>
+                    <creature id="tonakai"/>
+                    <creature id="arcticfox"/>
+                    <cresture id="grizzlybear"/>
+                </creatures>
+                <!-- 定義は自由に追加してよい -->
+            </climate>
+            <climate>
+                <name>亜寒帯気候(あかんたい きこう)</name>
+                <creatures>
+                    <creature id="amurleopard"/>
+                </creatures>
+            </climate>
+            <climate>
+                <name>温帯気候(おんたいきこう)</name>
+                <creatures>
+                    <creature id="lynx"/>
+                    <creature id="eagle"/>
+                </creatures>
+            </climate>
+
+            <climate>
+                <name>乾燥帯気候(かんそうたい きこう)</name>
+                <creatures>
+                    <creature>
+                        <id>camel</id>
+                        <name>ラクダ</name>
+                        <discription>ラクダは、楽だ</discription>
+                    </creature>
+                </creatures>
+            </climate>
+
+            <climate></climate>
+
+        </nature>
+        <!-- モンスターを含む動植物には食物連鎖 -->
+        <!-- 生息地、生物分布 -->
+        <!-- 地形、天候、四季(雨季と乾季など) -->
+        <!-- 魔法(の類)の発動ロジック、効果、特性 -->
+        <!-- civilzation: 世界の文明 -->
+        <!-- 生活様式全般 -->
+        <!-- 生活習慣 -->
+        <!-- 価値観 -->
+        <!-- 世界観 -->
+        <!-- 規範 -->
+        <!-- 思考様式 -->
+        <!-- 社会制度 -->
+        <!-- 社会構造 -->
+        <!-- 組織 -->
+        <!-- culture: 文化 -->
+        <!-- 思考 -->
+        <!-- 感情 -->
+        <!-- 衣 -->
+        <!-- 食 -->
+        <!-- 住 -->
+        <!-- 機械(道具) -->
+        <!-- 制度 -->
+        <!-- 言語 -->
+        <!-- 社会体制 -->
+    </world>
+</class>

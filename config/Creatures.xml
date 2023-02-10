@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!-- 生物 -->
+<class>
+    <creatures>
+        <creature>
+            <id>tonakai</id>
+            <name>トナカイ（カリブー）</name>
+            <discription>サンタクロース乗っている動物、鼻が赤い</discription>
+        </creature>
+        <creature>
+            <id>arcticfox</id>
+            <name>ホッキョクギツネ</name>
+            <discription>サンタクロース乗っている動物、鼻が赤い</discription>
+        </creature>
+        <creature>
+            <id>grizzlybear</id>
+            <name>ハイイログマ</name>
+            <discription>クマ科の大型動物で、ヒグマの一亜種で</discription>
+        </creature>
+        <creature>
+            <id>amurleopard</id>
+            <name>アムールヒョウ</name>
+            <discription>最北の地に生きるヒョウの1種である。</discription>
+        </creature>
+        <creature>
+            <id>lynx</id>
+            <name>オオヤマネコ</name>
+            <discription>哺乳綱食肉目ネコ科オオヤマネコ属に分類される食肉類。</discription>
+        </creature>
+        <creature>
+            <id>eagle</id>
+            <name>ワシ</name>
+            <discription>タカ目タカ科に属する鳥のうち、比較的大きめのものを指す通称である。</discription>
+            <img>https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:Bald_Eagle,_Kodiak,_Alaska_Ret.jpg</img>
+        </creature>
+    </creatures>
+</class>
