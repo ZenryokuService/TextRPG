@@ -165,6 +165,15 @@
  * 制度
  * 言語
  * 社会体制
+ 
+ ##### **country**: 国(これを基本単位にする)
+  * 文明圏
+  * 文化
+  * 自然
+  * 国家(国家の名前がないときは国家なし)
+  * 国家制度(封建・民主主義・社会主義・その他)
+
+#### XMLのサンプル　※検討中
 ```
 <?xml version="1.0"?>
 <!-- 世界観 -->
@@ -172,7 +181,7 @@
     <world>
         <!-- name: 世界の名前 -->
         <name>ちきゅう</name>
-        <!-- 世界地図(画像ファイル) -->
+        <!-- 世界地図(画像ファイル)の画像URL -->
         <img>https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYR-1XE6ThYpnNcdE0Rt55fKVfMOkZQdVhpg&usqp=CAU</img>
         <!-- nature: 自然 -->
         <nature>
