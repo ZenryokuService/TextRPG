@@ -13,9 +13,14 @@
 ### 【[UMLドキュメント](https://zenryokuservice.github.io/TextRPG/)】
 クラス図、フローチャートをHTML出力しました。上記リンクからアクセスできます。
 
-## プログラムの構成
+### メインの処理フロー
+![](https://zenryokuservice.github.io/TextRPG/diagrams/b94dd1ecb320dbbb6eacb36f0e181409.svg)
+
+## プログラムの実行方法
 1. アプリケーションの起動は、コマンドでJARファイルを実行
-2. Swingで作成した画面にテキストを出力、ユーザーからの入力を受ける
+2. Swingで作成した画面にテキストを出力、ユーザーからの入力を受けストーリーを進める
+3. 途中でゲームを終了するときは、Escボタンを押下する
+
 
 ### 実行イメージ
 以下の画面にテキストを出力する
@@ -42,11 +47,71 @@
 | Monsters.xml モンスターの名前、HPやMPなどを記述する |
 | Shops.xml | ショップの定義、販売しているものと値段のリスト |
 | Items.xml | アイテム(武具も含む)の定義、販売しているものと値段のリスト、非売品は値段を「-」にする |
+| Formula.xml | 
+| map.properties | XMLファイル間で定義するIDの関連を定義する |
+
+### [設定ファイル(一部)](./config/Config.xml)
+ゲームで使用する各種パラメータ、ステータス異常の効果を指定する。
+```
+<?xml version="1.0"?>
+<!--
+ param:　プレーヤー・モンスターのパラメータ
+   .id: 各項目のIDを示す(必須)
+   .discription: 各項目の説明(必須)
+   .init: 初期値(オプショナル)※←必須ではないということ
+   .formula: 各値を求めるための式
+
+ status: プレーヤー・モンスターのステータス異常を表す
+   .id: 各項目のIDを示す(必須)
+   .discription: 各項目の説明(必須)
+   .formula: 状態異常の効果を表す式
+-->
+<class>
+    <param>
+        <id>HP</id>
+        <discription>生命力・体力を表す、0になるとゲームオーバーになる。</discription>
+    </param>
+    <param>
+        <id>POW</id>
+        <discription>ちから: 攻撃力、武器・防具の持てる合計重量を示す。</discription>
+        <init>1</init>
+    </param>
+    <param>
+        <id>ATK</id>
+        <discription>攻撃力: 物理的な攻撃力を示す。</discription>
+        <!-- (ちから + 武器攻撃力) * (1 + (0.1 * じゅくれんど)) -->
+        <formula>(POW + WEV) * (1 + (0.1 * JLV))</formula>
+    </param>
+    <param>
+        <id>DEF</id>
+        <discription>防御力: 物理的な防御力を示す。</discription>
+        <!-- (ちから + すばやさ + きようさ) / 3 + 防具防御力 -->
+        <formula>(POW + AGI + DEX) / 3 + ARV</formula>
+    </param>
+    <status>
+        <id>POI</id>
+        <discription>毒を受けた状態を表す。</discription>
+        <!-- 「@」は毎ターンを表す -->
+        <formula>(HP-1)@1</formula>
+    </status>
+</class>
+```
+### XMLファイルの関連付け
+map.propertiesを編集してXMLファイルの関連付けを行う。やり方は以下のようになる。
+* Job.xmlの「job」タグ内の「commands」タグ内の「command」タグとCommands.xmlの「coomand」タグ内の「id」タグを関連付ける場合
+```job.commands.command=command.id```
 
 ### 自作XMLの書き方
 下のXMLにあるように、Jobクラスがあるので、そのクラスにセットする値を下記のように設定する。
-例：職業、勇者の職業IDは「BRV」とする。各種IDは3文字で示すようにしている。ここは作成者が決めるところ。。。
-　　共通するタグとして「img」タグがあるので、imgタグで画像を指定することができる。指定しなくてもよい。※必須ではない
+基本的には、サンプルにある設定ファイルをフォルダごとコピーして編集する形で作成してください。
+※**詳細の使用は検討中**
+
+#### Job.xml(職業カスタム)
+職業、勇者の職業IDは「BRV」とする。各種IDは3文字で示すようにしている。ここは作成者が決めるところ。。。
+共通するタグとして「img」タグがあるので、imgタグで画像を指定することができる。指定しなくてもよい。※必須ではない
+自作の職業を増やす場合は、<job>タグの内容をコピーして、新たに職業を作成してください。 
+commandListタグに定義されているのは、**コマンド(Command.xml)に定義されているコマンドID**になります。
+
 ```xml
 <?xml version="1.0"?>
 <!-- 職業マップ -->
@@ -56,21 +121,29 @@
         <id>BRV</id>
         <name>勇者</name>
         <discription>勇気ある者。バランスよく剣と魔法を使える。</discription>
-        <commandList>ATK, DEF, MAG, TEC</commandList>
+        <commands>
+        	<command>ATK</command>
+        	<command>DEF</command>
+        	<command>MAG</command>
+        	<command>TEC</command>
+        </commands>
         <!-- CONFIG_STSTUS参照のタグ名で増加値をセット -->
         <pow>2</pow>
         <agi>2</agi>
         <int>2</int>
         <dex>2</dex>
         <ksm>2</ksm>
-        <img>resources/img/brv.png</img>
     </job>
     <!-- 戦士 -->
     <job>
         <id>WAR</id>
         <name>戦士</name>
         <discription>戦闘のスペシャリスト。</discription>
-        <commandList>ATK, DEF, TEC</commandList>
+        <commands>
+        	<command>ATK</command>
+        	<command>DEF</command>
+        	<command>TEC</command>
+        </commands>
         <!-- CONFIG_STSTUS参照のタグ名で増加値をセット -->
         <pow>2</pow>
         <agi>2</agi>
@@ -78,17 +151,6 @@
         <dex>2</dex>
         <ksm>2</ksm>
     </job>
-</class>
-```
-#### XMLの具体例
-```
-<?xml version="1.0"?>
-<!-- これはコメント -->
-<class>
-  <!-- Config.xmlに定義している値を定義 -->
-  <!-- 「POW＝ ちから」と定義しているのでちからが5ポイントならば -->
-  <!-- 大文字で定義、小文字で使用する感じ -->
-  <pow>5</pow>
 </class>
 ```
 
