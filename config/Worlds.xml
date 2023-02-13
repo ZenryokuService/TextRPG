@@ -2,10 +2,11 @@
 <!-- 世界観 -->
 <class>
     <world>
+        <id>upperWorld</id>
         <!-- name: 世界の名前 -->
         <name>ちきゅう</name>
         <!-- 世界地図(画像ファイル) -->
-        <img>https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYR-1XE6ThYpnNcdE0Rt55fKVfMOkZQdVhpg&usqp=CAU</img>
+        <img>https://img.game8.jp/3808388/f49a39a900970874043b2d4c899bce8e.jpeg/show</img>
         <!-- nature: 自然 -->
         <nature>
             <climate>
@@ -42,32 +43,91 @@
                 </creatures>
             </climate>
 
-            <climate></climate>
+            <climate>
+                <name>熱帯雨林気候(ねったいうりん きこう)</name>
+                <discription>./climate/tropical_rainforest_climate.txt</discription>
+            </climate>
 
         </nature>
         <!-- モンスターを含む動植物には食物連鎖 -->
+        <!-- 「植物→草食動物→肉食動物」のような書き方でもよい -->
+        <food_chain>./FoodChain.md</food_chain>
         <!-- 生息地、生物分布 -->
-        <!-- 地形、天候、四季(雨季と乾季など) -->
+        <creatures>./Creatures.xml</creatures>
+        <!-- 「地域」としてまとめる(地形、天候、四季(雨季と乾季など)) -->
+        <regions>
+            <region>
+                <id>1</id>
+                <name>FirstStage</name>
+                <discription>アリアハンのある大陸</discription>
+            </region>
+            <region>
+                <id>2</id>
+                <name>SecondStage</name>
+                <discription>ポルトガのある大陸</discription>
+            </region>
+            <region>
+                <id>1</id>
+                <name>ThirdStage</name>
+                <discription>ミラミッドのある大陸</discription>
+            </region>
+        </regions>
         <!-- 魔法(の類)の発動ロジック、効果、特性 -->
+        <logic>呪文を唱えて、まほうを発動する。魔法力(MP)を消費する。</logic>
         <!-- civilzation: 世界の文明 -->
+        <civilzations>
+            <civilzation>
+                <id>DOQ</id>
+                <discription>ドラ○エ３の文明</discription>
+            </civilzation>
+        </civilzations>
         <!-- 生活様式全般 -->
+        <life_style>中世の生活様式</life_style>
         <!-- 生活習慣 -->
+        <habit>士農工商に分かれて生活、進行するのは神様、協会に祈りを捧げる。</habit>
         <!-- 価値観 -->
+        <values></values>
         <!-- 世界観 -->
+        <view_of_world></view_of_world>
         <!-- 規範 -->
+        <norm></norm>
         <!-- 思考様式 -->
+        <way_of_thinking></way_of_thinking>
         <!-- 社会制度 -->
+        <social_system>封建社会</social_system>
         <!-- 社会構造 -->
+        <social_structure>王族→貴族・聖職者→士族→平民(農民、工業人、商人)</social_structure>
         <!-- 組織 -->
-        <!-- culture: 文化 -->
-        <!-- 思考 -->
-        <!-- 感情 -->
-        <!-- 衣 -->
-        <!-- 食 -->
-        <!-- 住 -->
-        <!-- 機械(道具) -->
-        <!-- 制度 -->
-        <!-- 言語 -->
-        <!-- 社会体制 -->
+        <organization></organization>
+        <!-- 文化 -->
+        <cultures>
+            <culture>
+                <id>ARIAHAN</id>
+                <discription>アリアハン周辺の文化</discription>
+            </culture>
+            <culture>
+                <id>PORUTOGA</id>
+                <discription>ポルトガ周辺の文化</discription>
+            </culture>
+            <culture>
+                <id>ROMARIA</id>
+                <discription>ロマリア周辺の文化</discription>
+            </culture>
+            <culture>
+                <id>NORNEAL</id>
+                <discription>ノアニール周辺の文化</discription>
+            </culture>
+        </cultures>
+    </world>
+    <world>
+        <id>arefguld</id>
+        <!-- 上記の世界の情報を継承する -->
+        <inherit>upperWorld</inherit>
+        <!-- name: 世界の名前 -->
+        <name>アレフガルド</name>
+        <!-- 世界地図(画像ファイル)を上書きする(オーバーライド) -->
+        <img>https://img.game8.jp/3808505/5ce596169ba7e3a6386f26ca395aed35.jpeg/show</img>
+        <!-- 生息地、生物分布 -->
+        <creatures>./Arefgulds.xml</creatures>
     </world>
 </class>
