@@ -44,7 +44,7 @@
     </monsterType>
     <!-- 植物・タイプ -->
     <monsterType>
-        <id>BST</id>
+        <id>PLN</id>
         <name>植物タイプ</name>
         <discription>植物タイプのモンスター。</discription>
         <commands>
@@ -66,7 +66,7 @@
     </monsterType>
     <!-- 有翼(鳥)・タイプ -->
     <monsterType>
-        <id>BST</id>
+        <id>FLY</id>
         <name>有翼(鳥)タイプ</name>
         <discription>有翼(鳥)タイプのモンスター。</discription>
         <commands>
@@ -77,7 +77,7 @@
     </monsterType>
     <!-- 爬虫類・タイプ -->
     <monsterType>
-        <id>BST</id>
+        <id>REP</id>
         <name>爬虫類タイプ</name>
         <discription>爬虫類タイプのモンスター。</discription>
         <commands>
@@ -88,7 +88,7 @@
     </monsterType>
     <!-- 昆虫・タイプ -->
     <monsterType>
-        <id>INC</id>
+        <id>INS</id>
         <name>昆虫タイプ</name>
         <discription>昆虫タイプのモンスター。</discription>
         <commands>
@@ -111,7 +111,7 @@
     </monsterType>
     <!-- 魔族・タイプ -->
     <monsterType>
-        <id>BST</id>
+        <id>DMN</id>
         <name>魔族タイプ</name>
         <discription>魔族タイプのモンスター。</discription>
         <commands>
@@ -123,7 +123,7 @@
     </monsterType>
     <!-- 不死・タイプ -->
     <monsterType>
-        <id>BST</id>
+        <id>UND</id>
         <name>不死タイプ</name>
         <discription>不死タイプのモンスター。</discription>
         <commands>
