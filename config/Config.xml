@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
 <!--
+ money: この世界での通貨、複数あってもよい
+ language: 同様に言語、複数あってもよい
  param:　プレーヤー・モンスターのパラメータ
    .id: 各項目のIDを示す(必須)
    .discription: 各項目の説明(必須)
@@ -12,9 +14,44 @@
    .formula: 状態異常の効果を表す式
 -->
 <class>
-    <money>NIG: ニギ</money>
-    <money>GLD: ゴールド</money>
-    <money>PSO: ペソ</money>
+    <money>
+       <id>NIG</id>
+       <name>ニギ</name>
+    </money>
+    <money>
+       <id>GLD</id>
+       <name>ゴールド</name>
+    </money>
+    <money>
+       <id>PSO</id>
+       <name>ペソ</name>
+    </money>
+    <language>
+        <id>ja</id>
+        <name>日本語</name>
+    </language>
+    <language>
+        <id>en</id>
+        <name>英語</name>
+    </language>
+    <elements>
+        <element>
+           <id>FIR</id>
+           <name>火</name>
+        </element>
+        <element>
+           <id>WIN</id>
+           <name>風</name>
+        </element>
+        <element>
+           <id>WAT</id>
+           <name>水</name>
+        </element>
+        <element>
+           <id>EAT</id>
+           <name>土</name>
+        </element>
+    </elements>
     <param>
         <id>HP</id>
         <discription>生命力・体力を表す、0になるとゲームオーバーになる。</discription>
