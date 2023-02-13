@@ -50,6 +50,11 @@
 | Formula.xml | 
 | map.properties | XMLファイル間で定義するIDの関連を定義する |
 
+### 自作XMLの書き方
+下のXMLにあるように、Jobクラスがあるので、そのクラスにセットする値を下記のように設定する。
+基本的には、サンプルにある設定ファイルをフォルダごとコピーして編集する形で作成してください。
+※**詳細の使用は検討中**
+
 ### [設定ファイル(一部)](./config/Config.xml)
 ゲームで使用する各種パラメータ、ステータス異常の効果を指定する。
 ```
@@ -96,16 +101,6 @@
     </status>
 </class>
 ```
-### XMLファイルの関連付け
-map.propertiesを編集してXMLファイルの関連付けを行う。やり方は以下のようになる。
-* Job.xmlの「job」タグ内の「commands」タグ内の「command」タグとCommands.xmlの「coomand」タグ内の「id」タグを関連付ける場合
-```job.commands.command=command.id```
-
-### 自作XMLの書き方
-下のXMLにあるように、Jobクラスがあるので、そのクラスにセットする値を下記のように設定する。
-基本的には、サンプルにある設定ファイルをフォルダごとコピーして編集する形で作成してください。
-※**詳細の使用は検討中**
-
 #### Job.xml(職業カスタム)
 職業、勇者の職業IDは「BRV」とする。各種IDは3文字で示すようにしている。ここは作成者が決めるところ。。。
 共通するタグとして「img」タグがあるので、imgタグで画像を指定することができる。指定しなくてもよい。※必須ではない
@@ -153,6 +148,12 @@ commandListタグに定義されているのは、**コマンド(Command.xml)に
     </job>
 </class>
 ```
+
+### XMLファイルの関連付け
+map.propertiesを編集してXMLファイルの関連付けを行う。やり方は以下のようになる。
+* Job.xmlの「job」タグ内の「commands」タグ内の「command」タグとCommands.xmlの「coomand」タグ内の「id」タグを関連付ける場合
+```job.commands.command=command.id```
+
 
 ## Sceneの種類
 | No | シーンタイプ | シーンの役割 |
@@ -246,13 +247,14 @@ commandListタグに定義されているのは、**コマンド(Command.xml)に
 <!-- 世界観 -->
 <class>
     <world>
-        <!-- name: 世界の名前 -->
-        <name>ちきゅう</name>
+        <!-- name: 世界の名前、何もない場合は空でよい-->
+        <name></name>
         <!-- 世界地図(画像ファイル)の画像URL -->
-        <img>https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYR-1XE6ThYpnNcdE0Rt55fKVfMOkZQdVhpg&usqp=CAU</img>
+        <img>[画像へのURLもしくはパス](https://img.altema.jp/dq3/uploads/2020/08/2020y08m30d_1317524902.jpg)/img>
         <!-- nature: 自然 -->
         <nature>
             <climate>
+                <id>Et</id>
                 <name>寒帯気候(かんたいきこう)</name>
                 <creatures>
                     <creature id="tonakai"/>
@@ -262,12 +264,14 @@ commandListタグに定義されているのは、**コマンド(Command.xml)に
                 <!-- 定義は自由に追加してよい -->
             </climate>
             <climate>
+                <id>Dw</id>
                 <name>亜寒帯気候(あかんたい きこう)</name>
                 <creatures>
                     <creature id="amurleopard"/>
                 </creatures>
             </climate>
             <climate>
+                <id>Cｗ</id>
                 <name>温帯気候(おんたいきこう)</name>
                 <creatures>
                     <creature id="lynx"/>
@@ -276,6 +280,7 @@ commandListタグに定義されているのは、**コマンド(Command.xml)に
             </climate>
 
             <climate>
+                <id>ＢＷ</id>
                 <name>乾燥帯気候(かんそうたい きこう)</name>
                 <creatures>
                     <creature>
@@ -286,14 +291,47 @@ commandListタグに定義されているのは、**コマンド(Command.xml)に
                 </creatures>
             </climate>
 
-            <climate></climate>
+            <climate>
+                <id>Af</id>
+                <name>熱帯雨林気候</name>
+                <discription>ＴＨＥ高温多湿！</discription>
+                <creatures>./Creature.xml</creatures>
+            </climate>
 
         </nature>
-        <!-- モンスターを含む動植物には食物連鎖 -->
+        <!-- モンスターを含む動植物の食物連鎖 -->
+        <food_chain>
+            植物→草食動物→肉食動物→雑食動物
+        </food_chain>
+        <food_chain>
+            <!-- 連鎖になっていない場合, 要は「食う、食われるの関係がわかればよい-->
+            植物、獣人→昆虫→鳥、爬虫類
+        </food_chain>
+        <foot_chain>
+            植物、獣→不死
+        </food_chain>
+        <!-- 詳細を記したファイルを指定してもよい。 -->
+        <food_chain>./FoodChain.md</food_chain>
         <!-- 生息地、生物分布 -->
         <!-- 地形、天候、四季(雨季と乾季など) -->
         <!-- 魔法(の類)の発動ロジック、効果、特性 -->
-        <!-- civilzation: 世界の文明 -->
+        <!-- 世界の文明 -->
+        <civilizations>
+            <civilization>
+                <id>indas</id>
+                <name>インダス</name>
+                <discription>インダス川の流域に発展した文明</discription>
+            </civilization>
+            <civilization>
+                <id>koga</id>
+                <name>黄河</name>
+                <!-- koga.txtファイルに詳細を記載 -->
+                <discription>./koga.txt</discription>
+            </civlization>
+            <!-- 属性部分にidと名前を指定する場合の書き方(これは、詳細を記述しない場合に使用する。 -->
+            <civilization id="methopotamia" name="メソポタミア" />
+            <civilization id="egypt" name="エジプト" />
+        </civilizations>
         <!-- 生活様式全般 -->
         <!-- 生活習慣 -->
         <!-- 価値観 -->
