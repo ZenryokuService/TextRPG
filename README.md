@@ -326,7 +326,7 @@ map.propertiesを編集してXMLファイルの関連付けを行う。やり方
                 <id>koga</id>
                 <name>黄河</name>
                 <!-- koga.txtファイルに詳細を記載 -->
-                <discription>./koga.txt</discription>
+                <discription>./civilizations/koga.txt</discription>
             </civlization>
             <!-- 属性部分にidと名前を指定する場合の書き方(これは、詳細を記述しない場合に使用する。 -->
             <civilization id="methopotamia" name="メソポタミア" />
