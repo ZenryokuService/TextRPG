@@ -1,10 +1,14 @@
 package jp.zenryoku.rpg.utils;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.FileNotFoundException;
 import java.nio.file.Paths;
 import java.nio.file.Path;
 import java.nio.file.Files;
+import java.beans.XMLDecoder;
 
 /**
  * クラス FileReaderUtil の注釈をここに書きます.
@@ -66,7 +70,6 @@ public class FileReaderUtil
     return build;
   }
   
-
   /**
    * 指定したファイルを、読み込むBufferedReaderを生成する。
    * @param path
@@ -81,6 +84,18 @@ public class FileReaderUtil
           e.printStackTrace();
           System.exit(-1);
       }
+      return buf;
+  }
+  
+    /**
+   * 指定したファイルを、読み込むBufferedReaderを生成する。
+   * @param path
+   * @return BufferedReader
+   */
+  public static BufferedInputStream newBufferedInputStream(String path) throws FileNotFoundException {
+      Path p = Paths.get(path);
+      BufferedInputStream buf =  new BufferedInputStream(
+                                      new FileInputStream(path));
       return buf;
   }
 }

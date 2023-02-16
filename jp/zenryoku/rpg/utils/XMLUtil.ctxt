@@ -6,4 +6,6 @@ comment1.target=org.w3c.dom.NodeList\ getTagNode(org.w3c.dom.Element,\ java.lang
 comment2.params=directory\ fileName
 comment2.target=org.w3c.dom.Document\ loadDocumentBuilder(java.lang.String,\ java.lang.String)
 comment2.text=\r\n\ XML\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8(\u30D5\u30A1\u30A4\u30EB)\u3092\u8AAD\u307F\u8FBC\u3080\u3002\r\n\ @param\ directory\ \u30D5\u30A1\u30A4\u30EB\u306E\u914D\u7F6E\u3057\u3066\u3044\u308B\u30C7\u30A3\u30EC\u30AF\u30C8\u30EA\r\n\ @param\ fileName\ \u30D5\u30A1\u30A4\u30EB\u540D\r\n\ @return\ Document\u30AA\u30D6\u30B8\u30A7\u30AF\u30C8\r\n\ @throws\ RpgException\ \u30D5\u30A1\u30A4\u30EB\u306E\u8AAD\u307F\u8FBC\u307F\u30A8\u30E9\u30FC\r\n
-numComments=3
+comment3.params=path
+comment3.target=java.lang.Object\ readSettingXml(java.lang.String)
+numComments=4

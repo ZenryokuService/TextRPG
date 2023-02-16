@@ -6,11 +6,15 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.FileNotFoundException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
+import java.beans.XMLDecoder;
 
 /**
  * クラス XMLUtil の注釈をここに書きます.
@@ -55,5 +59,19 @@ public class XMLUtil
         } catch (ParserConfigurationException e) {
         }
         return doc;
+    }
+    
+    public static Object readSettingXml(String path) {
+      Object o = null;
+      try {
+        BufferedInputStream buf = FileReaderUtil.newBufferedInputStream(path);
+        XMLDecoder decoder = new XMLDecoder(buf);
+
+        o = decoder.readObject();
+      } catch (FileNotFoundException e) {
+          e.printStackTrace();
+          System.exit(-1);
+      }
+        return o;
     }
 }

@@ -46,7 +46,7 @@ public class TextRPGMain extends JFrame
 
         setVisible(true);
         
-        RpgStory story = new RpgStory(textarea);
+        RpgProgress story = new RpgProgress(textarea);
         story.run(textPanel, xPos + 200, yPos + 100);
     }
 }
