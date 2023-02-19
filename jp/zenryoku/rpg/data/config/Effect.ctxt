@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Effect
+comment1.params=
+comment1.target=Effect()
+comment2.params=kigo\ disp\ siki\ message
+comment2.target=Effect(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+comment2.text=\r\n\ \u901A\u5E38\u306E\u3001\u300CPOI\:\u3069\u304F\:ZHP-10%\:\u3069\u304F\u3092\u3046\u3051\u305F\u300D\u306E\u3088\u3046\u306A\u5B9A\u7FA9\u3092\u8AAD\u307F\u8FBC\u3080\u3002\r\n\ @param\ kigo\ \u8A18\u53F7\r\n\ @param\ disp\ \u8868\u793A\u3059\u308B\u6587\u5B57\r\n\ @param\ siki\ \u52B9\u679C\u5F0F\r\n\ @param\ message\ \u52B9\u679C\u767A\u52D5\u6642\u306E\u8868\u793A\u30E1\u30C3\u30BB\u30FC\u30B8\r\n
+comment3.params=kigo\ ope\ num\ ts\ turn
+comment3.target=Effect(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+comment3.text=\r\n\ \u30B7\u30FC\u30F3\u304B\u3089\u5B9F\u884C\u3055\u308C\u308B\u30A4\u30D9\u30F3\u30C8\u306B\u5BFE\u5FDC\u3059\u308B\u3002\u52B9\u679C\u5F0F\u3092\u4FDD\u6301\u3059\u308B\u3002\r\n\r\n\ @param\ kigo\ \u8A18\u53F7\r\n\ @param\ ope\ \u6F14\u7B97\u5B50\r\n\ @param\ num\ \u6570\u5B57\r\n\ @param\ ts\ TS\r\n\ @param\ turn\ \u30BF\u30FC\u30F3\u6570\r\n\ @throws\ RpgException\r\n
+numComments=4

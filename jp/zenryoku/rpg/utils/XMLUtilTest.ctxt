@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=XMLUtilTest
+comment0.text=\r\n\ \u30C6\u30B9\u30C8\u30AF\u30E9\u30B9\ XMLUtilTest.\r\n\r\n\ @author\ (\u3042\u306A\u305F\u306E\u540D\u524D)\r\n\ @version\ (\u30D0\u30FC\u30B8\u30E7\u30F3\u756A\u53F7\u3082\u3057\u304F\u306F\u65E5\u4ED8)\r\n
+comment1.params=
+comment1.target=XMLUtilTest()
+comment1.text=\r\n\ \u30C6\u30B9\u30C8\u30AF\u30E9\u30B9\ XMLUtilTest\ \u306E\u305F\u3081\u306E\u30C7\u30D5\u30A9\u30EB\u30C8\u306E\u30B3\u30F3\u30B9\u30C8\u30E9\u30AF\u30BF\r\n
+comment2.params=
+comment2.target=void\ setUp()
+comment2.text=\r\n\ Sets\ up\ the\ test\ fixture.\r\n\r\n\ Called\ before\ every\ test\ case\ method.\r\n
+comment3.params=
+comment3.target=void\ tearDown()
+comment3.text=\r\n\ Tears\ down\ the\ test\ fixture.\r\n\r\n\ Called\ after\ every\ test\ case\ method.\r\n
+comment4.params=
+comment4.target=void\ test01()
+comment5.params=
+comment5.target=void\ testLoadObject()
+numComments=6
