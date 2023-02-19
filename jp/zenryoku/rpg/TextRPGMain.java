@@ -17,11 +17,15 @@ import java.awt.Toolkit;
  */
 public class TextRPGMain extends JFrame
 {
+    private static ConfigGenerator config;
+    
     public static void main(String[] args) {
         TextRPGMain main = new TextRPGMain();
+        config = ConfigGenerator.getInstance();
         main.run("Text RPG");
         
     }
+    
     
     public void run(String title) {
         setTitle(title);
@@ -46,7 +50,7 @@ public class TextRPGMain extends JFrame
 
         setVisible(true);
         
-        RpgProgress story = new RpgProgress(textarea);
-        story.run(textPanel, xPos + 200, yPos + 100);
+        RpgProgress story = new RpgProgress(this, textarea);
+        story.run(xPos + 200, yPos + 100);
     }
 }

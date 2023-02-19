@@ -5,8 +5,8 @@ package jp.zenryoku.rpg.utils;
  * クラス StoryBuffer の注釈をここに書きます.
  * 文字列の保持クラス、シングルトンで常にインスタンスは一つ。
  * 
- * @author (あなたの名前)
- * @version (バージョン番号もしくは日付)
+ * @author (Takunoji)
+ * @version (1.0)
  */
 public final class StoryBuffer 
 {
