@@ -58,7 +58,7 @@
 | [MonseterType.xml](https://github.com/ZenryokuService/TextRPG/wiki/%E8%81%B7%E6%A5%AD%E5%AE%9A%E7%BE%A9%E3%81%AB%E9%96%A2%E3%81%97%E3%81%A6#monstertypexml) | モンスターの技、魔法などの習得レベルを記述 | ○ |
 | [Commands.xml](https://github.com/ZenryokuService/TextRPG/wiki/%E8%81%B7%E6%A5%AD%E5%AE%9A%E7%BE%A9%E3%81%AB%E9%96%A2%E3%81%97%E3%81%A6#commandxml) | 各キャラクターが実行するコマンド| ○ |
 | [STM.xml](https://github.com/ZenryokuService/TextRPG/wiki/%E8%81%B7%E6%A5%AD%E5%AE%9A%E7%BE%A9%E3%81%AB%E9%96%A2%E3%81%97%E3%81%A6#stmxml) | 技(Skill, Tech), 魔法(Magic)の効果などを定義 | ○ |
-| [Effects.xml])(https://github.com/ZenryokuService/TextRPG/wiki/%E8%81%B7%E6%A5%AD%E5%AE%9A%E7%BE%A9%E3%81%AB%E9%96%A2%E3%81%97%E3%81%A6#effectsxml) | 使用したときに効果のあるもの(どうぐ～魔法など)を実行したときの定義を数式で行う | ○ |
+| [Effects.xml](https://github.com/ZenryokuService/TextRPG/wiki/%E8%81%B7%E6%A5%AD%E5%AE%9A%E7%BE%A9%E3%81%AB%E9%96%A2%E3%81%97%E3%81%A6#effectsxml) | 使用したときに効果のあるもの(どうぐ～魔法など)を実行したときの定義を数式で行う | ○ |
 | [Monsters.xml](https://github.com/ZenryokuService/TextRPG/wiki/%E3%83%A2%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%BC%E5%AE%9A%E7%BE%A9%E3%81%AB%E9%96%A2%E3%81%97%E3%81%A6#monstersxml) | モンスターの名前、HPやMPなどを記述する | ○ |
 | [Shops.xml](https://github.com/ZenryokuService/TextRPG/wiki/%E5%BA%97%E8%88%97%E5%AE%9A%E7%BE%A9%E3%81%AB%E9%96%A2%E3%81%97%E3%81%A6#shopxml) | ショップの定義、販売しているものと値段のリスト | ○ |
 | [Items.xml](https://github.com/ZenryokuService/TextRPG/wiki/%E5%BA%97%E8%88%97%E5%AE%9A%E7%BE%A9%E3%81%AB%E9%96%A2%E3%81%97%E3%81%A6#itemsxml) | アイテム(武具も含む)の定義、販売しているものと値段のリスト、非売品は値段を「-」にする | ○ |
