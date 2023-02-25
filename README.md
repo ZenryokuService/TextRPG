@@ -38,30 +38,39 @@
 
 ## 設定ファイル一覧(ゲーム作成者用)
 ゲームの作成者は以下のファイルの内容を記述する。サンプルゲームにある、これらのファイルには、簡単な設定が書かれているのでそれをカスタムして利用してほしい。
+必須でないもの(必須が「-」)はパス指定(「./XXX.txt」)で説明ファイルを作成することができる。
+※パス指定は「./myyFolder/XXX.txtとしてもよい」、つまりフォルダを作成してもよい
 
-| ファイル名 | 記述内容 |
-| ---------- | -------- |
-| title.txt | ゲームを起動したときの初期表示画面(テキストのみで描画する) |
-| Config.xml | ゲームの設定、言葉(単語)の意味を定義、HPやMPは固定だが他の値を追加、使用方法を指定する(指定のXMLファイルを作成する)ことができる |
-| Worlds.xml | 世界観の定義、各項目を文章で説明する |
-| story_XXX.xml | ゲームのストーリーを記述、各ストーリーのシーンを描画するXMLファイル。「XXX」にはシーン番号が入る。 例: story_1.xml |
-| <del>Story.txt</del> | <del>ゲームのストーリーを記述、ゲームブックの本体のイメージ</del> |
-| Job.xml | 各職業の技、魔法などの習得レベルを記述 |
-| Commands.xml | 各キャラクターが実行するコマンド|
-| STM.xml | 技(Skill, Tech), 魔法(Magic)の効果などを定義 |
-| MonseterType.xml | モンスターの技、魔法などの習得レベルを記述 |
-| Monsters.xml モンスターの名前、HPやMPなどを記述する |
-| Shops.xml | ショップの定義、販売しているものと値段のリスト |
-| Items.xml | アイテム(武具も含む)の定義、販売しているものと値段のリスト、非売品は値段を「-」にする |
-| Formula.xml | 
-| map.properties | XMLファイル間で定義するIDの関連を定義する |
+| ファイル名 | 記述内容 | 必須 |
+| ---------- | -------- | -- |
+| <del>title.txt</del> | ゲームを起動したときの初期表示画面(テキストのみで描画する) | ○ |
+| [Config.xml](https://github.com/ZenryokuService/TextRPG/wiki/%E8%A8%AD%E5%AE%9A%E5%AE%9A%E7%BE%A9(Config.xml)%E3%81%AB%E9%96%A2%E3%81%97%E3%81%A6) | ゲームの設定、言葉(単語)の意味を定義、HPやMPは固定だが他の値を追加、使用方法を指定する(指定のXMLファイルを作成する)ことができる | ○ |
+| [Worlds.xml](https://github.com/ZenryokuService/TextRPG/wiki/%E4%B8%96%E7%95%8C%E8%A6%B3%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF%E5%87%A6%E7%90%86%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6#%E4%B8%96%E7%95%8C%E8%A6%B3%E3%82%92%E5%AE%9A%E7%BE%A9-worldsxml) | 世界観の定義、各項目を文章で説明する | ○ |
+| Countries.xml | 国の定義、各項目を文章で説明する | - |
+| Nature.xml | 世界の自然を定義、各項目を文章で説明する | - |
+| Creatures.xml | 世界の生物を定義、各項目を文章で説明する| - |
+| FoodChain.md | 世界の食物連鎖を定義、各項目を文章で説明する | - |
+| Civilzations.xml | 世界の文明を定義、各項目を文章で説明する | - |
+| Cultures.xml | 世界の文化を定義、各項目を文章で説明する | - |
+| [story_XXX.xml](https://github.com/ZenryokuService/TextRPG/wiki/%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AA%E3%83%BC%E5%AE%9A%E7%BE%A9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6) | ゲームのストーリーを記述、各ストーリーのシーンを描画するXMLファイル。「XXX」にはシーン番号が入る。 例: story_1.xml | ○ |
+| <del>Story.txt</del> | <del>ゲームのストーリーを記述、ゲームブックの本体のイメージ</del> | <del>-</del> |
+| [Job.xml](https://github.com/ZenryokuService/TextRPG/wiki/%E8%81%B7%E6%A5%AD%E5%AE%9A%E7%BE%A9%E3%81%AB%E9%96%A2%E3%81%97%E3%81%A6#jobxml) | 各職業の技、魔法などの習得レベルを記述 | ○ |
+| [MonseterType.xml](https://github.com/ZenryokuService/TextRPG/wiki/%E8%81%B7%E6%A5%AD%E5%AE%9A%E7%BE%A9%E3%81%AB%E9%96%A2%E3%81%97%E3%81%A6#monstertypexml) | モンスターの技、魔法などの習得レベルを記述 | ○ |
+| [Commands.xml](https://github.com/ZenryokuService/TextRPG/wiki/%E8%81%B7%E6%A5%AD%E5%AE%9A%E7%BE%A9%E3%81%AB%E9%96%A2%E3%81%97%E3%81%A6#commandxml) | 各キャラクターが実行するコマンド| ○ |
+| [STM.xml](https://github.com/ZenryokuService/TextRPG/wiki/%E8%81%B7%E6%A5%AD%E5%AE%9A%E7%BE%A9%E3%81%AB%E9%96%A2%E3%81%97%E3%81%A6#stmxml) | 技(Skill, Tech), 魔法(Magic)の効果などを定義 | ○ |
+| [Effects.xml](https://github.com/ZenryokuService/TextRPG/wiki/%E8%81%B7%E6%A5%AD%E5%AE%9A%E7%BE%A9%E3%81%AB%E9%96%A2%E3%81%97%E3%81%A6#effectsxml) | 使用したときに効果のあるもの(どうぐ～魔法など)を実行したときの定義を数式で行う | ○ |
+| [Monsters.xml](https://github.com/ZenryokuService/TextRPG/wiki/%E3%83%A2%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%BC%E5%AE%9A%E7%BE%A9%E3%81%AB%E9%96%A2%E3%81%97%E3%81%A6#monstersxml) | モンスターの名前、HPやMPなどを記述する | ○ |
+| [Shops.xml](https://github.com/ZenryokuService/TextRPG/wiki/%E5%BA%97%E8%88%97%E5%AE%9A%E7%BE%A9%E3%81%AB%E9%96%A2%E3%81%97%E3%81%A6#shopxml) | ショップの定義、販売しているものと値段のリスト | ○ |
+| [Items.xml](https://github.com/ZenryokuService/TextRPG/wiki/%E5%BA%97%E8%88%97%E5%AE%9A%E7%BE%A9%E3%81%AB%E9%96%A2%E3%81%97%E3%81%A6#itemsxml) | アイテム(武具も含む)の定義、販売しているものと値段のリスト、非売品は値段を「-」にする | ○ |
+| [Formula.xml](https://github.com/ZenryokuService/TextRPG/wiki/%E8%A8%88%E7%AE%97%E5%BC%8F%E3%81%AE%E5%AE%9A%E7%BE%A9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6#formulaxml%E3%81%AE%E5%AE%9A%E7%BE%A9) | 各種計算式を定義する | ○ |
+| [map.properties](https://github.com/ZenryokuService/TextRPG/wiki/%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AB%E9%96%A2%E3%81%97%E3%81%A6#mappingproperties) | XMLファイル間で定義するIDの関連を定義する | ○ |
 
 ### 自作XMLの書き方
 下のXMLにあるように、Jobクラスがあるので、そのクラスにセットする値を下記のように設定する。
 基本的には、サンプルにある設定ファイルをフォルダごとコピーして編集する形で作成してください。
 ※**詳細の使用は検討中**
 
-### [設定ファイル(一部)](./config/Config.xml)
+### [Config.xml(設定ファイル)](./config/Config.xml)
 ゲームで使用する各種パラメータ、ステータス異常の効果を指定する。
 ```
 <?xml version="1.0"?>
@@ -206,157 +215,5 @@ map.propertiesを編集してXMLファイルの関連付けを行う。やり方
 ショップIDで指定した店を表示、買い物など利用することができる。「宿屋」などはeffectタグをつけることで何かしらの効果を起こすことができる
 
 ### 世界観を定義 Worlds.xml
-ここで定義した情報は、HELPで表示することができる。(仮)
-ストーリーの表示するときにも、ここの定義を引用することが可能、またイメージ画像があるともっと良いので「img」タグで画像を追加することが可能。
+詳細は、[Wikiを参照](https://github.com/ZenryokuService/TextRPG/wiki)
 
-##### **name**: 世界の名前
- * 世界地図(画像ファイル)
-
-##### **nature**: 自然
- * モンスターを含む動植物には食物連鎖
- * 生息地、生物分布
- * 地形、天候、四季(雨季と乾季など)
- * 魔法(の類)の発動ロジック、効果、特性
-
-##### **civilzation**: 世界の文明
- * 生活様式全般
- * 生活習慣
- * 価値観
- * 世界観
- * 規範
- * 思考様式
- * 社会制度
- * 社会構造
- * 組織
-
-##### **culture**: 文化
- * 思考
- * 感情
- * 衣
- * 食
- * 住
- * 機械(道具)
- * 制度
- * 言語
- * 社会体制
- 
- ##### **country**: 国(これを基本単位にする)
-  * 文明圏
-  * 文化
-  * 自然
-  * 国家(国家の名前がないときは国家なし)
-  * 国家制度(封建・民主主義・社会主義・その他)
-
-#### XMLのサンプル　※検討中
-```
-<?xml version="1.0"?>
-<!-- 世界観 -->
-<class>
-    <world>
-        <!-- name: 世界の名前、何もない場合は空でよい-->
-        <name></name>
-        <!-- 世界地図(画像ファイル)の画像URL -->
-        <img>[画像へのURLもしくはパス](https://img.altema.jp/dq3/uploads/2020/08/2020y08m30d_1317524902.jpg)/img>
-        <!-- nature: 自然 -->
-        <nature>
-            <climate>
-                <id>Et</id>
-                <name>寒帯気候(かんたいきこう)</name>
-                <creatures>
-                    <creature id="tonakai"/>
-                    <creature id="arcticfox"/>
-                    <cresture id="grizzlybear"/>
-                </creatures>
-                <!-- 定義は自由に追加してよい -->
-            </climate>
-            <climate>
-                <id>Dw</id>
-                <name>亜寒帯気候(あかんたい きこう)</name>
-                <creatures>
-                    <creature id="amurleopard"/>
-                </creatures>
-            </climate>
-            <climate>
-                <id>Cｗ</id>
-                <name>温帯気候(おんたいきこう)</name>
-                <creatures>
-                    <creature id="lynx"/>
-                    <creature id="eagle"/>
-                </creatures>
-            </climate>
-
-            <climate>
-                <id>ＢＷ</id>
-                <name>乾燥帯気候(かんそうたい きこう)</name>
-                <creatures>
-                    <creature>
-                        <id>camel</id>
-                        <name>ラクダ</name>
-                        <discription>ラクダは、楽だ</discription>
-                    </creature>
-                </creatures>
-            </climate>
-
-            <climate>
-                <id>Af</id>
-                <name>熱帯雨林気候</name>
-                <discription>ＴＨＥ高温多湿！</discription>
-                <creatures>./Creature.xml</creatures>
-            </climate>
-
-        </nature>
-        <!-- モンスターを含む動植物の食物連鎖 -->
-        <food_chain>
-            植物→草食動物→肉食動物→雑食動物
-        </food_chain>
-        <food_chain>
-            <!-- 連鎖になっていない場合, 要は「食う、食われるの関係がわかればよい-->
-            植物、獣人→昆虫→鳥、爬虫類
-        </food_chain>
-        <foot_chain>
-            植物、獣→不死
-        </food_chain>
-        <!-- 詳細を記したファイルを指定してもよい。 -->
-        <food_chain>./FoodChain.md</food_chain>
-        <!-- 生息地、生物分布 -->
-        <!-- 地形、天候、四季(雨季と乾季など) -->
-        <!-- 魔法(の類)の発動ロジック、効果、特性 -->
-        <!-- 世界の文明 -->
-        <civilizations>
-            <civilization>
-                <id>indas</id>
-                <name>インダス</name>
-                <discription>インダス川の流域に発展した文明</discription>
-            </civilization>
-            <civilization>
-                <id>koga</id>
-                <name>黄河</name>
-                <!-- koga.txtファイルに詳細を記載 -->
-                <discription>./civilizations/koga.txt</discription>
-            </civlization>
-            <!-- 属性部分にidと名前を指定する場合の書き方(これは、詳細を記述しない場合に使用する。 -->
-            <civilization id="methopotamia" name="メソポタミア" />
-            <civilization id="egypt" name="エジプト" />
-        </civilizations>
-        <!-- 生活様式全般 -->
-        <!-- 生活習慣 -->
-        <!-- 価値観 -->
-        <!-- 世界観 -->
-        <!-- 規範 -->
-        <!-- 思考様式 -->
-        <!-- 社会制度 -->
-        <!-- 社会構造 -->
-        <!-- 組織 -->
-        <!-- culture: 文化 -->
-        <!-- 思考 -->
-        <!-- 感情 -->
-        <!-- 衣 -->
-        <!-- 食 -->
-        <!-- 住 -->
-        <!-- 機械(道具) -->
-        <!-- 制度 -->
-        <!-- 言語 -->
-        <!-- 社会体制 -->
-    </world>
-</class>   
-```
