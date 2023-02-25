@@ -215,5 +215,5 @@ map.propertiesを編集してXMLファイルの関連付けを行う。やり方
 ショップIDで指定した店を表示、買い物など利用することができる。「宿屋」などはeffectタグをつけることで何かしらの効果を起こすことができる
 
 ### 世界観を定義 Worlds.xml
-詳細は、[Wikiを参照]()
+詳細は、[Wikiを参照](https://github.com/ZenryokuService/TextRPG/wiki)
 
