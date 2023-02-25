@@ -1,11 +1,15 @@
 package jp.zenryoku.rpg.data.config;
 
+import lombok.Data;
+
 /**
- * 文明を表す。
+ * 文明を表すクラス。
+ * 基本的にゲーム作成者の指定する、設定情報を保持する。
  */
-public class Civilzations extends StoryConfig {
+@Data
+public class Civilization extends StoryConfig {
     /** 文字、テキストファイルへのパス */
-    private String charactor;
+    private String character;
     /** 建造物、テキストファイルへのパス */
     private String structures;
     /** 技術、テキストファイルへのパス */
