@@ -1,6 +1,7 @@
 # TextRPG
 テキストを使用してゲーム展開をするRPGを作ろうとしています。
 具体的にはゲームブックをプログラムで再現するような感じです。
+悩んでいるところ、主に[仕様部分](https://github.com/ZenryokuService/TextRPG/wiki)です。これを[issue](https://github.com/ZenryokuService/TextRPG/issues)にて列挙、解決のために「あーだ」「こーだ」とコミュニケーションが取りたいと思っています。
 
 ### 【目標】
 
