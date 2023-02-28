@@ -92,7 +92,25 @@ public class XMLUtilTest
         }
     }
     
-        private void printWorld(World world) {
+    @Test
+    public void testExportPlayer() {
+
+        try {
+            List<World> confList = XMLUtil.exportWorldJaxb("config", "Player.xml");
+            if (confList == null) {
+                return;
+            }
+            assertTrue(confList.size() > 0);
+            for (World world : confList) {
+                assertNotNull(world);
+                assertEquals("ちきゅう",world.getName());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private void printWorld(World world) {
         print("World#ID: ", world.getId());
         print("World#Name: ", world.getName());
         print("World#Description: ", world.getDescription());

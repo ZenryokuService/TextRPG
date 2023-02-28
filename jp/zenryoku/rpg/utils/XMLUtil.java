@@ -21,6 +21,8 @@ import java.util.ArrayList;
 import java.beans.XMLDecoder;
 import jp.zenryoku.rpg.exception.RpgException;
 import jp.zenryoku.rpg.data.config.*;
+import jp.zenryoku.rpg.data.param.*;
+import jp.zenryoku.rpg.character.*;
 import java.lang.reflect.Field;
 
 
@@ -630,6 +632,34 @@ public class XMLUtil
         return null;
     }
 
+    public static List<World> exportPlayerJaxb(String directory, String fileName) {
+        Path path = Paths.get(directory, fileName);
+        Player player = createPlayer();
+
+        //worlds.setWorlds(list);
+        JAXBContext ctx = null;
+        try {
+            BufferedWriter writer = Files.newBufferedWriter(path);
+            ctx =  JAXBContext.newInstance(Worlds.class);
+            Marshaller m = ctx.createMarshaller();
+            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            m.marshal(player, writer);
+            JAXB.marshal(player, path.toFile());
+            writer.close();
+        } catch (JAXBException | IOException e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
+        Marshaller sharl = null;
+
+
+        return null;
+    }
+    
+    public static Player createPlayer() {
+        Player p = new Player();
+        return p;
+    }
     public static World createWorld() {
         World world = new World();
         world.setId("UpperWorld");

@@ -1,133 +1,147 @@
-<?xml version="1.0"?>
-<!-- 世界観 -->
-<class>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<worlds>
     <world>
-        <id>upperWorld</id>
-        <!-- name: 世界の名前 -->
-        <name>ちきゅう</name>
-        <!-- 世界地図(画像ファイル) -->
-        <img>https://img.game8.jp/3808388/f49a39a900970874043b2d4c899bce8e.jpeg/show</img>
-        <!-- nature: 自然 -->
-        <nature>
-            <climate>
-                <name>寒帯気候(かんたいきこう)</name>
-                <creatures>
-                    <creature id="tonakai"/>
-                    <creature id="arcticfox"/>
-                    <cresture id="grizzlybear"/>
-                </creatures>
-                <!-- 定義は自由に追加してよい -->
-            </climate>
-            <climate>
-                <name>亜寒帯気候(あかんたい きこう)</name>
-                <creatures>
-                    <creature id="amurleopard"/>
-                </creatures>
-            </climate>
-            <climate>
-                <name>温帯気候(おんたいきこう)</name>
-                <creatures>
-                    <creature id="lynx"/>
-                    <creature id="eagle"/>
-                </creatures>
-            </climate>
-
-            <climate>
-                <name>乾燥帯気候(かんそうたい きこう)</name>
-                <creatures>
-                    <creature>
-                        <id>camel</id>
-                        <name>ラクダ</name>
-                        <discription>ラクダは、楽だ</discription>
-                    </creature>
-                </creatures>
-            </climate>
-
-            <climate>
-                <name>熱帯雨林気候(ねったいうりん きこう)</name>
-                <discription>./climate/tropical_rainforest_climate.txt</discription>
-            </climate>
-
-        </nature>
-        <!-- モンスターを含む動植物には食物連鎖 -->
-        <!-- 「植物→草食動物→肉食動物」のような書き方でもよい -->
-        <food_chain>./FoodChain.md</food_chain>
-        <!-- 生息地、生物分布 -->
-        <creatures>./Creatures.xml</creatures>
-        <!-- 「地域」としてまとめる(地形、天候、四季(雨季と乾季など)) -->
-        <regions>
-            <region>
-                <id>1</id>
-                <name>FirstStage</name>
-                <discription>アリアハンのある大陸</discription>
-            </region>
-            <region>
-                <id>2</id>
-                <name>SecondStage</name>
-                <discription>ポルトガのある大陸</discription>
-            </region>
-            <region>
-                <id>1</id>
-                <name>ThirdStage</name>
-                <discription>ミラミッドのある大陸</discription>
-            </region>
-        </regions>
-        <!-- 魔法(の類)の発動ロジック、効果、特性 -->
-        <logic>呪文を唱えて、まほうを発動する。魔法力(MP)を消費する。</logic>
-        <!-- civilzation: 世界の文明 -->
-        <civilzations>
-            <civilzation>
-                <id>DOQ</id>
-                <discription>ドラ○エ３の文明</discription>
-            </civilzation>
-        </civilzations>
-        <!-- 生活様式全般 -->
-        <life_style>中世の生活様式</life_style>
-        <!-- 生活習慣 -->
-        <habit>士農工商に分かれて生活、進行するのは神様、協会に祈りを捧げる。</habit>
-        <!-- 価値観 -->
-        <values></values>
-        <!-- 世界観 -->
-        <view_of_world></view_of_world>
-        <!-- 規範 -->
-        <norm></norm>
-        <!-- 思考様式 -->
-        <way_of_thinking></way_of_thinking>
-        <!-- 社会制度 -->
-        <social_system>封建社会</social_system>
-        <!-- 社会構造 -->
-        <social_structure>王族→貴族・聖職者→士族→平民(農民、工業人、商人)</social_structure>
-        <!-- 組織 -->
-        <organization></organization>
-        <!-- 文化 -->
+        <description>世界の説明</description>
+        <id>pppp</id>
+        <name>テスト用の世界</name>
+        <civilizations>
+            <description>文明１の説明</description>
+            <id>civil1</id>
+            <name>文明１</name>
+            <arts>文明１の芸術</arts>
+            <character>文明１の文字</character>
+            <structures>文明１の社会構造</structures>
+            <technology>文明１の技術</technology>
+        </civilizations>
+        <civilizations>
+            <description>文明２の説明</description>
+            <id>civil2</id>
+            <name>文明２</name>
+            <arts>文明２の芸術</arts>
+            <character>文明２の文字</character>
+            <structures>文明２の社会構造</structures>
+            <technology>文明２の技術</technology>
+        </civilizations>
+        <countries>
+            <description>A国の説明</description>
+            <id>country1</id>
+            <name>A国</name>
+        </countries>
+        <countries>
+            <description>B国の説明</description>
+            <id>country2</id>
+            <name>B国</name>
+        </countries>
         <cultures>
-            <culture>
-                <id>ARIAHAN</id>
-                <discription>アリアハン周辺の文化</discription>
-            </culture>
-            <culture>
-                <id>PORUTOGA</id>
-                <discription>ポルトガ周辺の文化</discription>
-            </culture>
-            <culture>
-                <id>ROMARIA</id>
-                <discription>ロマリア周辺の文化</discription>
-            </culture>
-            <culture>
-                <id>NORNEAL</id>
-                <discription>ノアニール周辺の文化</discription>
-            </culture>
+            <description>文化１の説明</description>
+            <id>culture1</id>
+            <name>文化１</name>
+            <habit>文化１の生活習慣</habit>
+            <life_style>文化１の生活スタイル</life_style>
+            <norm>文化１の規範</norm>
+            <organization>文化１の組織</organization>
+            <social_structure>文化１の社会構造</social_structure>
+            <values>文化１の価値観</values>
+            <view_of_world>文化１の世界観</view_of_world>
         </cultures>
+        <nature>
+            <description>自然の説明</description>
+            <id>natureId</id>
+            <name>自然名</name>
+            <path></path>
+            <climateList>
+                <description>サンプル気候の説明</description>
+                <id>D</id>
+                <name>D気候</name>
+            </climateList>
+            <climateList>
+                <description>サンプル気候の説明</description>
+                <id>D</id>
+                <name>D気候</name>
+            </climateList>
+            <climateList>
+                <description>サンプル気候の説明</description>
+                <id>D</id>
+                <name>D気候</name>
+            </climateList>
+            <climateList>
+                <description>サンプル気候の説明</description>
+                <id>D</id>
+                <name>D気候</name>
+            </climateList>
+            <food_chain>食物連鎖</food_chain>
+        </nature>
     </world>
     <world>
-        <id>arefguld</id>
-        <!-- 上記の世界の情報を継承する -->
-        <inherit>upperWorld</inherit>
-        <!-- name: 世界の名前 -->
-        <name>アレフガルド</name>
-        <!-- 世界地図(画像ファイル)を上書きする(オーバーライド) -->
-        <img>https://img.game8.jp/3808505/5ce596169ba7e3a6386f26ca395aed35.jpeg/show</img>
-        <!-- 生息地、生物分布 -->
-        <creatures>./Arefgulds.xml</creatures>
+        <description>世界の説明</description>
+        <id>UpperWorld</id>
+        <name>上の世界</name>
+        <civilizations>
+            <description>文明１の説明</description>
+            <id>civil1</id>
+            <name>文明１</name>
+            <arts>文明１の芸術</arts>
+            <character>文明１の文字</character>
+            <structures>文明１の社会構造</structures>
+            <technology>文明１の技術</technology>
+        </civilizations>
+        <civilizations>
+            <description>文明２の説明</description>
+            <id>civil2</id>
+            <name>文明２</name>
+            <arts>文明２の芸術</arts>
+            <character>文明２の文字</character>
+            <structures>文明２の社会構造</structures>
+            <technology>文明２の技術</technology>
+        </civilizations>
+        <countries>
+            <description>A国の説明</description>
+            <id>country1</id>
+            <name>A国</name>
+        </countries>
+        <countries>
+            <description>B国の説明</description>
+            <id>country2</id>
+            <name>B国</name>
+        </countries>
+        <cultures>
+            <description>文化１の説明</description>
+            <id>culture1</id>
+            <name>文化１</name>
+            <habit>文化１の生活習慣</habit>
+            <life_style>文化１の生活スタイル</life_style>
+            <norm>文化１の規範</norm>
+            <organization>文化１の組織</organization>
+            <social_structure>文化１の社会構造</social_structure>
+            <values>文化１の価値観</values>
+            <view_of_world>文化１の世界観</view_of_world>
+        </cultures>
+        <nature>
+            <description>自然の説明</description>
+            <id>natureId</id>
+            <name>自然名</name>
+            <path></path>
+            <climateList>
+                <description>サンプル気候の説明</description>
+                <id>D</id>
+                <name>D気候</name>
+            </climateList>
+            <climateList>
+                <description>サンプル気候の説明</description>
+                <id>D</id>
+                <name>D気候</name>
+            </climateList>
+            <climateList>
+                <description>サンプル気候の説明</description>
+                <id>D</id>
+                <name>D気候</name>
+            </climateList>
+            <climateList>
+                <description>サンプル気候の説明</description>
+                <id>D</id>
+                <name>D気候</name>
+            </climateList>
+            <food_chain>食物連鎖</food_chain>
+        </nature>
     </world>
-</class>
+</worlds>
