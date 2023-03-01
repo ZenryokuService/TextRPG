@@ -22,7 +22,9 @@ import java.beans.XMLDecoder;
 import jp.zenryoku.rpg.exception.RpgException;
 import jp.zenryoku.rpg.data.config.*;
 import jp.zenryoku.rpg.data.param.*;
+import jp.zenryoku.rpg.data.Formula;
 import jp.zenryoku.rpg.character.*;
+
 import java.lang.reflect.Field;
 
 
@@ -632,7 +634,7 @@ public class XMLUtil
         return null;
     }
 
-    public static List<World> exportPlayerJaxb(String directory, String fileName) {
+    public static void exportPlayerJaxb(String directory, String fileName) {
         Path path = Paths.get(directory, fileName);
         Player player = createPlayer();
 
@@ -640,7 +642,7 @@ public class XMLUtil
         JAXBContext ctx = null;
         try {
             BufferedWriter writer = Files.newBufferedWriter(path);
-            ctx =  JAXBContext.newInstance(Worlds.class);
+            ctx =  JAXBContext.newInstance(Player.class);
             Marshaller m = ctx.createMarshaller();
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             m.marshal(player, writer);
@@ -651,15 +653,42 @@ public class XMLUtil
             System.exit(-1);
         }
         Marshaller sharl = null;
-
-
-        return null;
     }
     
     public static Player createPlayer() {
-        Player p = new Player();
-        return p;
+        Player player = new Player();
+        player.setName("ゆうしゃ");
+        player.setSex(SEX.MAN);
+        List<Params> statusList = new ArrayList<>();
+        // ステータス 
+        Params hp = new Params("HP", "ヒットポイント", 12);
+        statusList.add(hp);
+        Params mp = new Params("MP", "マジックトポイント", 12);
+        statusList.add(mp);
+        Params pow = new Params("POW", "ちから", 6);
+        statusList.add(pow);
+        Params agi = new Params("AGI", "すばやさ", 4);
+        statusList.add(agi);
+        Params pInt = new Params("INT", "かしこさ", 1);
+        statusList.add(pInt);
+        Params luk = new Params("LUK", "うんのよさ", 10);
+        statusList.add(luk);
+        player.setStatus(statusList);
+        // 装備
+        player.setWepon(new Wepon("どうのつるぎ", 12, new Formula("ATK+12")));
+        player.setArmor(new Armor("どうのよろい", 7, new Formula("DEF+7")));
+        // アイテム
+        List<Item> items = new ArrayList<>();
+        items.add(new Item("やくそう", new Formula("HP+10")));
+        items.add(new Item("どくそう", new Formula("HP-10")));
+        items.add(new Item("プロテイン", new Formula("POW+10")));
+        player.setItems(items);
+        // 状態
+        
+        System.out.println(player.getName());
+        return player;
     }
+
     public static World createWorld() {
         World world = new World();
         world.setId("UpperWorld");

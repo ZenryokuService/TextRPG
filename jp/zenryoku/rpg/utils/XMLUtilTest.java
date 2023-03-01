@@ -1,7 +1,7 @@
 package jp.zenryoku.rpg.utils;
 
 import jp.zenryoku.rpg.data.config.*;
-
+import jp.zenryoku.rpg.character.*;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -96,15 +96,7 @@ public class XMLUtilTest
     public void testExportPlayer() {
 
         try {
-            List<World> confList = XMLUtil.exportWorldJaxb("config", "Player.xml");
-            if (confList == null) {
-                return;
-            }
-            assertTrue(confList.size() > 0);
-            for (World world : confList) {
-                assertNotNull(world);
-                assertEquals("ちきゅう",world.getName());
-            }
+            XMLUtil.exportPlayerJaxb("config", "Player.xml");
         } catch (Exception e) {
             e.printStackTrace();
         }
