@@ -75,4 +75,15 @@ public class StoryConfig implements ConfigIF {
     protected String path;
     /** イメージ画像へのパス(URI) */
     protected String img;
+    
+    /** パスが指定されている場合の処理 */
+    public ConfigIF loadConfig() {
+        if (this.path == null || "".equals(this.path)) {
+            System.out.println("パスが指定されていません。" + name);
+            System.exit(-1);
+        }
+        ConfigIF instance = null;
+        // TODO-[XMLを読み込みインスタンスを生成する]
+        return instance;
+    }
 }

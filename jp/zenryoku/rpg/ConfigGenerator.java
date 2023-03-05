@@ -1,5 +1,8 @@
 package jp.zenryoku.rpg;
 
+import jp.zenryoku.rpg.data.config.Worlds;
+import jp.zenryoku.rpg.utils.XMLUtil;
+
 
 /**
  * クラス ComfigGenerator の注釈をここに書きます.
@@ -11,9 +14,13 @@ public class ConfigGenerator
 {
     /** このクラスのインスタンス、必ず一つ */
     private static ConfigGenerator instance;
+    /** Worlds：世界観 */
+    private Worlds worlds;
     
     /** コンストラクタ */
     private ConfigGenerator() {
+        worlds = new Worlds();
+        worlds.setWorlds(XMLUtil.loadWorldJaxb("config", "Worlds.xml"));
     }
     
     /**

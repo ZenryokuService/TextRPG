@@ -102,6 +102,22 @@ public class XMLUtilTest
         }
     }
     
+    @Test
+    public void testExportStory() {
+        try {
+            XMLUtil.exportStoryJaxb("config", "Story_000.xml");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    @Test
+    public void testLoadStory() {
+        Story st = XMLUtil.loadStory("./config/Story_000.xml");
+        assertNotNull(st);
+        assertEquals("First", st.getId());
+    }
+    
     private void printWorld(World world) {
         print("World#ID: ", world.getId());
         print("World#Name: ", world.getName());

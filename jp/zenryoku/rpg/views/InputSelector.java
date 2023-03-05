@@ -17,6 +17,16 @@ import javax.swing.JTextArea;
 public class InputSelector extends JPopupMenu
 {
     private static JTextArea textArea;
+
+    /**
+     * Storyクラスから必要な情報を取得して
+     * それぞれのシーンに対応した、文章とActionを生成する。
+     */
+    public InputSelector() {
+        super();
+        addSeparator();
+        // Storyファイルのデータ
+    }
     /**
      * 選択肢のポップアップを作成する。
      * @param selects 配列の要素一つが選択肢一つに当たる
@@ -47,4 +57,6 @@ public class InputSelector extends JPopupMenu
             addSeparator();
          }
     }
+    
+    
 }

@@ -22,7 +22,7 @@ import java.beans.XMLDecoder;
 import jp.zenryoku.rpg.exception.RpgException;
 import jp.zenryoku.rpg.data.config.*;
 import jp.zenryoku.rpg.data.param.*;
-import jp.zenryoku.rpg.data.Formula;
+import jp.zenryoku.rpg.data.*;
 import jp.zenryoku.rpg.character.*;
 
 import java.lang.reflect.Field;
@@ -589,7 +589,18 @@ public class XMLUtil
         return f;
     }
 
-        public static List<World> loadWorldJaxb(String directory, String fileName) {
+    private static Object loadXml(Path path, Class clz) {
+        Object o = null;
+        try {
+            o = JAXB.unmarshal(path.toFile(), clz);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
+        return o;
+    }
+
+    public static List<World> loadWorldJaxb(String directory, String fileName) {
         Path path = Paths.get(directory, fileName);
         List<World> worldList = new ArrayList<>();
 
@@ -653,6 +664,43 @@ public class XMLUtil
             System.exit(-1);
         }
         Marshaller sharl = null;
+    }
+    
+    public static void exportStoryJaxb(String directory, String fileName) {
+        Path path = Paths.get(directory, fileName);
+        Story story = createStory();
+
+        //worlds.setWorlds(list);
+        JAXBContext ctx = null;
+        try {
+            BufferedWriter writer = Files.newBufferedWriter(path);
+            ctx =  JAXBContext.newInstance(Story.class);
+            Marshaller m = ctx.createMarshaller();
+            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            m.marshal(story, writer);
+            JAXB.marshal(story, path.toFile());
+            writer.close();
+        } catch (JAXBException | IOException e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
+        Marshaller sharl = null;
+    }
+    
+    public static Story loadStory(String path) {
+        Path p = Paths.get(path);
+        return (Story) loadXml(p, Story.class);
+    }
+    
+    public static Story createStory() {
+        Story story = new Story("First" ,"はじめの");
+        story.setDescription("はじめのタイトル表示を行いニューゲーム、コンテニューを選択、実行する");
+        story.setSceneNo(0);
+        story.setSceneType(SceneType.STORY);
+        story.setNextScene(1);
+        story.setCanSelectNextScene(true);
+
+        return story;
     }
     
     public static Player createPlayer() {

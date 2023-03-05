@@ -1,5 +1,6 @@
 package jp.zenryoku.rpg;
 
+import java.util.Map;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
@@ -7,6 +8,9 @@ import jp.zenryoku.rpg.utils.FileReaderUtil;
 import jp.zenryoku.rpg.utils.StoryBuffer;
 import jp.zenryoku.rpg.action.TitleMenu;
 import jp.zenryoku.rpg.views.InputSelector;
+import jp.zenryoku.rpg.data.config.Story;
+import jp.zenryoku.rpg.character.Player;
+
 /**
  * クラス RpgProgress の注釈をここに書きます.
  * テキストRPGのゲーム進行を行う。以下の処理を行う。
@@ -26,6 +30,10 @@ public class RpgProgress
     private RpgTextArea fView;
     /** JFrame */
     private JFrame frame;
+    /** ストーリーオブジェクトリスト */
+    private Map<Integer, Story> storyMap;
+    /** プレーヤー */
+    private Player player;
     
     /** コンストラクタ */
     public RpgProgress(JFrame frame, RpgTextArea view) {
