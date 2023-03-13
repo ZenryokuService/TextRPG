@@ -88,11 +88,14 @@ public class SelectMenu extends AbstractAction
        SceneType type = story.getSceneType();
        // ストーリーの表示
        textarea.setText(story.getStory());
+       Player play = main.getPlayer();
        // それぞれのアアクション
        switch(type) {
            // 戦闘シーン
            case BATTLE:
-               // TODO-[未実装]
+               BattleScene battle =
+                   new BattleScene(story.getMonsterNoLow(), story.getMonsterNoHigh());
+               battle.playScene(play, main);
                break;
            // 戦闘シーン
            case SHOP:

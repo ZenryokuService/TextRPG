@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Random;
 import java.io.File;
 import java.nio.file.Paths;
 import java.nio.file.Path;
@@ -40,6 +41,8 @@ public class ConfigGenerator
     private Map<Integer, Scene> scenes;
     /** プレーヤーマップ */
     private Map<String, Player> players;
+    /** モンスターマップ */
+    private Map<Integer, Monster> monsters;
     
     /** コンストラクタ */
     private ConfigGenerator() throws RpgException {
@@ -52,6 +55,8 @@ public class ConfigGenerator
         scenes = loadStories("config/stories");
         // プレーヤーの生成
         players = loadPlayers("config", "Players.xml");
+        // モンスターの生成
+        monsters = loadMonsters("config", "Monsters.xml");
         
     }
     
@@ -97,7 +102,23 @@ public class ConfigGenerator
         return map;
     }
 
+    public Map<Integer, Monster> loadMonsters(String directory, String fileName) throws RpgException {
+        Map<Integer, Monster> map = new HashMap<>();
+        List<Monster> monsterList = XMLUtil.loadMonsters(directory + "/" + fileName);
+        
+        for (Monster mons : monsterList) {
+            map.put(mons.getNo(), mons);
+        }
+        return map;
+    }
+    
     public Config loadConfig(String directory, String fileName) throws RpgException {
         return XMLUtil.loadConfig(directory, fileName);
+    }
+    
+    public Monster callMonster(int low, int hight) {
+        Random rnd = new Random();
+        int monsterNo = rnd.nextInt(hight) + low;
+        return monsters.get(monsterNo);
     }
 }

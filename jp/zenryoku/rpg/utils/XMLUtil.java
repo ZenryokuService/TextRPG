@@ -102,7 +102,7 @@ public class XMLUtil
                 conf = new STM();
                 break;
             case StoryConfig.CPMMADS_XML:
-                conf = new Command();
+                conf = new Command("", "", new Formula(""));
                 break;
             case StoryConfig.JOB_XML:
                 conf = new Job();
@@ -789,6 +789,34 @@ public class XMLUtil
         return null;
     }
 
+    public static void exportMonsterJaxb(String directory, String fileName) {
+        Path path = Paths.get(directory, fileName);
+        Monster monster = createMonster();
+        monster.setName("スライム");
+        Monsters ppp = new Monsters();
+        
+        List<Monster> list = new ArrayList<>();
+        list.add(monster);
+        ppp.setMonsters(list);
+
+        //worlds.setWorlds(list);
+        JAXBContext ctx = null;
+        try {
+            BufferedWriter writer = Files.newBufferedWriter(path);
+            ctx =  JAXBContext.newInstance(Monsters.class);
+            Marshaller m = ctx.createMarshaller();
+            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            m.marshal(ppp, writer);
+            JAXB.marshal(ppp, path.toFile());
+            writer.close();
+        } catch (JAXBException | IOException e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
+        Marshaller sharl = null;
+    }
+
+    
     public static void exportPlayerJaxb(String directory, String fileName) {
         Path path = Paths.get(directory, fileName);
         Player player = createPlayer();
@@ -828,6 +856,18 @@ public class XMLUtil
             throw new RpgException("プレーヤーが設定されていません" + path);
         }
         return playerList;
+    }
+    
+        public static List<Monster> loadMonsters(String path) throws RpgException {
+        List<Monster> monsterList = null;
+        Path p = Paths.get(path);
+        Monsters monsters = (Monsters) loadXml(p, Monsters.class);
+        
+        monsterList = monsters.getMonsters();
+        if (monsterList.size() == 0) {
+            throw new RpgException("プレーヤーが設定されていません" + path);
+        }
+        return monsterList;
     }
     
     public static void exportStoryJaxb(String directory, String fileName) {
@@ -909,6 +949,20 @@ public class XMLUtil
         Player player = new Player();
         player.setName("ゆうしゃ");
         player.setSex(SEX.MAN);
+        Job job = new Job();
+        job.setId("BRV");
+        job.setName("ゆうしゃ");
+        job.setDescription("ゆうきあるもの");
+        List<Params> paramList = new ArrayList<>();
+        paramList.add(new Params("POW","ちから", 100));
+        paramList.add(new Params("AGI","すばやさ", 120));
+        paramList.add(new Params("INT","かしこさ", 60));
+        job.setParamList(paramList);
+        List<Command> commandList = new ArrayList<>();
+        commandList.add(new Command("BST","大こうげき", new Formula("ATK + 3")));
+        commandList.add(new Command("INR","いのり", new Formula("HP + 3")));
+        job.setCommandList(commandList);
+        player.setJob(job);
         Map<String, Params> statusMap = new HashMap<>();
         // ステータス 
         Params hp = new Params("HP", "ヒットポイント", 12);
@@ -938,7 +992,56 @@ public class XMLUtil
         System.out.println(player.getName());
         return player;
     }
-
+    
+    public static Monster createMonster() {
+        Monster player = new Monster();
+        player.setName("スライム");
+        // モンスタータイプ
+        MonsterType type = new MonsterType();
+        type.setId("SLM");
+        type.setName("スライム");
+        type.setDescription("ゆうきあるもの");
+        List<Params> paramList = new ArrayList<>();
+        paramList.add(new Params("POW","ちから", 100));
+        paramList.add(new Params("AGI","すばやさ", 120));
+        paramList.add(new Params("INT","かしこさ", 60));
+        type.setParamList(paramList);
+        List<Command> commandList = new ArrayList<>();
+        commandList.add(new Command("BST","大こうげき", new Formula("ATK + 3")));
+        commandList.add(new Command("INR","いのり", new Formula("HP + 3")));
+        type.setCommandList(commandList);
+        player.setType(type);
+        
+        Map<String, Params> statusMap = new HashMap<>();
+        // ステータス 
+        Params hp = new Params("HP", "ヒットポイント", 12);
+        statusMap.put(hp.getKey(), hp);
+        Params mp = new Params("MP", "マジックトポイント", 12);
+        statusMap.put(mp.getKey(), mp);
+        Params pow = new Params("POW", "ちから", 6);
+        statusMap.put(pow.getKey(), pow);
+        Params agi = new Params("AGI", "すばやさ", 4);
+        statusMap.put(agi.getKey(), agi);
+        Params pInt = new Params("INT", "かしこさ", 1);
+        statusMap.put(pInt.getKey(), pInt);
+        Params luk = new Params("LUK", "うんのよさ", 10);
+        statusMap.put(luk.getKey(), luk);
+        player.setStatus(statusMap);
+        // 装備
+        player.setWepon(new Wepon("どうのつるぎ", 12, new Formula("ATK+12")));
+        player.setArmor(new Armor("どうのよろい", 7, new Formula("DEF+7")));
+        // アイテム
+        List<Item> items = new ArrayList<>();
+        items.add(new Item("やくそう", new Formula("HP+10")));
+        items.add(new Item("どくそう", new Formula("HP-10")));
+        items.add(new Item("プロテイン", new Formula("POW+10")));
+        player.setItems(items);
+        // 状態
+        
+        System.out.println(player.getName());
+        return player;
+    }
+    
     public static World createWorld() {
         World world = new World();
         world.setId("UpperWorld");

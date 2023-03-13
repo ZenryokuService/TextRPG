@@ -130,9 +130,31 @@ public class XMLUtilTest
     }
     
     @Test
+    public void testExportMonster() {
+
+        try {
+            XMLUtil.exportMonsterJaxb("config", "bk_Monsters.xml");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    @Test
     public void testLoadPlayers() {
         try {
             List<Player> list = XMLUtil.loadPlayer("config/Players.xml");
+            assertNotEquals(0, list.size());
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            
+        }
+    }
+    
+    @Test
+    public void testLoadMonsters() {
+        try {
+            List<Monster> list = XMLUtil.loadMonsters("config/Monsters.xml");
             assertNotEquals(0, list.size());
             
         } catch (Exception e) {

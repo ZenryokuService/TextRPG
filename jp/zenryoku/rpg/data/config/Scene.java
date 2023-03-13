@@ -22,7 +22,8 @@ import jp.zenryoku.rpg.data.SceneType;
  */
 @Data
 @XmlRootElement( name="scene")
-@XmlType(propOrder={"sceneNo", "sceneType", "story", "nextScene", "canSelectNextScene", "center", "selects"})
+@XmlType(propOrder={"sceneNo", "sceneType", "story", "nextScene"
+    , "canSelectNextScene", "center", "selects", "monsterNoLow", "monsterNoHigh"})
 public class Scene extends StoryConfig
 {
     /** シーン番号 */
@@ -39,6 +40,10 @@ public class Scene extends StoryConfig
     private boolean center;
     /** 選択肢 */
     private List<Select> selects;
+    /** モンスター番号最低値 */
+    private int monsterNoLow;
+    /** モンスター番号最高値 */
+    private int monsterNoHigh;
     
     public Scene() {
     }

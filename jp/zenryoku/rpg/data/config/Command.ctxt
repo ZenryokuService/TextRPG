@@ -1,3 +1,7 @@
 #BlueJ class context
 comment0.target=Command
-numComments=1
+comment1.params=
+comment1.target=Command()
+comment2.params=id\ name\ formula
+comment2.target=Command(java.lang.String,\ java.lang.String,\ jp.zenryoku.rpg.data.Formula)
+numComments=3
