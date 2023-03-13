@@ -1,11 +1,16 @@
 package jp.zenryoku.rpg.views;
 
-import jp.zenryoku.rpg.action.TitleMenu;
+import jp.zenryoku.rpg.action.SelectMenu;
+import jp.zenryoku.rpg.exception.RpgException;
 import jp.zenryoku.rpg.RpgTextArea;
+import jp.zenryoku.rpg.TextRPGMain;
+import jp.zenryoku.rpg.data.config.Select;
+import jp.zenryoku.rpg.data.config.Scene;
 import javax.swing.JFrame;
 import javax.swing.JPopupMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JTextArea;
+import java.util.List;
 
 /**
  * クラス InputSelector の注釈をここに書きます.
@@ -16,7 +21,8 @@ import javax.swing.JTextArea;
  */
 public class InputSelector extends JPopupMenu
 {
-    private static JTextArea textArea;
+    private static RpgTextArea textArea;
+    private static TextRPGMain main;
 
     /**
      * Storyクラスから必要な情報を取得して
@@ -31,12 +37,12 @@ public class InputSelector extends JPopupMenu
      * 選択肢のポップアップを作成する。
      * @param selects 配列の要素一つが選択肢一つに当たる
      */
-    public InputSelector(String[] selects) {
+    public InputSelector(String[] selects)  throws RpgException {
         super();
         addSeparator();
 
         for(String sel : selects) {
-            TitleMenu act = new TitleMenu(sel);
+            SelectMenu act = new SelectMenu(sel);
             JMenuItem menu = new JMenuItem(act);
             add(menu);
             addSeparator();
@@ -47,16 +53,53 @@ public class InputSelector extends JPopupMenu
      * 選択肢のポップアップを作成する。
      * @param selects 配列の要素一つが選択肢一つに当たる
      */
-    public InputSelector(String title, String[] selects, RpgTextArea textarea) {
+    public InputSelector(String title, List<Select> selects
+                , RpgTextArea textarea, TextRPGMain main) throws RpgException  {
         super(title);
         addSeparator();
-        for(String sel : selects) {
-            TitleMenu act = new TitleMenu(sel, textarea);
+        for(Select sel : selects) {
+            SelectMenu act = new SelectMenu(sel, textarea, main);
             JMenuItem menu = new JMenuItem(act);
             add(menu);
             addSeparator();
          }
     }
     
+    /**
+     * 選択肢のポップアップを作成する。
+     * @param selects 配列の要素一つが選択肢一つに当たる
+     */
+    public InputSelector(Scene story, RpgTextArea textarea, TextRPGMain main) throws RpgException {
+        super(story.getId());
+        addSeparator();
+        List<Select> selects = story.getSelects();
+        if (selects == null) {
+            createSingleSelect(story, textarea, main);
+            return;
+        }
+        for(Select sel : selects) {
+            SelectMenu act = new SelectMenu(sel, textarea, main);
+            JMenuItem menu = new JMenuItem(act);
+            add(menu);
+            addSeparator();
+         }
+    }
     
+    private void createSingleSelect(Scene story, RpgTextArea textarea, TextRPGMain main) {
+            Select sel = new Select(story.getNextScene(), "すすむ");
+            SelectMenu act = new SelectMenu(sel, textarea, main);
+            JMenuItem menu = new JMenuItem(act);
+            add(menu);
+    }
+    
+    @Override
+    public void setVisible(boolean visible) {
+        super.setVisible(visible);
+        try {
+            finalize();
+        } catch(Throwable t) {
+            System.out.println("ポップアップの削除に失敗しました");
+            System.exit(-1);
+        }
+    }
 }

@@ -5,7 +5,7 @@ import java.util.List;
 import jp.zenryoku.rpg.data.Formula;
 /**
  * クラス State の注釈をここに書きます.
- * プレーヤーの状態ステータスを表す。
+ * プレーヤーの状態を表す。
  * Config.xmlから状態部分を取得、生成する。
  * 
  * @author (Takunoji)
@@ -24,5 +24,10 @@ public class State
     public State() {
         key = "Normal";
         state = null;
+    }
+    
+    public State(String key, String formula) {
+        this.key = key;
+        this.state = new Formula(formula);
     }
 }

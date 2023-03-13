@@ -18,6 +18,8 @@ public class Params
     private String name;
     /** 値、項目の値を示す(整数型とする */
     private int value;
+    /** 説明 */
+    private String description;
     
     public Params() {
     }
@@ -27,5 +29,12 @@ public class Params
         setName(name);
         setValue(value);
 
+    }
+    
+    public Params(String key, String name, int value, String description) {
+        setKey(key);
+        setName(name);
+        setValue(value);
+        setDescription(description);
     }
 }

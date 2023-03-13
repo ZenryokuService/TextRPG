@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=ConfigGeneratorTest
+comment0.text=\r\n\ \u30C6\u30B9\u30C8\u30AF\u30E9\u30B9\ ConfigGeneratorTest.\r\n\r\n\ @author\ (Takunoji)\r\n\ @version\ (1.0)\r\n
+comment1.params=
+comment1.target=ConfigGeneratorTest()
+comment1.text=\r\n\ \u30C6\u30B9\u30C8\u30AF\u30E9\u30B9\ ConfigGeneratorTest\ \u306E\u305F\u3081\u306E\u30C7\u30D5\u30A9\u30EB\u30C8\u306E\u30B3\u30F3\u30B9\u30C8\u30E9\u30AF\u30BF\r\n
+comment2.params=
+comment2.target=void\ setUp()
+comment2.text=\r\n\ Sets\ up\ the\ test\ fixture.\r\n\r\n\ Called\ before\ every\ test\ case\ method.\r\n
+comment3.params=
+comment3.target=void\ tearDown()
+comment3.text=\r\n\ Tears\ down\ the\ test\ fixture.\r\n\r\n\ Called\ after\ every\ test\ case\ method.\r\n
+comment4.params=
+comment4.target=void\ testLoadStory()
+comment5.params=
+comment5.target=void\ testLoadPlayers()
+numComments=6

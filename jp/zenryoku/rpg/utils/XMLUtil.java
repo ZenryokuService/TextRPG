@@ -16,8 +16,7 @@ import java.io.FileNotFoundException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.Files;
-import java.util.List;
-import java.util.ArrayList;
+import java.util.*;
 import java.beans.XMLDecoder;
 import jp.zenryoku.rpg.exception.RpgException;
 import jp.zenryoku.rpg.data.config.*;
@@ -39,6 +38,7 @@ public class XMLUtil
 {
     private static final boolean isDebug = true;
     private static final String SEP = System.lineSeparator();
+    private static final String SPACER = "                          ";
 
         /**
      * XMLドキュメント(ファイル)を読み込む。
@@ -589,6 +589,18 @@ public class XMLUtil
         return f;
     }
 
+    private static boolean isEmpty(String str) {
+        if (str == null || "".equals(str)) {
+            return true;
+        }
+        return false;
+    }
+    
+    /**
+     * XMLファイルをロードして対象のクラスを生成する。
+     * @param Path Pathsクラスで取得する
+     * @param 取得するクラスオブジェクト
+     */
     private static Object loadXml(Path path, Class clz) {
         Object o = null;
         try {
@@ -600,6 +612,138 @@ public class XMLUtil
         return o;
     }
 
+    /**
+     * XMLファイルをロードして対象のクラスを生成する。
+     * @param Path Pathsクラスで取得する
+     * @param 取得するクラスオブジェクト
+     */
+    private static Object loadXml(File file, Class clz) {
+        Object o = null;
+        try {
+            o = JAXB.unmarshal(file, clz);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
+        return o;
+    }
+    
+    /**
+     * 引数にあるパスからファイルを読み取り文字列を返却する。
+     * @param テキストファイルへのパス
+     */
+    public static String loadText(String path, boolean hasSpace) {
+        StringBuilder build = new StringBuilder();
+        
+        Path filePath = Paths.get(path);
+        try {
+            BufferedReader read = Files.newBufferedReader(filePath);
+            String line = null;
+            while((line = read.readLine()) != null) {
+                if (hasSpace) {
+                    build.append(SPACER + line + SEP);
+                } else {
+                    build.append(line + SEP);
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("パス指定が不適切です" + path);
+            e.printStackTrace();
+            System.exit(-1);
+        }
+        return build.toString();
+    }
+    
+    public static Config loadConfig(String directory, String fileName) {
+        Path path = Paths.get(directory, fileName);
+        Config config = null;
+
+        try {
+            config = JAXB.unmarshal(path.toFile(), Config.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
+        return config;
+    }
+
+    public static void exportConfigJaxb(String directory, String fileName) {
+        Path path = Paths.get(directory, fileName);
+        Config conf = createConfig();
+        
+        //worlds.setWorlds(list);
+        JAXBContext ctx = null;
+        try {
+            BufferedWriter writer = Files.newBufferedWriter(path);
+            ctx =  JAXBContext.newInstance(Config.class);
+            Marshaller m = ctx.createMarshaller();
+            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            m.marshal(conf, writer);
+            JAXB.marshal(conf, path.toFile());
+            writer.close();
+        } catch (JAXBException | IOException e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
+        Marshaller sharl = null;
+
+    }
+
+    private static Config createConfig() {
+        Config conf = Config.getInstance();
+        // 表示項目
+        List<String> views = new ArrayList<>();
+        views.add("name");
+        views.add("HP");
+        views.add("MP");
+        views.add("LV");
+        conf.setViews(views);
+        // 通貨
+        List<Params> money = new ArrayList<>();
+        money.add(new Params("NIG", "ニギ", 0));
+        money.add(new Params("GLD", "ゴールド", 0));
+        conf.setLanguages(money);
+        // 使用言語
+        List<Params> langs = new ArrayList<>();
+        langs.add(new Params("CLANG", "シーラン", 0));
+        langs.add(new Params("MAGILAN", "魔族後", 0));
+        conf.setLanguages(langs);
+        // エレメント
+        List<Params> elments = new ArrayList<>();
+        elments.add(new Params("FIR", "火", 0));
+        elments.add(new Params("WIN", "風", 1));
+        elments.add(new Params("WAT", "水", 2));
+        elments.add(new Params("EAT", "土", 3));
+        // プレーヤーステータス
+        List<Params> playerStatus = new ArrayList<>();
+        playerStatus.add(new Params("HP", "ヒットポイント", 0, "生命力・体力"));
+        playerStatus.add(new Params("MP", "マジックポイント", 0, "魔法力"));
+        playerStatus.add(new Params("LV", "マジックポイント", 0, "強さの段階"));
+        playerStatus.add(new Params("POW", "ちから", 0, "攻撃力、武器・防具の持てる合計重量を示す。"));
+        playerStatus.add(new Params("AGI", "すばやさ", 0, "行動の速さ、相手と５以上の差があるとき２回攻撃。"));
+        playerStatus.add(new Params("INT", "かしこさ", 0, "魔法・術などの効果量を示す。"));
+        playerStatus.add(new Params("DEX", "きようさ", 0, "使える武器、防具、魔法・術などの種類が増える。"));
+        playerStatus.add(new Params("KSM", "カリスマ", 0, "人やモンスターに好かれる度合、統率力を示す。"));
+        playerStatus.add(new Params("JLV", "じゅくれんど", 0, "武器を使用する回数により武器の扱いがうまくなる。"));
+        playerStatus.add(new Params("ATK", "攻撃力", 0, "物理的な攻撃力を示す。"));
+        playerStatus.add(new Params("DEF", "防御力", 0, "物理的な防御力を示す。"));
+        playerStatus.add(new Params("MPW", "魔法威力", 0, "魔法・術、単体の効果値。"));
+        playerStatus.add(new Params("TSM", "魔除け力", 0, "防具・アクセサリ内にある。魔法・術に対する魔除けの類の力、防具にのみついている。"));
+        playerStatus.add(new Params("BPK", "バックパック", 0, "道具の持てる数"));
+        conf.setLanguages(playerStatus);
+        // プレーヤー状態
+        List<State> stateList = new ArrayList<>();
+        stateList.add(new State("POI", "HP-10%@1"));
+        stateList.add(new State("MAH", "NAC@2"));
+        conf.setStatusList(stateList);
+        // アイテム
+        List<Params> items = new ArrayList<>();
+        items.add(new Params("WEV", "武器攻撃力", 0));
+        items.add(new Params("ARV", "防具防御力", 0));
+        conf.setItems(items);
+        return conf;
+    }
+    
     public static List<World> loadWorldJaxb(String directory, String fileName) {
         Path path = Paths.get(directory, fileName);
         List<World> worldList = new ArrayList<>();
@@ -648,16 +792,24 @@ public class XMLUtil
     public static void exportPlayerJaxb(String directory, String fileName) {
         Path path = Paths.get(directory, fileName);
         Player player = createPlayer();
+        Player player1 = createPlayer();
+        player1.setName("大河");
+        Players ppp = new Players();
+        
+        List<Player> list = new ArrayList<>();
+        list.add(player);
+        list.add(player1);
+        ppp.setPlayers(list);
 
         //worlds.setWorlds(list);
         JAXBContext ctx = null;
         try {
             BufferedWriter writer = Files.newBufferedWriter(path);
-            ctx =  JAXBContext.newInstance(Player.class);
+            ctx =  JAXBContext.newInstance(Players.class);
             Marshaller m = ctx.createMarshaller();
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            m.marshal(player, writer);
-            JAXB.marshal(player, path.toFile());
+            m.marshal(ppp, writer);
+            JAXB.marshal(ppp, path.toFile());
             writer.close();
         } catch (JAXBException | IOException e) {
             e.printStackTrace();
@@ -666,15 +818,31 @@ public class XMLUtil
         Marshaller sharl = null;
     }
     
+    public static List<Player> loadPlayer(String path) throws RpgException {
+        List<Player> playerList = null;
+        Path p = Paths.get(path);
+        Players players = (Players) loadXml(p, Players.class);
+        
+        playerList = players.getPlayers();
+        if (playerList.size() == 0) {
+            throw new RpgException("プレーヤーが設定されていません" + path);
+        }
+        return playerList;
+    }
+    
     public static void exportStoryJaxb(String directory, String fileName) {
         Path path = Paths.get(directory, fileName);
-        Story story = createStory();
-
+        Scene story = createStory();
+        ArrayList<Select> selList = new ArrayList<>();
+        selList.add(new Select(1, "ニューゲーム"));
+        selList.add(new Select(2, "コンチニュー"));
+        story.setSelects(selList);
+        
         //worlds.setWorlds(list);
         JAXBContext ctx = null;
         try {
             BufferedWriter writer = Files.newBufferedWriter(path);
-            ctx =  JAXBContext.newInstance(Story.class);
+            ctx =  JAXBContext.newInstance(Scene.class);
             Marshaller m = ctx.createMarshaller();
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             m.marshal(story, writer);
@@ -687,18 +855,52 @@ public class XMLUtil
         Marshaller sharl = null;
     }
     
-    public static Story loadStory(String path) {
+    /**
+     * Story_XXX.xml内のpathタグにセットされた値があれば
+     * 対象のファイルを読み込む。テキストファイルの想定。
+     * @param path 読み込む絵tキスとファイルのパス
+     */
+    public static Scene loadStory(String path) throws RpgException {
         Path p = Paths.get(path);
-        return (Story) loadXml(p, Story.class);
+        Scene story = (Scene) loadXml(p, Scene.class);
+        
+        if (isEmpty(story.getStory()) && isEmpty(story.getPath())) {
+            throw new RpgException("story, pathのどちらかを定義してください。");
+        }
+        // PATH指定ありの場合は対象のファイルを読み込む
+        if (isEmpty(story.getPath()) == false) {
+            story.setStory(loadText(story.getPath(), story.isCenter()));
+        }
+        return story;
     }
     
-    public static Story createStory() {
-        Story story = new Story("First" ,"はじめの");
+    /**
+     * Story_XXX.xml内のpathタグにセットされた値があれば
+     * 対象のファイルを読み込む。テキストファイルの想定。
+     * @param path 読み込む絵tキスとファイルのパス
+     */
+    public static Scene loadStory(File file) throws RpgException {
+        Scene story = (Scene) loadXml(file, Scene.class);
+        if (isEmpty(story.getStory()) && isEmpty(story.getPath())) {
+            throw new RpgException("story, pathのどちらかを定義してください。");
+        }
+        // PATHしてありの場合は対象のファイルを読み込む
+        if (isEmpty(story.getPath()) == false) {
+            story.setStory(loadText(story.getPath(), story.isCenter()));
+        }
+        return story;
+    }
+    
+    public static Scene createStory() {
+        Scene story = new Scene("First" ,"はじめの");
         story.setDescription("はじめのタイトル表示を行いニューゲーム、コンテニューを選択、実行する");
         story.setSceneNo(0);
         story.setSceneType(SceneType.STORY);
         story.setNextScene(1);
         story.setCanSelectNextScene(true);
+        story.setPath("config/stories/Story_0001.xml");
+        story.setStory("その日は朝から夜だった");
+        story.setCenter(true);
 
         return story;
     }
@@ -707,21 +909,21 @@ public class XMLUtil
         Player player = new Player();
         player.setName("ゆうしゃ");
         player.setSex(SEX.MAN);
-        List<Params> statusList = new ArrayList<>();
+        Map<String, Params> statusMap = new HashMap<>();
         // ステータス 
         Params hp = new Params("HP", "ヒットポイント", 12);
-        statusList.add(hp);
+        statusMap.put(hp.getKey(), hp);
         Params mp = new Params("MP", "マジックトポイント", 12);
-        statusList.add(mp);
+        statusMap.put(mp.getKey(), mp);
         Params pow = new Params("POW", "ちから", 6);
-        statusList.add(pow);
+        statusMap.put(pow.getKey(), pow);
         Params agi = new Params("AGI", "すばやさ", 4);
-        statusList.add(agi);
+        statusMap.put(agi.getKey(), agi);
         Params pInt = new Params("INT", "かしこさ", 1);
-        statusList.add(pInt);
+        statusMap.put(pInt.getKey(), pInt);
         Params luk = new Params("LUK", "うんのよさ", 10);
-        statusList.add(luk);
-        player.setStatus(statusList);
+        statusMap.put(luk.getKey(), luk);
+        player.setStatus(statusMap);
         // 装備
         player.setWepon(new Wepon("どうのつるぎ", 12, new Formula("ATK+12")));
         player.setArmor(new Armor("どうのよろい", 7, new Formula("DEF+7")));

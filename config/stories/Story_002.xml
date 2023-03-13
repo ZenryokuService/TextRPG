@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<story>
+    <sceneNo>2</sceneNo>
+    <sceneType>STORY</sceneType>
+    <nextScene>-1</nextScene>
+    <center>false</center>
+    <canSelectNextScene>true</canSelectNextScene>
+  <id>Second</id>
+  <name>プレーヤー選択</name>
+  <description></description>
+  <path>config/stories/story_002.txt</path>
+    <selects>
+        <mongon>シフト＝キー</mongon>
+        <nextScene>3</nextScene>
+    </selects>
+    <selects>
+        <mongon>オルト＝キー</mongon>
+        <nextScene>3</nextScene>
+    </selects>
+    <selects>
+        <mongon>ナム＝ロック</mongon>
+        <nextScene>3</nextScene>
+    </selects>
+</story>

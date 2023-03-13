@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<story>
+    <description>はじめのタイトル表示を行いニューゲーム、コンテニューを選択、実行する</description>
+    <id>First</id>
+    <name>はじめの</name>
+    <path>config/title.txt</path>
+    <center>true</center>
+    <sceneNo>0</sceneNo>
+    <sceneType>STORY</sceneType>
+    <nextScene>1</nextScene>
+    <canSelectNextScene>true</canSelectNextScene>
+    <story></story>
+    <selects>
+        <mongon>ニューゲーム</mongon>
+        <nextScene>1</nextScene>
+    </selects>
+    <selects>
+        <mongon>コンチニュー</mongon>
+        <nextScene>-1</nextScene>
+    </selects>
+</story>

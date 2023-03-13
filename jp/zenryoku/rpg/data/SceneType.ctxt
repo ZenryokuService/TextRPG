@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=SceneType
+comment0.text=\r\n\ Enumeration\ class\ SceneType\ -\ write\ a\ description\ of\ the\ enum\ class\ here\r\n\ \r\n\ @author\ (your\ name\ here)\r\n\ @version\ (version\ number\ or\ date\ here)\r\n
+comment1.params=sceneType
+comment1.target=SceneType(int)
+numComments=2

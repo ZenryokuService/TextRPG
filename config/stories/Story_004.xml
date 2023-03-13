@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<story>
+    <sceneNo>4</sceneNo>
+    <sceneType>STORY</sceneType>
+    <nextScene>4</nextScene>
+    <center>false</center>
+    <canSelectNextScene>true</canSelectNextScene>
+  <id>Second</id>
+  <name>ゲーム開始</name>
+  <description>ゲーム開始時の画面</description>
+  <story>
+  まずは、各シーンタイプの実装ぢゃ！
+  </story>
+  <path></path>
+  <selects>
+    <mongon>バトル＝シーン</mongon>
+    <nextScene>5</nextScene>
+  </selects>
+  <selects>
+    <mongon>ショップ＝シーン</mongon>
+    <nextScene>6</nextScene>
+  </selects>
+  <selects>
+    <mongon>エフェクト＝シーン</mongon>
+    <nextScene>7</nextScene>
+  </selects>
+</story>

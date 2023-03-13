@@ -18,6 +18,7 @@ import java.util.ArrayList;
  */
 public class XMLUtilTest
 {
+    private static final String SEP = System.lineSeparator();
     /**
      * テストクラス XMLUtilTest のためのデフォルトのコンストラクタ
      */
@@ -50,7 +51,33 @@ public class XMLUtilTest
     public void test01() {
         XMLUtil.createConfig("Config.xml");
     }
+
+    @Test
+    public void testExportConfig() {
+        try {
+            XMLUtil.exportConfigJaxb("config", "Config.xml");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     
+        @Test
+    public void testLoadConfig() {
+        try {
+            Config conf = XMLUtil.loadConfig("config", "Config.xml");
+            assertNotNull(conf);
+            List<String> views = conf.getViews();
+            assertEquals("name", views.get(0));
+            assertEquals("HP", views.get(1));
+            assertEquals("MP", views.get(2));
+            assertEquals("LV", views.get(3));
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            
+        }
+    }
+
     @Test
     public void testLoadWorlds() {
         String[] filesA = new String[] {"Worlds.xml"};
@@ -72,7 +99,7 @@ public class XMLUtilTest
             }
         }
     }
-    
+
     @Test
     public void testExportWorlds() {
         String[] filesA = new String[] {"Worlds.xml"};
@@ -96,9 +123,21 @@ public class XMLUtilTest
     public void testExportPlayer() {
 
         try {
-            XMLUtil.exportPlayerJaxb("config", "Player.xml");
+            XMLUtil.exportPlayerJaxb("config", "bk_Players.xml");
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+    
+    @Test
+    public void testLoadPlayers() {
+        try {
+            List<Player> list = XMLUtil.loadPlayer("config/Players.xml");
+            assertNotEquals(0, list.size());
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            
         }
     }
     
@@ -112,8 +151,8 @@ public class XMLUtilTest
     }
     
     @Test
-    public void testLoadStory() {
-        Story st = XMLUtil.loadStory("./config/Story_000.xml");
+    public void testLoadStory() throws Exception {
+        Scene st = XMLUtil.loadStory("./config/Story_000_bk.xml");
         assertNotNull(st);
         assertEquals("First", st.getId());
     }

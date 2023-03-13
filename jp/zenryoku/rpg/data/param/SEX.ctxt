@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=SEX
+comment0.text=\r\n\ Enumeration\ class\ SEX\ -\ write\ a\ description\ of\ the\ enum\ class\ here\r\n\ \r\n\ @author\ (your\ name\ here)\r\n\ @version\ (version\ number\ or\ date\ here)\r\n
+comment1.params=i\ name
+comment1.target=SEX(int,\ java.lang.String)
+numComments=2
