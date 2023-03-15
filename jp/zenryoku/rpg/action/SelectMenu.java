@@ -62,40 +62,40 @@ public class SelectMenu extends AbstractAction
            if (story == null) {
                throw new RpgException("対応するストーリ番号がありまっせん。: " + sceneNo);
            }
-           // シーンタイプの取得
-           exeSceneType(command, story);
-
            // storyが未定義はPATH指定
            String st = story.getStory();
            if (st == null || "".equals(st)) {
                st = XMLUtil.loadText(story.getPath(), story.isCenter());
            }
-           
-           // 次のシーンを表示する
            JMenuItem item = (JMenuItem) event.getSource();           
            Point pos = item.getComponent().getLocation();
-           ((InputSelector) item.getParent()).setVisible(false);
 
-           InputSelector popup = new InputSelector(story, this.textarea, main);
-           popup.show(main, (int)(pos.getX() + 350.0), (int)(pos.getY() + 500.0));
+           // シーンタイプの取得
+           boolean printStory = exeSceneType(command, story, pos);
+           ((InputSelector) item.getParent()).setVisible(false);
+           
+           // 次のシーンを表示する
+           if (printStory) {
+               InputSelector popup = new InputSelector(story, this.textarea, main);
+               popup.show(main, (int)(pos.getX() + 350.0), (int)(pos.getY() + 500.0));
+           }
        } catch (Exception e) {
            e.printStackTrace();
            System.exit(-1);
        }
    }
    
-   private void exeSceneType(String command, Scene story) throws RpgException {
+   private boolean exeSceneType(String command, Scene story, Point pos) throws RpgException {
        SceneType type = story.getSceneType();
-       // ストーリーの表示
-       textarea.setText(story.getStory());
+
        Player play = main.getPlayer();
+       boolean printStory = true;
        // それぞれのアアクション
        switch(type) {
            // 戦闘シーン
            case BATTLE:
-               BattleScene battle =
-                   new BattleScene(story.getMonsterNoLow(), story.getMonsterNoHigh());
-               battle.playScene(play, main);
+               battle(play, pos, story);
+               printStory = false;
                break;
            // 戦闘シーン
            case SHOP:
@@ -108,11 +108,27 @@ public class SelectMenu extends AbstractAction
            // プレーヤー選択シーン
            case PLAYER_SELECT:
                // プレーヤー取得
-               Player player = ConfigGenerator.getInstance()
-                                   .getPlayers().get(command);
-               
-               main.setPlayer(player);
+               play = ConfigGenerator.getInstance().getPlayers().get(command);               
+               main.setPlayer(play);
                break;
        }
+       // ストーリーの表示
+       if (play != null && printStory) {
+           textarea.setText(convertStory(play, story.getStory()));
+       } else if (play == null && printStory) {
+           textarea.setText(story.getStory());
+       }
+       return printStory;
+   }
+   
+   public String convertStory(Player player, String story) {
+       return story.replace("$player.name", player.getName());
+       
+   }
+   
+   public void battle(Player play, Point pos, Scene story) throws RpgException {
+      BattleScene battle = new BattleScene(main, story);
+      battle.playScene(play, pos);
+
    }
 }

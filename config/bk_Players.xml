@@ -55,15 +55,21 @@
             </entry>
         </status>
         <items>
-            <formula/>
+            <formula>
+                <formula>HP+10</formula>
+            </formula>
             <name>やくそう</name>
         </items>
         <items>
-            <formula/>
+            <formula>
+                <formula>HP-10</formula>
+            </formula>
             <name>どくそう</name>
         </items>
         <items>
-            <formula/>
+            <formula>
+                <formula>POW+10</formula>
+            </formula>
             <name>プロテイン</name>
         </items>
         <job>
@@ -71,12 +77,16 @@
             <id>BRV</id>
             <name>ゆうしゃ</name>
             <commandList>
-                <formula/>
+                <formula>
+                    <formula>ATK + 3</formula>
+                </formula>
                 <id>BST</id>
                 <name>大こうげき</name>
             </commandList>
             <commandList>
-                <formula/>
+                <formula>
+                    <formula>HP + 3</formula>
+                </formula>
                 <id>INR</id>
                 <name>いのり</name>
             </commandList>
@@ -100,12 +110,16 @@
             <key>Normal</key>
         </state>
         <wepon>
-            <formula/>
+            <formula>
+                <formula>ATK+12</formula>
+            </formula>
             <name>どうのつるぎ</name>
             <value>12</value>
         </wepon>
         <armor>
-            <formula/>
+            <formula>
+                <formula>DEF+7</formula>
+            </formula>
             <name>どうのよろい</name>
             <value>7</value>
         </armor>
@@ -165,15 +179,21 @@
             </entry>
         </status>
         <items>
-            <formula/>
+            <formula>
+                <formula>HP+10</formula>
+            </formula>
             <name>やくそう</name>
         </items>
         <items>
-            <formula/>
+            <formula>
+                <formula>HP-10</formula>
+            </formula>
             <name>どくそう</name>
         </items>
         <items>
-            <formula/>
+            <formula>
+                <formula>POW+10</formula>
+            </formula>
             <name>プロテイン</name>
         </items>
         <job>
@@ -181,12 +201,16 @@
             <id>BRV</id>
             <name>ゆうしゃ</name>
             <commandList>
-                <formula/>
+                <formula>
+                    <formula>ATK + 3</formula>
+                </formula>
                 <id>BST</id>
                 <name>大こうげき</name>
             </commandList>
             <commandList>
-                <formula/>
+                <formula>
+                    <formula>HP + 3</formula>
+                </formula>
                 <id>INR</id>
                 <name>いのり</name>
             </commandList>
@@ -210,12 +234,16 @@
             <key>Normal</key>
         </state>
         <wepon>
-            <formula/>
+            <formula>
+                <formula>ATK+12</formula>
+            </formula>
             <name>どうのつるぎ</name>
             <value>12</value>
         </wepon>
         <armor>
-            <formula/>
+            <formula>
+                <formula>DEF+7</formula>
+            </formula>
             <name>どうのよろい</name>
             <value>7</value>
         </armor>

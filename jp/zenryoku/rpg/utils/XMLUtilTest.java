@@ -1,12 +1,16 @@
 package jp.zenryoku.rpg.utils;
 
+import jp.zenryoku.rpg.data.*;
 import jp.zenryoku.rpg.data.config.*;
 import jp.zenryoku.rpg.character.*;
+import jp.zenryoku.rpg.exception.RpgException;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+
+import java.util.Map;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -138,6 +142,18 @@ public class XMLUtilTest
             e.printStackTrace();
         }
     }
+    
+    @Test
+    public void testLoadFormulas() {
+        try {
+            Map<String, Formula> list = XMLUtil.loadFormulas("config", "Formula.xml");
+            assertNotEquals(0, list.size());
+            
+        } catch (RpgException e) {
+            e.printStackTrace();
+        }
+    }
+    
     
     @Test
     public void testLoadPlayers() {

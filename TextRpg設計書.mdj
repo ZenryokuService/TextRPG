@@ -17691,7 +17691,7 @@
 											"font": "Arial;13;0",
 											"left": 231,
 											"top": 307,
-											"width": 20.22998046875,
+											"width": 21.23291015625,
 											"height": 13,
 											"alpha": 0.6202492607576673,
 											"distance": 25.80697580112788,
@@ -17792,6 +17792,1346 @@
 									"points": "156:293;156:368",
 									"nameLabel": {
 										"$ref": "AAAAAAGGwNNjO2aAztM="
+									}
+								}
+							]
+						},
+						{
+							"_type": "FCFlowchartDiagram",
+							"_id": "AAAAAAGG45D5Sw9tiUU=",
+							"_parent": {
+								"$ref": "AAAAAAGGFO+A2wPo5Mw="
+							},
+							"name": "バトルシーンのフロー",
+							"ownedViews": [
+								{
+									"_type": "FCProcessView",
+									"_id": "AAAAAAGG454m6hAdgZY=",
+									"_parent": {
+										"$ref": "AAAAAAGG45D5Sw9tiUU="
+									},
+									"model": {
+										"$ref": "AAAAAAGG454m6RAbjSY="
+									},
+									"subViews": [
+										{
+											"_type": "LabelView",
+											"_id": "AAAAAAGG454m6hAeKJs=",
+											"_parent": {
+												"$ref": "AAAAAAGG454m6hAdgZY="
+											},
+											"font": "Arial;13;0",
+											"left": 66,
+											"top": 50,
+											"width": 143,
+											"height": 13,
+											"text": "バトルシーンを選択する",
+											"wordWrap": true
+										}
+									],
+									"font": "Arial;13;0",
+									"left": 56,
+									"top": 40,
+									"width": 163,
+									"height": 33,
+									"nameLabel": {
+										"$ref": "AAAAAAGG454m6hAeKJs="
+									}
+								},
+								{
+									"_type": "FCProcessView",
+									"_id": "AAAAAAGG459XshApp7Q=",
+									"_parent": {
+										"$ref": "AAAAAAGG45D5Sw9tiUU="
+									},
+									"model": {
+										"$ref": "AAAAAAGG459XshAnM8M="
+									},
+									"subViews": [
+										{
+											"_type": "LabelView",
+											"_id": "AAAAAAGG459XshAqZdg=",
+											"_parent": {
+												"$ref": "AAAAAAGG459XshApp7Q="
+											},
+											"font": "Arial;13;0",
+											"left": 74,
+											"top": 114,
+											"width": 135.103515625,
+											"height": 13,
+											"text": "BattleSceneクラス生成",
+											"wordWrap": true
+										}
+									],
+									"font": "Arial;13;0",
+									"left": 64,
+									"top": 104,
+									"width": 155.103515625,
+									"height": 33,
+									"nameLabel": {
+										"$ref": "AAAAAAGG459XshAqZdg="
+									}
+								},
+								{
+									"_type": "FCProcessView",
+									"_id": "AAAAAAGG46AW2RAzGNg=",
+									"_parent": {
+										"$ref": "AAAAAAGG45D5Sw9tiUU="
+									},
+									"model": {
+										"$ref": "AAAAAAGG46AW2RAxBc8="
+									},
+									"subViews": [
+										{
+											"_type": "LabelView",
+											"_id": "AAAAAAGG46AW2RA0juc=",
+											"_parent": {
+												"$ref": "AAAAAAGG46AW2RAzGNg="
+											},
+											"font": "Arial;13;0",
+											"left": 338,
+											"top": 114,
+											"width": 143,
+											"height": 13,
+											"text": "対戦するモンスター取得",
+											"wordWrap": true
+										}
+									],
+									"font": "Arial;13;0",
+									"left": 328,
+									"top": 104,
+									"width": 163,
+									"height": 33,
+									"nameLabel": {
+										"$ref": "AAAAAAGG46AW2RA0juc="
+									}
+								},
+								{
+									"_type": "FCProcessView",
+									"_id": "AAAAAAGG46BssRA8QX8=",
+									"_parent": {
+										"$ref": "AAAAAAGG45D5Sw9tiUU="
+									},
+									"model": {
+										"$ref": "AAAAAAGG46BssRA6ngE="
+									},
+									"subViews": [
+										{
+											"_type": "LabelView",
+											"_id": "AAAAAAGG46BsshA9zhY=",
+											"_parent": {
+												"$ref": "AAAAAAGG46BssRA8QX8="
+											},
+											"font": "Arial;13;0",
+											"left": 330,
+											"top": 258,
+											"width": 143,
+											"height": 13,
+											"text": "モンスターのセリフ表示",
+											"wordWrap": true
+										}
+									],
+									"font": "Arial;13;0",
+									"left": 320,
+									"top": 248,
+									"width": 163,
+									"height": 33,
+									"nameLabel": {
+										"$ref": "AAAAAAGG46BsshA9zhY="
+									}
+								},
+								{
+									"_type": "FCDecisionView",
+									"_id": "AAAAAAGG46DUchBHvzY=",
+									"_parent": {
+										"$ref": "AAAAAAGG45D5Sw9tiUU="
+									},
+									"model": {
+										"$ref": "AAAAAAGG46DUcRBF210="
+									},
+									"subViews": [
+										{
+											"_type": "LabelView",
+											"_id": "AAAAAAGG46DUchBIk5w=",
+											"_parent": {
+												"$ref": "AAAAAAGG46DUchBHvzY="
+											},
+											"font": "Arial;13;0",
+											"left": 327.5,
+											"top": 199.5,
+											"width": 143,
+											"height": 15,
+											"text": "モンスターが話すフラグ",
+											"wordWrap": true
+										}
+									],
+									"font": "Arial;13;0",
+									"left": 256,
+									"top": 192,
+									"width": 286,
+									"height": 30,
+									"nameLabel": {
+										"$ref": "AAAAAAGG46DUchBIk5w="
+									}
+								},
+								{
+									"_type": "FCFlowView",
+									"_id": "AAAAAAGG46E+ahBW4c8=",
+									"_parent": {
+										"$ref": "AAAAAAGG45D5Sw9tiUU="
+									},
+									"model": {
+										"$ref": "AAAAAAGG46E+ahBUH34="
+									},
+									"subViews": [
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAGG46E+ahBXOb8=",
+											"_parent": {
+												"$ref": "AAAAAAGG46E+ahBW4c8="
+											},
+											"model": {
+												"$ref": "AAAAAAGG46E+ahBUH34="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": 152,
+											"top": 81,
+											"height": 13,
+											"alpha": 1.5707963267948966,
+											"distance": 15,
+											"hostEdge": {
+												"$ref": "AAAAAAGG46E+ahBW4c8="
+											},
+											"edgePosition": 1
+										}
+									],
+									"font": "Arial;13;0",
+									"head": {
+										"$ref": "AAAAAAGG459XshApp7Q="
+									},
+									"tail": {
+										"$ref": "AAAAAAGG454m6hAdgZY="
+									},
+									"lineStyle": 2,
+									"points": "138:72;138:104",
+									"nameLabel": {
+										"$ref": "AAAAAAGG46E+ahBXOb8="
+									}
+								},
+								{
+									"_type": "FCFlowView",
+									"_id": "AAAAAAGG46FQARBfVeA=",
+									"_parent": {
+										"$ref": "AAAAAAGG45D5Sw9tiUU="
+									},
+									"model": {
+										"$ref": "AAAAAAGG46FQARBdQz8="
+									},
+									"subViews": [
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAGG46FQARBg2Jc=",
+											"_parent": {
+												"$ref": "AAAAAAGG46FQARBfVeA="
+											},
+											"model": {
+												"$ref": "AAAAAAGG46FQARBdQz8="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": 273,
+											"top": 99,
+											"height": 13,
+											"alpha": 1.5707963267948966,
+											"distance": 15,
+											"hostEdge": {
+												"$ref": "AAAAAAGG46FQARBfVeA="
+											},
+											"edgePosition": 1
+										}
+									],
+									"font": "Arial;13;0",
+									"head": {
+										"$ref": "AAAAAAGG46AW2RAzGNg="
+									},
+									"tail": {
+										"$ref": "AAAAAAGG459XshApp7Q="
+									},
+									"lineStyle": 2,
+									"points": "218:120;328:120",
+									"nameLabel": {
+										"$ref": "AAAAAAGG46FQARBg2Jc="
+									}
+								},
+								{
+									"_type": "FCFlowView",
+									"_id": "AAAAAAGG46FhWhBoAyE=",
+									"_parent": {
+										"$ref": "AAAAAAGG45D5Sw9tiUU="
+									},
+									"model": {
+										"$ref": "AAAAAAGG46FhWhBmIvI="
+									},
+									"subViews": [
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAGG46FhWhBpOHA=",
+											"_parent": {
+												"$ref": "AAAAAAGG46FhWhBoAyE="
+											},
+											"model": {
+												"$ref": "AAAAAAGG46FhWhBmIvI="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": 420,
+											"top": 157,
+											"height": 13,
+											"alpha": 1.5707963267948966,
+											"distance": 15,
+											"hostEdge": {
+												"$ref": "AAAAAAGG46FhWhBoAyE="
+											},
+											"edgePosition": 1
+										}
+									],
+									"font": "Arial;13;0",
+									"head": {
+										"$ref": "AAAAAAGG46DUchBHvzY="
+									},
+									"tail": {
+										"$ref": "AAAAAAGG46AW2RAzGNg="
+									},
+									"lineStyle": 2,
+									"points": "406:136;406:192",
+									"nameLabel": {
+										"$ref": "AAAAAAGG46FhWhBpOHA="
+									}
+								},
+								{
+									"_type": "FCFlowView",
+									"_id": "AAAAAAGG46FyYRBxUf0=",
+									"_parent": {
+										"$ref": "AAAAAAGG45D5Sw9tiUU="
+									},
+									"model": {
+										"$ref": "AAAAAAGG46FyYRBvu+8="
+									},
+									"subViews": [
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAGG46FyYRBymig=",
+											"_parent": {
+												"$ref": "AAAAAAGG46FyYRBxUf0="
+											},
+											"model": {
+												"$ref": "AAAAAAGG46FyYRBvu+8="
+											},
+											"font": "Arial;13;0",
+											"left": 404,
+											"top": 227,
+											"width": 22.40087890625,
+											"height": 13,
+											"alpha": 1.5707963267948966,
+											"distance": 15,
+											"hostEdge": {
+												"$ref": "AAAAAAGG46FyYRBxUf0="
+											},
+											"edgePosition": 1,
+											"text": "true"
+										}
+									],
+									"font": "Arial;13;0",
+									"head": {
+										"$ref": "AAAAAAGG46BssRA8QX8="
+									},
+									"tail": {
+										"$ref": "AAAAAAGG46DUchBHvzY="
+									},
+									"lineStyle": 2,
+									"points": "401:221;401:248",
+									"nameLabel": {
+										"$ref": "AAAAAAGG46FyYRBymig="
+									}
+								},
+								{
+									"_type": "FCProcessView",
+									"_id": "AAAAAAGG46GrWhB8A0s=",
+									"_parent": {
+										"$ref": "AAAAAAGG45D5Sw9tiUU="
+									},
+									"model": {
+										"$ref": "AAAAAAGG46GrWhB6GjI="
+									},
+									"subViews": [
+										{
+											"_type": "LabelView",
+											"_id": "AAAAAAGG46GrWhB9BA0=",
+											"_parent": {
+												"$ref": "AAAAAAGG46GrWhB8A0s="
+											},
+											"font": "Arial;13;0",
+											"left": 82,
+											"top": 202,
+											"width": 104,
+											"height": 13,
+											"text": "バトルシーン開始",
+											"wordWrap": true
+										}
+									],
+									"font": "Arial;13;0",
+									"left": 72,
+									"top": 192,
+									"width": 124,
+									"height": 33,
+									"nameLabel": {
+										"$ref": "AAAAAAGG46GrWhB9BA0="
+									}
+								},
+								{
+									"_type": "FCFlowView",
+									"_id": "AAAAAAGG46HsiBCG70w=",
+									"_parent": {
+										"$ref": "AAAAAAGG45D5Sw9tiUU="
+									},
+									"model": {
+										"$ref": "AAAAAAGG46HsiBCEwhY="
+									},
+									"subViews": [
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAGG46HsiBCHNDM=",
+											"_parent": {
+												"$ref": "AAAAAAGG46HsiBCG70w="
+											},
+											"model": {
+												"$ref": "AAAAAAGG46HsiBCEwhY="
+											},
+											"font": "Arial;13;0",
+											"left": 211,
+											"top": 217,
+											"width": 27.4599609375,
+											"height": 13,
+											"alpha": 1.5707963267948966,
+											"distance": 15,
+											"hostEdge": {
+												"$ref": "AAAAAAGG46HsiBCG70w="
+											},
+											"edgePosition": 1,
+											"text": "false"
+										}
+									],
+									"font": "Arial;13;0",
+									"head": {
+										"$ref": "AAAAAAGG46GrWhB8A0s="
+									},
+									"tail": {
+										"$ref": "AAAAAAGG46DUchBHvzY="
+									},
+									"lineStyle": 2,
+									"points": "256:208;195:208",
+									"nameLabel": {
+										"$ref": "AAAAAAGG46HsiBCHNDM="
+									}
+								},
+								{
+									"_type": "FCProcessView",
+									"_id": "AAAAAAGG46JpaRCTs4k=",
+									"_parent": {
+										"$ref": "AAAAAAGG45D5Sw9tiUU="
+									},
+									"model": {
+										"$ref": "AAAAAAGG46JpaRCRWO4="
+									},
+									"subViews": [
+										{
+											"_type": "LabelView",
+											"_id": "AAAAAAGG46JpaRCUkgo=",
+											"_parent": {
+												"$ref": "AAAAAAGG46JpaRCTs4k="
+											},
+											"font": "Arial;13;0",
+											"left": 74,
+											"top": 306,
+											"width": 104,
+											"height": 13,
+											"text": "プレーヤーの攻撃",
+											"wordWrap": true
+										}
+									],
+									"font": "Arial;13;0",
+									"left": 64,
+									"top": 296,
+									"width": 124,
+									"height": 33,
+									"nameLabel": {
+										"$ref": "AAAAAAGG46JpaRCUkgo="
+									}
+								},
+								{
+									"_type": "FCProcessView",
+									"_id": "AAAAAAGG46L+CRCejHY=",
+									"_parent": {
+										"$ref": "AAAAAAGG45D5Sw9tiUU="
+									},
+									"model": {
+										"$ref": "AAAAAAGG46L+CRCcHGs="
+									},
+									"subViews": [
+										{
+											"_type": "LabelView",
+											"_id": "AAAAAAGG46L+CRCflKM=",
+											"_parent": {
+												"$ref": "AAAAAAGG46L+CRCejHY="
+											},
+											"font": "Arial;13;0",
+											"left": 338,
+											"top": 354,
+											"width": 161.09716796875,
+											"height": 13,
+											"text": "CommandAction生成",
+											"wordWrap": true
+										}
+									],
+									"font": "Arial;13;0",
+									"left": 328,
+									"top": 344,
+									"width": 181.09716796875,
+									"height": 33,
+									"nameLabel": {
+										"$ref": "AAAAAAGG46L+CRCflKM="
+									}
+								},
+								{
+									"_type": "UMLNoteView",
+									"_id": "AAAAAAGG46MtCBCkStE=",
+									"_parent": {
+										"$ref": "AAAAAAGG45D5Sw9tiUU="
+									},
+									"font": "Arial;13;0",
+									"left": 248,
+									"top": 8,
+									"width": 215.0380859375,
+									"height": 40,
+									"text": "各シーンはSelectMenuクラスの\nactionPerformed()で実行している"
+								},
+								{
+									"_type": "FCProcessView",
+									"_id": "AAAAAAGG46V6XBCz+Vk=",
+									"_parent": {
+										"$ref": "AAAAAAGG45D5Sw9tiUU="
+									},
+									"model": {
+										"$ref": "AAAAAAGG46V6WxCxk4s="
+									},
+									"subViews": [
+										{
+											"_type": "LabelView",
+											"_id": "AAAAAAGG46V6XBC0Qe8=",
+											"_parent": {
+												"$ref": "AAAAAAGG46V6XBCz+Vk="
+											},
+											"font": "Arial;13;0",
+											"left": 330,
+											"top": 426,
+											"width": 254.96630859375,
+											"height": 13,
+											"text": "Commandから計算式と対象パラメータ取得",
+											"wordWrap": true
+										}
+									],
+									"font": "Arial;13;0",
+									"left": 320,
+									"top": 416,
+									"width": 274.96630859375,
+									"height": 33,
+									"nameLabel": {
+										"$ref": "AAAAAAGG46V6XBC0Qe8="
+									}
+								},
+								{
+									"_type": "FCProcessView",
+									"_id": "AAAAAAGG46YfuhC9rcA=",
+									"_parent": {
+										"$ref": "AAAAAAGG45D5Sw9tiUU="
+									},
+									"model": {
+										"$ref": "AAAAAAGG46YfuhC7G+Y="
+									},
+									"subViews": [
+										{
+											"_type": "LabelView",
+											"_id": "AAAAAAGG46YfuhC++xA=",
+											"_parent": {
+												"$ref": "AAAAAAGG46YfuhC9rcA="
+											},
+											"font": "Arial;13;0",
+											"left": 338,
+											"top": 490,
+											"width": 195,
+											"height": 13,
+											"text": "計算をパラメータ値で変換し計算",
+											"wordWrap": true
+										}
+									],
+									"font": "Arial;13;0",
+									"left": 328,
+									"top": 480,
+									"width": 215,
+									"height": 33,
+									"nameLabel": {
+										"$ref": "AAAAAAGG46YfuhC++xA="
+									}
+								},
+								{
+									"_type": "FCProcessView",
+									"_id": "AAAAAAGG46bAlBDGjho=",
+									"_parent": {
+										"$ref": "AAAAAAGG45D5Sw9tiUU="
+									},
+									"model": {
+										"$ref": "AAAAAAGG46bAlBDEX5w="
+									},
+									"subViews": [
+										{
+											"_type": "LabelView",
+											"_id": "AAAAAAGG46bAlBDHjtQ=",
+											"_parent": {
+												"$ref": "AAAAAAGG46bAlBDGjho="
+											},
+											"font": "Arial;13;0",
+											"left": 330,
+											"top": 546,
+											"width": 221,
+											"height": 13,
+											"text": "計算結果を対象のパラメータから減算",
+											"wordWrap": true
+										}
+									],
+									"font": "Arial;13;0",
+									"left": 320,
+									"top": 536,
+									"width": 241,
+									"height": 33,
+									"nameLabel": {
+										"$ref": "AAAAAAGG46bAlBDHjtQ="
+									}
+								},
+								{
+									"_type": "FCFlowView",
+									"_id": "AAAAAAGG463gaRDZ23w=",
+									"_parent": {
+										"$ref": "AAAAAAGG45D5Sw9tiUU="
+									},
+									"model": {
+										"$ref": "AAAAAAGG463gaRDXiyM="
+									},
+									"subViews": [
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAGG463gaRDa4Ow=",
+											"_parent": {
+												"$ref": "AAAAAAGG463gaRDZ23w="
+											},
+											"model": {
+												"$ref": "AAAAAAGG463gaRDXiyM="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": 331,
+											"top": 323,
+											"height": 13,
+											"alpha": 1.5707963267948966,
+											"distance": 15,
+											"hostEdge": {
+												"$ref": "AAAAAAGG463gaRDZ23w="
+											},
+											"edgePosition": 1
+										}
+									],
+									"font": "Arial;13;0",
+									"head": {
+										"$ref": "AAAAAAGG46JpaRCTs4k="
+									},
+									"tail": {
+										"$ref": "AAAAAAGG46BssRA8QX8="
+									},
+									"lineStyle": 2,
+									"points": "332:280;332:314;187:314",
+									"nameLabel": {
+										"$ref": "AAAAAAGG463gaRDa4Ow="
+									}
+								},
+								{
+									"_type": "FCFlowView",
+									"_id": "AAAAAAGG465NYhDx8Fo=",
+									"_parent": {
+										"$ref": "AAAAAAGG45D5Sw9tiUU="
+									},
+									"model": {
+										"$ref": "AAAAAAGG465NYhDvfaY="
+									},
+									"subViews": [
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAGG465NYhDyUms=",
+											"_parent": {
+												"$ref": "AAAAAAGG465NYhDx8Fo="
+											},
+											"model": {
+												"$ref": "AAAAAAGG465NYhDvfaY="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": 187,
+											"top": 331,
+											"height": 13,
+											"alpha": 1.5707963267948966,
+											"distance": 15,
+											"hostEdge": {
+												"$ref": "AAAAAAGG465NYhDx8Fo="
+											},
+											"edgePosition": 1
+										}
+									],
+									"font": "Arial;13;0",
+									"head": {
+										"$ref": "AAAAAAGG46L+CRCejHY="
+									},
+									"tail": {
+										"$ref": "AAAAAAGG46JpaRCTs4k="
+									},
+									"lineStyle": 2,
+									"points": "187:328;187:352;328:352",
+									"nameLabel": {
+										"$ref": "AAAAAAGG465NYhDyUms="
+									}
+								},
+								{
+									"_type": "FCFlowView",
+									"_id": "AAAAAAGG465wyhD74a4=",
+									"_parent": {
+										"$ref": "AAAAAAGG45D5Sw9tiUU="
+									},
+									"model": {
+										"$ref": "AAAAAAGG465wyhD5kqA="
+									},
+									"subViews": [
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAGG465wyhD8CMo=",
+											"_parent": {
+												"$ref": "AAAAAAGG465wyhD74a4="
+											},
+											"model": {
+												"$ref": "AAAAAAGG465wyhD5kqA="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": 440,
+											"top": 389,
+											"height": 13,
+											"alpha": 1.5707963267948966,
+											"distance": 15,
+											"hostEdge": {
+												"$ref": "AAAAAAGG465wyhD74a4="
+											},
+											"edgePosition": 1
+										}
+									],
+									"font": "Arial;13;0",
+									"head": {
+										"$ref": "AAAAAAGG46V6XBCz+Vk="
+									},
+									"tail": {
+										"$ref": "AAAAAAGG46L+CRCejHY="
+									},
+									"lineStyle": 2,
+									"points": "426:376;426:416",
+									"nameLabel": {
+										"$ref": "AAAAAAGG465wyhD8CMo="
+									}
+								},
+								{
+									"_type": "FCFlowView",
+									"_id": "AAAAAAGG466A4xEELf8=",
+									"_parent": {
+										"$ref": "AAAAAAGG45D5Sw9tiUU="
+									},
+									"model": {
+										"$ref": "AAAAAAGG466A4xECJgI="
+									},
+									"subViews": [
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAGG466A4xEFnr0=",
+											"_parent": {
+												"$ref": "AAAAAAGG466A4xEELf8="
+											},
+											"model": {
+												"$ref": "AAAAAAGG466A4xECJgI="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": 465,
+											"top": 457,
+											"height": 13,
+											"alpha": 1.5707963267948966,
+											"distance": 15,
+											"hostEdge": {
+												"$ref": "AAAAAAGG466A4xEELf8="
+											},
+											"edgePosition": 1
+										}
+									],
+									"font": "Arial;13;0",
+									"head": {
+										"$ref": "AAAAAAGG46YfuhC9rcA="
+									},
+									"tail": {
+										"$ref": "AAAAAAGG46V6XBCz+Vk="
+									},
+									"lineStyle": 2,
+									"points": "451:448;451:480",
+									"nameLabel": {
+										"$ref": "AAAAAAGG466A4xEFnr0="
+									}
+								},
+								{
+									"_type": "FCFlowView",
+									"_id": "AAAAAAGG466N6xENuoc=",
+									"_parent": {
+										"$ref": "AAAAAAGG45D5Sw9tiUU="
+									},
+									"model": {
+										"$ref": "AAAAAAGG466N6xELuUk="
+									},
+									"subViews": [
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAGG466N6xEOvEs=",
+											"_parent": {
+												"$ref": "AAAAAAGG466N6xENuoc="
+											},
+											"model": {
+												"$ref": "AAAAAAGG466N6xELuUk="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": 450,
+											"top": 517,
+											"height": 13,
+											"alpha": 1.5707963267948966,
+											"distance": 15,
+											"hostEdge": {
+												"$ref": "AAAAAAGG466N6xENuoc="
+											},
+											"edgePosition": 1
+										}
+									],
+									"font": "Arial;13;0",
+									"head": {
+										"$ref": "AAAAAAGG46bAlBDGjho="
+									},
+									"tail": {
+										"$ref": "AAAAAAGG46YfuhC9rcA="
+									},
+									"lineStyle": 2,
+									"points": "436:512;436:536",
+									"nameLabel": {
+										"$ref": "AAAAAAGG466N6xEOvEs="
+									}
+								},
+								{
+									"_type": "FCDecisionView",
+									"_id": "AAAAAAGG468KehEp/jI=",
+									"_parent": {
+										"$ref": "AAAAAAGG45D5Sw9tiUU="
+									},
+									"model": {
+										"$ref": "AAAAAAGG468KehEnvbk="
+									},
+									"subViews": [
+										{
+											"_type": "LabelView",
+											"_id": "AAAAAAGG468KexEqQPw=",
+											"_parent": {
+												"$ref": "AAAAAAGG468KehEp/jI="
+											},
+											"font": "Arial;13;0",
+											"left": 320.614990234375,
+											"top": 607.5,
+											"width": 241.22998046875,
+											"height": 15,
+											"text": "モンスターの対象パラメータが0以下の時",
+											"wordWrap": true
+										}
+									],
+									"font": "Arial;13;0",
+									"left": 200,
+									"top": 600,
+									"width": 482.4599609375,
+									"height": 30,
+									"nameLabel": {
+										"$ref": "AAAAAAGG468KexEqQPw="
+									}
+								},
+								{
+									"_type": "FCFlowView",
+									"_id": "AAAAAAGG469OKxE1prU=",
+									"_parent": {
+										"$ref": "AAAAAAGG45D5Sw9tiUU="
+									},
+									"model": {
+										"$ref": "AAAAAAGG469OKxEzbBE="
+									},
+									"subViews": [
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAGG469OKxE25tM=",
+											"_parent": {
+												"$ref": "AAAAAAGG469OKxE1prU="
+											},
+											"model": {
+												"$ref": "AAAAAAGG469OKxEzbBE="
+											},
+											"font": "Arial;13;0",
+											"left": 455,
+											"top": 577,
+											"width": 104,
+											"height": 13,
+											"alpha": 1.5855005220105862,
+											"distance": 68.00735254367721,
+											"hostEdge": {
+												"$ref": "AAAAAAGG469OKxE1prU="
+											},
+											"edgePosition": 1,
+											"text": "モンスターのとき"
+										}
+									],
+									"font": "Arial;13;0",
+									"head": {
+										"$ref": "AAAAAAGG468KehEp/jI="
+									},
+									"tail": {
+										"$ref": "AAAAAAGG46bAlBDGjho="
+									},
+									"lineStyle": 2,
+									"points": "439:568;439:600",
+									"nameLabel": {
+										"$ref": "AAAAAAGG469OKxE25tM="
+									}
+								},
+								{
+									"_type": "FCProcessView",
+									"_id": "AAAAAAGG46/p+hFC+1g=",
+									"_parent": {
+										"$ref": "AAAAAAGG45D5Sw9tiUU="
+									},
+									"model": {
+										"$ref": "AAAAAAGG46/p+hFAoLE="
+									},
+									"subViews": [
+										{
+											"_type": "LabelView",
+											"_id": "AAAAAAGG46/p+hFD6+w=",
+											"_parent": {
+												"$ref": "AAAAAAGG46/p+hFC+1g="
+											},
+											"font": "Arial;13;0",
+											"left": 34,
+											"top": 722,
+											"width": 195,
+											"height": 13,
+											"text": "プレーヤーの勝利、次のシーンへ",
+											"wordWrap": true
+										}
+									],
+									"font": "Arial;13;0",
+									"left": 24,
+									"top": 712,
+									"width": 215,
+									"height": 33,
+									"nameLabel": {
+										"$ref": "AAAAAAGG46/p+hFD6+w="
+									}
+								},
+								{
+									"_type": "FCProcessView",
+									"_id": "AAAAAAGG47BSiRFMDII=",
+									"_parent": {
+										"$ref": "AAAAAAGG45D5Sw9tiUU="
+									},
+									"model": {
+										"$ref": "AAAAAAGG47BSiRFKhMo="
+									},
+									"subViews": [
+										{
+											"_type": "LabelView",
+											"_id": "AAAAAAGG47BSiRFNmh4=",
+											"_parent": {
+												"$ref": "AAAAAAGG47BSiRFMDII="
+											},
+											"font": "Arial;13;0",
+											"left": 698,
+											"top": 394,
+											"width": 54.18994140625,
+											"height": 26,
+											"text": "GAME OVER",
+											"wordWrap": true
+										}
+									],
+									"font": "Arial;13;0",
+									"left": 688,
+									"top": 384,
+									"width": 74.18994140625,
+									"height": 46,
+									"nameLabel": {
+										"$ref": "AAAAAAGG47BSiRFNmh4="
+									}
+								},
+								{
+									"_type": "FCProcessView",
+									"_id": "AAAAAAGG47DdmhFkwrE=",
+									"_parent": {
+										"$ref": "AAAAAAGG45D5Sw9tiUU="
+									},
+									"model": {
+										"$ref": "AAAAAAGG47DdmhFiBhA="
+									},
+									"subViews": [
+										{
+											"_type": "LabelView",
+											"_id": "AAAAAAGG47DdmhFli2c=",
+											"_parent": {
+												"$ref": "AAAAAAGG47DdmhFkwrE="
+											},
+											"font": "Arial;13;0",
+											"left": 50,
+											"top": 426,
+											"width": 104,
+											"height": 13,
+											"text": "モンスターの攻撃",
+											"wordWrap": true
+										}
+									],
+									"font": "Arial;13;0",
+									"left": 40,
+									"top": 416,
+									"width": 124,
+									"height": 33,
+									"nameLabel": {
+										"$ref": "AAAAAAGG47DdmhFli2c="
+									}
+								},
+								{
+									"_type": "FCFlowView",
+									"_id": "AAAAAAGG47EFAxFudZk=",
+									"_parent": {
+										"$ref": "AAAAAAGG45D5Sw9tiUU="
+									},
+									"model": {
+										"$ref": "AAAAAAGG47EFAxFsRbs="
+									},
+									"subViews": [
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAGG47EFAxFvtgc=",
+											"_parent": {
+												"$ref": "AAAAAAGG47EFAxFudZk="
+											},
+											"model": {
+												"$ref": "AAAAAAGG47EFAxFsRbs="
+											},
+											"font": "Arial;13;0",
+											"left": 159,
+											"top": 599,
+											"width": 27.4599609375,
+											"height": 13,
+											"alpha": -1.31979362831275,
+											"distance": 40.26164427839479,
+											"hostEdge": {
+												"$ref": "AAAAAAGG47EFAxFudZk="
+											},
+											"edgePosition": 1,
+											"text": "false"
+										}
+									],
+									"font": "Arial;13;0",
+									"head": {
+										"$ref": "AAAAAAGG47DdmhFkwrE="
+									},
+									"tail": {
+										"$ref": "AAAAAAGG468KehEp/jI="
+									},
+									"lineStyle": 2,
+									"points": "200:616;134:616;134:448",
+									"nameLabel": {
+										"$ref": "AAAAAAGG47EFAxFvtgc="
+									}
+								},
+								{
+									"_type": "FCFlowView",
+									"_id": "AAAAAAGG47FiERF7BM8=",
+									"_parent": {
+										"$ref": "AAAAAAGG45D5Sw9tiUU="
+									},
+									"model": {
+										"$ref": "AAAAAAGG47FiERF5tCw="
+									},
+									"subViews": [
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAGG47FiEhF8Hx8=",
+											"_parent": {
+												"$ref": "AAAAAAGG47FiERF7BM8="
+											},
+											"model": {
+												"$ref": "AAAAAAGG47FiERF5tCw="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": 96,
+											"top": 331,
+											"height": 13,
+											"alpha": 1.5707963267948966,
+											"distance": 15,
+											"hostEdge": {
+												"$ref": "AAAAAAGG47FiERF7BM8="
+											},
+											"edgePosition": 1
+										}
+									],
+									"font": "Arial;13;0",
+									"head": {
+										"$ref": "AAAAAAGG46L+CRCejHY="
+									},
+									"tail": {
+										"$ref": "AAAAAAGG47DdmhFkwrE="
+									},
+									"lineStyle": 2,
+									"points": "96:416;96:352;328:352",
+									"nameLabel": {
+										"$ref": "AAAAAAGG47FiEhF8Hx8="
+									}
+								},
+								{
+									"_type": "FCFlowView",
+									"_id": "AAAAAAGG47ICTBGMR3o=",
+									"_parent": {
+										"$ref": "AAAAAAGG45D5Sw9tiUU="
+									},
+									"model": {
+										"$ref": "AAAAAAGG47ICTBGKZqc="
+									},
+									"subViews": [
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAGG47ICTBGNlU0=",
+											"_parent": {
+												"$ref": "AAAAAAGG47ICTBGMR3o="
+											},
+											"model": {
+												"$ref": "AAAAAAGG47ICTBGKZqc="
+											},
+											"font": "Arial;13;0",
+											"left": 311,
+											"top": 711,
+											"width": 22.40087890625,
+											"height": 13,
+											"alpha": -0.25732377973794396,
+											"distance": 39.293765408777,
+											"hostEdge": {
+												"$ref": "AAAAAAGG47ICTBGMR3o="
+											},
+											"edgePosition": 1,
+											"text": "ture"
+										}
+									],
+									"font": "Arial;13;0",
+									"head": {
+										"$ref": "AAAAAAGG46/p+hFC+1g="
+									},
+									"tail": {
+										"$ref": "AAAAAAGG468KehEp/jI="
+									},
+									"lineStyle": 2,
+									"points": "360:629;360:728;238:728",
+									"nameLabel": {
+										"$ref": "AAAAAAGG47ICTBGNlU0="
+									}
+								},
+								{
+									"_type": "FCDecisionView",
+									"_id": "AAAAAAGG47N1kRGXShg=",
+									"_parent": {
+										"$ref": "AAAAAAGG45D5Sw9tiUU="
+									},
+									"model": {
+										"$ref": "AAAAAAGG47N1kRGV0No="
+									},
+									"subViews": [
+										{
+											"_type": "LabelView",
+											"_id": "AAAAAAGG47N1kRGYs0Q=",
+											"_parent": {
+												"$ref": "AAAAAAGG47N1kRGXShg="
+											},
+											"font": "Arial;13;0",
+											"left": 608.614990234375,
+											"top": 663.5,
+											"width": 241.22998046875,
+											"height": 15,
+											"text": "プレーヤーの対象パラメータが0以下の時",
+											"wordWrap": true
+										}
+									],
+									"font": "Arial;13;0",
+									"left": 488,
+									"top": 656,
+									"width": 482.4599609375,
+									"height": 30,
+									"nameLabel": {
+										"$ref": "AAAAAAGG47N1kRGYs0Q="
+									}
+								},
+								{
+									"_type": "FCFlowView",
+									"_id": "AAAAAAGG47PrjxGkKNM=",
+									"_parent": {
+										"$ref": "AAAAAAGG45D5Sw9tiUU="
+									},
+									"model": {
+										"$ref": "AAAAAAGG47PrjxGiZN0="
+									},
+									"subViews": [
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAGG47PrjxGlX9Q=",
+											"_parent": {
+												"$ref": "AAAAAAGG47PrjxGkKNM="
+											},
+											"model": {
+												"$ref": "AAAAAAGG47PrjxGiZN0="
+											},
+											"font": "Arial;13;0",
+											"left": 583,
+											"top": 535,
+											"width": 104,
+											"height": 13,
+											"alpha": -1.6779117577308533,
+											"distance": 93.53608929178085,
+											"hostEdge": {
+												"$ref": "AAAAAAGG47PrjxGkKNM="
+											},
+											"edgePosition": 1,
+											"text": "プレーヤーのとき"
+										}
+									],
+									"font": "Arial;13;0",
+									"head": {
+										"$ref": "AAAAAAGG47N1kRGXShg="
+									},
+									"tail": {
+										"$ref": "AAAAAAGG46bAlBDGjho="
+									},
+									"lineStyle": 2,
+									"points": "560:552;728:552;728:656",
+									"nameLabel": {
+										"$ref": "AAAAAAGG47PrjxGlX9Q="
+									}
+								},
+								{
+									"_type": "FCFlowView",
+									"_id": "AAAAAAGG47Sp2hGz/I0=",
+									"_parent": {
+										"$ref": "AAAAAAGG45D5Sw9tiUU="
+									},
+									"model": {
+										"$ref": "AAAAAAGG47Sp2hGxpbE="
+									},
+									"subViews": [
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAGG47Sp2hG0HJQ=",
+											"_parent": {
+												"$ref": "AAAAAAGG47Sp2hGz/I0="
+											},
+											"model": {
+												"$ref": "AAAAAAGG47Sp2hGxpbE="
+											},
+											"font": "Arial;13;0",
+											"left": 763,
+											"top": 631,
+											"width": 22.40087890625,
+											"height": 13,
+											"alpha": -2.764683204713115,
+											"distance": 103.24727599312246,
+											"hostEdge": {
+												"$ref": "AAAAAAGG47Sp2hGz/I0="
+											},
+											"edgePosition": 1,
+											"text": "true"
+										}
+									],
+									"font": "Arial;13;0",
+									"head": {
+										"$ref": "AAAAAAGG47BSiRFMDII="
+									},
+									"tail": {
+										"$ref": "AAAAAAGG47N1kRGXShg="
+									},
+									"lineStyle": 2,
+									"points": "736:656;736:429",
+									"nameLabel": {
+										"$ref": "AAAAAAGG47Sp2hG0HJQ="
+									}
+								},
+								{
+									"_type": "FCFlowView",
+									"_id": "AAAAAAGG47ULKhHA1qo=",
+									"_parent": {
+										"$ref": "AAAAAAGG45D5Sw9tiUU="
+									},
+									"model": {
+										"$ref": "AAAAAAGG47ULKhG+N0A="
+									},
+									"subViews": [
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAGG47ULKhHBJRI=",
+											"_parent": {
+												"$ref": "AAAAAAGG47ULKhHA1qo="
+											},
+											"model": {
+												"$ref": "AAAAAAGG47ULKhG+N0A="
+											},
+											"font": "Arial;13;0",
+											"left": 447,
+											"top": 655,
+											"width": 27.4599609375,
+											"height": 13,
+											"alpha": -1.5427924011283876,
+											"distance": 357.14002856022734,
+											"hostEdge": {
+												"$ref": "AAAAAAGG47ULKhHA1qo="
+											},
+											"edgePosition": 1,
+											"text": "false"
+										}
+									],
+									"font": "Arial;13;0",
+									"head": {
+										"$ref": "AAAAAAGG47DdmhFkwrE="
+									},
+									"tail": {
+										"$ref": "AAAAAAGG47N1kRGXShg="
+									},
+									"lineStyle": 2,
+									"points": "488:672;104:672;104:448",
+									"nameLabel": {
+										"$ref": "AAAAAAGG47ULKhHBJRI="
 									}
 								}
 							]
@@ -18224,6 +19564,389 @@
 								"$ref": "AAAAAAGGFO+A2wPo5Mw="
 							},
 							"name": "ゲーム終了"
+						},
+						{
+							"_type": "FCProcess",
+							"_id": "AAAAAAGG454m6RAbjSY=",
+							"_parent": {
+								"$ref": "AAAAAAGGFO+A2wPo5Mw="
+							},
+							"name": "バトルシーンを選択する",
+							"ownedElements": [
+								{
+									"_type": "FCFlow",
+									"_id": "AAAAAAGG46E+ahBUH34=",
+									"_parent": {
+										"$ref": "AAAAAAGG454m6RAbjSY="
+									},
+									"source": {
+										"$ref": "AAAAAAGG454m6RAbjSY="
+									},
+									"target": {
+										"$ref": "AAAAAAGG459XshAnM8M="
+									}
+								}
+							]
+						},
+						{
+							"_type": "FCProcess",
+							"_id": "AAAAAAGG459XshAnM8M=",
+							"_parent": {
+								"$ref": "AAAAAAGGFO+A2wPo5Mw="
+							},
+							"name": "BattleSceneクラス生成",
+							"ownedElements": [
+								{
+									"_type": "FCFlow",
+									"_id": "AAAAAAGG46FQARBdQz8=",
+									"_parent": {
+										"$ref": "AAAAAAGG459XshAnM8M="
+									},
+									"source": {
+										"$ref": "AAAAAAGG459XshAnM8M="
+									},
+									"target": {
+										"$ref": "AAAAAAGG46AW2RAxBc8="
+									}
+								}
+							]
+						},
+						{
+							"_type": "FCProcess",
+							"_id": "AAAAAAGG46AW2RAxBc8=",
+							"_parent": {
+								"$ref": "AAAAAAGGFO+A2wPo5Mw="
+							},
+							"name": "対戦するモンスター取得",
+							"ownedElements": [
+								{
+									"_type": "FCFlow",
+									"_id": "AAAAAAGG46FhWhBmIvI=",
+									"_parent": {
+										"$ref": "AAAAAAGG46AW2RAxBc8="
+									},
+									"source": {
+										"$ref": "AAAAAAGG46AW2RAxBc8="
+									},
+									"target": {
+										"$ref": "AAAAAAGG46DUcRBF210="
+									}
+								}
+							]
+						},
+						{
+							"_type": "FCProcess",
+							"_id": "AAAAAAGG46BssRA6ngE=",
+							"_parent": {
+								"$ref": "AAAAAAGGFO+A2wPo5Mw="
+							},
+							"name": "モンスターのセリフ表示",
+							"ownedElements": [
+								{
+									"_type": "FCFlow",
+									"_id": "AAAAAAGG463gaRDXiyM=",
+									"_parent": {
+										"$ref": "AAAAAAGG46BssRA6ngE="
+									},
+									"source": {
+										"$ref": "AAAAAAGG46BssRA6ngE="
+									},
+									"target": {
+										"$ref": "AAAAAAGG46JpaRCRWO4="
+									}
+								}
+							]
+						},
+						{
+							"_type": "FCDecision",
+							"_id": "AAAAAAGG46DUcRBF210=",
+							"_parent": {
+								"$ref": "AAAAAAGGFO+A2wPo5Mw="
+							},
+							"name": "モンスターが話すフラグ",
+							"ownedElements": [
+								{
+									"_type": "FCFlow",
+									"_id": "AAAAAAGG46FyYRBvu+8=",
+									"_parent": {
+										"$ref": "AAAAAAGG46DUcRBF210="
+									},
+									"name": "true",
+									"source": {
+										"$ref": "AAAAAAGG46DUcRBF210="
+									},
+									"target": {
+										"$ref": "AAAAAAGG46BssRA6ngE="
+									}
+								},
+								{
+									"_type": "FCFlow",
+									"_id": "AAAAAAGG46HsiBCEwhY=",
+									"_parent": {
+										"$ref": "AAAAAAGG46DUcRBF210="
+									},
+									"name": "false",
+									"source": {
+										"$ref": "AAAAAAGG46DUcRBF210="
+									},
+									"target": {
+										"$ref": "AAAAAAGG46GrWhB6GjI="
+									}
+								}
+							]
+						},
+						{
+							"_type": "FCProcess",
+							"_id": "AAAAAAGG46GrWhB6GjI=",
+							"_parent": {
+								"$ref": "AAAAAAGGFO+A2wPo5Mw="
+							},
+							"name": "バトルシーン開始"
+						},
+						{
+							"_type": "FCProcess",
+							"_id": "AAAAAAGG46JpaRCRWO4=",
+							"_parent": {
+								"$ref": "AAAAAAGGFO+A2wPo5Mw="
+							},
+							"name": "プレーヤーの攻撃",
+							"ownedElements": [
+								{
+									"_type": "FCFlow",
+									"_id": "AAAAAAGG465NYhDvfaY=",
+									"_parent": {
+										"$ref": "AAAAAAGG46JpaRCRWO4="
+									},
+									"source": {
+										"$ref": "AAAAAAGG46JpaRCRWO4="
+									},
+									"target": {
+										"$ref": "AAAAAAGG46L+CRCcHGs="
+									}
+								}
+							]
+						},
+						{
+							"_type": "FCProcess",
+							"_id": "AAAAAAGG46L+CRCcHGs=",
+							"_parent": {
+								"$ref": "AAAAAAGGFO+A2wPo5Mw="
+							},
+							"name": "CommandAction生成",
+							"ownedElements": [
+								{
+									"_type": "FCFlow",
+									"_id": "AAAAAAGG465wyhD5kqA=",
+									"_parent": {
+										"$ref": "AAAAAAGG46L+CRCcHGs="
+									},
+									"source": {
+										"$ref": "AAAAAAGG46L+CRCcHGs="
+									},
+									"target": {
+										"$ref": "AAAAAAGG46V6WxCxk4s="
+									}
+								}
+							]
+						},
+						{
+							"_type": "FCProcess",
+							"_id": "AAAAAAGG46V6WxCxk4s=",
+							"_parent": {
+								"$ref": "AAAAAAGGFO+A2wPo5Mw="
+							},
+							"name": "Commandから計算式と対象パラメータ取得",
+							"ownedElements": [
+								{
+									"_type": "FCFlow",
+									"_id": "AAAAAAGG466A4xECJgI=",
+									"_parent": {
+										"$ref": "AAAAAAGG46V6WxCxk4s="
+									},
+									"source": {
+										"$ref": "AAAAAAGG46V6WxCxk4s="
+									},
+									"target": {
+										"$ref": "AAAAAAGG46YfuhC7G+Y="
+									}
+								}
+							]
+						},
+						{
+							"_type": "FCProcess",
+							"_id": "AAAAAAGG46YfuhC7G+Y=",
+							"_parent": {
+								"$ref": "AAAAAAGGFO+A2wPo5Mw="
+							},
+							"name": "計算をパラメータ値で変換し計算",
+							"ownedElements": [
+								{
+									"_type": "FCFlow",
+									"_id": "AAAAAAGG466N6xELuUk=",
+									"_parent": {
+										"$ref": "AAAAAAGG46YfuhC7G+Y="
+									},
+									"source": {
+										"$ref": "AAAAAAGG46YfuhC7G+Y="
+									},
+									"target": {
+										"$ref": "AAAAAAGG46bAlBDEX5w="
+									}
+								}
+							]
+						},
+						{
+							"_type": "FCProcess",
+							"_id": "AAAAAAGG46bAlBDEX5w=",
+							"_parent": {
+								"$ref": "AAAAAAGGFO+A2wPo5Mw="
+							},
+							"name": "計算結果を対象のパラメータから減算",
+							"ownedElements": [
+								{
+									"_type": "FCFlow",
+									"_id": "AAAAAAGG469OKxEzbBE=",
+									"_parent": {
+										"$ref": "AAAAAAGG46bAlBDEX5w="
+									},
+									"name": "モンスターのとき",
+									"source": {
+										"$ref": "AAAAAAGG46bAlBDEX5w="
+									},
+									"target": {
+										"$ref": "AAAAAAGG468KehEnvbk="
+									}
+								},
+								{
+									"_type": "FCFlow",
+									"_id": "AAAAAAGG47PrjxGiZN0=",
+									"_parent": {
+										"$ref": "AAAAAAGG46bAlBDEX5w="
+									},
+									"name": "プレーヤーのとき",
+									"source": {
+										"$ref": "AAAAAAGG46bAlBDEX5w="
+									},
+									"target": {
+										"$ref": "AAAAAAGG47N1kRGV0No="
+									}
+								}
+							]
+						},
+						{
+							"_type": "FCDecision",
+							"_id": "AAAAAAGG468KehEnvbk=",
+							"_parent": {
+								"$ref": "AAAAAAGGFO+A2wPo5Mw="
+							},
+							"name": "モンスターの対象パラメータが0以下の時",
+							"ownedElements": [
+								{
+									"_type": "FCFlow",
+									"_id": "AAAAAAGG47EFAxFsRbs=",
+									"_parent": {
+										"$ref": "AAAAAAGG468KehEnvbk="
+									},
+									"name": "false",
+									"source": {
+										"$ref": "AAAAAAGG468KehEnvbk="
+									},
+									"target": {
+										"$ref": "AAAAAAGG47DdmhFiBhA="
+									}
+								},
+								{
+									"_type": "FCFlow",
+									"_id": "AAAAAAGG47ICTBGKZqc=",
+									"_parent": {
+										"$ref": "AAAAAAGG468KehEnvbk="
+									},
+									"name": "ture",
+									"source": {
+										"$ref": "AAAAAAGG468KehEnvbk="
+									},
+									"target": {
+										"$ref": "AAAAAAGG46/p+hFAoLE="
+									}
+								}
+							]
+						},
+						{
+							"_type": "FCProcess",
+							"_id": "AAAAAAGG46/p+hFAoLE=",
+							"_parent": {
+								"$ref": "AAAAAAGGFO+A2wPo5Mw="
+							},
+							"name": "プレーヤーの勝利、次のシーンへ"
+						},
+						{
+							"_type": "FCProcess",
+							"_id": "AAAAAAGG47BSiRFKhMo=",
+							"_parent": {
+								"$ref": "AAAAAAGGFO+A2wPo5Mw="
+							},
+							"name": "GAME OVER"
+						},
+						{
+							"_type": "FCProcess",
+							"_id": "AAAAAAGG47DdmhFiBhA=",
+							"_parent": {
+								"$ref": "AAAAAAGGFO+A2wPo5Mw="
+							},
+							"name": "モンスターの攻撃",
+							"ownedElements": [
+								{
+									"_type": "FCFlow",
+									"_id": "AAAAAAGG47FiERF5tCw=",
+									"_parent": {
+										"$ref": "AAAAAAGG47DdmhFiBhA="
+									},
+									"source": {
+										"$ref": "AAAAAAGG47DdmhFiBhA="
+									},
+									"target": {
+										"$ref": "AAAAAAGG46L+CRCcHGs="
+									}
+								}
+							]
+						},
+						{
+							"_type": "FCDecision",
+							"_id": "AAAAAAGG47N1kRGV0No=",
+							"_parent": {
+								"$ref": "AAAAAAGGFO+A2wPo5Mw="
+							},
+							"name": "プレーヤーの対象パラメータが0以下の時",
+							"ownedElements": [
+								{
+									"_type": "FCFlow",
+									"_id": "AAAAAAGG47Sp2hGxpbE=",
+									"_parent": {
+										"$ref": "AAAAAAGG47N1kRGV0No="
+									},
+									"name": "true",
+									"source": {
+										"$ref": "AAAAAAGG47N1kRGV0No="
+									},
+									"target": {
+										"$ref": "AAAAAAGG47BSiRFKhMo="
+									}
+								},
+								{
+									"_type": "FCFlow",
+									"_id": "AAAAAAGG47ULKhG+N0A=",
+									"_parent": {
+										"$ref": "AAAAAAGG47N1kRGV0No="
+									},
+									"name": "false",
+									"source": {
+										"$ref": "AAAAAAGG47N1kRGV0No="
+									},
+									"target": {
+										"$ref": "AAAAAAGG47DdmhFiBhA="
+									}
+								}
+							]
 						}
 					]
 				},

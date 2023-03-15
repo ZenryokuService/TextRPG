@@ -1,11 +1,13 @@
 package jp.zenryoku.rpg.views;
 
+import jp.zenryoku.rpg.action.BattleScene;
 import jp.zenryoku.rpg.action.SelectMenu;
+import jp.zenryoku.rpg.action.CommandAction;
 import jp.zenryoku.rpg.exception.RpgException;
 import jp.zenryoku.rpg.RpgTextArea;
 import jp.zenryoku.rpg.TextRPGMain;
-import jp.zenryoku.rpg.data.config.Select;
-import jp.zenryoku.rpg.data.config.Scene;
+import jp.zenryoku.rpg.data.config.*;
+import jp.zenryoku.rpg.character.*;
 import javax.swing.JFrame;
 import javax.swing.JPopupMenu;
 import javax.swing.JMenuItem;
@@ -43,6 +45,27 @@ public class InputSelector extends JPopupMenu
 
         for(String sel : selects) {
             SelectMenu act = new SelectMenu(sel);
+            JMenuItem menu = new JMenuItem(act);
+            add(menu);
+            addSeparator();
+        }
+    }
+    
+    /**
+     * バトルシーン用の
+     * 選択肢のポップアップを作成する。
+     * @param commands 配列の要素一つが選択肢一つに当たる
+     */
+    public InputSelector(Player player, Monster monster
+            , TextRPGMain main, BattleScene battle)  throws RpgException {
+        super();
+        addSeparator();
+        this.main = main;
+
+        List<Command> commands = player.getJob().getCommandList();
+        for(Command com: commands) {
+            //System.out.println("*** Testing [" + com.getName() + "]");
+            CommandAction act = new CommandAction(com, player, monster, main, battle);
             JMenuItem menu = new JMenuItem(act);
             add(menu);
             addSeparator();

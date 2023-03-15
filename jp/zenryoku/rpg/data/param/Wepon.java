@@ -9,10 +9,8 @@ import jp.zenryoku.rpg.data.Formula;
  * @version (1.0)
  */
 @Data
-public class Wepon
+public class Wepon extends Item
 {
-    /** 武器の名前 */
-    private String name;
     /** 武器の攻撃力 */
     private int value;
     /** 武器の特殊能力 */
