@@ -12,10 +12,12 @@ import jp.zenryoku.rpg.data.Formula;
 @Data
 public class Item
 {
+    /** ID */
+    protected String id;
     /** 名前 */
-    private String name;
+    protected String name;
     /** 効果式 */
-    private Formula formula;
+    protected Formula formula;
 
     public Item() {
     }

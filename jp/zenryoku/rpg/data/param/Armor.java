@@ -9,10 +9,8 @@ import jp.zenryoku.rpg.data.Formula;
  * @version (バージョン番号もしくは日付)
  */
 @Data
-public class Armor
+public class Armor extends Item
 {
-    /** 防具の名前 */
-    private String name;
     /** 防具の攻撃力 */
     private int value;
     /** 防具の特殊能力 */

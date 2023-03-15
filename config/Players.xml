@@ -61,19 +61,77 @@
                     <value>1</value>
                 </value>
             </entry>
+            <entry>
+                <key>WEV</key>
+                <value>
+                    <key>WEV</key>
+                    <name>武器攻撃力</name>
+                    <value>2</value>
+                </value>
+            </entry>
+            <entry>
+                <key>ARV</key>
+                <value>
+                    <key>ARV</key>
+                    <name>防具防御力</name>
+                    <value>1</value>
+                </value>
+            </entry>
         </status>
         <items>
-            <formula/>
+            <formula>
+                <formulaStr>HP + 10</formulaStr>
+            </formula>
             <name>やくそう</name>
         </items>
         <items>
-            <formula/>
+            <formula>
+                <formulaStr>HP - 10</formulaStr>
+            </formula>
             <name>どくそう</name>
         </items>
         <items>
-            <formula/>
+            <formula>
+                <formulaStr>POW + 1</formulaStr>
+            </formula>
             <name>プロテイン</name>
         </items>
+        <job>
+            <description>ゆうきあるもの</description>
+            <id>BRV</id>
+            <name>ゆうしゃ</name>
+            <commandList>
+                <formula>
+                    <formulaStr>ATK + 3</formulaStr>
+                    <target>HP</target>
+                </formula>
+                <id>BST</id>
+                <name>大こうげき</name>
+            </commandList>
+            <commandList>
+                <formula>
+                    <formulaStr>HP + 3</formulaStr>
+                    <target>HP</target>
+                </formula>
+                <id>INR</id>
+                <name>いのり</name>
+            </commandList>
+            <paramList>
+                <key>POW</key>
+                <name>ちから</name>
+                <value>100</value>
+            </paramList>
+            <paramList>
+                <key>AGI</key>
+                <name>すばやさ</name>
+                <value>120</value>
+            </paramList>
+            <paramList>
+                <key>INT</key>
+                <name>かしこさ</name>
+                <value>60</value>
+            </paramList>
+        </job>
         <state>
             <key>Normal</key>
         </state>
@@ -149,17 +207,75 @@
                     <value>1</value>
                 </value>
             </entry>
+            <entry>
+                <key>WEV</key>
+                <value>
+                    <key>WEV</key>
+                    <name>武器攻撃力</name>
+                    <value>2</value>
+                </value>
+            </entry>
+            <entry>
+                <key>ARV</key>
+                <value>
+                    <key>ARV</key>
+                    <name>防具防御力</name>
+                    <value>1</value>
+                </value>
+            </entry>
         </status>
+        <job>
+            <description>ゆうきあるもの</description>
+            <id>BRV</id>
+            <name>ゆうしゃ</name>
+            <commandList>
+                <formula>
+                    <formulaStr>ATK + 3</formulaStr>
+                    <target>HP</target>
+                </formula>
+                <id>BST</id>
+                <name>大こうげき</name>
+            </commandList>
+            <commandList>
+                <formula>
+                    <formulaStr>HP + 3</formulaStr>
+                    <target>HP</target>
+                </formula>
+                <id>INR</id>
+                <name>いのり</name>
+            </commandList>
+            <paramList>
+                <key>POW</key>
+                <name>ちから</name>
+                <value>100</value>
+            </paramList>
+            <paramList>
+                <key>AGI</key>
+                <name>すばやさ</name>
+                <value>120</value>
+            </paramList>
+            <paramList>
+                <key>INT</key>
+                <name>かしこさ</name>
+                <value>60</value>
+            </paramList>
+        </job>
         <items>
-            <formula/>
+            <formula>
+                <formulaStr>HP + 10</formulaStr>
+            </formula>
             <name>やくそう</name>
         </items>
         <items>
-            <formula/>
+            <formula>
+                <formulaStr>HP - 10</formulaStr>
+            </formula>
             <name>どくそう</name>
         </items>
         <items>
-            <formula/>
+            <formula>
+                <formulaStr>POW + 1</formulaStr>
+            </formula>
             <name>プロテイン</name>
         </items>
         <state>
@@ -237,29 +353,93 @@
                     <value>1</value>
                 </value>
             </entry>
+            <entry>
+                <key>WEV</key>
+                <value>
+                    <key>WEV</key>
+                    <name>武器攻撃力</name>
+                    <value>2</value>
+                </value>
+            </entry>
+            <entry>
+                <key>ARV</key>
+                <value>
+                    <key>ARV</key>
+                    <name>防具防御力</name>
+                    <value>1</value>
+                </value>
+            </entry>
         </status>
+        <job>
+            <description>ゆうきあるもの</description>
+            <id>BRV</id>
+            <name>ゆうしゃ</name>
+            <commandList>
+                <formula>
+                    <formulaStr>ATK + 3</formulaStr>
+                    <target>HP</target>
+                </formula>
+                <id>BST</id>
+                <name>大こうげき</name>
+            </commandList>
+            <commandList>
+                <formula>
+                    <formulaStr>HP + 3</formulaStr>
+                    <target>HP</target>
+                </formula>
+                <id>INR</id>
+                <name>いのり</name>
+            </commandList>
+            <paramList>
+                <key>POW</key>
+                <name>ちから</name>
+                <value>100</value>
+            </paramList>
+            <paramList>
+                <key>AGI</key>
+                <name>すばやさ</name>
+                <value>120</value>
+            </paramList>
+            <paramList>
+                <key>INT</key>
+                <name>かしこさ</name>
+                <value>60</value>
+            </paramList>
+        </job>
         <items>
-            <formula/>
+            <formula>
+                <formulaStr>HP + 10</formulaStr>
+            </formula>
             <name>やくそう</name>
         </items>
         <items>
-            <formula/>
+            <formula>
+                <formulaStr>HP - 10</formulaStr>
+            </formula>
             <name>どくそう</name>
         </items>
         <items>
-            <formula/>
+            <formula>
+                <formulaStr>POW + 1</formulaStr>
+            </formula>
             <name>プロテイン</name>
         </items>
         <state>
             <key>Normal</key>
         </state>
         <wepon>
-            <formula/>
+            <formula>
+            	<id>WEV</id>
+                <formulaStr></formulaStr>
+            </formula>
             <name>どうのつるぎ</name>
             <value>12</value>
         </wepon>
         <armor>
-            <formula/>
+            <formula>
+            	<id>ARV</id>
+                <formulaStr></formulaStr>
+            </formula>
             <name>どうのよろい</name>
             <value>7</value>
         </armor>

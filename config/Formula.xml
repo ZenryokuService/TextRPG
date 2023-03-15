@@ -4,6 +4,12 @@
         <!-- 攻撃のID -->
         <id>ATK</id>
         <!-- ATK攻撃の式 -->
-        <f>POW + WEP</f>
+        <formulaStr>POW + WEV</formulaStr>
+    </formula>
+    <formula>
+        <!-- 攻撃のID -->
+        <id>DEF</id>
+        <!-- 防御の式 -->
+        <formulaStr>POW + ARV</formulaStr>
     </formula>
 </class>

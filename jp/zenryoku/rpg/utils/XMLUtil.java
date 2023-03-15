@@ -36,7 +36,7 @@ import java.lang.reflect.Field;
  */
 public class XMLUtil
 {
-    private static final boolean isDebug = true;
+    private static final boolean isDebug = false;
     private static final String SEP = System.lineSeparator();
     private static final String SPACER = "                          ";
 
@@ -652,6 +652,29 @@ public class XMLUtil
             System.exit(-1);
         }
         return build.toString();
+    }
+
+    public static Map<String, Formula> loadFormulas(String directory, String fileName) throws RpgException {
+        Path path = Paths.get(directory, fileName);
+        Formulas formulas = null;
+
+        try {
+            formulas = JAXB.unmarshal(path.toFile(), Formulas.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
+        List<Formula> list = formulas.getFormulas();
+        
+        Map<String, Formula> map = new HashMap<>();
+        for (Formula f : list) {
+            if ("".equals(f.getFormulaStr()) || f.getFormulaStr() == null) {
+                throw new RpgException("効果式がありません");
+            }
+            if (isDebug) System.out.println("ID: " + f.getId() + " Str: " + f.getFormulaStr());
+            map.put(f.getId(), f);
+        }
+        return map;
     }
     
     public static Config loadConfig(String directory, String fileName) {

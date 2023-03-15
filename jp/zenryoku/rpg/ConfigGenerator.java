@@ -17,6 +17,7 @@ import java.nio.file.Path;
 
 
 import jp.zenryoku.rpg.data.config.*;
+import jp.zenryoku.rpg.data.*;
 import jp.zenryoku.rpg.exception.RpgException;
 
 /**
@@ -43,6 +44,8 @@ public class ConfigGenerator
     private Map<String, Player> players;
     /** モンスターマップ */
     private Map<Integer, Monster> monsters;
+    /** Formulaマップ */
+    private Map<String, Formula> formulas;
     
     /** コンストラクタ */
     private ConfigGenerator() throws RpgException {
@@ -57,6 +60,8 @@ public class ConfigGenerator
         players = loadPlayers("config", "Players.xml");
         // モンスターの生成
         monsters = loadMonsters("config", "Monsters.xml");
+        // 計算式
+        formulas = XMLUtil.loadFormulas("config", "Formula.xml");
         
     }
     

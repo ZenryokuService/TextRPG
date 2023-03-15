@@ -54,6 +54,22 @@
                     <value>1</value>
                 </value>
             </entry>
+            <entry>
+                <key>WEV</key>
+                <value>
+                    <key>WEV</key>
+                    <name>武器攻撃力</name>
+                    <value>2</value>
+                </value>
+            </entry>
+            <entry>
+                <key>ARV</key>
+                <value>
+                    <key>ARV</key>
+                    <name>防具防御力</name>
+                    <value>1</value>
+                </value>
+            </entry>
         </status>
         <items>
             <formula/>
@@ -86,12 +102,18 @@
             <id>SLM</id>
             <name>スライム</name>
             <commandList>
-                <formula/>
+                <formula>
+                    <formulaStr>ATK + 3</formulaStr>
+                    <target>HP</target>
+                </formula>
                 <id>BST</id>
                 <name>大こうげき</name>
             </commandList>
             <commandList>
-                <formula/>
+                <formula>
+                    <formulaStr>HP + 3</formulaStr>
+                    <target>HP</target>
+                </formula>
                 <id>INR</id>
                 <name>いのり</name>
             </commandList>

@@ -13,4 +13,11 @@
   <path></path>
   <monsterNoLow>1</monsterNoLow>
   <monsterNoHigh>1</monsterNoHigh>
-</story>
+    <selects>
+    <mongon>たたかう</mongon>
+    <nextScene>4</nextScene>
+  </selects>
+  <selects>
+    <mongon>にげる</mongon>
+    <nextScene>4</nextScene>
+  </selects></story>
