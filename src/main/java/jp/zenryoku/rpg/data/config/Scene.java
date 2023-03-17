@@ -1,10 +1,10 @@
 package jp.zenryoku.rpg.data.config;
 
+import jp.zenryoku.rpg.data.SceneType;
 import lombok.Data;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import java.util.List;
-import jp.zenryoku.rpg.data.SceneType;
 
 /**
  * クラス Scene の注釈をここに書きます.

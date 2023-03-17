@@ -1,6 +1,8 @@
 package jp.zenryoku.rpg;
 
-import lombok.Data;
+import jp.zenryoku.rpg.data.Formula;
+import jp.zenryoku.rpg.data.config.Config;
+import jp.zenryoku.rpg.data.config.Scene;
 import lombok.Data;
 import jp.zenryoku.rpg.data.config.Worlds;
 import jp.zenryoku.rpg.character.*;
@@ -9,15 +11,11 @@ import jp.zenryoku.rpg.utils.XMLUtil;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
-import java.util.ArrayList;
 import java.util.Random;
 import java.io.File;
 import java.nio.file.Paths;
-import java.nio.file.Path;
 
 
-import jp.zenryoku.rpg.data.config.*;
-import jp.zenryoku.rpg.data.*;
 import jp.zenryoku.rpg.exception.RpgException;
 
 /**
@@ -117,14 +115,23 @@ public class ConfigLoader {
     }
 
     public Monster callMonster(int low, int hight) {
-        System.out.println("low: " + low + " high: " + hight);
+        if (isDebug) System.out.println("low: " + low + " high: " + hight);
         Random rnd = new Random();
         int monsterNo = rnd.nextInt(hight) + low;
-        System.out.print("No: " + monsterNo);
-
+        if (isDebug) System.out.print("No: " + monsterNo);
+        monsterNo = 0;
         Monster mst = monsters.get(monsterNo);
-        System.out.println("　" + mst.getName());
-        return mst.clone();
+        if (isDebug) System.out.println("　" + mst.getName());
+        Monster newMonster = null;
+        if (isDebug) System.out.println("インスタンスID;1  " + mst.getStatus().hashCode());
+        try {
+            newMonster =  mst.clone();
+            if (isDebug) System.out.println("インスタンスID;2  " + newMonster.getStatus().hashCode());
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
+        return newMonster;
     }
 
 }

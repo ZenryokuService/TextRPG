@@ -10,7 +10,7 @@ import lombok.Data;
  * @version (1.0)
  */
 @Data
-public class Params
+public class Params implements Cloneable
 {
     /** キー、項目の取得に使用する */
     private String key;
@@ -36,5 +36,9 @@ public class Params
         setName(name);
         setValue(value);
         setDescription(description);
+    }
+
+    public Params clone() {
+        return new Params(key, name, value, description);
     }
 }

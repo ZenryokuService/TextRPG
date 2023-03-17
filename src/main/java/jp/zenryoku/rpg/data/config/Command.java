@@ -1,9 +1,6 @@
 package jp.zenryoku.rpg.data.config;
 
-import lombok.Data;
-import jp.zenryoku.rpg.data.*;
-
-import javax.swing.*;
+import jp.zenryoku.rpg.data.Formula;
 
 public class Command implements ConfigIF {
     private String id;

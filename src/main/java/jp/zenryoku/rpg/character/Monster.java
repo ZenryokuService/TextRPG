@@ -1,14 +1,16 @@
 package jp.zenryoku.rpg.character;
 
+import jp.zenryoku.rpg.data.config.MonsterType;
+import jp.zenryoku.rpg.data.param.Item;
+import jp.zenryoku.rpg.data.param.Params;
 import lombok.Data;
-import lombok.Builder;
+
+import java.io.Serializable;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
-import jp.zenryoku.rpg.character.*;
-import jp.zenryoku.rpg.data.config.*;
-import jp.zenryoku.rpg.data.param.*;
+
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -21,7 +23,7 @@ import javax.xml.bind.annotation.XmlType;
 @Data
 @XmlRootElement( name="monster")
 @XmlType(propOrder={"no", "talk", "message", "type", "money", "exp"})
-public class Monster extends Player implements Cloneable
+public class Monster extends Player implements Cloneable, Serializable
 {
     /** 番号 */
     private int no;
@@ -52,6 +54,9 @@ public class Monster extends Player implements Cloneable
         mon.setLevel(level);
         mon.setSex(sex);
         Map<String, Params> stMap = new HashMap<>();
+        status.forEach((key, val) -> {
+            stMap.put(key, val.clone());
+        });
         stMap.putAll(status);
         mon.setStatus(stMap);
         List<Item> it = new ArrayList<>();
@@ -66,11 +71,16 @@ public class Monster extends Player implements Cloneable
         mon.setType(type);
         mon.setMoney(money);
         mon.setExp(exp);
+
+        mon.reset();
         return mon;
     }
-    
+    public void reset() {
+        status.get("HP").setValue(status.get("MHP").getValue());
+        status.get("MP").setValue(status.get("MMP").getValue());
+    }
+
     public void finalize() {
-        //super.finalize();
         level = 0;
         sex = null;
         status.clear();

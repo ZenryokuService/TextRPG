@@ -1,7 +1,6 @@
 package jp.zenryoku.rpg.character;
 
 import lombok.Data;
-import lombok.Builder;
 import net.objecthunter.exp4j.ExpressionBuilder;
 import java.util.Set;
 import java.util.Map;
@@ -83,7 +82,6 @@ public class Player implements Cloneable
     public Params getParams(String key) {
         return status.get(key);
     }
-    
     public Player clone() {
         Player player = new Player(name);
         player.setLevel(level);

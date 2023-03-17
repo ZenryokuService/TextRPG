@@ -14,11 +14,7 @@
   <monsterNoLow>0</monsterNoLow>
   <monsterNoHigh>3</monsterNoHigh>
     <selects>
-    <mongon>たたかう</mongon>
-    <nextScene>4</nextScene>
-  </selects>
-  <selects>
-    <mongon>にげる</mongon>
+    <mongon>すすむ</mongon>
     <nextScene>4</nextScene>
   </selects>
 </story>

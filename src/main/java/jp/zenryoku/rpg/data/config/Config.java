@@ -1,11 +1,13 @@
 package jp.zenryoku.rpg.data.config;
 
+import jp.zenryoku.rpg.data.param.Params;
+import jp.zenryoku.rpg.data.param.State;
 import lombok.Data;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 import java.util.List;
-import jp.zenryoku.rpg.data.param.*;
+
 /**
  * クラス Config の注釈をここに書きます.
  * 

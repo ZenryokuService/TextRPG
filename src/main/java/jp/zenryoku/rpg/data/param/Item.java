@@ -1,7 +1,6 @@
 package jp.zenryoku.rpg.data.param;
 
 import lombok.Data;
-import java.util.List;
 import jp.zenryoku.rpg.data.Formula;
 /**
  * クラス Item の注釈をここに書きます.

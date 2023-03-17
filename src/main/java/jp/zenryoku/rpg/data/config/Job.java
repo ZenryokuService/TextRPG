@@ -1,8 +1,8 @@
 package jp.zenryoku.rpg.data.config;
 
+import jp.zenryoku.rpg.data.param.Params;
 import lombok.Data;
 import java.util.List;
-import jp.zenryoku.rpg.data.param.*;
 
 @Data
 public class Job extends StoryConfig {

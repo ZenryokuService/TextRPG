@@ -1,5 +1,10 @@
 package jp.zenryoku.rpg.utils;
 
+import jp.zenryoku.rpg.data.Formula;
+import jp.zenryoku.rpg.data.Formulas;
+import jp.zenryoku.rpg.data.SceneType;
+import jp.zenryoku.rpg.data.config.*;
+import jp.zenryoku.rpg.data.param.*;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
@@ -7,24 +12,17 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.bind.*;
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
-import java.io.FileNotFoundException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.Files;
 import java.util.*;
-import java.beans.XMLDecoder;
-import jp.zenryoku.rpg.exception.RpgException;
-import jp.zenryoku.rpg.data.config.*;
-import jp.zenryoku.rpg.data.param.*;
-import jp.zenryoku.rpg.data.*;
-import jp.zenryoku.rpg.character.*;
 
-import java.lang.reflect.Field;
+import jp.zenryoku.rpg.exception.RpgException;
+import jp.zenryoku.rpg.character.*;
 
 
 /**
@@ -42,39 +40,6 @@ public class XMLUtil
 
     private static void printData(String title, String tagName, String tagVlue) {
         System.out.println(title + " TagName: " + tagName + " TagValue: " + tagVlue);
-    }
-
-    /**
-     * XMLドキュメント(ファイル)を読み込む。
-     * @param directory ファイルの配置しているディレクトリ
-     * @param fileName ファイル名
-     * @return Documentオブジェクト
-     * @throws RpgException ファイルの読み込みエラー
-     */
-    private static Document loadDocumentBuilder(String directory, String fileName) throws RpgException {
-        //creating a constructor of file class and parsing an XML files
-        Path path = Paths.get(directory, fileName);
-        File file = path.toFile();// ("/Monster.xml");
-        //an instance of factory that gives a document builder
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        //an instance of builder to parse the specified xml file
-        DocumentBuilder db = null;
-        Document doc = null;
-        try {
-            db = dbf.newDocumentBuilder();
-            doc = db.parse(file);
-            doc.getDocumentElement().normalize();
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-            throw new RpgException("パーサー設定" + ": " + e.getMessage());
-        } catch (SAXException e) {
-            e.printStackTrace();
-            throw new RpgException("MessageConst.ERR_XML_PERSE"+ ": " + e.getMessage());
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw new RpgException("MessageConst.ERR_IOEXCEPTION" + ": " + e.getMessage());
-        }
-        return doc;
     }
 
     private static boolean isEmpty(String str) {

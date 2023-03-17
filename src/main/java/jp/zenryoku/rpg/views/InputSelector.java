@@ -6,12 +6,14 @@ import jp.zenryoku.rpg.action.CommandMenu;
 import jp.zenryoku.rpg.action.SelectMenu;
 import jp.zenryoku.rpg.character.Monster;
 import jp.zenryoku.rpg.character.Player;
-import jp.zenryoku.rpg.data.SceneType;
+import jp.zenryoku.rpg.data.Formula;
+import jp.zenryoku.rpg.data.config.Command;
+import jp.zenryoku.rpg.data.config.Scene;
+import jp.zenryoku.rpg.data.config.Select;
 import jp.zenryoku.rpg.exception.RpgException;
 import jp.zenryoku.rpg.RpgTextArea;
-import jp.zenryoku.rpg.data.config.*;
-import javax.swing.JPopupMenu;
-import javax.swing.JMenuItem;
+
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -38,7 +40,9 @@ public class InputSelector extends JPopupMenu implements ActionListener
     /** モンスター */
     private Monster monster;
     /** 戦闘フラグ */
-    boolean isBattle;
+    private boolean isBattle;
+    /** 一時退避用のシーン */
+    private Scene nextScene;
 
     /**
      * Storyクラスから必要な情報を取得して
@@ -107,8 +111,8 @@ public class InputSelector extends JPopupMenu implements ActionListener
             case BATTLE:
                 int low = nextScene.getMonsterNoLow();
                 int high = nextScene.getMonsterNoHigh();
-                int rnd = new Random().nextInt(high) + low;
-                monster = ConfigLoader.getInstance().getMonsters().get(rnd);
+                monster = ConfigLoader.getInstance().callMonster(low, high);
+                System.out.println("インスタンスID;3  " + monster.hashCode());
                 isBattle = true;
                 break;
             case SHOP:
@@ -143,12 +147,13 @@ public class InputSelector extends JPopupMenu implements ActionListener
         this.setVisible(false);
 
         // TODO-[バトルシーンを選択したときにコマンドメニューは取得していない]
-        if ( menuItem instanceof SelectMenu) {
+        if (isBattle == false) {
             selectItem = (SelectMenu) event.getSource();
             selectProcess(selectItem);
-        } else if (menuItem instanceof CommandMenu) {
+        } else {
+            System.out.println("*** Testing ***");
             cmdItem = (CommandMenu) event.getSource();
-            //commandProcess(cmdItem);
+            battleSceneProcess(cmdItem.getCommand());
         }
     }
 
@@ -168,6 +173,7 @@ public class InputSelector extends JPopupMenu implements ActionListener
                 openSelectMenu(nextScene);
             } else {
                 System.out.println("Battle");
+                this.nextScene  = nextScene;
                 preCommandProcess();
             }
             openMenuWindow();
@@ -193,6 +199,10 @@ public class InputSelector extends JPopupMenu implements ActionListener
         if (this.monster == null) {
             throw new RpgException("モンスターがインスタンス化されていません。");
         }
+        presetCommandMenu();
+    }
+
+    private void presetCommandMenu() {
         List<Command> cmdList = player.getJob().getCommandList();
         for (Command cmd : cmdList) {
             CommandMenu menu = new CommandMenu(cmd);
@@ -201,11 +211,54 @@ public class InputSelector extends JPopupMenu implements ActionListener
             addSeparator();
         }
     }
-
     private void openMenuWindow() {
         Dimension windowSize = main.displaySise();
         int xPos = (int) windowSize.getWidth() / 4;
         int yPos = (int) windowSize.getHeight() / 5;
         show(main, xPos - 30, yPos + 220);
+    }
+
+    private void battleSceneProcess(Command cmd) {
+        String tmp = textArea.getText();
+
+        textArea.setText(tmp + SEP + player.getName() + "の" + cmd.getName() + "!");
+        Formula f = cmd.getFormula();
+
+        try {
+            int damage = player.attack(f, monster);
+            textArea.setText(textArea.getText() + SEP + player.getName() + "は"
+                    + monster.getName() + "に" + damage + "のダメージをあたえた");
+            if (monster.getParams(cmd.getFormula().getTarget()).getValue() <= 0) {
+                textArea.setText(textArea.getText() + SEP + player.getName() + "は"
+                        + monster.getName() + "をたおした。");
+                isBattle = false;
+                monster.finalize();
+                monster = null;
+                System.out.println("インスタンスID4; " + monster);
+                System.gc();
+                // 次のシーンへ移動
+                openSelectMenu(this.nextScene);
+            } else {
+                List<Command> mCmdList = monster.getType().getCommandList();
+                Command mCmd = mCmdList.get(new Random().nextInt(mCmdList.size()));
+
+                int mDamage = monster.attack(mCmd.getFormula(), player);
+                textArea.setText(textArea.getText() + SEP + player.getName() + "は"
+                        + monster.getName() + "に" + mDamage  + "のダメージをうけた");
+
+                main.setPlayer(player);
+
+                if (player.getParams(mCmd.getFormula().getTarget()).getValue() <= 0) {
+                    JOptionPane.showMessageDialog(main
+                            , player.getName() + "は力尽きた。。。"
+                            , "GAME　OVER"
+                            , JOptionPane.ERROR_MESSAGE);
+                }
+                presetCommandMenu();
+            }
+        } catch (RpgException e) {
+            e.printStackTrace();
+        }
+        openMenuWindow();
     }
 }

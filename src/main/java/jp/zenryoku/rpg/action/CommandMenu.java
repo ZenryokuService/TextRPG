@@ -2,8 +2,6 @@ package jp.zenryoku.rpg.action;
 
 import jp.zenryoku.rpg.data.config.Command;
 
-import javax.swing.*;
-
 public class CommandMenu extends SelectMenu {
 
     private Command command;
