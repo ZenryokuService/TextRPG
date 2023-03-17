@@ -6,7 +6,7 @@
     <center>false</center>
     <canSelectNextScene>true</canSelectNextScene>
   <id>Second</id>
-  <name>ゲーム開始</name>
+  <name>プレーヤー確認</name>
   <description>ゲーム開始時の画面</description>
   <story>
   「おお！なんとたくましい姿よ。」カミサマは声に出して勇者を激励しました。

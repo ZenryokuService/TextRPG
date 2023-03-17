@@ -6,7 +6,7 @@
     <center>false</center>
     <canSelectNextScene>true</canSelectNextScene>
   <id>Second</id>
-  <name>ゲーム開始</name>
+  <name>デバックシーン</name>
   <description>ゲーム開始時の画面</description>
   <story>
   まずは、各シーンタイプの実装ぢゃ！

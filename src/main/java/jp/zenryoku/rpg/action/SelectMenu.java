@@ -15,6 +15,10 @@ public class SelectMenu extends JMenuItem {
         super();
     }
 
+    public SelectMenu(String name) {
+        super(name);
+    }
+
     public SelectMenu(Select select) {
         super(select.getMongon());
         this.select = select;

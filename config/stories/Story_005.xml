@@ -6,7 +6,7 @@
     <center>true</center>
     <canSelectNextScene>false</canSelectNextScene>
   <id>Second</id>
-  <name>ゲーム開始</name>
+  <name>戦闘シーン</name>
   <description>ゲーム開始時の画面</description>
   <story>
   </story>
@@ -20,4 +20,5 @@
   <selects>
     <mongon>にげる</mongon>
     <nextScene>4</nextScene>
-  </selects></story>
+  </selects>
+</story>

@@ -27,11 +27,18 @@ import java.util.Random;
  */
 public class InputSelector extends JPopupMenu implements ActionListener
 {
+    /** 改行コード */
     private static final String SEP = System.lineSeparator();
+    /** テキストエリア、文言の表示を行う */
     private static RpgTextArea textArea;
+    /** JFrameを継承しているメインクラス */
     private static TextRpgMain main;
-    private Player play;
+    /** プレーヤー */
+    private Player player;
+    /** モンスター */
     private Monster monster;
+    /** 戦闘フラグ */
+    boolean isBattle;
 
     /**
      * Storyクラスから必要な情報を取得して
@@ -87,24 +94,15 @@ public class InputSelector extends JPopupMenu implements ActionListener
         add(act);
     }
 
-    private void openCommandMenu() {
-        List<Command> cmdList = play.getJob().getCommandList();
-        for (Command cmd : cmdList) {
-            CommandMenu menu = new CommandMenu(cmd);
-            menu.addActionListener(this);
-            add(menu);
-            addSeparator();
-        }
-    }
-    private boolean playScene(Scene nextScene, SelectMenu item) throws RpgException {
-        boolean isBattle = false;
+    private void playScene(Scene nextScene, SelectMenu item) throws RpgException {
+        isBattle = false;
         switch (nextScene.getSceneType()) {
             case PLAYER_SELECT:
                 String command = item.getActionCommand();
-                play = ConfigLoader.getInstance().getPlayers().get(command);
-                main.setPlayer(play);
+                player = ConfigLoader.getInstance().getPlayers().get(command);
+                main.setPlayer(player);
             case STORY:
-                textArea.setText(convertStory(item.getNextStory(), play));
+                textArea.setText(convertStory(item.getNextStory(), player));
                 break;
             case BATTLE:
                 int low = nextScene.getMonsterNoLow();
@@ -118,7 +116,6 @@ public class InputSelector extends JPopupMenu implements ActionListener
             case EFFECT:
                 break;
         }
-        return isBattle;
     }
 
     private String convertStory(String story, Player play) {
@@ -132,6 +129,10 @@ public class InputSelector extends JPopupMenu implements ActionListener
         return newStory;
     }
 
+    /**
+     * 表示したメニューの押下時に処理を行う。アクション用のメソッド,
+     * @param event the event to be processed
+     */
     public void actionPerformed(ActionEvent event) {
         removeAll();
         SelectMenu selectItem = null;
@@ -141,45 +142,70 @@ public class InputSelector extends JPopupMenu implements ActionListener
         // 押下したメニューを閉じる
         this.setVisible(false);
 
-        System.out.println("*** " + menuItem.getClass().getSimpleName() + " ***");
+        // TODO-[バトルシーンを選択したときにコマンドメニューは取得していない]
         if ( menuItem instanceof SelectMenu) {
             selectItem = (SelectMenu) event.getSource();
             selectProcess(selectItem);
         } else if (menuItem instanceof CommandMenu) {
             cmdItem = (CommandMenu) event.getSource();
-            commandProcess(cmdItem);
+            //commandProcess(cmdItem);
         }
     }
 
+    /**
+     * シーンタイプが、BATTLE以外の時実行する処理(Process)
+     *
+     * @param selectItem　JMenuItemの拡張クラス
+     */
     private void selectProcess(SelectMenu selectItem) {
         // 次のシーンを表示する
         try {
             Scene nextScene = ConfigLoader.getInstance().getScenes().get(selectItem.getNextSceneNo());
-            boolean isBattle = playScene(nextScene, selectItem);
-            if (isBattle) {
-                openCommandMenu();
-            } else {
+            playScene(nextScene, selectItem);
+            System.out.println("*** " + nextScene.getName() + " : " + nextScene.getSceneType() + " ***");
+            if (isBattle == false) {
+                System.out.println("Select");
                 openSelectMenu(nextScene);
+            } else {
+                System.out.println("Battle");
+                preCommandProcess();
             }
-
-            Dimension windowSize = main.displaySise();
-            int xPos = (int) windowSize.getWidth() / 4;
-            int yPos = (int) windowSize.getHeight() / 5;
-            show(main, xPos - 30, yPos + 220);
+            openMenuWindow();
         } catch (RpgException e) {
             e.printStackTrace();
         }
     }
 
-    private void commandProcess(CommandMenu commandMenu) {
-        textArea.setText("");
+    /**
+     * シーンタイプがBATTLEの時の処理(Process)
+     */
+    private void preCommandProcess() throws RpgException {
         StringBuilder build = new StringBuilder();
         build.append(monster.getName() + "があらわれた" + SEP);
         if (monster.isTalk()) {
             build.append(monster.getMessage() + SEP);
         }
-        textArea.setText(textArea.getText() + SEP + build.toString());
-        //openCommandMenu(selectItem);
+        textArea.setText(build.toString());
+        // コマンドの取得
+        if (this.player == null ) {
+            throw new RpgException("プレーヤーがインスタンス化されていません。");
+        }
+        if (this.monster == null) {
+            throw new RpgException("モンスターがインスタンス化されていません。");
+        }
+        List<Command> cmdList = player.getJob().getCommandList();
+        for (Command cmd : cmdList) {
+            CommandMenu menu = new CommandMenu(cmd);
+            menu.addActionListener(this);
+            add(menu);
+            addSeparator();
+        }
+    }
 
+    private void openMenuWindow() {
+        Dimension windowSize = main.displaySise();
+        int xPos = (int) windowSize.getWidth() / 4;
+        int yPos = (int) windowSize.getHeight() / 5;
+        show(main, xPos - 30, yPos + 220);
     }
 }
