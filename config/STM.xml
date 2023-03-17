@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!--
+    STMはスキル、テクニック、まほうの総称として作った造語、それらをこのファイルに定義する。
+    STMの設定には、データの関連付けを行う必要がある。
+    　＜魔法:MAG＞　　　＜わざ:TEC＞
+    火炎属性；fir     剣技：swd
+    水属性　：wat
+    風属性　：win
+    土属性　：ear
+    無属性　；nat
+    回復系　：rec
+-->
+<class>
+
+    <!-- まほう定義 -->
+    <mag>
+        <!-- まほうID -->
+        <id>fir1</id>
+        <!-- まほう名 -->
+        <name>かえんじゅ</name>
+        <!-- 属性 -->
+        <ori>FIR</ori>
+        <!-- 魔力コスト -->
+        <cost>-2</cost>
+        <!-- 魔法威力(パラメータ設定より -->
+        <force>3</force>
+        <!-- 使用可能職業(習得レベル) -->
+        <jobs>BRV(2), MAG(1)</jobs>
+        <!-- 説明 -->
+        <discription>初級の火炎魔法</discription>
+    </mag>
+
+    <mag>
+        <!-- まほうID -->
+        <id>rec1</id>
+        <!-- まほう名 -->
+        <name>回復</name>
+        <!-- 属性 -->
+        <ori>REC</ori>
+        <!-- 魔力コスト -->
+        <cost>-2</cost>
+        <!-- 魔法威力(パラメータ設定より -->
+        <force>KSM + INT</force>
+        <!-- 使用可能職業(習得レベル) -->
+        <jobs>BRV(2), MAG(1)</jobs>
+        <!-- 説明 -->
+        <discription>初級の回復魔法</discription>
+    </mag>
+
+    <!-- 技の定義 -->
+    <tec>
+        <!-- わざID -->
+        <id>swd1</id>
+        <!-- わざ名 -->
+        <name>ましょうめんぎり</name>
+        <!-- 技の仕様コスト -->
+        <cost>1</cost>
+        <!-- 属性(剣技など) -->
+        <ori>SWD</ori>
+        <!-- 攻撃力 -->
+        <force>WEV + POW + AGI</force>
+        <!-- 使用可能職業(習得レベル) -->
+        <jobs>BRV(1), WAR(1)</jobs>
+        <!-- 説明 -->
+        <discription>基本的な剣術の技</discription>
+    </tec>
+
+</class>

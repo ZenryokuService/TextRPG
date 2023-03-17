@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!-- 職業マップ -->
+<class>
+    <!-- 勇者 -->
+    <job>
+        <id>BRV</id>
+        <name>勇者</name>
+        <discription>勇気ある者。バランスよく剣と魔法を使える。</discription>
+        <commands>
+        	<command>ATK</command>
+        	<command>DEF</command>
+        	<command>MAG</command>
+        	<command>TEC</command>
+        </commands>
+        <!-- CONFIG_STSTUS参照のタグ名で増加値をセット -->
+        <pow>2</pow>
+        <agi>2</agi>
+        <int>2</int>
+        <dex>2</dex>
+        <ksm>2</ksm>
+    </job>
+    <!-- 戦士 -->
+    <job>
+        <id>WAR</id>
+        <name>戦士</name>
+        <discription>戦闘のスペシャリスト。</discription>
+        <commands>
+        	<command>ATK</command>
+        	<command>DEF</command>
+        	<command>TEC</command>
+        </commands>
+        <!-- CONFIG_STSTUS参照のタグ名で増加値をセット -->
+        <pow>2</pow>
+        <agi>2</agi>
+        <int>2</int>
+        <dex>2</dex>
+        <ksm>2</ksm>
+    </job>
+</class>

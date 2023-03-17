@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<story>
+    <sceneNo>3</sceneNo>
+    <sceneType>PLAYER_SELECT</sceneType>
+    <nextScene>4</nextScene>
+    <center>false</center>
+    <canSelectNextScene>true</canSelectNextScene>
+  <id>Second</id>
+  <name>ゲーム開始</name>
+  <description>ゲーム開始時の画面</description>
+  <story>
+  「おお！なんとたくましい姿よ。」カミサマは声に出して勇者を激励しました。
+  $player.nameは、これから向かう「ストリーム」のことを考えて、気持ちを引き締めるのでした。
+  </story>
+  <path></path>
+  <selects>
+    <mongon>すすむ</mongon>
+    <nextScene>4</nextScene>
+  </selects>
+</story>

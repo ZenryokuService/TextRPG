@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<!--
+　　　＜モンスター向け職業マップ＞
+ 　　.id: モンスタータイプのID
+ 　　.name: モンスタータイプの名前
+ 　　.discription: 説明
+ 　　.commadns: Command.xml1で定義しているコマンド、このモンスタータイプが使用できるコマンドのリスト
+ 　　.element: このモンスタータイプが属するエレメント(Config.xmlにて定義)
+ -->
+
+<class>
+    <!-- その他・タイプ -->
+    <monsterType>
+        <id>OTH</id>
+        <name>その他</name>
+        <discription>タイプにはまらないモンスター。</discription>
+        <commands>
+            <command>ATK</command>
+            <command>DEF</command>
+            <command>BAT</command>
+        </commands>
+    </monsterType>
+    <!-- スライム・タイプ -->
+    <monsterType>
+        <id>SLM</id>
+        <name>不定形</name>
+        <discription>スライムタイプのモンスター。</discription>
+        <commands>
+            <command>ATK</command>
+            <command>DEF</command>
+            <command>SPC</command>
+        </commands>
+    </monsterType>
+    <!-- 獣人・タイプ -->
+    <monsterType>
+        <id>BHU</id>
+        <name>獣人タイプ</name>
+        <discription>獣人タイプのモンスター。</discription>
+        <commands>
+            <command>ATK</command>
+            <command>DEF</command>
+            <command>SPC</command>
+        </commands>
+    </monsterType>
+    <!-- 植物・タイプ -->
+    <monsterType>
+        <id>PLN</id>
+        <name>植物タイプ</name>
+        <discription>植物タイプのモンスター。</discription>
+        <commands>
+            <command>ATK</command>
+            <command>DEF</command>
+            <command>SPC</command>
+        </commands>
+    </monsterType>
+    <!-- 獣・タイプ -->
+    <monsterType>
+        <id>BST</id>
+        <name>獣タイプ</name>
+        <discription>獣タイプのモンスター。</discription>
+        <commands>
+            <command>ATK</command>
+            <command>DEF</command>
+            <command>SPC</command>
+        </commands>
+    </monsterType>
+    <!-- 有翼(鳥)・タイプ -->
+    <monsterType>
+        <id>FLY</id>
+        <name>有翼(鳥)タイプ</name>
+        <discription>有翼(鳥)タイプのモンスター。</discription>
+        <commands>
+            <command>ATK</command>
+            <command>DEF</command>
+            <command>SPC</command>
+        </commands>
+    </monsterType>
+    <!-- 爬虫類・タイプ -->
+    <monsterType>
+        <id>REP</id>
+        <name>爬虫類タイプ</name>
+        <discription>爬虫類タイプのモンスター。</discription>
+        <commands>
+            <command>ATK</command>
+            <command>DEF</command>
+            <command>SPC</command>
+        </commands>
+    </monsterType>
+    <!-- 昆虫・タイプ -->
+    <monsterType>
+        <id>INS</id>
+        <name>昆虫タイプ</name>
+        <discription>昆虫タイプのモンスター。</discription>
+        <commands>
+            <command>ATK</command>
+            <command>DEF</command>
+            <command>SPC</command>
+        </commands>
+    </monsterType>
+    <!-- 水棲・タイプ -->
+    <monsterType>
+        <id>FIS</id>
+        <name>水棲タイプ</name>
+        <discription>水槽タイプのモンスター。</discription>
+        <element>WAT</element>
+        <commands>
+            <command>ATK</command>
+            <command>DEF</command>
+            <command>SPC</command>
+        </commands>
+    </monsterType>
+    <!-- 魔族・タイプ -->
+    <monsterType>
+        <id>DMN</id>
+        <name>魔族タイプ</name>
+        <discription>魔族タイプのモンスター。</discription>
+        <commands>
+            <command>ATK</command>
+            <command>DEF</command>
+            <command>SPC</command>
+            <command>MAG</command>
+        </commands>
+    </monsterType>
+    <!-- 不死・タイプ -->
+    <monsterType>
+        <id>UND</id>
+        <name>不死タイプ</name>
+        <discription>不死タイプのモンスター。</discription>
+        <commands>
+            <command>ATK</command>
+            <command>DEF</command>
+            <command>SPC</command>
+        </commands>
+    </monsterType>
+
+</class>

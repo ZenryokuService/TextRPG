@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<story>
+    <sceneNo>6</sceneNo>
+    <sceneType>SHOP</sceneType>
+    <nextScene>4</nextScene>
+    <center>false</center>
+    <canSelectNextScene>true</canSelectNextScene>
+  <id>Second</id>
+  <name>ゲーム開始</name>
+  <description>ゲーム開始時の画面</description>
+  <story>
+  いらしゃ～い！
+  ・ナイフ  ：10 NIG
+  ・ぼくとう：15 NIG
+  ・ざぶとん：10 NIG
+  ・きのたて  ：50 NIG
+  </story>
+  <path></path>
+  <selects>
+    <shohin>ナイフ</shohin>
+    <money>10</money>
+  </selects>
+  <selects>
+    <shohin>ぼくとう</shohin>
+    <money>15</money>
+  </selects>
+  <selects>
+    <shohin>ざぶとん</shohin>
+    <money>10</money>
+  </selects>
+  <selects>
+    <shohin>きのたて</shohin>
+    <money>50</money>
+  </selects>
+</story>
