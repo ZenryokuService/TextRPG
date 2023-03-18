@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<story>
+    <sceneNo>8</sceneNo>
+    <sceneType>SHOP</sceneType>
+    <nextScene>4</nextScene>
+    <center>false</center>
+    <canSelectNextScene>true</canSelectNextScene>
+  <id>Second</id>
+  <name>ショップシーン</name>
+  <description>ゲーム開始時の画面</description>
+  <story>
+  いらしゃ～い！サンプル店舗です。
+  </story>
+  <path></path>
+  <selects>
+    <shohin>yakuso</shohin>
+    <money>5</money>
+  </selects>
+    <selects>
+        <shohin>dokuso</shohin>
+        <money>5</money>
+    </selects>
+    <selects>
+        <shohin>protain</shohin>
+        <money>5</money>
+    </selects>
+    <selects>
+        <shohin>donosord</shohin>
+        <money>5</money>
+    </selects>
+</story>

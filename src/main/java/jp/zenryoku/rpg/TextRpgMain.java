@@ -22,10 +22,15 @@ public class TextRpgMain extends JFrame {
      * @param args
      */
     public static void main(String[] args) {
+        TextRpgMain main = null;
         try {
-            TextRpgMain main = new TextRpgMain();
+            main = new TextRpgMain();
         } catch (RpgException e) {
-
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(main
+                    , e.getMessage()
+                    , "初期化エラー"
+                    , JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -64,7 +69,7 @@ public class TextRpgMain extends JFrame {
         ppp.add(new JLabel(player.getName()));
 
         for (String key : views) {
-            //System.out.println("key: " + key);
+            System.out.println("key: " + key);
             ppp.add(new JLabel(key + ": " + player.getParams(key).getValue()));
         }
 

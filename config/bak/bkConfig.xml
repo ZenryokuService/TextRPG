@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <config>
+    <views>name</views>
     <views>HP</views>
     <views>MP</views>
     <views>LV</views>
@@ -99,11 +100,15 @@
     </languages>
     <statusList>
         <key>POI</key>
-        <state/>
+        <state>
+            <formulaStr>HP-10%@1</formulaStr>
+        </state>
     </statusList>
     <statusList>
         <key>MAH</key>
-        <state/>
+        <state>
+            <formulaStr>NAC@2</formulaStr>
+        </state>
     </statusList>
     <items>
         <key>WEV</key>

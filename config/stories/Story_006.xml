@@ -4,9 +4,9 @@
     <sceneType>SHOP</sceneType>
     <nextScene>4</nextScene>
     <center>false</center>
-    <canSelectNextScene>true</canSelectNextScene>
+    <canSelectNextScene>fasle</canSelectNextScene>
   <id>Second</id>
-  <name>ゲーム開始</name>
+  <name>ショップ</name>
   <description>ゲーム開始時の画面</description>
   <story>
   いらしゃ～い！
@@ -17,19 +17,19 @@
   </story>
   <path></path>
   <selects>
-    <shohin>ナイフ</shohin>
+    <shohinCd>naifu</shohinCd>
     <money>10</money>
   </selects>
   <selects>
-    <shohin>ぼくとう</shohin>
+    <shohinCd>bokto</shohinCd>
     <money>15</money>
   </selects>
   <selects>
-    <shohin>ざぶとん</shohin>
+    <shohinCd>yakuso</shohinCd>
     <money>10</money>
   </selects>
   <selects>
-    <shohin>きのたて</shohin>
+    <shohinCd>donoarmor</shohinCd>
     <money>50</money>
   </selects>
 </story>

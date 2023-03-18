@@ -169,7 +169,6 @@ public class XMLUtil
         Config conf = Config.getInstance();
         // 表示項目
         List<String> views = new ArrayList<>();
-        views.add("name");
         views.add("HP");
         views.add("MP");
         views.add("LV");
@@ -178,7 +177,7 @@ public class XMLUtil
         List<Params> money = new ArrayList<>();
         money.add(new Params("NIG", "ニギ", 0));
         money.add(new Params("GLD", "ゴールド", 0));
-        conf.setLanguages(money);
+        conf.setMoney(money);
         // 使用言語
         List<Params> langs = new ArrayList<>();
         langs.add(new Params("CLANG", "シーラン", 0));
@@ -334,7 +333,7 @@ public class XMLUtil
         return playerList;
     }
     
-        public static List<Monster> loadMonsters(String path) throws RpgException {
+    public static List<Monster> loadMonsters(String path) throws RpgException {
         List<Monster> monsterList = null;
         Path p = Paths.get(path);
         Monsters monsters = (Monsters) loadXml(p, Monsters.class);
@@ -345,7 +344,62 @@ public class XMLUtil
         }
         return monsterList;
     }
-    
+
+    public static Items loadItems(String path) throws RpgException {
+        Items items = null;
+        Path p = Paths.get(path);
+        items = (Items) loadXml(p, Items.class);
+
+        List<Item> itemList = items.getItems();
+        List<Wepon> wepList = items.getWepons();
+        List<Armor> armList = items.getArmors();
+        if (itemList.size() == 0) {
+            throw new RpgException("アイテムが設定されていません" + path);
+        }
+        if (wepList.size() == 0) {
+            throw new RpgException("武器が設定されていません" + path);
+        }
+        if (armList.size() == 0) {
+            throw new RpgException("防具が設定されていません" + path);
+        }
+        return items;
+    }
+
+    public static void exportItemsJaxb(String directory, String fileName) {
+        Path path = Paths.get(directory, fileName);
+        ArrayList<Item> itList = new ArrayList<>();
+        itList.add(new Item("yakuso", "やくそう", new Formula("HP+10")));
+        itList.add(new Item("dokuso", "どくそう", new Formula("HP+10")));
+        itList.add(new Item("yakuso", "プロテイン", new Formula("POW+10")));
+
+        ArrayList<Wepon> wepList = new ArrayList<>();
+        wepList.add(new Wepon("donosord", "どうのつるぎ", 10, new Formula("POW+1"), new Formula("WIT+1")));
+        wepList.add(new Wepon("tetunosord", "てつのつるぎ", 15, new Formula("POW+1"), new Formula("WIT+1")));
+
+        ArrayList<Armor> arList = new ArrayList<>();
+        arList.add(new Armor("donoarmor", "どうのよろい", 8, new Formula("POW+1"), new Formula("WIT+2")));
+        arList.add(new Armor("tetunoarmor", "てつのよろい", 12, new Formula("POW+1"), new Formula("WIT+2")));
+
+        Items items = new Items();
+        items.setItems(itList);
+        items.setWepons(wepList);
+        items.setArmors(arList);
+        JAXBContext ctx = null;
+        try {
+            BufferedWriter writer = Files.newBufferedWriter(path);
+            ctx = JAXBContext.newInstance(Items.class);
+            Marshaller m = ctx.createMarshaller();
+            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            m.marshal(items, writer);
+            JAXB.marshal(items, path.toFile());
+            writer.close();
+        } catch (JAXBException | IOException e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
+        Marshaller sharl = null;
+    }
+
     public static void exportStoryJaxb(String directory, String fileName) {
         Path path = Paths.get(directory, fileName);
         Scene story = createStory();
@@ -455,13 +509,13 @@ public class XMLUtil
         statusMap.put(luk.getKey(), luk);
         player.setStatus(statusMap);
         // 装備
-        player.setWepon(new Wepon("どうのつるぎ", 12, new Formula("ATK+12")));
-        player.setArmor(new Armor("どうのよろい", 7, new Formula("DEF+7")));
+        player.setWepon(new Wepon("yakuso", "どうのつるぎ", 10, new Formula("POW+1"), new Formula("WIT+1")));
+        player.setArmor(new Armor("yakuso", "どうのよろい", 8, new Formula("POW+1"), new Formula("WIT+2")));
         // アイテム
         List<Item> items = new ArrayList<>();
-        items.add(new Item("やくそう", new Formula("HP+10")));
-        items.add(new Item("どくそう", new Formula("HP-10")));
-        items.add(new Item("プロテイン", new Formula("POW+10")));
+        items.add(new Item("yakuso", "やくそう", new Formula("HP+10")));
+        items.add(new Item("dokuso", "どくそう", new Formula("HP-10")));
+        items.add(new Item("protain", "プロテイン", new Formula("POW+10")));
         player.setItems(items);
         // 状態
         
@@ -504,13 +558,13 @@ public class XMLUtil
         statusMap.put(luk.getKey(), luk);
         player.setStatus(statusMap);
         // 装備
-        player.setWepon(new Wepon("どうのつるぎ", 12, new Formula("ATK+12")));
-        player.setArmor(new Armor("どうのよろい", 7, new Formula("DEF+7")));
+        player.setWepon(new Wepon("yakuso", "どうのつるぎ", 10, new Formula("POW+1"), new Formula("WIT+1")));
+        player.setArmor(new Armor("yakuso", "どうのよろい", 8, new Formula("POW+1"), new Formula("WIT+2")));
         // アイテム
         List<Item> items = new ArrayList<>();
-        items.add(new Item("やくそう", new Formula("HP+10")));
-        items.add(new Item("どくそう", new Formula("HP-10")));
-        items.add(new Item("プロテイン", new Formula("POW+10")));
+        items.add(new Item("yakuso", "やくそう", new Formula("HP+10")));
+        items.add(new Item("dokuso", "どくそう", new Formula("HP-10")));
+        items.add(new Item("protain", "プロテイン", new Formula("POW+10")));
         player.setItems(items);
         // 状態
         

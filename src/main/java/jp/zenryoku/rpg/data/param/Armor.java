@@ -14,14 +14,18 @@ public class Armor extends Item
     /** 防具の攻撃力 */
     private int value;
     /** 防具の特殊能力 */
-    private Formula formula;
-    
+    private Formula spcial;
+    /** 防具の副作用 */
+    private Formula demerit;
+
     public Armor() { 
     }
     
-    public Armor(String name, int value, Formula f) {
+    public Armor(String id, String name, int value, Formula sp, Formula dem) {
+        this.id = id;
         this.name = name;
         this.value = value;
-        this.formula = f;
+        this.spcial = sp;
+        this.demerit = dem;
     }
 }

@@ -21,7 +21,8 @@ public class Item
     public Item() {
     }
     
-    public Item(String name, Formula formula) {
+    public Item(String id, String name, Formula formula) {
+        this.id = id;
         this.name = name;
         this.formula = formula;
     }

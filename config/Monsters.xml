@@ -161,6 +161,14 @@
         <exp>5</exp>
         <status>
             <entry>
+                <key>MMP</key>
+                <value>
+                    <key>MMP</key>
+                    <name>最大マジックトポイント</name>
+                    <value>12</value>
+                </value>
+            </entry>
+            <entry>
                 <key>MP</key>
                 <value>
                     <key>MP</key>
@@ -182,6 +190,14 @@
                     <key>LUK</key>
                     <name>うんのよさ</name>
                     <value>10</value>
+                </value>
+            </entry>
+            <entry>
+                <key>MHP</key>
+                <value>
+                    <key>MHP</key>
+                    <name>最大ヒットポイント</name>
+                    <value>12</value>
                 </value>
             </entry>
             <entry>
@@ -297,6 +313,14 @@
         <exp>5</exp>
         <status>
             <entry>
+                <key>MMP</key>
+                <value>
+                    <key>MMP</key>
+                    <name>最大マジックトポイント</name>
+                    <value>12</value>
+                </value>
+            </entry>
+            <entry>
                 <key>MP</key>
                 <value>
                     <key>MP</key>
@@ -318,6 +342,14 @@
                     <key>LUK</key>
                     <name>うんのよさ</name>
                     <value>10</value>
+                </value>
+            </entry>
+            <entry>
+                <key>MHP</key>
+                <value>
+                    <key>MHP</key>
+                    <name>最大ヒットポイント</name>
+                    <value>12</value>
                 </value>
             </entry>
             <entry>
