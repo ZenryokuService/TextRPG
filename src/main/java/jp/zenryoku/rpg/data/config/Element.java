@@ -13,5 +13,13 @@ public class Element
     /** ID */
     private String id;
     /** 要素名 */
-    private String name;    
+    private String name;
+
+    public Element() {
+    }
+
+    public Element(String id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 }

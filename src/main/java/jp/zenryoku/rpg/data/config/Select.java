@@ -1,6 +1,7 @@
 package jp.zenryoku.rpg.data.config;
 
 
+import jp.zenryoku.rpg.data.Formula;
 import lombok.Data;
 
 import javax.swing.*;
@@ -22,6 +23,8 @@ public class Select
     private String shohinCd;
     /** 金額 */
     private int money;
+    /** エフェクトシーン用 計算式 */
+    private Formula formula;
     
     public Select() {
     }
@@ -43,6 +46,24 @@ public class Select
      */
     public Select(String shohin, int money) {
         this.shohinCd = shohin;
+        this.money = money;
+    }
+
+    /**
+     * ショッピング購入時のセレクト。
+     * ショッピングシーンでは、次シーン番号は、以下のように扱う
+     * ショッピング開始時: 0
+     * 「はい」：1
+     * 「いいえ」: 2
+     *
+     * @param mongon 商品名
+     * @param shohinCd 商品コード
+     * @param money 金額
+     */
+    public Select(int no, String mongon, String shohinCd, int money) {
+        this.nextScene = no;
+        this.mongon = mongon;
+        this.shohinCd = shohinCd;
         this.money = money;
     }
 }

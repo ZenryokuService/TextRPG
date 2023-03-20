@@ -19,6 +19,8 @@
   <selects>
     <shohinCd>naifu</shohinCd>
     <money>10</money>
+    <!-- 未指定でもよい -->
+    <nextScene>0</nextScene>
   </selects>
   <selects>
     <shohinCd>bokto</shohinCd>

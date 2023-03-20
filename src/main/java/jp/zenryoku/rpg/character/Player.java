@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  * @version (1.0)
  */
 @XmlRootElement( name="player")
-@XmlType(propOrder={"level", "name", "sex", "status", "items", "job", "state", "wepon", "armor"})
+@XmlType(propOrder={"level", "name", "sex", "status", "items", "job", "state", "wepon", "armor", "money"})
 @Data
 public class Player implements Cloneable
 {
@@ -50,6 +50,8 @@ public class Player implements Cloneable
     protected Wepon wepon;
     /** 防具 */
     protected Armor armor;
+    /** お金 */
+    protected int money;
     
     public Player() {
         status = new HashMap<>();
@@ -120,7 +122,6 @@ public class Player implements Cloneable
         // 基本計算記号の変換
         Set<String> fSet = formulas.keySet();
         for (String key : fSet) {
-
             if (resFormula.contains(key)) {
                 Formula f = formulas.get(key);
                 resFormula = resFormula.replaceAll(key, f.getFormulaStr());
@@ -138,5 +139,27 @@ public class Player implements Cloneable
         }
         //System.out.println("Lv2: " + resFormula);
         return resFormula;
+    }
+
+    public void effect(Formula formula) throws RpgException {
+        String f = formula.getFormulaStr();
+        String target = formula.getTarget();
+        System.out.println("Params: " + target);
+        ConfigLoader loader = ConfigLoader.getInstance();
+
+        String conv = null;
+        if (loader.isCurrentMoney(target, true)) {
+            conv = loader.convertMoneyStr(formula.getFormulaStr());
+            int ef = (int) new ExpressionBuilder(conv).build().evaluate();
+            System.out.println("Money: " + ef);
+            setMoney(getMoney() + ef);
+        } else {
+            conv = convertFormula(formula);
+            System.out.println(conv);
+            int ef = (int) new ExpressionBuilder(conv).build().evaluate();
+            Params p = this.status.get(target);
+            System.out.println("Params: " + p.getName());
+            p.setValue(p.getValue() + ef);
+        }
     }
 }

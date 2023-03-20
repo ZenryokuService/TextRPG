@@ -4,6 +4,7 @@ import jp.zenryoku.rpg.data.Formula;
 import jp.zenryoku.rpg.data.Formulas;
 import jp.zenryoku.rpg.data.SceneType;
 import jp.zenryoku.rpg.data.config.*;
+import jp.zenryoku.rpg.data.config.Element;
 import jp.zenryoku.rpg.data.param.*;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
@@ -184,11 +185,12 @@ public class XMLUtil
         langs.add(new Params("MAGILAN", "魔族後", 0));
         conf.setLanguages(langs);
         // エレメント
-        List<Params> elments = new ArrayList<>();
-        elments.add(new Params("FIR", "火", 0));
-        elments.add(new Params("WIN", "風", 1));
-        elments.add(new Params("WAT", "水", 2));
-        elments.add(new Params("EAT", "土", 3));
+        List<Element> elments = new ArrayList<>();
+        elments.add(new Element("FIR", "火"));
+        elments.add(new Element("WIN", "風"));
+        elments.add(new Element("WAT", "水"));
+        elments.add(new Element("EAT", "土"));
+        conf.setElement(elments);
         // プレーヤーステータス
         List<Params> playerStatus = new ArrayList<>();
         playerStatus.add(new Params("HP", "ヒットポイント", 0, "生命力・体力"));
@@ -205,7 +207,7 @@ public class XMLUtil
         playerStatus.add(new Params("MPW", "魔法威力", 0, "魔法・術、単体の効果値。"));
         playerStatus.add(new Params("TSM", "魔除け力", 0, "防具・アクセサリ内にある。魔法・術に対する魔除けの類の力、防具にのみついている。"));
         playerStatus.add(new Params("BPK", "バックパック", 0, "道具の持てる数"));
-        conf.setLanguages(playerStatus);
+        conf.setParams(playerStatus);
         // プレーヤー状態
         List<State> stateList = new ArrayList<>();
         stateList.add(new State("POI", "HP-10%@1"));
@@ -440,6 +442,15 @@ public class XMLUtil
         // PATH指定ありの場合は対象のファイルを読み込む
         if (isEmpty(story.getPath()) == false) {
             story.setStory(loadText(story.getPath(), story.isCenter()));
+        }
+        // エフェクトシーンでは計算式が必須
+        if (SceneType.EFFECT.equals(story.getSceneType())) {
+            List<Select> selList = story.getSelects();
+            for (Select s : selList) {
+                if (s.getFormula() == null) {
+                    throw new RpgException("エフェクトシーンはformulaタグを記入してください。: " + story.getName());
+                }
+            }
         }
         return story;
     }

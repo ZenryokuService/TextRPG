@@ -3,10 +3,8 @@ package jp.zenryoku.rpg;
 import jp.zenryoku.rpg.data.Formula;
 import jp.zenryoku.rpg.data.config.Config;
 import jp.zenryoku.rpg.data.config.Scene;
-import jp.zenryoku.rpg.data.param.Armor;
-import jp.zenryoku.rpg.data.param.Item;
-import jp.zenryoku.rpg.data.param.Items;
-import jp.zenryoku.rpg.data.param.Wepon;
+import jp.zenryoku.rpg.data.config.Select;
+import jp.zenryoku.rpg.data.param.*;
 import lombok.Data;
 import jp.zenryoku.rpg.data.config.Worlds;
 import jp.zenryoku.rpg.character.*;
@@ -24,10 +22,16 @@ import jp.zenryoku.rpg.exception.RpgException;
  */
 @Data
 public class ConfigLoader {
-
+    /** デバックのONろOFF */
     private static final boolean isDebug = false;
     /** このクラスのインスタンス、必ず一つ */
     private static ConfigLoader instance;
+    /** アイテムマップのデータ */
+    public static final int ITEM = 0;
+    /** 武器マップのデータ */
+    public static final int WEP = 1;
+    /** 防具マップのデータ */
+    public static final int ARM = 2;
     /** 設定(Config.xml) */
     private Config conf;
     /** Worlds：世界観 */
@@ -46,6 +50,10 @@ public class ConfigLoader {
     private Map<String, Wepon> wepMap;
     /** 防具マップ */
     private Map<String, Armor> armMap;
+    /** パラメータマップ */
+    private Map<String, Params> paramsMap;
+    /** 使用する金額の単位 */
+    private Params currentMooney;
 
     /** コンストラクタ */
     private ConfigLoader() throws RpgException {
@@ -67,6 +75,13 @@ public class ConfigLoader {
         wepMap = new HashMap<>();
         armMap = new HashMap<>();
         loadItems("config", "Items.xml");
+        // 通貨取得
+        conf.getMoney().forEach(mon -> {
+            // デフォルトの通貨はvalue=0とする
+            if (mon.getValue() == 0) {
+                currentMooney = mon;
+            }
+        });
 
     }
 
@@ -95,7 +110,7 @@ public class ConfigLoader {
                 Scene story = XMLUtil.loadStory(xml);
                 int key = story.getSceneNo();
                 if (map.containsKey(key)) {
-                    System.out.println("シーン番号が重複しています");
+                    System.out.println("シーン番号が重複しています: " + key);
                     System.exit(-1);
                 }
                 map.put(story.getSceneNo(), story);
@@ -187,14 +202,21 @@ public class ConfigLoader {
     }
 
     /**
-     * 設定定義ファイルを読み込む
+     * 設定定義ファイルを読み込む、ConfigLoaderのparamMapにParansをセット。
      * @param directory 対象ディレクトリ
      * @param fileName 対象ファイル
      * @return　Config 設定クラス
      * @throws RpgException
      */
     public Config loadConfig(String directory, String fileName) throws RpgException {
-        return XMLUtil.loadConfig(directory, fileName);
+        Config conf = XMLUtil.loadConfig(directory, fileName);
+        List<Params> paramsList = conf.getParams();
+        paramsMap = new HashMap<>();
+
+        paramsList.forEach(params -> {
+            paramsMap.put(params.getKey(), params);
+        });
+        return conf;
     }
 
     /**
@@ -225,4 +247,103 @@ public class ConfigLoader {
         return newMonster;
     }
 
+    /**
+     * Item, Wepon, Armorのいずれかの商品コードを以下のように判定する・
+     * ITEM = 0: アイテムの商品コード
+     * WEP = 1: 武器の商品コード
+     * ITEM = 2: 防具の商品コード
+     * @param sel 選択項目
+     * @return ITEM, WEP, ARMのいずれか
+     */
+    public static int isKeyInMap(Select sel) throws RpgException {
+        // 商品コード＝アイテム、武器、防具のID
+        Map<String, Item> itemMap = ConfigLoader.getInstance().getItemMap();
+        Map<String, Wepon> wepMap = ConfigLoader.getInstance().getWepMap();
+        Map<String, Armor> armMap = ConfigLoader.getInstance().getArmMap();
+        // 各キーは重複していない
+        String shohinCd = sel.getShohinCd();
+        boolean b1 = itemMap.containsKey(shohinCd);
+        boolean b2 = wepMap.containsKey(shohinCd);
+        boolean b3 = armMap.containsKey(shohinCd);
+
+        int isItemOrWepOrArm = 0;
+        if (b1) {
+            isItemOrWepOrArm = ITEM;
+        }
+        if (b2) {
+            isItemOrWepOrArm = WEP;
+        }
+        if (b3) {
+            isItemOrWepOrArm = ARM;
+        }
+        if (b1 == false && b2 == false && b3 == false) {
+            throw new RpgException("想定外の商品コードです。" + shohinCd);
+        }
+        return isItemOrWepOrArm;
+    }
+
+    /**
+     * 商品コードからアイテムを取得する。以下の３バターンがある。
+     * ITEM = Item
+     * WEP = Wepon
+     * ARM = Armor
+     *
+     * @param shohinCd
+     * @param sel
+     * @param itemType
+     * @return Item 取得したアイテム(Items.xmlに定義しているアイテム)
+     * @throws RpgException
+     */
+    public static Item getItemFormShohinCd(String shohinCd, Select sel, int itemType) throws RpgException {
+        // 各マップにはキーが重複していない事を前提とする
+        Map<String, Item> itemMap = ConfigLoader.getInstance().getItemMap();
+        Map<String, Wepon> wepMap = ConfigLoader.getInstance().getWepMap();
+        Map<String, Armor> armMap = ConfigLoader.getInstance().getArmMap();
+        int shohinHandle = isKeyInMap(sel);
+        if (itemType != shohinHandle) {
+            throw new RpgException("商品コードと、指定が合いいません。" + shohinCd);
+        }
+        Item retItem = null;
+        switch(shohinHandle) {
+            case ITEM:
+                Item it = itemMap.get(shohinCd);
+                retItem = it;
+                sel.setMongon(it.getName());
+                break;
+            case WEP:
+                Wepon wep = wepMap.get(shohinCd);
+                retItem = wep;
+                sel.setMongon(wep.getName());
+                break;
+            case ARM:
+                Armor arm = armMap.get(shohinCd);
+                sel.setMongon(arm.getName());
+                retItem = arm;
+                break;
+        }
+        return retItem;
+    }
+
+    /**
+     * でフォルト設定されている通貨の名前をかどうか判定する。
+     * @param target
+     * @return
+     */
+    public boolean isCurrentMoney(String target, boolean isKigo) {
+        if (isKigo) {
+            return currentMooney.getKey().equals(target);
+        } else {
+            return currentMooney.getName().equals(target);
+        }
+    }
+
+    /**
+     * 金額の場合は、式から記号をさk所する。
+     * @param formula 金額を含む効果式
+     * @return 金額の記号を削除した式
+     */
+    public String convertMoneyStr(String formula) {
+        String key = currentMooney.getKey();
+        return formula.replaceAll(key, "0");
+    }
 }
