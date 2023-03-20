@@ -288,19 +288,19 @@ public class ConfigLoader {
      * WEP = Wepon
      * ARM = Armor
      *
-     * @param shohinCd
-     * @param sel
-     * @param itemType
+     * @param sel 選択オブジェクト
+     * @param itemType -1の場合はチェックを行わない
      * @return Item 取得したアイテム(Items.xmlに定義しているアイテム)
      * @throws RpgException
      */
-    public static Item getItemFormShohinCd(String shohinCd, Select sel, int itemType) throws RpgException {
+    public static Item getItemFormShohinCd(Select sel, int itemType) throws RpgException {
+        String shohinCd = sel.getShohinCd();
         // 各マップにはキーが重複していない事を前提とする
         Map<String, Item> itemMap = ConfigLoader.getInstance().getItemMap();
         Map<String, Wepon> wepMap = ConfigLoader.getInstance().getWepMap();
         Map<String, Armor> armMap = ConfigLoader.getInstance().getArmMap();
         int shohinHandle = isKeyInMap(sel);
-        if (itemType != shohinHandle) {
+        if (itemType > -1 && itemType != shohinHandle) {
             throw new RpgException("商品コードと、指定が合いいません。" + shohinCd);
         }
         Item retItem = null;

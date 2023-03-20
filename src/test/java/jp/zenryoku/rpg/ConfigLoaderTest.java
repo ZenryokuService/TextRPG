@@ -10,8 +10,8 @@ public class ConfigLoaderTest {
     @Test
     public void testiIKey() {
         try  {
-            assertTrue(ConfigLoader.getInstance().isCurrentMoney("ニギ"));
-            assertFalse(ConfigLoader.getInstance().isCurrentMoney("dokus"));
+            assertTrue(ConfigLoader.getInstance().isCurrentMoney("ニギ", false));
+            assertFalse(ConfigLoader.getInstance().isCurrentMoney("dokus", true));
         } catch (RpgException e) {
             e.printStackTrace();
             fail(e.getMessage());
@@ -23,4 +23,17 @@ public class ConfigLoaderTest {
         String f = ConfigLoader.getInstance().convertMoneyStr("NIG + 100");
         assertEquals("0 + 100", f);
     }
+
+    @Test
+    public void testStatusMap() throws RpgException {
+        Params p = ConfigLoader.getInstance().getParamsMap().get("HP");
+        assertNotNull(p);
+        assertEquals("HP", p.getKey());
+
+        Params p1 = ConfigLoader.getInstance().getParamsMap().get("BPK");
+        assertNotNull(p1);
+        assertEquals("BPK", p1.getKey());
+
+    }
+
 }

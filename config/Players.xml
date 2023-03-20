@@ -93,6 +93,14 @@
                     <value>1</value>
                 </value>
             </entry>
+            <entry>
+                <key>BPK</key>
+                <value>
+                    <key>BPK</key>
+                    <name>アイテム所持可能数</name>
+                    <value>8</value>
+                </value>
+            </entry>
         </status>
         <items>
             <formula>
@@ -255,6 +263,14 @@
                     <value>1</value>
                 </value>
             </entry>
+            <entry>
+                <key>BPK</key>
+                <value>
+                    <key>BPK</key>
+                    <name>アイテム所持可能数</name>
+                    <value>8</value>
+                </value>
+            </entry>
         </status>
         <job>
             <description>ゆうきあるもの</description>
@@ -324,7 +340,7 @@
             <value>7</value>
         </armor>
     </player>
-        <player>
+    <player>
         <level>0</level>
         <name>ナム＝ロック</name>
         <sex>MAN</sex>
@@ -415,6 +431,14 @@
                     <key>ARV</key>
                     <name>防具防御力</name>
                     <value>1</value>
+                </value>
+            </entry>
+            <entry>
+                <key>BPK</key>
+                <value>
+                    <key>BPK</key>
+                    <name>アイテム所持可能数</name>
+                    <value>8</value>
                 </value>
             </entry>
         </status>

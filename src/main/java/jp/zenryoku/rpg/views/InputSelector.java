@@ -84,7 +84,6 @@ public class InputSelector extends JPopupMenu implements ActionListener
         isBattle = false;
         isEffect = false;
         addSeparator();
-        // Storyファイルのデータ
     }
 
     /**
@@ -104,7 +103,7 @@ public class InputSelector extends JPopupMenu implements ActionListener
     }
 
     /**
-     * 表示しているポップアップメニューを削除。
+     * 表示しているポップアップメニューを削除。インスタンスの作尾j
      *
      * @param visible true to make the popup visible, or false to
      */
@@ -137,48 +136,14 @@ public class InputSelector extends JPopupMenu implements ActionListener
 
         for(Select sel : selects) {
             if (isShopping) {
-                convertShohinSelect(sel, story.getSceneNo());
+                Item itm = ConfigLoader.getInstance().getItemFormShohinCd(sel, -1);
+                sel.setMongon(itm.getName());
                 this.bakNextScene = story;
             }
             SelectMenu menu = new SelectMenu(sel);
             menu.addActionListener(this);
             add(menu);
             addSeparator();
-        }
-    }
-
-    /**
-     * 商品コードから対象のアイテム(武希・防具)を取得する。
-     *
-     * @param sel Select
-     * @param sceneNo 呼び出し元のシーン番号、デバック用
-     * @throws RpgException
-     */
-    private void convertShohinSelect(Select sel, int sceneNo) throws RpgException {
-        // 各マップにはキーが重複していない事を前提とする
-        Map<String, Item> itemMap = ConfigLoader.getInstance().getItemMap();
-        Map<String, Wepon> wepMap = ConfigLoader.getInstance().getWepMap();
-        Map<String, Armor> armMap = ConfigLoader.getInstance().getArmMap();
-        String shohin = sel.getShohinCd();
-        if ( shohin != null || "".equals(shohin) == false) {
-            String shohinCd = sel.getShohinCd();
-            int shohinHandle = isKeyInMap(sel);
-            switch(shohinHandle) {
-                case ConfigLoader.ITEM:
-                    Item it = itemMap.get(shohinCd);
-                    sel.setMongon(it.getName());
-                    break;
-                case ConfigLoader.WEP:
-                    Wepon wep = wepMap.get(shohinCd);
-                    sel.setMongon(wep.getName());
-                    break;
-                case ConfigLoader.ARM:
-                    Armor arm = armMap.get(shohinCd);
-                    sel.setMongon(arm.getName());
-                    break;
-            }
-        } else {
-            throw new RpgException("SHOPシーンでは、shohinタグを使ってください。: シーン番号 = " + sceneNo);
         }
     }
 
@@ -322,6 +287,7 @@ public class InputSelector extends JPopupMenu implements ActionListener
         System.out.println("moey: " + player.getMoney());
         player.effect(f);
         System.out.println("money: " + player.getMoney());
+        main.setPlayer(player);
         isEffect = false;
     }
     private void shoppingProcess(SelectMenu menu) throws RpgException {
@@ -339,6 +305,8 @@ public class InputSelector extends JPopupMenu implements ActionListener
             initShopping(menu, YES, NO);
         } else if (YES == menu.getNextSceneNo()) {
             if (isChecking) {
+                int zankin = player.getMoney() - sel.getMoney();
+                player.setMoney(zankin);
                 textArea.setText(bakNextScene.getStory());
                 isChecking = false;
                 addSelectMenu(bakNextScene);
@@ -392,37 +360,28 @@ public class InputSelector extends JPopupMenu implements ActionListener
      */
     private void buyProcess(SelectMenu menu) throws RpgException {
         printText("お買い上げありがとうございます。" );
-        Map<String, Item> itemMap = ConfigLoader.getInstance().getItemMap();
-        Map<String, Wepon> wepMap = ConfigLoader.getInstance().getWepMap();
-        Map<String, Armor> armMap = ConfigLoader.getInstance().getArmMap();
-        // 各マップにはキーが重複していない事を前提とする
-        int itemFlg = isKeyInMap(menu.getSelect());
         Select sel = menu.getSelect();
-        String shohinCd = sel.getShohinCd();
-        Item it = null;
-        switch (itemFlg) {
-            case ITEM:
-                it = itemMap.get(shohinCd);
-                break;
-            case WEP:
-                it = wepMap.get(shohinCd);
-                break;
-            case ARM:
-                it = armMap.get(shohinCd);
-                break;
-        }
+
+        Item it = ConfigLoader.getItemFormShohinCd(sel, -1);
         // TODO-[アイテムの最大所持数の取得方法]
         int itemSize = player.getItems().size();
         // アイテムの最大所持数と比較する。
         Params max = ConfigLoader.getInstance().getParamsMap().get("BPK");
+        if (max == null ) {
+            throw new RpgException("BPKが設定されていません。in Config.xml");
+        }
         int YES = 1;
         int NO = 2;
-        if (max != null && itemSize < max.getValue()) {
+        if (itemSize < max.getValue()) {
             printText("アイテムが持ちきれません。" + SEP);
             addYesNoMenuItem(sel, YES, NO);
             return;
         }
+        int zan = player.getMoney() - sel.getMoney();
+        System.out.println(zan);
+        player.setMoney(zan);
         player.getItems().add(it);
+        main.setPlayer(player);
         printText("他にようはありますか？");
         isChecking = true;
         addYesNoMenuItem(sel, YES, NO);
@@ -522,7 +481,6 @@ public class InputSelector extends JPopupMenu implements ActionListener
 
                 int mDamage = monster.attack(mCmd.getFormula(), player);
                 printHaNiWaDamage(player, monster, mDamage, RECIVE);
-
                 main.setPlayer(player);
 
                 if (player.getParams(mCmd.getFormula().getTarget()).getValue() <= 0) {
