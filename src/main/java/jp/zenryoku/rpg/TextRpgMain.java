@@ -7,16 +7,34 @@ import jp.zenryoku.rpg.views.InputSelector;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.List;
 /**
  * テキストRPGのメインクラス。
  */
-public class TextRpgMain extends JFrame {
+public class TextRpgMain extends JFrame implements KeyListener, MouseListener {
+    private static final String CMD_TEXT = "CMD_TEXT";
     private ConfigLoader config;
+    /** 後にプレーヤー表示するパネルの名前 */
     private final String TITLE_PANEL = "titlePanel";
+    /** 後に何か表示するパネルの名前 */
     private final String HEADER_PANEL = "header";
-    private final String NORTH = "north";
+    /** 文章表示するパネルの名前 */
+    private final String TEXT_PANEL = "textPanel";
+
+    /** 文字表示のテキストエリア */
     private RpgTextArea textArea;
+    /** ポップアップメニュー */
+    private InputSelector inputSelector;
+    /** コマンド入力用hのパネル */
+    private JPanel txt;
+    /** コマンド入力テキストフィールド */
+    private RpgTextField field;
+
+
 
     /**
      * テキストRPGの実行処理。
@@ -46,6 +64,8 @@ public class TextRpgMain extends JFrame {
     public TextRpgMain() throws RpgException {
         // 設定XMLのよみこみ
         config = ConfigLoader.getInstance();
+        addKeyListener(this);
+        setFocusable(true);
         // 初期画面の表示
         initView();
     }
@@ -81,8 +101,10 @@ public class TextRpgMain extends JFrame {
         JPanel right = new JPanel();
         right.setLayout(new BorderLayout());
         // TODO-[所持金の配置を修正したい]
-        JLabel label = new JLabel("所持金: " + player.getMoney());
-        right.add(label, BorderLayout.NORTH);
+        JLabel moeyLbl = new JLabel("所持金: " + player.getMoney());
+        JLabel expLbl = new JLabel("経験値: " + player.getExp());
+        right.add(moeyLbl, BorderLayout.NORTH);
+        right.add(expLbl, BorderLayout.SOUTH);
         titlePanel.add(right);
     }
 
@@ -114,8 +136,9 @@ public class TextRpgMain extends JFrame {
         //story.getSceneType();
         try {
             // . 入力を受ける
-            InputSelector pop = new InputSelector(story,this);
-            pop.show(this, xPos - 30, yPos + 220);
+            inputSelector = new InputSelector(story,this);
+            inputSelector.addKeyListener(this);
+            inputSelector.show(this, xPos - 30, yPos + 220);
         } catch (RpgException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "alert", e.getMessage()
@@ -129,6 +152,8 @@ public class TextRpgMain extends JFrame {
 
         TitleLabel titleLabel = new TitleLabel("Text RPG", windowSize);
         textArea = new RpgTextArea(windowSize);
+        textArea.addKeyListener(this);
+        textArea.addMouseListener(this);
 
         JPanel headerPanel = new JPanel();
         headerPanel.setName(HEADER_PANEL);
@@ -138,13 +163,107 @@ public class TextRpgMain extends JFrame {
         titlePanel.add(titleLabel);
 
         JPanel textPanel = new JPanel();
+        textPanel.setName(TEXT_PANEL);
         textPanel.add(textArea);
 
         Container contentPane = getContentPane();
         contentPane.add(titlePanel, BorderLayout.NORTH);
         contentPane.add(textPanel, BorderLayout.CENTER);
 
+        // コマンドようのパネル
+        createCommandPanel();
         setVisible(true);
 
+    }
+
+    private void createCommandPanel() {
+        txt = new JPanel();
+        txt.setName("commandPanel");
+    }
+    private void pressESC() {
+        int res = JOptionPane.showConfirmDialog(null
+                , "alert", "終了しますか？"
+                , JOptionPane.YES_NO_OPTION);
+
+        switch (res) {
+            case JOptionPane.YES_OPTION:
+                System.exit(0);
+                break;
+            case JOptionPane.NO_OPTION:
+                break;
+        }
+    }
+
+    private void presSpace() {
+        if (txt.getComponents().length == 0) {
+            JLabel lbl = new JLabel("Cmmand; ");
+            field = new RpgTextField(CMD_TEXT, this);
+            txt.add(lbl);
+            txt.add(field);
+            getContentPane().add(txt, BorderLayout.SOUTH);
+        }
+        Dimension size = getSize();
+        size.setSize(size.getWidth(), size.getHeight()+ txt.getHeight());
+        txt.setVisible(true);
+        setVisible(true);
+        txt.requestFocus();
+        field.requestFocus();
+    }
+
+    private void pressEnter() {
+//        Component[] coms = getContentPane().getComponents();
+//        for (Component com:coms) {
+//            System.out.println("Com: " + com.getName());
+//        }
+    }
+    @Override
+    public void keyTyped(KeyEvent e) {
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        int key = e.getKeyCode();
+        System.out.println("Presses: " + key);
+        switch (key) {
+            case KeyEvent.VK_ESCAPE:
+                pressESC();
+                break;
+            case KeyEvent.VK_SPACE:
+                presSpace();
+                break;
+            case KeyEvent.VK_ENTER:
+                pressEnter();
+                break;
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+    }
+
+    /**
+     * マウスで他の部分をクリックすると
+     * ポップアップが消えるのでそれを改修
+     * @param e マウスイベント
+     */
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        inputSelector.show(e.getComponent(), e.getX(), e.getY());
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
     }
 }

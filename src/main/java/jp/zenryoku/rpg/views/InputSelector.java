@@ -148,40 +148,6 @@ public class InputSelector extends JPopupMenu implements ActionListener
     }
 
     /**
-     * Item, Wepon, Armorのいずれかの商品コードを以下のように判定する・
-     * ITEM = 0: アイテムの商品コード
-     * WEP = 1: 武器の商品コード
-     * ITEM = 2: 防具の商品コード
-     * @param sel 選択項目
-     * @return ITEM, WEP, ARMのいずれか
-     */
-    private int isKeyInMap(Select sel) throws RpgException {
-        // 商品コード＝アイテム、武器、防具のID
-        Map<String, Item> itemMap = ConfigLoader.getInstance().getItemMap();
-        Map<String, Wepon> wepMap = ConfigLoader.getInstance().getWepMap();
-        Map<String, Armor> armMap = ConfigLoader.getInstance().getArmMap();
-        // 各キーは重複していない
-        String shohinCd = sel.getShohinCd();
-        boolean b1 = itemMap.containsKey(shohinCd);
-        boolean b2 = wepMap.containsKey(shohinCd);
-        boolean b3 = armMap.containsKey(shohinCd);
-
-        int isItemOrWepOrArm = 0;
-        if (b1) {
-            isItemOrWepOrArm = ITEM;
-        }
-        if (b2) {
-            isItemOrWepOrArm = WEP;
-        }
-        if (b3) {
-            isItemOrWepOrArm = ARM;
-        }
-        if (b1 == false && b2 == false && b3 == false) {
-            throw new RpgException("想定外の商品コードです。" + shohinCd);
-        }
-        return isItemOrWepOrArm;
-    }
-    /**
      * シーンオブジェクトの選択リストがない、もしくは空の場合
      * 次のシーン番号へすすむ選択肢を生成、追加する。
      * @param story シーンオブジェクト
@@ -216,6 +182,7 @@ public class InputSelector extends JPopupMenu implements ActionListener
             case EFFECT:
                 isEffect = true;
                 textArea.setText(convertStory(item.getNextStory(), player));
+                prepareItems(nextScene);
                 break;
             case BATTLE:
                 int low = nextScene.getMonsterNoLow();
@@ -227,6 +194,17 @@ public class InputSelector extends JPopupMenu implements ActionListener
         }
     }
 
+    private void prepareItems(Scene scene) throws RpgException {
+        List<String> list = scene.getItems();
+        if (list != null && list.size() > 0) {
+            for (String shihinCd : list) {
+                System.out.println("--" + shihinCd);
+                Item it = ConfigLoader.getItemFormShohinCd(shihinCd);
+                System.out.println("Item: " + it.getName());
+                player.getItems().add(it);
+            }
+        }
+    }
     /**
      * ストーリー内の"$player.XXX"を置換する。
      *
@@ -393,6 +371,9 @@ public class InputSelector extends JPopupMenu implements ActionListener
      * @param selectItem　JMenuItemの拡張クラス
      */
     private void selectProcess(SelectMenu selectItem) {
+        if (selectItem == null) {
+            return;
+        }
         // 次のシーンを表示する
         try {
             Scene nextScene = ConfigLoader.getInstance().getScenes().get(selectItem.getNextSceneNo());
@@ -453,6 +434,7 @@ public class InputSelector extends JPopupMenu implements ActionListener
         int xPos = (int) windowSize.getWidth() / 4;
         int yPos = (int) windowSize.getHeight() / 5;
         show(main, xPos - 30, yPos + 220);
+        this.requestFocus();
     }
 
     /**
@@ -536,7 +518,10 @@ public class InputSelector extends JPopupMenu implements ActionListener
         int exp = monster.getExp();
 
         Config conf = ConfigLoader.getInstance().getConf();
-        printText(player.getName() + "は、" + exp + "の経験値と" + money + conf.getMoney().get(0).getName() + "を取得した。");
+        printText(player.getName() + "は、" + exp + "の経験値と" + money + "を取得、" + conf.getMoney().get(0).getName() + "を取得した。");
+        player.addExp(exp);
+        player.addMoney(money);
+        main.setPlayer(player);
         isBattle = false;
         monster.finalize();
         monster = null;

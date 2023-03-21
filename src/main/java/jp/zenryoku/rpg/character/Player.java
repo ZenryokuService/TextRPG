@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  * @version (1.0)
  */
 @XmlRootElement( name="player")
-@XmlType(propOrder={"level", "name", "sex", "status", "items", "job", "state", "wepon", "armor", "money"})
+@XmlType(propOrder={"level", "name", "sex", "status", "items", "job", "state", "wepon", "armor", "money", "exp"})
 @Data
 public class Player implements Cloneable
 {
@@ -52,6 +52,8 @@ public class Player implements Cloneable
     protected Armor armor;
     /** お金 */
     protected int money;
+    /** 経験値(Monsterと同じものがある) */
+    protected int exp;
     
     public Player() {
         status = new HashMap<>();
@@ -84,6 +86,18 @@ public class Player implements Cloneable
     public Params getParams(String key) {
         return status.get(key);
     }
+    public void addExp(int exp) {
+        this.exp += exp;
+    }
+
+    public void addMoney(int money) {
+        this.money += money;
+    }
+
+    public void addItem(Item it) {
+        items.add(it);
+    }
+
     public Player clone() {
         Player player = new Player(name);
         player.setLevel(level);
@@ -161,5 +175,14 @@ public class Player implements Cloneable
             System.out.println("Params: " + p.getName());
             p.setValue(p.getValue() + ef);
         }
+    }
+
+    /**
+     * アイテムリストの番号からアイテムを取得する。
+     * @param num アイテムリストの番号
+     * @return 指定のアイテム
+     */
+    public Item selectItem(int num) {
+        return items.get(num);
     }
 }

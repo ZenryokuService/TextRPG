@@ -248,20 +248,31 @@ public class ConfigLoader {
     }
 
     /**
-     * Item, Wepon, Armorのいずれかの商品コードを以下のように判定する・
-     * ITEM = 0: アイテムの商品コード
-     * WEP = 1: 武器の商品コード
-     * ITEM = 2: 防具の商品コード
      * @param sel 選択項目
      * @return ITEM, WEP, ARMのいずれか
      */
     public static int isKeyInMap(Select sel) throws RpgException {
+        String shohinCd = sel.getShohinCd();
+        return isKeyInMap(shohinCd);
+    }
+
+    /**
+     * Item, Wepon, Armorのいずれかの商品コードを以下のように判定する・
+     * ITEM = 0: アイテムの商品コード
+     * WEP = 1: 武器の商品コード
+     * ITEM = 2: 防具の商品コード
+     * @param shohinCd 商品コード
+     * @return ITEM, WEP, ARMのいずれか
+     */
+    public static int isKeyInMap(String shohinCd) throws RpgException {
         // 商品コード＝アイテム、武器、防具のID
         Map<String, Item> itemMap = ConfigLoader.getInstance().getItemMap();
         Map<String, Wepon> wepMap = ConfigLoader.getInstance().getWepMap();
         Map<String, Armor> armMap = ConfigLoader.getInstance().getArmMap();
+        if ("".equals(shohinCd)) {
+            throw new RpgException("商品コードが空です・");
+        }
         // 各キーは重複していない
-        String shohinCd = sel.getShohinCd();
         boolean b1 = itemMap.containsKey(shohinCd);
         boolean b2 = wepMap.containsKey(shohinCd);
         boolean b3 = armMap.containsKey(shohinCd);
@@ -277,13 +288,14 @@ public class ConfigLoader {
             isItemOrWepOrArm = ARM;
         }
         if (b1 == false && b2 == false && b3 == false) {
+            System.out.println("*** Testing: " + shohinCd);
             throw new RpgException("想定外の商品コードです。" + shohinCd);
         }
         return isItemOrWepOrArm;
     }
-
     /**
-     * 商品コードからアイテムを取得する。以下の３バターンがある。
+     * 選択項目の文言にセットされている商品コードを商品名に書き換える。
+     * そして、対象の商品コードからアイテムを取得する。以下の３バターンがある。
      * ITEM = Item
      * WEP = Wepon
      * ARM = Armor
@@ -318,6 +330,42 @@ public class ConfigLoader {
             case ARM:
                 Armor arm = armMap.get(shohinCd);
                 sel.setMongon(arm.getName());
+                retItem = arm;
+                break;
+        }
+        return retItem;
+    }
+
+    /**
+     * 商品コードからアイテムを取得する。以下の３バターンがある。
+     * ITEM = Item
+     * WEP = Wepon
+     * ARM = Armor
+     *
+     * @param shohinCd 選択オブジェクト
+     * @return Item 取得したアイテム(Items.xmlに定義しているアイテム)
+     * @throws RpgException
+     */
+    public static Item getItemFormShohinCd(String shohinCd) throws RpgException {
+        // 各マップにはキーが重複していない事を前提とする
+        Map<String, Item> itemMap = ConfigLoader.getInstance().getItemMap();
+        Map<String, Wepon> wepMap = ConfigLoader.getInstance().getWepMap();
+        Map<String, Armor> armMap = ConfigLoader.getInstance().getArmMap();
+
+        int shohinHandle = isKeyInMap(shohinCd);
+
+        Item retItem = null;
+        switch(shohinHandle) {
+            case ITEM:
+                Item it = itemMap.get(shohinCd);
+                retItem = it;
+                break;
+            case WEP:
+                Wepon wep = wepMap.get(shohinCd);
+                retItem = wep;
+                break;
+            case ARM:
+                Armor arm = armMap.get(shohinCd);
                 retItem = arm;
                 break;
         }

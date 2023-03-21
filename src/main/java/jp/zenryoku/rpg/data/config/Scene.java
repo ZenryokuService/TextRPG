@@ -23,7 +23,8 @@ import java.util.List;
 @Data
 @XmlRootElement( name="scene")
 @XmlType(propOrder={"sceneNo", "sceneType", "story", "nextScene"
-    , "canSelectNextScene", "center", "selects", "monsterNoLow", "monsterNoHigh"})
+    , "canSelectNextScene", "center", "selects", "monsterNoLow"
+    , "monsterNoHigh", "items"})
 public class Scene extends StoryConfig
 {
     /** シーン番号 */
@@ -44,6 +45,8 @@ public class Scene extends StoryConfig
     private int monsterNoLow;
     /** モンスター番号最高値 */
     private int monsterNoHigh;
+    /** 取得できるアイテム(IDを保持) */
+    private List<String> items;
     
     public Scene() {
     }

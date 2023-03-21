@@ -13,18 +13,16 @@
     </story>
     <path></path>
     <selects>
-    <mongon>近づく。。。</mongon>
-    <nextScene>4</nextScene>
-    <formula>
-        <!-- 空のID未定義でもよい -->
-        <id>TMP</id>
-        <!-- ATK攻撃の式 -->
-        <formulaStr>NIG + 100</formulaStr>
-        <target>NIG</target>
-    </formula>
-  </selects>
-  <selects>
-    <mongon>遠のく。。。</mongon>
-    <nextScene>4</nextScene>
-  </selects>
+        <mongon>近づく。。。</mongon>
+        <nextScene>8</nextScene>
+        <formula>
+            <!-- ATK攻撃の式 -->
+            <formulaStr>NIG + 100</formulaStr>
+            <target>NIG</target>
+        </formula>
+    </selects>
+    <selects>
+        <mongon>遠のく。。。</mongon>
+        <nextScene>4</nextScene>
+    </selects>
 </story>
