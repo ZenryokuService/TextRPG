@@ -20,6 +20,10 @@
 ### 【[UMLドキュメント](https://zenryokuservice.github.io/TextRPG/)】
 クラス図、フローチャートをHTML出力しました。上記リンクからアクセスできます。
 
+### ボタン押下の処理
+1. ESC: タイトル画面では何もしないが、終了確認ダイアログを表示する。
+2. 文字表示部分(黒い部分)をクリックすることで、ポップアップが再度表示される。
+
 ### メインの処理フロー
 ![](https://zenryokuservice.github.io/TextRPG/diagrams/b94dd1ecb320dbbb6eacb36f0e181409.svg)
 
