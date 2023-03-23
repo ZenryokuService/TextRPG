@@ -12,6 +12,8 @@ import lombok.Data;
 @Data
 public class Params implements Cloneable
 {
+    /** 表示順序 */
+    private int index;
     /** キー、項目の取得に使用する */
     private String key;
     /** 名前 */

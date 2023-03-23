@@ -2,7 +2,7 @@ package jp.zenryoku.rpg.data.config;
 
 public interface ConfigIF {
         /** 職業定義ファイルの名前 */
-    public static final String JOB_XML = "Job.xml";
+    public static final String JOB_XML = "Jobs.xml";
     /** コマンド定義ファイルの名前 */
     public static final String CPMMADS_XML = "Commands.xml";
     /** モンスター定義ファイルの名前 */

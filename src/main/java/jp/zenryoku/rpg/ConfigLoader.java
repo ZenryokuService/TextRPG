@@ -1,15 +1,14 @@
 package jp.zenryoku.rpg;
 
 import jp.zenryoku.rpg.data.Formula;
-import jp.zenryoku.rpg.data.config.Config;
-import jp.zenryoku.rpg.data.config.Scene;
-import jp.zenryoku.rpg.data.config.Select;
+import jp.zenryoku.rpg.data.config.*;
 import jp.zenryoku.rpg.data.param.*;
 import lombok.Data;
-import jp.zenryoku.rpg.data.config.Worlds;
 import jp.zenryoku.rpg.character.*;
 import jp.zenryoku.rpg.utils.XMLUtil;
 
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.*;
 import java.io.File;
 import java.nio.file.Paths;
@@ -32,14 +31,20 @@ public class ConfigLoader {
     public static final int WEP = 1;
     /** 防具マップのデータ */
     public static final int ARM = 2;
+    /** パラメータの最大文字列長 */
+    public static int MAX_PARAM_SIZE;
     /** 設定(Config.xml) */
     private Config conf;
     /** Worlds：世界観 */
     private Worlds worlds;
     /** ストーリーマップ */
     private Map<Integer, Scene> scenes;
+    /** 職業マップ */
+    private Map<String, Job> jobs;
     /** プレーヤーマップ */
     private Map<String, Player> players;
+    /** モンスタータイプマップ */
+    private Map<String, MonsterType> monsterTypeMap;
     /** モンスターマップ */
     private Map<Integer, Monster> monsters;
     /** Formulaマップ */
@@ -64,8 +69,12 @@ public class ConfigLoader {
         worlds.setWorlds(XMLUtil.loadWorldJaxb("config", "Worlds.xml"));
         // ストーリーの生成
         scenes = loadStories("config/stories");
+        // 職業の生成
+        jobs = loadJobs("config", "Jobs.xml");
         // プレーヤーの生成
         players = loadPlayers("config", "Players.xml");
+        // モンスタータイプ
+        monsterTypeMap = loadMonsterType("config", "MonsterTypes.xml");
         // モンスターの生成
         monsters = loadMonsters("config", "Monsters.xml");
         // 計算式
@@ -184,6 +193,19 @@ public class ConfigLoader {
         return map;
     }
 
+    public Map<String, Job> loadJobs(String directory, String fileName) {
+        String path = directory + "/" + fileName;
+        Path p = Paths.get(path);
+
+        return XMLUtil.loadJobs(path);
+    }
+
+    public Map<String, MonsterType> loadMonsterType(String directory, String fileName) throws RpgException {
+        String path = directory + "/" + fileName;
+        Path p = Paths.get(path);
+
+        return XMLUtil.loadMonsterType(path);
+    }
     /**
      * モンスター定義ファイルを読み込む
      * @param directory 対象ディレクトリ
@@ -213,9 +235,14 @@ public class ConfigLoader {
         List<Params> paramsList = conf.getParams();
         paramsMap = new HashMap<>();
 
-        paramsList.forEach(params -> {
+        int maxSize = 0;
+        for (Params params : paramsList) {
+            if (params.getName().length() > maxSize) {
+                maxSize = params.getName().length();
+            }
             paramsMap.put(params.getKey(), params);
-        });
+        }
+        MAX_PARAM_SIZE = maxSize;
         return conf;
     }
 
@@ -305,7 +332,7 @@ public class ConfigLoader {
      * @return Item 取得したアイテム(Items.xmlに定義しているアイテム)
      * @throws RpgException
      */
-    public static Item getItemFormShohinCd(Select sel, int itemType) throws RpgException {
+    public static Item getItemFromShohinCd(Select sel, int itemType) throws RpgException {
         String shohinCd = sel.getShohinCd();
         // 各マップにはキーが重複していない事を前提とする
         Map<String, Item> itemMap = ConfigLoader.getInstance().getItemMap();

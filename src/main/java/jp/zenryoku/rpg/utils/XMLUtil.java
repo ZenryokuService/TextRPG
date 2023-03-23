@@ -454,7 +454,52 @@ public class XMLUtil
         }
         return story;
     }
-    
+
+    /**
+     * Jobs.xmlをロードして、Mapに格納する。
+     * JobのIDをキーに、Jobクラスをセットする。
+     * @param path ファイルのパス
+     * @return Map<String, Job>
+     * @throws RpgException
+     */
+    public static Map<String, Job> loadJobs(String path) {
+        Path p = Paths.get(path);
+        Jobs jobs = (Jobs) loadXml(p, Jobs.class);
+
+        List<Job> jobList = jobs.getJobs();
+        Map<String, Job> map = new HashMap<>();
+        for (Job job : jobList) {
+            map.put(job.getId(), job);
+        }
+        return map;
+    }
+
+    public static Scene loadJobs(File file) throws RpgException {
+        Scene story = (Scene) loadXml(file, Scene.class);
+        if (isEmpty(story.getStory()) && isEmpty(story.getPath())) {
+            throw new RpgException("story, pathのどちらかを定義してください。");
+        }
+        // PATHしてありの場合は対象のファイルを読み込む
+        if (isEmpty(story.getPath()) == false) {
+            story.setStory(loadText(story.getPath(), story.isCenter()));
+        }
+        return story;
+    }
+
+    public static Map<String, MonsterType> loadMonsterType(String path) {
+        Path p = Paths.get(path);
+        MonsterTypes jobs = (MonsterTypes) loadXml(p, MonsterTypes.class);
+
+        List<MonsterType> jobList = jobs.getMonsterTypes();
+        Map<String, MonsterType> map = new HashMap<>();
+        for (MonsterType job : jobList) {
+            map.put(job.getId(), job);
+        }
+        return map;
+    }
+
+
+
     /**
      * Story_XXX.xml内のpathタグにセットされた値があれば
      * 対象のファイルを読み込む。テキストファイルの想定。
@@ -471,7 +516,134 @@ public class XMLUtil
         }
         return story;
     }
-    
+
+    public static void exportJobJaxb(String directory, String fileName) {
+        Path path = Paths.get(directory, fileName);
+        Jobs jobs = createJobs();
+
+        //worlds.setWorlds(list);
+        JAXBContext ctx = null;
+        try {
+            BufferedWriter writer = Files.newBufferedWriter(path);
+            ctx =  JAXBContext.newInstance(Jobs.class);
+            Marshaller m = ctx.createMarshaller();
+            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            m.marshal(jobs, writer);
+            JAXB.marshal(jobs, path.toFile());
+            writer.close();
+        } catch (JAXBException | IOException e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
+        Marshaller sharl = null;
+    }
+
+    public static void exportMonsterTypeJaxb(String directory, String fileName) {
+        Path path = Paths.get(directory, fileName);
+        MonsterTypes jobs = createMonsterTypes();
+
+        //worlds.setWorlds(list);
+        JAXBContext ctx = null;
+        try {
+            BufferedWriter writer = Files.newBufferedWriter(path);
+            ctx =  JAXBContext.newInstance(MonsterTypes.class);
+            Marshaller m = ctx.createMarshaller();
+            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            m.marshal(jobs, writer);
+            JAXB.marshal(jobs, path.toFile());
+            writer.close();
+        } catch (JAXBException | IOException e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
+        Marshaller sharl = null;
+    }
+
+    public static MonsterTypes createMonsterTypes() {
+        MonsterTypes jobs = new MonsterTypes();
+        List<MonsterType> jobList = new ArrayList<>();
+
+        MonsterType yusha = new MonsterType();
+        yusha.setId("BRV");
+        yusha.setName("ゆうしゃ");
+        List<Command> commandList = new ArrayList<>();
+        commandList.add(new Command("ATK", "こうげき", new Formula("ATK", "ATK", "HP-")));
+        commandList.add(new Command("BST", "大こうげき", new Formula("BST", "ATK + 3", "HP-")));
+        commandList.add(new Command("INR", "いのり", new Formula("INE", "HP + 3", "HP+")));
+        yusha.setCommandList(commandList);
+
+        List<Params> paramList = new ArrayList<>();
+        paramList.add(new Params("POW", "ちから", 110, "こうげき力"));
+        paramList.add(new Params("AGI", "すばやさ", 120, "すばやさ"));
+        paramList.add(new Params("INT", "かしこさ", 60, "まほうこうげき力"));
+        paramList.add(new Params("LUK", "うんのよさ", 120, "うんのよさ"));
+        yusha.setParamList(paramList);
+        jobList.add(yusha);
+
+        MonsterType warria = new MonsterType();
+        warria.setId("WAR");
+        warria.setName("せんし");
+        List<Command> commandList1 = new ArrayList<>();
+        commandList1.add(new Command("ATK", "こうげき", new Formula("ATK", "ATK", "HP-")));
+        commandList1.add(new Command("BST", "大こうげき", new Formula("BST", "ATK + 3", "HP-")));
+        commandList1.add(new Command("IKR", "戦士の怒り", new Formula("IKR", "HP + 3", "HP+")));
+        warria.setCommandList(commandList);
+
+        List<Params> paramList1 = new ArrayList<>();
+        paramList1.add(new Params("POW", "ちから", 120, "こうげき力"));
+        paramList1.add(new Params("INT", "かしこさ", 30, "まほうこうげき力"));
+        paramList1.add(new Params("LUK", "うんのよさ", 120, "うんのよさ"));
+        warria.setParamList(paramList);
+        jobList.add(warria);
+
+        jobs.setMonsterTypes(jobList);
+        return jobs;
+    }
+
+
+    public static Jobs createJobs() {
+        Jobs jobs = new Jobs();
+        List<Job> jobList = new ArrayList<>();
+
+        Job yusha = new Job();
+        yusha.setId("BRV");
+        yusha.setName("ゆうしゃ");
+        List<Command> commandList = new ArrayList<>();
+        commandList.add(new Command("ATK", "こうげき", new Formula("ATK", "ATK", "HP-")));
+        commandList.add(new Command("BST", "大こうげき", new Formula("BST", "ATK + 3", "HP-")));
+        commandList.add(new Command("INR", "いのり", new Formula("INE", "HP + 3", "HP+")));
+        yusha.setCommandList(commandList);
+
+        List<Params> paramList = new ArrayList<>();
+        paramList.add(new Params("POW", "ちから", 110, "こうげき力"));
+        paramList.add(new Params("AGI", "すばやさ", 120, "すばやさ"));
+        paramList.add(new Params("INT", "かしこさ", 60, "まほうこうげき力"));
+        paramList.add(new Params("LUK", "うんのよさ", 120, "うんのよさ"));
+        yusha.setParamList(paramList);
+        jobList.add(yusha);
+
+        Job warria = new Job();
+        warria.setId("WAR");
+        warria.setName("せんし");
+        List<Command> commandList1 = new ArrayList<>();
+        commandList1.add(new Command("ATK", "こうげき", new Formula("ATK", "ATK", "HP-")));
+        commandList1.add(new Command("BST", "大こうげき", new Formula("BST", "ATK + 3", "HP-")));
+        commandList1.add(new Command("IKR", "戦士の怒り", new Formula("IKR", "HP + 3", "HP+")));
+        warria.setCommandList(commandList);
+
+        List<Params> paramList1 = new ArrayList<>();
+        paramList1.add(new Params("POW", "ちから", 120, "こうげき力"));
+        paramList1.add(new Params("INT", "かしこさ", 30, "まほうこうげき力"));
+        paramList1.add(new Params("LUK", "うんのよさ", 120, "うんのよさ"));
+        warria.setParamList(paramList);
+        jobList.add(warria);
+
+        jobs.setJobs(jobList);
+        return jobs;
+    }
+
+
+
     public static Scene createStory() {
         Scene story = new Scene("First" ,"はじめの");
         story.setDescription("はじめのタイトル表示を行いニューゲーム、コンテニューを選択、実行する");

@@ -4,24 +4,28 @@
     <views>MP</views>
     <views>LV</views>
     <money>
+        <index>0</index>
         <key>NIG</key>
         <name>ニギ</name>
         <value>0</value>
     </money>
     <money>
+        <index>0</index>
         <key>GLD</key>
         <name>ゴールド</name>
-        <value>1</value>
+        <value>0</value>
     </money>
     <languages>
+        <index>0</index>
         <key>CLANG</key>
         <name>シーラン</name>
         <value>0</value>
     </languages>
     <languages>
+        <index>0</index>
         <key>MAGILAN</key>
         <name>魔族後</name>
-        <value>1</value>
+        <value>0</value>
     </languages>
     <element>
         <id>FIR</id>
@@ -41,84 +45,98 @@
     </element>
     <params>
         <description>生命力・体力</description>
+        <index>0</index>
         <key>HP</key>
         <name>ヒットポイント</name>
         <value>0</value>
     </params>
     <params>
         <description>魔法力</description>
+        <index>0</index>
         <key>MP</key>
         <name>マジックポイント</name>
         <value>0</value>
     </params>
     <params>
         <description>強さの段階</description>
+        <index>0</index>
         <key>LV</key>
         <name>マジックポイント</name>
         <value>0</value>
     </params>
     <params>
         <description>攻撃力、武器・防具の持てる合計重量を示す。</description>
+        <index>0</index>
         <key>POW</key>
         <name>ちから</name>
         <value>0</value>
     </params>
     <params>
         <description>行動の速さ、相手と５以上の差があるとき２回攻撃。</description>
+        <index>0</index>
         <key>AGI</key>
         <name>すばやさ</name>
         <value>0</value>
     </params>
     <params>
         <description>魔法・術などの効果量を示す。</description>
+        <index>0</index>
         <key>INT</key>
         <name>かしこさ</name>
         <value>0</value>
     </params>
     <params>
         <description>使える武器、防具、魔法・術などの種類が増える。</description>
+        <index>0</index>
         <key>DEX</key>
         <name>きようさ</name>
         <value>0</value>
     </params>
     <params>
         <description>人やモンスターに好かれる度合、統率力を示す。</description>
+        <index>0</index>
         <key>KSM</key>
         <name>カリスマ</name>
         <value>0</value>
     </params>
     <params>
         <description>武器を使用する回数により武器の扱いがうまくなる。</description>
+        <index>0</index>
         <key>JLV</key>
         <name>じゅくれんど</name>
         <value>0</value>
     </params>
     <params>
         <description>物理的な攻撃力を示す。</description>
+        <index>0</index>
         <key>ATK</key>
         <name>攻撃力</name>
         <value>0</value>
     </params>
     <params>
         <description>物理的な防御力を示す。</description>
+        <index>0</index>
         <key>DEF</key>
         <name>防御力</name>
         <value>0</value>
     </params>
     <params>
         <description>魔法・術、単体の効果値。</description>
+        <index>0</index>
         <key>MPW</key>
         <name>魔法威力</name>
         <value>0</value>
     </params>
     <params>
         <description>防具・アクセサリ内にある。魔法・術に対する魔除けの類の力、防具にのみついている。</description>
+        <index>0</index>
         <key>TSM</key>
         <name>魔除け力</name>
         <value>0</value>
     </params>
     <params>
         <description>道具の持てる数</description>
+        <index>0</index>
         <key>BPK</key>
         <name>バックパック</name>
         <value>0</value>
@@ -136,11 +154,13 @@
         </state>
     </statusList>
     <items>
+        <index>0</index>
         <key>WEV</key>
         <name>武器攻撃力</name>
         <value>0</value>
     </items>
     <items>
+        <index>0</index>
         <key>ARV</key>
         <name>防具防御力</name>
         <value>0</value>

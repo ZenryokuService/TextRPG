@@ -136,7 +136,7 @@ public class InputSelector extends JPopupMenu implements ActionListener
 
         for(Select sel : selects) {
             if (isShopping) {
-                Item itm = ConfigLoader.getInstance().getItemFormShohinCd(sel, -1);
+                Item itm = ConfigLoader.getInstance().getItemFromShohinCd(sel, -1);
                 sel.setMongon(itm.getName());
                 this.bakNextScene = story;
             }
@@ -200,7 +200,7 @@ public class InputSelector extends JPopupMenu implements ActionListener
             for (String shihinCd : list) {
                 System.out.println("--" + shihinCd);
                 Item it = ConfigLoader.getItemFormShohinCd(shihinCd);
-                System.out.println("Item: " + it.getName());
+                if (isDebug) System.out.println("Item: " + it.getName());
                 player.getItems().add(it);
             }
         }
@@ -233,7 +233,7 @@ public class InputSelector extends JPopupMenu implements ActionListener
 
         // 押下したメニューを閉じる
         this.setVisible(false);
-
+        if (isDebug) System.out.println("battle: " + isBattle + " shopping: " + isShopping + " check: " + isChecking);
         try {
             if (isShopping) {
                 shoppingProcess((SelectMenu) event.getSource());
@@ -286,28 +286,25 @@ public class InputSelector extends JPopupMenu implements ActionListener
                 int zankin = player.getMoney() - sel.getMoney();
                 player.setMoney(zankin);
                 textArea.setText(bakNextScene.getStory());
-                isChecking = false;
                 addSelectMenu(bakNextScene);
-                openMenuWindow();
+                isChecking = false;
             } else {
                 buyProcess(menu);
-                openMenuWindow();
             }
+            openMenuWindow();
         } else if (NO == menu.getNextSceneNo()) {
             if (isChecking) {
                 printText("ありがとうございました。");
-                isShopping = false;
                 isChecking = false;
                 Scene next = ConfigLoader.getInstance().getScenes().get(bakNextScene.getNextScene());
-                textArea.setText(next.getStory());
+                textArea.setText(convertStory(next.getStory(), player));
                 addSelectMenu(next);
-                openMenuWindow();
             } else {
-                isChecking = false;
                 textArea.setText(bakNextScene.getStory());
                 addSelectMenu(bakNextScene);
-                openMenuWindow();
             }
+            isShopping = false;
+            openMenuWindow();
         }
     }
 
@@ -340,7 +337,7 @@ public class InputSelector extends JPopupMenu implements ActionListener
         printText("お買い上げありがとうございます。" );
         Select sel = menu.getSelect();
 
-        Item it = ConfigLoader.getItemFormShohinCd(sel, -1);
+        Item it = ConfigLoader.getItemFromShohinCd(sel, -1);
         // TODO-[アイテムの最大所持数の取得方法]
         int itemSize = player.getItems().size();
         // アイテムの最大所持数と比較する。
@@ -358,7 +355,9 @@ public class InputSelector extends JPopupMenu implements ActionListener
         int zan = player.getMoney() - sel.getMoney();
         System.out.println(zan);
         player.setMoney(zan);
+        System.out.println("List-; " + player.getItems().size());
         player.getItems().add(it);
+        System.out.println("List-After; " + player.getItems().size());
         main.setPlayer(player);
         printText("他にようはありますか？");
         isChecking = true;

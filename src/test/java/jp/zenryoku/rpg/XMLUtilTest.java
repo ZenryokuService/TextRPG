@@ -11,6 +11,17 @@ public class XMLUtilTest {
 
     @Test
     public void testExportItems() {
-        XMLUtil.exportItemsJaxb("config/", "Items.xml");
+        XMLUtil.exportItemsJaxb("config/bak", "bkItems.xml");
     }
+
+    @Test
+    public void testExportJob() {
+        XMLUtil.exportJobJaxb("config/bak", "bkJobs.xml");
+    }
+
+    @Test
+    public void testExportMonsterTypes() {
+        XMLUtil.exportMonsterTypeJaxb("config/bak", "bkMonsterTypes.xml");
+    }
+
 }

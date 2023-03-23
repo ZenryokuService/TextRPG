@@ -33,6 +33,8 @@ public class TextRpgMain extends JFrame implements KeyListener, MouseListener {
     private JPanel txt;
     /** コマンド入力テキストフィールド */
     private RpgTextField field;
+    /** プレーヤー */
+    private Player player;
 
 
 
@@ -74,7 +76,7 @@ public class TextRpgMain extends JFrame implements KeyListener, MouseListener {
      * 起動しているPCの、ディスプレイ・サイズを取得する
      * @return Dimension ディスプレイ・サイズ
      */
-    public Dimension displaySise() {
+    public static Dimension displaySise() {
         return Toolkit.getDefaultToolkit().getScreenSize();
 
     }
@@ -83,7 +85,10 @@ public class TextRpgMain extends JFrame implements KeyListener, MouseListener {
         return this.textArea;
     }
 
+    public Player getPlayer() { return this.player; }
+
     public void setPlayer(Player player) throws RpgException {
+        this.player = player;
         List<String> views = config.getConf().getViews();
 
         JPanel titlePanel = (JPanel) selectComponent(TITLE_PANEL);
@@ -141,8 +146,7 @@ public class TextRpgMain extends JFrame implements KeyListener, MouseListener {
             inputSelector.show(this, xPos - 30, yPos + 220);
         } catch (RpgException e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "alert", e.getMessage()
-                    , JOptionPane.INFORMATION_MESSAGE);
+            openEndDialog(e.getMessage());
         }
     }
 
@@ -210,6 +214,10 @@ public class TextRpgMain extends JFrame implements KeyListener, MouseListener {
         field.requestFocus();
     }
 
+    public static void openEndDialog(String message) {
+        JOptionPane.showMessageDialog(null, "alert", message
+                , JOptionPane.INFORMATION_MESSAGE);
+    }
     private void pressEnter() {
 //        Component[] coms = getContentPane().getComponents();
 //        for (Component com:coms) {

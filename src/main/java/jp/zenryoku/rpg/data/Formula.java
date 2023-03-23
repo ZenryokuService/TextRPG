@@ -23,4 +23,11 @@ public class Formula
     public Formula(String formula) {
         this.formulaStr = formula;
     }
+
+    public Formula(String id, String formula, String target) {
+        this.id = id;
+        this.formulaStr = formula;
+        this.target = target;
+    }
+
 }
