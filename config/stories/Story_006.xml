@@ -12,8 +12,9 @@
   いらしゃ～い！
   ・ナイフ  ：10 NIG
   ・ぼくとう：15 NIG
-  ・ざぶとん：10 NIG
-  ・きのたて  ：50 NIG
+  ・やくそう：10 NIG
+  ・どうのよろい：50 NIG
+  ・ぬののふく：15 NIG
   </story>
   <path></path>
   <selects>
@@ -33,5 +34,9 @@
   <selects>
     <shohinCd>donoarmor</shohinCd>
     <money>50</money>
+  </selects>
+  <selects>
+    <shohinCd>nunonohuku</shohinCd>
+    <money>15</money>
   </selects>
 </story>

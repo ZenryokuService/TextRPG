@@ -200,7 +200,7 @@ public class InputSelector extends JPopupMenu implements ActionListener
             for (String shihinCd : list) {
                 System.out.println("--" + shihinCd);
                 Item it = ConfigLoader.getItemFormShohinCd(shihinCd);
-                if (isDebug) System.out.println("Item: " + it.getName());
+                if (isDebug) System.out.println("pre@areItem: " + it.getName());
                 player.getItems().add(it);
             }
         }
@@ -236,16 +236,20 @@ public class InputSelector extends JPopupMenu implements ActionListener
         if (isDebug) System.out.println("battle: " + isBattle + " shopping: " + isShopping + " check: " + isChecking);
         try {
             if (isShopping) {
+                System.out.println("*** Shopping ***");
                 shoppingProcess((SelectMenu) event.getSource());
                 return ;
             }
             if (isEffect) {
+                System.out.println("*** Effect ***");
                 processEffect((SelectMenu) event.getSource());
             }
             if (isBattle == false) {
+                System.out.println("*** Story ***");
                 selectItem = (SelectMenu) event.getSource();
                 selectProcess(selectItem);
             } else {
+                System.out.println("*** Battle ***");
                 cmdItem = (CommandMenu) event.getSource();
                 battleSceneProcess(cmdItem.getCommand());
             }
@@ -279,31 +283,33 @@ public class InputSelector extends JPopupMenu implements ActionListener
             System.out.println("文言: " + sel.getMongon());
             System.out.println("次: " + sel.getNextScene());
         }
-        if (START == menu.getNextSceneNo()) {
+        if (START == menu.getNextSceneNo()) { // 「これでよいですか？」を表示
             initShopping(menu, YES, NO);
-        } else if (YES == menu.getNextSceneNo()) {
-            if (isChecking) {
-                int zankin = player.getMoney() - sel.getMoney();
-                player.setMoney(zankin);
+            //isShopping = true;
+        } else if (YES == menu.getNextSceneNo()) { // 「はい」を押下したとき
+            if (isChecking) {// 「他にようはありますか？」→「はい」の処理
+                System.out.println("* YES & Check:true");
                 textArea.setText(bakNextScene.getStory());
                 addSelectMenu(bakNextScene);
                 isChecking = false;
-            } else {
+            } else { // 「これでよいですか？」→「はい」の処理
                 buyProcess(menu);
+                isChecking = true;
             }
             openMenuWindow();
-        } else if (NO == menu.getNextSceneNo()) {
-            if (isChecking) {
+        } else if (NO == menu.getNextSceneNo()) { // 「いいえ」を押下したとき
+            if (isChecking) { // 「他にようはありますか？」→「いいえ」を押下したとき
                 printText("ありがとうございました。");
                 isChecking = false;
+                isShopping = false;
                 Scene next = ConfigLoader.getInstance().getScenes().get(bakNextScene.getNextScene());
                 textArea.setText(convertStory(next.getStory(), player));
                 addSelectMenu(next);
-            } else {
+            } else { // 「これでよいですか？」→　「いいえ」を押下したとき
+                System.out.println("* NO & Check:false ");
                 textArea.setText(bakNextScene.getStory());
                 addSelectMenu(bakNextScene);
             }
-            isShopping = false;
             openMenuWindow();
         }
     }
@@ -355,12 +361,11 @@ public class InputSelector extends JPopupMenu implements ActionListener
         int zan = player.getMoney() - sel.getMoney();
         System.out.println(zan);
         player.setMoney(zan);
-        System.out.println("List-; " + player.getItems().size());
+        System.out.println("BPK: " + max.getValue() + " List-; " + player.getItems().size());
         player.getItems().add(it);
         System.out.println("List-After; " + player.getItems().size());
         main.setPlayer(player);
         printText("他にようはありますか？");
-        isChecking = true;
         addYesNoMenuItem(sel, YES, NO);
     }
 

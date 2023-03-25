@@ -20,31 +20,59 @@ import java.util.List;
  */
 public class StatusPanel extends JFrame implements ActionListener {
     private static boolean isDebug = true;
+
+    public StatusPanel() {
+    }
     public StatusPanel(Player player) throws RpgException {
         super();
         if (player == null) {
             throw new RpgException("プレーヤーが生成されていません。");
         }
-        JDialog dialog = new JDialog(this);
-        dialog.setBounds(100, 150, 400, 500);
-//        dialog.setSize(500, 800);
+        init(player);
+    }
+
+    public void init(Player player) {
+        JDialog dialog = createJDialog();
         JButton but = new JButton("Close");
         but.addActionListener(this);
 
-        JPanel panel = new JPanel();
-        panel.setLayout(new BorderLayout());
+        JPanel panel = createRootPanel();
         panel.add(but, BorderLayout.SOUTH);
         dialog.add(panel);
+
+        JPanel center = new JPanel();
+        center.setLayout(new GridLayout(1,1));
+
+        JPanel cLeft = createCenterLeftPanel(player);
+        center.add(cLeft);
+
+        JPanel cRight = createCenterRight(player);
+        center.add(cRight);
+        panel.add(center, BorderLayout.CENTER);
+
+        dialog.setVisible(true);
+    }
+    protected JDialog createJDialog() {
+        JDialog dialog = new JDialog(this);
+        dialog.setBounds(100, 150, 400, 500);
+//        dialog.setSize(500, 800);
+        return dialog;
+    }
+
+    protected JPanel createRootPanel() {
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+        return panel;
+    }
+
+    /** ステータス表示部分の作成 */
+    protected JPanel createCenterLeftPanel(Player player) {
         // 名前
         JLabel name = new JLabel(player.getName());
         //panel.add(name, BorderLayout.NORTH);
 
-        JPanel center = new JPanel();
-        center.setLayout(new BoxLayout(center, BoxLayout.X_AXIS));
-
         JPanel cLeft = new JPanel();
         cLeft.setLayout(new BoxLayout(cLeft, BoxLayout.Y_AXIS));
-        center.add(cLeft);
 
         // ステータスの数 + 1でアイテムも高さをそろえる
         int statusSize = 0;
@@ -58,10 +86,12 @@ public class StatusPanel extends JFrame implements ActionListener {
             cLeft.add(lbl);
             statusSize++;
         }
+        return cLeft;
+    }
 
+    protected JPanel createCenterRight(Player player) {
         JPanel cRight = new JPanel();
         cRight.setLayout(new BoxLayout(cRight, BoxLayout.Y_AXIS));
-        center.add(cRight);
 
         List<Item> items = player.getItems();
 
@@ -70,31 +100,23 @@ public class StatusPanel extends JFrame implements ActionListener {
         cRight.add(itemName);
 
         //cRight.add(Box.createRigidArea(new Dimension(10, 10)));
-        int itemSize = 0;
+        int statusSize = player.getStatus().size();
         if (isDebug) System.out.println("ItemSize: " + items.size());
         for (int i = 0; i < statusSize - 1; i++) {
             if (i < (items.size())) {
                 Item it = items.get(i);
                 JLabel lbl = new JLabel(it.getName());
-                lbl.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+                setEmptyVorder(lbl);
                 cRight.add(lbl);
             } else {
                 JLabel tmp = new JLabel("-");
-                tmp.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+                setEmptyVorder(tmp);
                 cRight.add(tmp);
                 //cRight.add(Box.createRigidArea(new Dimension(10, 0)));
             }
         }
-        panel.add(center, BorderLayout.CENTER);
-
-
-        Dimension windowSize = TextRpgMain.displaySise();
-        int w = windowSize.width;
-        int h = windowSize.height;
-
-        dialog.setVisible(true);
+        return cRight;
     }
-
     private Params[] sortMap(Map<String, Params> map) {
         Set<String> set = map.keySet();
 
@@ -112,11 +134,11 @@ public class StatusPanel extends JFrame implements ActionListener {
         this.setVisible(false);
     }
 
-    private String formatString(int s, int size, boolean isRight) {
+    protected String formatString(int s, int size, boolean isRight) {
         return formatString(String.valueOf(s), size, isRight);
     }
 
-    private String formatString(String str, int size, boolean isRight) {
+    protected String formatString(String str, int size, boolean isRight) {
         String result = null;
         if (isRight) {
             result =  String.format("%" + size + "s", str);
@@ -124,5 +146,9 @@ public class StatusPanel extends JFrame implements ActionListener {
             result =  String.format("%-" + size + "s", str);
         }
         return result;
+    }
+
+    protected void setEmptyVorder(JComponent com) {
+        com.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
     }
 }

@@ -125,6 +125,37 @@ public class Player implements Cloneable
         return res;
     }
 
+    /** こうげきりょくを取得 */
+    public int getAttackPower() {
+        int result = 0;
+        try {
+            // TODO-[ATKを動的に指定したい]
+            Formula atk = ConfigLoader.getInstance().getFormulas().get("ATK");
+            String conv = convertFormula(atk);
+            result = (int) new ExpressionBuilder(conv).build().evaluate();
+            System.out.println("ATK=" + result);
+        } catch (RpgException e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
+        return result;
+    }
+
+    /** ぼうぎょりょくを取得 */
+    public int getDeffencePower() {
+        int result = 0;
+        try {
+            // TODO-[DEFを動的に指定したい]
+            Formula def = ConfigLoader.getInstance().getFormulas().get("DEF");
+            String conv = convertFormula(def);
+            result = (int) new ExpressionBuilder(conv).build().evaluate();
+            System.out.println("DEF=" + result);
+        } catch (RpgException e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
+        return result;
+    }
     protected void print(String prefix, Player p) {
         System.out.println(prefix + "HP: " + p.getParams("HP").getValue());
     }
@@ -141,7 +172,7 @@ public class Player implements Cloneable
                 resFormula = resFormula.replaceAll(key, f.getFormulaStr());
             }
         }
-        //System.out.println("Lv1: " + resFormula);
+        System.out.println("Lv1: " + resFormula);
         // ステータス文字列の変換
         Set<String> keys = status.keySet();
         String conv = null;
@@ -151,7 +182,7 @@ public class Player implements Cloneable
                 resFormula = resFormula.replace(key, value);
             }
         }
-        //System.out.println("Lv2: " + resFormula);
+        System.out.println("Lv2: " + resFormula);
         return resFormula;
     }
 
@@ -185,4 +216,17 @@ public class Player implements Cloneable
     public Item selectItem(int num) {
         return items.get(num);
     }
+
+    public void setWepon(Wepon wepon) {
+        this.wepon = wepon;
+        Params param = new Params("WEV", wepon.getName(), wepon.getValue());
+        status.put("WEV", param);
+    }
+
+    public void setArmor(Armor arm) {
+        this.armor = arm;
+        Params param = new Params("ARV", arm.getName(), arm.getValue());
+        status.put("ARV", param);
+    }
+
 }

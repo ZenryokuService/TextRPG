@@ -29,5 +29,4 @@ public class Formula
         this.formulaStr = formula;
         this.target = target;
     }
-
 }

@@ -3,6 +3,7 @@
     <views>HP</views>
     <views>MP</views>
     <views>LV</views>
+    <equipView></equipView>
     <!-- value=0をデフォルトとする -->
     <money>
         <key>NIG</key>

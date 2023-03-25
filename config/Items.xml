@@ -25,7 +25,7 @@
         <id>bokto</id>
         <name>ぼくとう</name>
         <demerit>
-            <formulaStr>WIT+1</formulaStr>
+            <formulaStr>WEV+1</formulaStr>
         </demerit>
         <special>
             <formulaStr>POW+1</formulaStr>
@@ -36,7 +36,7 @@
         <id>naifu</id>
         <name>ナイフ</name>
         <demerit>
-            <formulaStr>WIT+1</formulaStr>
+            <formulaStr>WEV+1</formulaStr>
         </demerit>
         <special>
             <formulaStr>POW+1</formulaStr>
@@ -47,7 +47,7 @@
         <id>donosord</id>
         <name>どうのつるぎ</name>
         <demerit>
-            <formulaStr>WIT+1</formulaStr>
+            <formulaStr>WEV+3</formulaStr>
         </demerit>
         <special>
             <formulaStr>POW+1</formulaStr>
@@ -58,7 +58,7 @@
         <id>tetunosord</id>
         <name>てつのつるぎ</name>
         <demerit>
-            <formulaStr>WIT+1</formulaStr>
+            <formulaStr>WEV+5</formulaStr>
         </demerit>
         <special>
             <formulaStr>POW+1</formulaStr>
@@ -69,7 +69,7 @@
         <id>donoarmor</id>
         <name>どうのよろい</name>
         <demerit>
-            <formulaStr>WIT+2</formulaStr>
+            <formulaStr>ARV+4</formulaStr>
         </demerit>
         <spcial>
             <formulaStr>POW+1</formulaStr>
@@ -80,7 +80,18 @@
         <id>tetunoarmor</id>
         <name>てつのよろい</name>
         <demerit>
-            <formulaStr>WIT+2</formulaStr>
+            <formulaStr>ARV+5</formulaStr>
+        </demerit>
+        <spcial>
+            <formulaStr>POW+1</formulaStr>
+        </spcial>
+        <value>12</value>
+    </armor>
+    <armor>
+        <id>nunonohuku</id>
+        <name>ぬののふく</name>
+        <demerit>
+            <formulaStr>ARV+1</formulaStr>
         </demerit>
         <spcial>
             <formulaStr>POW+1</formulaStr>

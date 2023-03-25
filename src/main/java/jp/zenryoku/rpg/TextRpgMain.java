@@ -231,7 +231,6 @@ public class TextRpgMain extends JFrame implements KeyListener, MouseListener {
     @Override
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
-        System.out.println("Presses: " + key);
         switch (key) {
             case KeyEvent.VK_ESCAPE:
                 pressESC();
