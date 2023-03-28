@@ -78,7 +78,6 @@ public class StatusPanel extends JFrame implements ActionListener {
         int statusSize = 0;
         cLeft.add(name);
         Params[] list = sortMap(player.getStatus());
-
         for (Params p : list) {
             JLabel lbl = new JLabel(p.getName() + " : " + formatString(p.getValue(), 3, true));
             lbl.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
@@ -122,6 +121,7 @@ public class StatusPanel extends JFrame implements ActionListener {
 
         Params[] arr = new Params[map.size()];
         for (String key : set) {
+            System.out.println(map.get(key));
             Params p = map.get(key);
             arr[p.getIndex()] = p;
         }

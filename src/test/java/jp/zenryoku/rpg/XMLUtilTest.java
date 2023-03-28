@@ -24,4 +24,8 @@ public class XMLUtilTest {
         XMLUtil.exportMonsterTypeJaxb("config/bak", "bkMonsterTypes.xml");
     }
 
+    @Test
+    public void testExportPlayers() {
+        XMLUtil.exportPlayerJaxb("config/bak", "bkPlayer.xml");
+    }
 }

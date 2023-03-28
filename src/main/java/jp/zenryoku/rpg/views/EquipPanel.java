@@ -46,7 +46,11 @@ public class EquipPanel extends StatusPanel implements ListSelectionListener {
         JPanel bukiLine = new JPanel();
         JLabel buki = new JLabel(formatString("ぶき: ", 4, false));
         bukiLine.add(buki);
-        bukiValue = new JLabel(formatString(player.getWepon().getName(), 10, true));
+        if (player.getWepon() != null) {
+            bukiValue = new JLabel(formatString(player.getWepon().getName(), 10, true));
+        } else {
+            bukiValue = new JLabel(formatString("そうびなし", 10, true));
+        }
 //        bukiValue.setName("bukiValue");
         bukiLine.add(bukiValue);
         cLeft.add(bukiLine);
@@ -54,7 +58,11 @@ public class EquipPanel extends StatusPanel implements ListSelectionListener {
         JPanel boguLine = new JPanel();
         JLabel bogu = new JLabel(formatString("ぼうぐ: ", 4, false));
         boguLine.add(bogu);
-        boguValue = new JLabel(formatString(player.getArmor().getName(), 10, true));
+        if (player.getArmor() != null) {
+            boguValue = new JLabel(formatString(player.getArmor().getName(), 10, true));
+        } else {
+            boguValue = new JLabel(formatString("そうびなし", 10, true));
+        }
 //        boguValue.setName("boguValue");
         boguLine.add(boguValue);
         cLeft.add(boguLine);
@@ -110,29 +118,39 @@ public class EquipPanel extends StatusPanel implements ListSelectionListener {
 
     @Override
     public void valueChanged(ListSelectionEvent e) {
+        final String SOBI_NASHI = "そうびなし";
         if (e.getValueIsAdjusting() || equipList.getSelectedIndex() == -1) {
             return;
+        }
+        boolean noSobi = false;
+        if (SOBI_NASHI.equals(bukiValue.getText()) || SOBI_NASHI.equals(boguValue.getText())) {
+            noSobi = true;
         }
         List<Item> itemList = player.getItems();
         int idx = equipList.getSelectedIndex();
         Item item = itemList.get(idx);
         if (isDebug) System.out.println("select: " + item.getName());
         if (item instanceof Wepon) {
-            itemList.remove(idx);
-            itemList.add(player.getWepon());
+            if (isDebug) System.out.println("*** Wepon ***");
+            if (noSobi == false) {
+                itemList.add(player.getWepon());
+            }
             bukiValue.setText(item.getName());
             player.setWepon((Wepon) item);
             attackPow.setText(String.valueOf(player.getAttackPower()));
         } else if (item instanceof Armor) {
-            itemList.remove(idx);
-            itemList.add(player.getArmor());
+            if (isDebug) System.out.println("*** Armor ***");
+            if (noSobi == false) {
+                itemList.add(player.getArmor());
+            }
             boguValue.setText(item.getName());
             player.setArmor((Armor) item);
             deffecePow.setText(String.valueOf(player.getDeffencePower()));
         }
-        DefaultListModel list = EquipList.createModel(player);
-        equipList.removeAll();
-        equipList.setListData(list.toArray());
-
+        if (noSobi) {
+            DefaultListModel list = EquipList.createModel(player);
+            equipList.removeAll();
+            equipList.setListData(list.toArray());
+        }
     }
 }

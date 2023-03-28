@@ -171,16 +171,6 @@
         <state>
             <key>Normal</key>
         </state>
-        <wepon>
-            <formula/>
-            <name>どうのつるぎ</name>
-            <value>12</value>
-        </wepon>
-        <armor>
-            <formula/>
-            <name>どうのよろい</name>
-            <value>7</value>
-        </armor>
     </player>
     <player>
         <level>0</level>
@@ -353,16 +343,6 @@
         <state>
             <key>Normal</key>
         </state>
-        <wepon>
-            <formula/>
-            <name>どうのつるぎ</name>
-            <value>12</value>
-        </wepon>
-        <armor>
-            <formula/>
-            <name>どうのよろい</name>
-            <value>7</value>
-        </armor>
     </player>
     <player>
         <level>0</level>
@@ -535,21 +515,5 @@
         <state>
             <key>Normal</key>
         </state>
-        <wepon>
-            <formula>
-            	<id>WEV</id>
-                <formulaStr></formulaStr>
-            </formula>
-            <name>どうのつるぎ</name>
-            <value>12</value>
-        </wepon>
-        <armor>
-            <formula>
-            	<id>ARV</id>
-                <formulaStr></formulaStr>
-            </formula>
-            <name>どうのよろい</name>
-            <value>7</value>
-        </armor>
     </player>
 </players>
