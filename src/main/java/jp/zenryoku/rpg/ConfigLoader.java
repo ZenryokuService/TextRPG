@@ -247,6 +247,31 @@ public class ConfigLoader {
     }
 
     /**
+     * モンスターを指定して呼び出す。
+     * モンスターを呼び出す処理。ほんとはインスタンスをコピーして
+     * モンスターを増やしたかったが、インスタンスの参照が変わらないので。
+     * モンスターの値をリセットするようにしている。
+     *
+     * @param no モンスター番号
+     * @return モンスターオブジェクト
+     */
+    public Monster callMonster(int no) {
+        Monster mst = monsters.get(no);
+        if (isDebug) System.out.println("　" + mst.getName());
+        Monster newMonster = null;
+        if (isDebug) System.out.println("インスタンスID;1  " + mst.getStatus().hashCode());
+        try {
+            newMonster =  mst.clone();
+            if (isDebug) System.out.println("インスタンスID;2  " + newMonster.getStatus().hashCode());
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
+        return newMonster;
+    }
+
+    /**
+     * モンスターをランファムに呼び出す。
      * モンスターを呼び出す処理。ほんとはインスタンスをコピーして
      * モンスターを増やしたかったが、インスタンスの参照が変わらないので。
      * モンスターの値をリセットするようにしている。

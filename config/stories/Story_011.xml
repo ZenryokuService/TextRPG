@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<story>
+    <sceneNo>11</sceneNo>
+    <sceneType>STORY</sceneType>
+    <nextScene>-1</nextScene>
+    <center>true</center>
+    <canSelectNextScene>false</canSelectNextScene>
+  <id>Second</id>
+  <name>戦闘シーン</name>
+  <description>ゲーム開始時の画面</description>
+  <story>
+      第一層をクリアした！
+      サンプルストーリーはここまでです。
+      *** FIN ***
+  </story>
+  <path></path>
+
+</story>

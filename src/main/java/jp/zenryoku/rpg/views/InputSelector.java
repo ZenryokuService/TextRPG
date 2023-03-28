@@ -129,11 +129,14 @@ public class InputSelector extends JPopupMenu implements ActionListener
             createSingleSelect(story);
             return;
         }
-        if (SceneType.SHOP.equals(story.getSceneType())) {
+        SceneType type = story.getSceneType();
+        if (SceneType.SHOP.equals(type)) {
             isShopping = true;
             bakNextScene = story;
         }
-
+        if (SceneType.EFFECT.equals(type)) {
+            isEffect = false;
+        }
         for(Select sel : selects) {
             if (isShopping) {
                 Item itm = ConfigLoader.getInstance().getItemFromShohinCd(sel, -1);
@@ -153,6 +156,9 @@ public class InputSelector extends JPopupMenu implements ActionListener
      * @param story シーンオブジェクト
      */
     private void createSingleSelect(Scene story) {
+        if (story.getNextScene() == -1) {
+            return;
+        }
         Select sel = new Select(story.getNextScene(), "すすむ");
         SelectMenu act = new SelectMenu(sel);
         add(act);
@@ -187,7 +193,12 @@ public class InputSelector extends JPopupMenu implements ActionListener
             case BATTLE:
                 int low = nextScene.getMonsterNoLow();
                 int high = nextScene.getMonsterNoHigh();
-                monster = ConfigLoader.getInstance().callMonster(low, high);
+                int no = nextScene.getMonsterNo();
+                if (no != 0) {
+                    monster = ConfigLoader.getInstance().callMonster(no);
+                } else {
+                    monster = ConfigLoader.getInstance().callMonster(low, high);
+                }
                 if (isDebug) System.out.println("インスタンスID;3  " + monster.hashCode());
                 isBattle = true;
                 break;
@@ -299,14 +310,19 @@ public class InputSelector extends JPopupMenu implements ActionListener
             openMenuWindow();
         } else if (NO == menu.getNextSceneNo()) { // 「いいえ」を押下したとき
             if (isChecking) { // 「他にようはありますか？」→「いいえ」を押下したとき
+                if (isDebug) System.out.println("*** NO & Check true ***");
                 printText("ありがとうございました。");
                 isChecking = false;
                 isShopping = false;
                 Scene next = ConfigLoader.getInstance().getScenes().get(bakNextScene.getNextScene());
                 textArea.setText(convertStory(next.getStory(), player));
+                if (SceneType.EFFECT.equals(next.getSceneType())) {
+                    prepareItems(next);
+                }
                 addSelectMenu(next);
-            } else { // 「これでよいですか？」→　「いいえ」を押下したとき
-                System.out.println("* NO & Check:false ");
+            } else {
+                // 「これでよいですか？」→　「いいえ」を押下したとき
+                if (isDebug) System.out.println("* NO & Check:false ");
                 textArea.setText(bakNextScene.getStory());
                 addSelectMenu(bakNextScene);
             }
@@ -390,6 +406,9 @@ public class InputSelector extends JPopupMenu implements ActionListener
                 if (isDebug) System.out.println("Battle");
                 this.bakNextScene  = nextScene;
                 preCommandProcess();
+            }
+            if (nextScene.getSceneNo() == -1) {
+                return;
             }
             openMenuWindow();
         } catch (RpgException e) {

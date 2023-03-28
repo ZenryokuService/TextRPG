@@ -3,7 +3,7 @@
     <sceneNo>8</sceneNo>
     <sceneType>EFFECT</sceneType>
     <nextScene>9</nextScene>
-    <center>true</center>
+    <center>false</center>
     <canSelectNextScene>false</canSelectNextScene>
     <id>Second</id>
     <name>実装後</name>
@@ -17,6 +17,10 @@
       「たのんだぞ～」カミサマがみおくるなか$player.nameは旅立っていきました。
     </story>
     <path></path>
+    <selects>
+        <mongon>すすむ</mongon>
+        <nextScene>9</nextScene>
+    </selects>
     <items>donosord</items>
     <items>donoarmor</items>
 </story>
