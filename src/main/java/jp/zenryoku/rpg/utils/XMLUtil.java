@@ -507,6 +507,7 @@ public class XMLUtil
      */
     public static Scene loadStory(File file) throws RpgException {
         Scene story = (Scene) loadXml(file, Scene.class);
+        if (isDebug) System.out.println("loading: " + story.getSceneNo());
         if (isEmpty(story.getStory()) && isEmpty(story.getPath())) {
             throw new RpgException("story, pathのどちらかを定義してください。");
         }

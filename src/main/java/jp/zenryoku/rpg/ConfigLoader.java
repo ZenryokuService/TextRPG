@@ -68,7 +68,7 @@ public class ConfigLoader {
         worlds = new Worlds();
         worlds.setWorlds(XMLUtil.loadWorldJaxb("config", "Worlds.xml"));
         // ストーリーの生成
-        scenes = loadStories("config/stories");
+        scenes = loadStories("config/stories/");
         // 職業の生成
         jobs = loadJobs("config", "Jobs.xml");
         // プレーヤーの生成
@@ -114,7 +114,6 @@ public class ConfigLoader {
         Map<Integer, Scene> map = new HashMap<>();
 
         for (File xml : storyFiles) {
-            if (isDebug) System.out.println(xml.getName());
             if (xml.getName().matches(".*.xml")) {
                 Scene story = XMLUtil.loadStory(xml);
                 int key = story.getSceneNo();
@@ -122,7 +121,12 @@ public class ConfigLoader {
                     System.out.println("シーン番号が重複しています: " + key);
                     System.exit(-1);
                 }
+                if (isDebug) System.out.println("loadXML: " + story.getSceneNo());
                 map.put(story.getSceneNo(), story);
+            } else if (xml.isDirectory()) {
+                if (isDebug) System.out.println("Child dir: " + xml.getPath());
+                Map<Integer, Scene> sceneMap2nd = loadStories(xml.getPath());
+                map.putAll(sceneMap2nd);
             }
         }
         return map;

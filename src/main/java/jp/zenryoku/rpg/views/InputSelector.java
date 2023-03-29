@@ -397,13 +397,18 @@ public class InputSelector extends JPopupMenu implements ActionListener
      *
      * @param selectItem　JMenuItemの拡張クラス
      */
-    private void selectProcess(SelectMenu selectItem) {
+    private void selectProcess(SelectMenu selectItem) throws RpgException {
         if (selectItem == null) {
             return;
         }
         // 次のシーンを表示する
         try {
-            Scene nextScene = ConfigLoader.getInstance().getScenes().get(selectItem.getNextSceneNo());
+            int nextSceneNo = selectItem.getNextSceneNo();
+            System.out.println("selectProcess: SceneNo=" + nextSceneNo);
+            Scene nextScene = ConfigLoader.getInstance().getScenes().get(nextSceneNo);
+            if (nextScene == null) {
+                throw new RpgException("指定のシーン番号が定義されていません。" + nextSceneNo);
+            }
             playScene(nextScene, selectItem);
             System.out.println("*** " + nextScene.getName() + " : " + nextScene.getSceneType() + " ***");
             if (isBattle == false) {
@@ -421,6 +426,7 @@ public class InputSelector extends JPopupMenu implements ActionListener
             openMenuWindow();
         } catch (RpgException e) {
             e.printStackTrace();
+            throw e;
         }
     }
 
@@ -472,7 +478,7 @@ public class InputSelector extends JPopupMenu implements ActionListener
      * バトルシーンの実装
      * @param cmd コマンドオブジェクト
      */
-    private void battleSceneProcess(Command cmd) {
+    private void battleSceneProcess(Command cmd) throws RpgException {
         String tmp = textArea.getText();
 
         textArea.setText(tmp + SEP + player.getName() + "の" + cmd.getName() + "!");
@@ -506,6 +512,7 @@ public class InputSelector extends JPopupMenu implements ActionListener
             }
         } catch (RpgException e) {
             e.printStackTrace();
+            throw e;
         }
         openMenuWindow();
     }

@@ -3,13 +3,13 @@
     <sceneNo>12</sceneNo>
     <sceneType>STORY</sceneType>
     <nextScene>13</nextScene>
-    <center>true</center>
+    <center>false</center>
     <canSelectNextScene>false</canSelectNextScene>
   <id>Second</id>
   <name>２層への移動シーン</name>
   <description>ゲーム開始時の画面</description>
   <story></story>
-  <path>config/stories/story_012.txt</path>
+  <path>config/stories/second/story_012.txt</path>
     <selects>
         <mongon>すすむ</mongon>
         <nextScene>13</nextScene>
