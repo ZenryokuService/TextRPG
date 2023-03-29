@@ -124,6 +124,9 @@ public class InputSelector extends JPopupMenu implements ActionListener
      * @param story シーンオブジェクト
      */
     private void addSelectMenu(Scene story) throws RpgException {
+        if (story.getNextScene() == -1) {
+            return;
+        }
         List<Select> selects = story.getSelects();
         if (selects == null) {
             createSingleSelect(story);
@@ -157,10 +160,13 @@ public class InputSelector extends JPopupMenu implements ActionListener
      */
     private void createSingleSelect(Scene story) {
         if (story.getNextScene() == -1) {
+            if (isDebug) System.out.println("Next -1");
             return;
         }
+        System.out.println("Select " + story.getNextScene());
         Select sel = new Select(story.getNextScene(), "すすむ");
         SelectMenu act = new SelectMenu(sel);
+        act.addActionListener(this);
         add(act);
     }
 
@@ -238,6 +244,7 @@ public class InputSelector extends JPopupMenu implements ActionListener
      * @param event the event to be processed
      */
     public void actionPerformed(ActionEvent event) {
+        if (isDebug) System.out.println("*** ActionPerformed ***");
         removeAll();
         SelectMenu selectItem = null;
         CommandMenu cmdItem = null;
@@ -410,6 +417,7 @@ public class InputSelector extends JPopupMenu implements ActionListener
             if (nextScene.getSceneNo() == -1) {
                 return;
             }
+            System.out.println("OpenMenu");
             openMenuWindow();
         } catch (RpgException e) {
             e.printStackTrace();

@@ -13,7 +13,7 @@
   </story>
   <path></path>
   <monsterNo>4</monsterNo>
-    <selects>
+  <selects>
     <mongon>すすむ</mongon>
     <nextScene>11</nextScene>
   </selects>
