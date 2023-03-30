@@ -16,7 +16,7 @@ public class TitleLabel extends JLabel
     public TitleLabel(String title, Dimension windowSize) {
         super(title);
         int width = (int) windowSize.getWidth();
-        int height = (int) windowSize.getHeight() / 16;
+        int height = (int) windowSize.getHeight() / 16 - 20;
         Dimension labelSize = new Dimension(width, height);
         setOpaque(true);
         setPreferredSize(labelSize);

@@ -35,6 +35,8 @@ public class TextRpgMain extends JFrame implements KeyListener, MouseListener {
     private RpgTextField field;
     /** プレーヤー */
     private Player player;
+    /** シーン番号ラベル */
+    private JLabel sceneNoLbl;
 
 
 
@@ -72,6 +74,9 @@ public class TextRpgMain extends JFrame implements KeyListener, MouseListener {
         initView();
     }
 
+    public void setSceneNoLbl(String num) {
+        sceneNoLbl.setText("SceneNO: " + num);
+    }
     /**
      * 起動しているPCの、ディスプレイ・サイズを取得する
      * @return Dimension ディスプレイ・サイズ
@@ -88,11 +93,15 @@ public class TextRpgMain extends JFrame implements KeyListener, MouseListener {
     public Player getPlayer() { return this.player; }
 
     public void setPlayer(Player player) throws RpgException {
+        Dimension windowSize = displaySise();
         this.player = player;
         List<String> views = config.getConf().getViews();
 
         JPanel titlePanel = (JPanel) selectComponent(TITLE_PANEL);
         titlePanel.removeAll();
+        titlePanel.add(sceneNoLbl, JPanel.TOP_ALIGNMENT);
+        titlePanel.add(Box.createRigidArea(new Dimension(windowSize.width / 5, 20)));
+
         JPanel ppp = new JPanel();
         ppp.setLayout(new BoxLayout(ppp, BoxLayout.Y_AXIS));
         ppp.add(new JLabel(player.getName()));
@@ -103,14 +112,17 @@ public class TextRpgMain extends JFrame implements KeyListener, MouseListener {
         }
 
         titlePanel.add(ppp);
-        JPanel right = new JPanel();
-        right.setLayout(new BorderLayout());
-        // TODO-[所持金の配置を修正したい]
-        JLabel moeyLbl = new JLabel("所持金: " + player.getMoney());
+        titlePanel.add(Box.createRigidArea(new Dimension(windowSize.width / 7, 20)));
+        // TODO-[所持金等の配置を修正したい]
+        JLabel moneyLbl = new JLabel("所持金: " + player.getMoney());
+        moneyLbl.setBackground(Color.YELLOW);
+        titlePanel.add(moneyLbl);
+
         JLabel expLbl = new JLabel("経験値: " + player.getExp());
-        right.add(moeyLbl, BorderLayout.NORTH);
-        right.add(expLbl, BorderLayout.SOUTH);
-        titlePanel.add(right);
+        expLbl.setBackground(Color.cyan);
+        titlePanel.add(expLbl);
+//        right.add(moeyLbl, BorderLayout.NORTH);
+//        right.add(expLbl, BorderLayout.SOUTH);
     }
 
     public Component selectComponent(String name) throws RpgException {
@@ -118,6 +130,15 @@ public class TextRpgMain extends JFrame implements KeyListener, MouseListener {
         Component[] components = getContentPane().getComponents();
         for (Component com : components) {
             System.out.println("First: " + com.getName());
+            // TODO-[このコードが気に入らない]
+            if (com instanceof JPanel && ((JPanel) com).getComponents().length != 0) {
+                Component[] lv2Com = ((JPanel) com).getComponents();
+                for (Component com2 : lv2Com) {
+                    if (name.equals(com2.getName())) {
+                        resComponent = com;
+                    }
+                }
+            }
             if (name.equals(com.getName())) {
                 resComponent = com;
             }
@@ -159,16 +180,20 @@ public class TextRpgMain extends JFrame implements KeyListener, MouseListener {
         textArea.addKeyListener(this);
         textArea.addMouseListener(this);
 
-        JPanel headerPanel = new JPanel();
-        headerPanel.setName(HEADER_PANEL);
-        headerPanel.add(new Label("TextRPG"));
         JPanel titlePanel = new JPanel();
         titlePanel.setName(TITLE_PANEL);
+        titlePanel.setLayout(new BoxLayout(titlePanel, BoxLayout.X_AXIS));
+
+        sceneNoLbl = new JLabel("Scene: 0");
+        sceneNoLbl.setBounds(xPos, yPos, 100, 20);
+
+        titlePanel.add(sceneNoLbl);
         titlePanel.add(titleLabel);
 
         JPanel textPanel = new JPanel();
         textPanel.setName(TEXT_PANEL);
         textPanel.add(textArea);
+
 
         Container contentPane = getContentPane();
         contentPane.add(titlePanel, BorderLayout.NORTH);

@@ -404,6 +404,7 @@ public class InputSelector extends JPopupMenu implements ActionListener
         // 次のシーンを表示する
         try {
             int nextSceneNo = selectItem.getNextSceneNo();
+            main.setSceneNoLbl(String.valueOf(nextSceneNo));
             System.out.println("selectProcess: SceneNo=" + nextSceneNo);
             Scene nextScene = ConfigLoader.getInstance().getScenes().get(nextSceneNo);
             if (nextScene == null) {
