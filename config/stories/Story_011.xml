@@ -9,7 +9,7 @@
   <name>１層の最後シーン</name>
   <description>ゲーム開始時の画面</description>
   <story>
-      第一層をクリアした！次は第二層データリンク層だ。$player.nameは光の中に姿を消した。
+      第一層をクリアした！$player.nameは光の中に包まれた。遠くから声が聞こえる。
   </story>
   <path></path>
 

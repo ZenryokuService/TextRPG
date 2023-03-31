@@ -3,15 +3,13 @@
     <sceneNo>13</sceneNo>
     <sceneType>STORY</sceneType>
     <nextScene>-1</nextScene>
-    <center>true</center>
+    <center>false</center>
     <canSelectNextScene>false</canSelectNextScene>
   <id>Second</id>
   <name>２層への移動シーン</name>
   <description>ゲーム開始時の画面</description>
-  <story>
-      第一層をクリアした！次は第二層データリンク層だ。$player.nameは光の中に姿を消した。
-  </story>
-  <path></path>
+  <story></story>
+    <path>config/stories/second/story_013.txt</path>
     <selects>
         <mongon>すすむ</mongon>
         <nextScene>13</nextScene>

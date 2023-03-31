@@ -16,14 +16,14 @@ import java.util.List;
  * テキストRPGのメインクラス。
  */
 public class TextRpgMain extends JFrame implements KeyListener, MouseListener {
-    private static final String CMD_TEXT = "CMD_TEXT";
+    public static final String CMD_TEXT = "CMD_TEXT";
     private ConfigLoader config;
     /** 後にプレーヤー表示するパネルの名前 */
-    private final String TITLE_PANEL = "titlePanel";
+    public final String TITLE_PANEL = "titlePanel";
     /** 後に何か表示するパネルの名前 */
-    private final String HEADER_PANEL = "header";
+    public final String HEADER_PANEL = "header";
     /** 文章表示するパネルの名前 */
-    private final String TEXT_PANEL = "textPanel";
+    public static final String TEXT_PANEL = "textPanel";
 
     /** 文字表示のテキストエリア */
     private RpgTextArea textArea;
@@ -37,6 +37,8 @@ public class TextRpgMain extends JFrame implements KeyListener, MouseListener {
     private Player player;
     /** シーン番号ラベル */
     private JLabel sceneNoLbl;
+    /** HTML表示フラグ */
+    private boolean viewHtml;
 
 
 
@@ -74,6 +76,11 @@ public class TextRpgMain extends JFrame implements KeyListener, MouseListener {
         initView();
     }
 
+    public void setViewHtml(boolean isView) {
+        this.viewHtml = isView;
+    }
+
+    public boolean isViewHtml() { return viewHtml; }
     public void setSceneNoLbl(String num) {
         sceneNoLbl.setText("SceneNO: " + num);
     }
@@ -100,7 +107,7 @@ public class TextRpgMain extends JFrame implements KeyListener, MouseListener {
         JPanel titlePanel = (JPanel) selectComponent(TITLE_PANEL);
         titlePanel.removeAll();
         titlePanel.add(sceneNoLbl, JPanel.TOP_ALIGNMENT);
-        titlePanel.add(Box.createRigidArea(new Dimension(windowSize.width / 5, 20)));
+        titlePanel.add(Box.createRigidArea(new Dimension(windowSize.width / 6, 20)));
 
         JPanel ppp = new JPanel();
         ppp.setLayout(new BoxLayout(ppp, BoxLayout.Y_AXIS));
@@ -112,11 +119,12 @@ public class TextRpgMain extends JFrame implements KeyListener, MouseListener {
         }
 
         titlePanel.add(ppp);
-        titlePanel.add(Box.createRigidArea(new Dimension(windowSize.width / 7, 20)));
+        titlePanel.add(Box.createRigidArea(new Dimension(windowSize.width / 10, 20)));
         // TODO-[所持金等の配置を修正したい]
         JLabel moneyLbl = new JLabel("所持金: " + player.getMoney());
         moneyLbl.setBackground(Color.YELLOW);
         titlePanel.add(moneyLbl);
+        titlePanel.add(Box.createRigidArea(new Dimension(10, 20)));
 
         JLabel expLbl = new JLabel("経験値: " + player.getExp());
         expLbl.setBackground(Color.cyan);

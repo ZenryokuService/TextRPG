@@ -4,15 +4,27 @@
     <sceneType>STORY</sceneType>
     <nextScene>13</nextScene>
     <center>false</center>
-    <canSelectNextScene>false</canSelectNextScene>
+    <canSelectNextScene>true</canSelectNextScene>
   <id>Second</id>
-  <name>２層への移動シーン</name>
-  <description>ゲーム開始時の画面</description>
+  <name>なぞなぞシーン</name>
+  <description>HTMLファイルを表示する。</description>
   <story></story>
-  <path>config/stories/second/story_012.txt</path>
+    <path>config/stories/second/012.html</path>
     <selects>
-        <mongon>すすむ</mongon>
+        <mongon>あり？</mongon>
+        <nextScene>-1</nextScene>
+    </selects>
+    <selects>
+        <mongon>アントグリーン</mongon>
+        <nextScene>-1</nextScene>
+    </selects>
+    <selects>
+        <mongon>ありがとう</mongon>
         <nextScene>13</nextScene>
+    </selects>
+    <selects>
+        <mongon>タイガーマスク</mongon>
+        <nextScene>-1</nextScene>
     </selects>
 
 </story>

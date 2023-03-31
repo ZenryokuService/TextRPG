@@ -16,6 +16,7 @@
         <mongon>近づく。。。</mongon>
         <nextScene>8</nextScene>
         <formula>
+            <id>NIG100</id>
             <!-- ATK攻撃の式 -->
             <formulaStr>NIG + 100</formulaStr>
             <target>NIG</target>

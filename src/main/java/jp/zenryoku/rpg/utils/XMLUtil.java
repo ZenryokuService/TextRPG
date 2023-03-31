@@ -511,9 +511,21 @@ public class XMLUtil
         if (isEmpty(story.getStory()) && isEmpty(story.getPath())) {
             throw new RpgException("story, pathのどちらかを定義してください。");
         }
+        if (story.getSceneNo() == 7) {
+            story.getSelects().forEach(s -> System.out.println(s.getFormula()));
+        }
         // PATHしてありの場合は対象のファイルを読み込む
-        if (isEmpty(story.getPath()) == false) {
-            story.setStory(loadText(story.getPath(), story.isCenter()));
+        String pathStr = story.getPath();
+        if (isEmpty(pathStr) == false) {
+            String[] sep = pathStr.split("\\.");
+            if (isDebug) System.out.println("path: " + sep[1]);
+            if (sep[1].equals("txt")) {
+                if (isDebug) System.out.println(story.getSceneNo() + ": Txt");
+                story.setStory(loadText(story.getPath(), story.isCenter()));
+            } else if (sep[1].equals("html")) {
+                if (isDebug) System.out.println(story.getSceneNo() + ": html");
+                story.setHtml(true);
+            }
         }
         return story;
     }

@@ -22,13 +22,15 @@ import java.util.List;
  */
 @Data
 @XmlRootElement( name="scene")
-@XmlType(propOrder={"sceneNo", "sceneType", "story", "nextScene"
+@XmlType(propOrder={"sceneNo", "html", "sceneType", "story", "nextScene"
     , "canSelectNextScene", "center", "selects", "monsterNo"
     , "monsterNoLow", "monsterNoHigh", "items"})
 public class Scene extends StoryConfig
 {
     /** シーン番号 */
     private int sceneNo;
+    /** HTMLフラグ */
+    private boolean html;
     /** シーンタイプ */
     private SceneType sceneType;
     /** ストーリー文章 */

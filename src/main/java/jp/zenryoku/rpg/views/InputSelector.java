@@ -23,6 +23,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -119,9 +122,23 @@ public class InputSelector extends JPopupMenu implements ActionListener
     }
 
     /**
+     * オーバーロード：エフェクト処理の追加
+     * @param story 次のシーンオブジェクト
+     * @param menu 選択した項目
+     * @throws RpgException
+     */
+    private void addSelectMenu(Scene story, SelectMenu menu) throws RpgException {
+
+        if (menu.getSelect().getFormula() != null && SceneType.EFFECT.equals(bakNextScene.getSceneType())) {
+            System.out.println("*** Effect ***");
+            processEffect(menu);
+        }
+        addSelectMenu(story);
+    }
+    /**
      * 選択肢ポップアップを開く。
      * Sceneオブジェクト内の選択リストよりメニューを生成する。
-     * @param story シーンオブジェクト
+     * @param story 次のシーンオブジェクト
      */
     private void addSelectMenu(Scene story) throws RpgException {
         if (story.getNextScene() == -1) {
@@ -137,9 +154,7 @@ public class InputSelector extends JPopupMenu implements ActionListener
             isShopping = true;
             bakNextScene = story;
         }
-        if (SceneType.EFFECT.equals(type)) {
-            isEffect = false;
-        }
+
         for(Select sel : selects) {
             if (isShopping) {
                 Item itm = ConfigLoader.getInstance().getItemFromShohinCd(sel, -1);
@@ -189,10 +204,20 @@ public class InputSelector extends JPopupMenu implements ActionListener
             case SHOP:
                 // 文字表示のみなので何もしない。
             case STORY:
-                textArea.setText(convertStory(item.getNextStory(), player));
+                if (isDebug) System.out.println("isHTML: " + nextScene.isHtml());
+                if (nextScene.isHtml()) {
+                    if (isDebug) System.out.println("*** isHTML ***");
+                    changeHtml(nextScene.getPath(), false);
+                } else if (nextScene.isHtml() == false) {
+                    if (isDebug) System.out.println("isTextPanel: " + main.isViewHtml());
+                    changeText();
+                    textArea.setVisible(true);
+                    textArea.setText(convertStory(item.getNextStory(), player));
+                }
                 break;
             case EFFECT:
                 isEffect = true;
+                bakNextScene = nextScene;
                 textArea.setText(convertStory(item.getNextStory(), player));
                 prepareItems(nextScene);
                 break;
@@ -211,6 +236,32 @@ public class InputSelector extends JPopupMenu implements ActionListener
         }
     }
 
+    private void changeHtml(String path, boolean backText) throws RpgException {
+        JPanel textAreaPanel = (JPanel) main.selectComponent(TextRpgMain.TEXT_PANEL);
+        textAreaPanel.getComponent(0).setVisible(false);
+        File html = new File(path);
+        if (html.exists() == false) {
+            throw new RpgException("HTMLファイルがありません。" + path);
+        }
+        JEditorPane htmlPane = new JEditorPane();
+        try {
+            htmlPane.setPage(html.toURI().toURL());
+        } catch (IOException | IllegalArgumentException e) {
+            e.printStackTrace();
+            throw new RpgException(e.getMessage() + path);
+        }
+        textAreaPanel.removeAll();
+        textAreaPanel.add(htmlPane);
+        main.setViewHtml(true);
+    }
+
+    private void changeText() throws RpgException {
+        System.out.println("*** Testing ***");
+        JPanel textCom = (JPanel) main.selectComponent(TextRpgMain.TEXT_PANEL);
+        textCom.removeAll();
+        textCom.repaint();
+        textCom.add(textArea);
+    }
     private void prepareItems(Scene scene) throws RpgException {
         List<String> list = scene.getItems();
         if (list != null && list.size() > 0) {
@@ -258,10 +309,6 @@ public class InputSelector extends JPopupMenu implements ActionListener
                 shoppingProcess((SelectMenu) event.getSource());
                 return ;
             }
-            if (isEffect) {
-                System.out.println("*** Effect ***");
-                processEffect((SelectMenu) event.getSource());
-            }
             if (isBattle == false) {
                 System.out.println("*** Story ***");
                 selectItem = (SelectMenu) event.getSource();
@@ -282,13 +329,18 @@ public class InputSelector extends JPopupMenu implements ActionListener
     }
 
     private void processEffect(SelectMenu item) throws RpgException {
-        Formula f = item.getSelect().getFormula();
-        System.out.println("Formula: " + f.getFormulaStr());
-        System.out.println("moey: " + player.getMoney());
-        player.effect(f);
-        System.out.println("money: " + player.getMoney());
-        main.setPlayer(player);
-        isEffect = false;
+        if (item.getSelect().getFormula() != null) {
+            System.out.println("processEffect: " + item.getSelect().getMongon() + "F: " + item.getSelect().getFormula());
+            Formula f = item.getSelect().getFormula();
+            System.out.println("Formula: " + f.getFormulaStr());
+            System.out.println("money: " + player.getMoney());
+            player.effect(f);
+            System.out.println("money: " + player.getMoney());
+            main.setPlayer(player);
+            isEffect = false;
+        } else {
+            throw new RpgException(("選択項目に計算式がセットされていません。"));
+        }
     }
     private void shoppingProcess(SelectMenu menu) throws RpgException {
         final int START = 0;
@@ -414,7 +466,7 @@ public class InputSelector extends JPopupMenu implements ActionListener
             System.out.println("*** " + nextScene.getName() + " : " + nextScene.getSceneType() + " ***");
             if (isBattle == false) {
                 if (isDebug) System.out.println("Select");
-                addSelectMenu(nextScene);
+                addSelectMenu(nextScene, selectItem);
             } else {
                 if (isDebug) System.out.println("Battle");
                 this.bakNextScene  = nextScene;
