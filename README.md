@@ -3,6 +3,25 @@
 具体的にはゲームブックをプログラムで再現するような感じです。
 悩んでいるところ、主に[仕様部分](https://github.com/ZenryokuService/TextRPG/wiki)です。これを[issue](https://github.com/ZenryokuService/TextRPG/issues)にて列挙、解決のために「あーだ」「こーだ」とコミュニケーションが取りたいと思っています。
 
+## 遊び方
+1. JARファイルをダウンロード、参照できるようにします。
+
+2. コマンドでjava -jar ダウンロードしたファイル名 ルートディレクトリ名
+　ex: java -jar TextRPG.jar game
+
+3. 指定(上記のコマンドであれば「game」)のフォルダ内に以下のファイルを定義する。
+   * Config.xml: ゲーム内で使用する項目「ATK, POWなど」を定義する。
+   * Worlds.xml: 世界観を定義する。現状では、読み込みはするが、使用していない。
+   * Players.xml: プレーヤーの定義、作成する物語の主人公を定義(HPなど)
+   * Monsters.xml: モンスターの定義、モンスター番号で出現するモンスターを決定する。
+   * Jobs.xml: 職業を定義する。使用するコマンドどを定義、Formula.xmlと関連付けて使用する。
+   * MonsterTypes.xml: モンスターの職業(?)を定義、モンスターの技などを定義できる。
+   * Formula.xml: 各種計算式を定義する。例：**POW(ちから) + WEV(武器攻撃力)**。
+   * Items.xml：使用するアイテム、武器、防具、どうぐを定義、商品コードで各アイテムを判別する
+   * storiesフォルダ: このフォルダ内にXXX.xmlを定義することでストーリーを定義する。
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/puzPSWqwT9k/0.jpg)](https://www.youtube.com/watch?v=puzPSWqwT9k)
+
 ### 【目標】
 
 * テキストRPGを作成する、ノンプログラマーがテキストRPGを作成できるように作る。
