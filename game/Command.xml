@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<class>
+    <!-- 共通コマンド１：たたかう -->
+    <command>
+        <!-- コマンドID -->
+        <id>ATK</id>
+        <!-- コマンド名 -->
+        <name>たたかう</name>
+        <!-- コマンド効果式 -->
+        <formula>ATK</formula>
+        <!-- 下の階層を持つ -->
+        <hasChild>false</hasChild>
+        <!-- 実行時のメッセージ -->
+        <exeMessage>のこうげき</exeMessage>
+    </command>
+    <!-- 共通コマンド２：ぼうぎょ -->
+    <command>
+        <!-- コマンドID -->
+        <id>DEF</id>
+        <!-- コマンド名 -->
+        <name>ぼうぎょ</name>
+        <!-- コマンド効果式 -->
+        <formula>DEF</formula>
+        <!-- 下の階層を持つ -->
+        <hasChild>false</hasChild>
+        <!-- 実行時のメッセージ -->
+        <exeMessage>は、まもりのかまええをとった</exeMessage>
+    </command>
+    <!-- まほうコマンド -->
+    <command>
+        <!-- コマンドID -->
+        <id>MAG</id>
+        <!-- コマンド名 -->
+        <name>まほう</name>
+        <!-- コマンド効果式 -->
+        <formula></formula>
+        <!-- 下の階層を持つ -->
+        <hasChild>true</hasChild>
+        <!-- 実行時のメッセージ -->
+        <exeMessage>はまほうをつかった</exeMessage>
+    </command>
+    <!-- まほうコマンド -->
+    <command>
+        <!-- コマンドID -->
+        <id>TEC</id>
+        <!-- コマンド名 -->
+        <name>わざ</name>
+        <!-- コマンド効果式 -->
+        <formula></formula>
+        <!-- 下の階層を持つ -->
+        <hasChild>true</hasChild>
+        <!-- 実行時のメッセージ -->
+        <exeMessage>はまほうをつかった</exeMessage>
+    </command>
+    <!-- 体当りコマンド -->
+    <command>
+        <!-- コマンドID -->
+        <id>BAT</id>
+        <!-- コマンド名 -->
+        <name>たいあたり</name>
+        <!-- コマンド効果式 -->
+        <formula>ATK+AGI</formula>
+        <!-- 下の階層を持つ -->
+        <hasChild>false</hasChild>
+        <!-- 実行時のメッセージ -->
+        <exeMessage>のたいあたり</exeMessage>
+    </command>
+    <!-- ついばみコマンド -->
+    <command>
+        <!-- コマンドID -->
+        <id>STC</id>
+        <!-- コマンド名 -->
+        <name>ついばみ</name>
+        <!-- コマンド効果式 -->
+        <formula>(INT+AGI) * 2</formula>
+        <!-- 下の階層を持つ -->
+        <hasChild>false</hasChild>
+        <!-- 実行時のメッセージ -->
+        <exeMessage>のくちばしで、つっついてきた</exeMessage>
+    </command>
+</class>

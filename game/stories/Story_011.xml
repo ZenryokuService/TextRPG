@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<story>
+    <sceneNo>11</sceneNo>
+    <sceneType>STORY</sceneType>
+    <nextScene>12</nextScene>
+    <center>true</center>
+    <canSelectNextScene>false</canSelectNextScene>
+  <id>Second</id>
+  <name>１層の最後シーン</name>
+  <description>ゲーム開始時の画面</description>
+  <story>
+      第一層をクリアした！$player.nameは光の中に包まれた。遠くから声が聞こえる。
+  </story>
+  <path></path>
+
+</story>

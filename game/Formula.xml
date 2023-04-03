@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<class>
+    <formula>
+        <!-- 攻撃のID -->
+        <id>ATK</id>
+        <!-- ATK攻撃の式 -->
+        <formulaStr>POW + WEV</formulaStr>
+        <target>ATK</target>
+    </formula>
+    <formula>
+        <!-- 攻撃のID -->
+        <id>DEF</id>
+        <!-- 防御の式 -->
+        <formulaStr>POW + ARV</formulaStr>
+        <target>DEF</target>
+    </formula>
+</class>

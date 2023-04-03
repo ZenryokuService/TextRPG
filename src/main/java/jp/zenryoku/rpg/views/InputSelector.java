@@ -236,7 +236,7 @@ public class InputSelector extends JPopupMenu implements ActionListener
         }
     }
 
-    private void changeHtml(String path, boolean backText) throws RpgException {
+    public void changeHtml(String path, boolean backText) throws RpgException {
         JPanel textAreaPanel = (JPanel) main.selectComponent(TextRpgMain.TEXT_PANEL);
         textAreaPanel.getComponent(0).setVisible(false);
         File html = new File(path);
@@ -244,6 +244,7 @@ public class InputSelector extends JPopupMenu implements ActionListener
             throw new RpgException("HTMLファイルがありません。" + path);
         }
         JEditorPane htmlPane = new JEditorPane();
+        htmlPane.addMouseListener(main);
         try {
             htmlPane.setPage(html.toURI().toURL());
         } catch (IOException | IllegalArgumentException e) {
@@ -255,7 +256,7 @@ public class InputSelector extends JPopupMenu implements ActionListener
         main.setViewHtml(true);
     }
 
-    private void changeText() throws RpgException {
+    public void changeText() throws RpgException {
         System.out.println("*** Testing ***");
         JPanel textCom = (JPanel) main.selectComponent(TextRpgMain.TEXT_PANEL);
         textCom.removeAll();
@@ -280,7 +281,7 @@ public class InputSelector extends JPopupMenu implements ActionListener
      * @param play プレーヤー
      * @return 置換後のストーリー
      */
-    private String convertStory(String story, Player play) {
+    public String convertStory(String story, Player play) {
         String newStory = null;
         if (play != null) {
             newStory = story.replaceAll("\\$player.name", play.getName());

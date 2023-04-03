@@ -95,11 +95,55 @@ public class ConfigLoader {
     }
 
     /**
+     * コンストラクタ
+     * @param path 設定フィルのあるルートディレクトリ「/]は最後につけない。
+     * @throws RpgException
+     */
+    private ConfigLoader(String path) throws RpgException {
+        // 設定読込
+        conf = loadConfig(path, "Config.xml");
+        // 世界観の生成
+        worlds = new Worlds();
+        worlds.setWorlds(XMLUtil.loadWorldJaxb(path, "Worlds.xml"));
+        // ストーリーの生成
+        scenes = loadStories(path + "/stories/");
+        // 職業の生成
+        jobs = loadJobs(path, "Jobs.xml");
+        // プレーヤーの生成
+        players = loadPlayers(path, "Players.xml");
+        // モンスタータイプ
+        monsterTypeMap = loadMonsterType(path, "MonsterTypes.xml");
+        // モンスターの生成
+        monsters = loadMonsters(path, "Monsters.xml");
+        // 計算式
+        formulas = XMLUtil.loadFormulas(path, "Formula.xml");
+        // アイテムと武器防具
+        itemMap = new HashMap<>();
+        wepMap = new HashMap<>();
+        armMap = new HashMap<>();
+        loadItems(path, "Items.xml");
+        // 通貨取得
+        conf.getMoney().forEach(mon -> {
+            // デフォルトの通貨はvalue=0とする
+            if (mon.getValue() == 0) {
+                currentMooney = mon;
+            }
+        });
+    }
+
+    /**
      * インスタンスが生成済みならば、生成済みのものを返す。
      */
     public static ConfigLoader getInstance() throws RpgException  {
         if (instance == null) {
             instance = new ConfigLoader();
+        }
+        return instance;
+    }
+
+    public static ConfigLoader getInstance(String path) throws RpgException  {
+        if (instance == null) {
+            instance = new ConfigLoader(path);
         }
         return instance;
     }

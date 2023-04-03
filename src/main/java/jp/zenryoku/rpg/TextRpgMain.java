@@ -49,8 +49,13 @@ public class TextRpgMain extends JFrame implements KeyListener, MouseListener {
      */
     public static void main(String[] args) {
         TextRpgMain main = null;
+
         try {
-            main = new TextRpgMain();
+            if (args.length == 0) {
+                main = new TextRpgMain();
+            } else if (args.length == 1) {
+                main = new TextRpgMain(args[0]);
+            }
         } catch (RpgException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(main
@@ -70,6 +75,15 @@ public class TextRpgMain extends JFrame implements KeyListener, MouseListener {
     public TextRpgMain() throws RpgException {
         // 設定XMLのよみこみ
         config = ConfigLoader.getInstance();
+        addKeyListener(this);
+        setFocusable(true);
+        // 初期画面の表示
+        initView();
+    }
+
+    public TextRpgMain(String path) throws RpgException {
+        // 設定XMLのよみこみ
+        config = ConfigLoader.getInstance(path);
         addKeyListener(this);
         setFocusable(true);
         // 初期画面の表示
@@ -165,12 +179,19 @@ public class TextRpgMain extends JFrame implements KeyListener, MouseListener {
         Scene story = null;
         // タイトル文章の表示 シーン番号０はタイトル画面
         story = config.getScenes().get(0);
-        textArea.setText(story.getStory());
         // シーンタイプを取得
         //story.getSceneType();
         try {
-            // . 入力を受ける
+            // . 入力を受けるポップアップメニュー
             inputSelector = new InputSelector(story,this);
+            if (story.isHtml()) {
+                inputSelector.changeHtml(story.getPath(), false);
+            } else {
+                inputSelector.changeText();
+                textArea.setVisible(true);
+                textArea.setText(inputSelector.convertStory(story.getStory(), player));
+            }
+
             inputSelector.addKeyListener(this);
             inputSelector.show(this, xPos - 30, yPos + 220);
         } catch (RpgException e) {

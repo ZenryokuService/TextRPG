@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<story>
+    <sceneNo>6</sceneNo>
+    <sceneType>SHOP</sceneType>
+    <nextScene>8</nextScene>
+    <center>false</center>
+    <canSelectNextScene>fasle</canSelectNextScene>
+  <id>Second</id>
+  <name>ショップ</name>
+  <description>ゲーム開始時の画面</description>
+  <story>
+  いらしゃ～い！
+  ・ナイフ  ：10 NIG
+  ・ぼくとう：15 NIG
+  ・やくそう：10 NIG
+  ・どうのよろい：50 NIG
+  ・ぬののふく：15 NIG
+  </story>
+  <path></path>
+  <selects>
+    <shohinCd>naifu</shohinCd>
+    <money>10</money>
+    <!-- 未指定でもよい -->
+    <nextScene>0</nextScene>
+  </selects>
+  <selects>
+    <shohinCd>bokto</shohinCd>
+    <money>15</money>
+  </selects>
+  <selects>
+    <shohinCd>yakuso</shohinCd>
+    <money>10</money>
+  </selects>
+  <selects>
+    <shohinCd>donoarmor</shohinCd>
+    <money>50</money>
+  </selects>
+  <selects>
+    <shohinCd>nunonohuku</shohinCd>
+    <money>15</money>
+  </selects>
+</story>

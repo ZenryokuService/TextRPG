@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<story>
+    <sceneNo>12</sceneNo>
+    <sceneType>STORY</sceneType>
+    <nextScene>13</nextScene>
+    <center>false</center>
+    <canSelectNextScene>true</canSelectNextScene>
+  <id>Second</id>
+  <name>なぞなぞシーン</name>
+  <description>HTMLファイルを表示する。</description>
+  <story></story>
+    <path>config/stories/second/012.html</path>
+    <selects>
+        <mongon>あり？</mongon>
+        <nextScene>-1</nextScene>
+    </selects>
+    <selects>
+        <mongon>アントグリーン</mongon>
+        <nextScene>-1</nextScene>
+    </selects>
+    <selects>
+        <mongon>ありがとう</mongon>
+        <nextScene>13</nextScene>
+    </selects>
+    <selects>
+        <mongon>タイガーマスク</mongon>
+        <nextScene>-1</nextScene>
+    </selects>
+
+</story>

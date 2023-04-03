@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<story>
+    <sceneNo>10</sceneNo>
+    <sceneType>BATTLE</sceneType>
+    <nextScene>8</nextScene>
+    <center>false</center>
+    <canSelectNextScene>false</canSelectNextScene>
+  <id>Second</id>
+  <name>戦闘シーン</name>
+  <description>ゲーム開始時の画面</description>
+  <story>
+      光の中から、モンスターが現れた！
+  </story>
+  <path></path>
+  <monsterNo>4</monsterNo>
+  <selects>
+    <mongon>すすむ</mongon>
+    <nextScene>11</nextScene>
+  </selects>
+</story>
