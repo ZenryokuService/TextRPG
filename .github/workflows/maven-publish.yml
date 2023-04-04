@@ -8,7 +8,8 @@ name: TextRPG Ver0.8
 on:
   release:
     types: [created]
-
+  push:
+    branches: [main]
 jobs:
   build:
 
