@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <story>
+    <id>Second</id>
+    <name>プレーヤー確認</name>
+    <description>ゲーム開始時の画面</description>
     <sceneNo>3</sceneNo>
+    <path>game/stories/html/003.html</path>
     <sceneType>STORY</sceneType>
-    <nextScene>4</nextScene>
     <center>false</center>
-    <canSelectNextScene>true</canSelectNextScene>
-  <id>Second</id>
-  <name>プレーヤー確認</name>
-  <description>ゲーム開始時の画面</description>
-  <path>game/stories/html/003.html</path>
-  <story>
-  </story>
-  <selects>
-    <mongon>すすむ</mongon>
     <nextScene>4</nextScene>
-  </selects>
+    <canSelectNextScene>true</canSelectNextScene>
+    <story></story>
+    <audioPath>game/stories/html/003.mp3</audioPath>
+    <selects>
+        <mongon>すすむ</mongon>
+        <nextScene>4</nextScene>
+    </selects>
 </story>

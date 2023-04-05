@@ -527,6 +527,11 @@ public class XMLUtil
                 story.setHtml(true);
             }
         }
+        // audioファイル指定のある場合
+        String audio = story.getAudioPath();
+        if ("".equals(audio) == false) {
+            story.createPlayer();
+        }
         return story;
     }
 

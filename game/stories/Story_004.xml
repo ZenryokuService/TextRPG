@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <story>
+    <id>Second</id>
+    <name>デバックシーン</name>
+    <description>ゲーム開始時の画面</description>
     <sceneNo>4</sceneNo>
+    <path>game/stories/html/004.html</path>
+    <center>false</center>
     <sceneType>STORY</sceneType>
     <nextScene>-1</nextScene>
-    <center>false</center>
     <canSelectNextScene>true</canSelectNextScene>
-    <path>game/stories/html/004.html</path>
-  <id>Second</id>
-  <name>デバックシーン</name>
-  <description>ゲーム開始時の画面</description>
-  <story>
-  </story>
+    <story></story>
+    <audioPath>game/stories/html/004.mp3</audioPath>
 </story>

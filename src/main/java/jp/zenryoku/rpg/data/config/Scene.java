@@ -1,6 +1,12 @@
 package jp.zenryoku.rpg.data.config;
 
+import jp.zenryoku.rpg.ConfigLoader;
+import jp.zenryoku.rpg.TextRpgMain;
+import jp.zenryoku.rpg.action.SelectMenu;
+import jp.zenryoku.rpg.character.Player;
 import jp.zenryoku.rpg.data.SceneType;
+import jp.zenryoku.rpg.exception.RpgException;
+import jp.zenryoku.rpg.utils.AudioUtil;
 import lombok.Data;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
@@ -24,13 +30,17 @@ import java.util.List;
 @XmlRootElement( name="scene")
 @XmlType(propOrder={"sceneNo", "html", "sceneType", "story", "nextScene"
     , "canSelectNextScene", "center", "selects", "monsterNo"
-    , "monsterNoLow", "monsterNoHigh", "items"})
+    , "monsterNoLow", "monsterNoHigh", "items", "audioPath", "audio"})
 public class Scene extends StoryConfig
 {
     /** シーン番号 */
     private int sceneNo;
     /** HTMLフラグ */
     private boolean html;
+    /** オーディオファイル指定 */
+    private String audioPath;
+    /** オーディオクリップ */
+    private AudioUtil audio;
     /** シーンタイプ */
     private SceneType sceneType;
     /** ストーリー文章 */
@@ -70,5 +80,27 @@ public class Scene extends StoryConfig
         this.name = name;
         this.description = description;
     }
-    
+
+    public void createPlayer() throws RpgException {
+        audio = new AudioUtil(audioPath);
+    }
+
+    public void playAudio() throws RpgException{
+        if (audio != null) {
+            audio.play();
+        }
+    }
+
+    public void stopAudio() throws RpgException{
+        if (audio != null) {
+            audio.stop();
+        }
+    }
+
+    public static void playerSelect(SelectMenu item, TextRpgMain main) throws RpgException {
+        String command = item.getActionCommand();
+        Player player = ConfigLoader.getInstance().getPlayers().get(command);
+        main.setPlayer(player);
+    }
+
 }

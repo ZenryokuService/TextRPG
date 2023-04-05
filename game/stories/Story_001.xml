@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <story>
-    <center>false</center>
+    <id>Second</id>
+    <name>ゲーム開始</name>
+    <description>ゲーム開始時の画面</description>
     <sceneNo>1</sceneNo>
+    <path>game/stories/html/001.html</path>
+    <center>false</center>
     <sceneType>STORY</sceneType>
     <canSelectNextScene>true</canSelectNextScene>
-  <id>Second</id>
-  <name>ゲーム開始</name>
-  <path>game/stories/html/001.html</path>
-  <description>ゲーム開始時の画面</description>
-  <story>
-  序章の始まり、ストーリーを初めから進めていきます。今回は、サンプルストーリーです。
-  ストーリー開始
-  </story>
-  <selects>
-    <mongon>すすむ</mongon>
-    <nextScene>2</nextScene>
-  </selects>
+    <story>
+    </story>
+    <audioPath>game/stories/html/001.mp3</audioPath>
+    <selects>
+        <mongon>すすむ</mongon>
+        <nextScene>2</nextScene>
+    </selects>
 </story>

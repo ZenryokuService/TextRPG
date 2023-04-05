@@ -182,6 +182,7 @@ public class TextRpgMain extends JFrame implements KeyListener, MouseListener {
         // シーンタイプを取得
         //story.getSceneType();
         try {
+            story.playAudio();
             // . 入力を受けるポップアップメニュー
             inputSelector = new InputSelector(story,this);
             if (story.isHtml()) {

@@ -18,6 +18,7 @@ import jp.zenryoku.rpg.data.param.Params;
 import jp.zenryoku.rpg.data.param.Wepon;
 import jp.zenryoku.rpg.exception.RpgException;
 import jp.zenryoku.rpg.RpgTextArea;
+import jp.zenryoku.rpg.utils.AudioUtil;
 
 import javax.swing.*;
 import java.awt.*;
@@ -113,8 +114,13 @@ public class InputSelector extends JPopupMenu implements ActionListener
     @Override
     public void setVisible(boolean visible) {
         super.setVisible(visible);
+        if (visible) {
+            return;
+        }
         try {
-            finalize();
+            this.player = null;
+            this.bakNextScene = null;
+            this.monster = null;
         } catch(Throwable t) {
             System.out.println("ポップアップの削除に失敗しました");
             System.exit(-1);
@@ -198,13 +204,12 @@ public class InputSelector extends JPopupMenu implements ActionListener
         isBattle = false;
         switch (nextScene.getSceneType()) {
             case PLAYER_SELECT:
-                String command = item.getActionCommand();
-                player = ConfigLoader.getInstance().getPlayers().get(command);
-                main.setPlayer(player);
+                Scene.playerSelect(item, main);
             case SHOP:
                 // 文字表示のみなので何もしない。
             case STORY:
                 if (isDebug) System.out.println("isHTML: " + nextScene.isHtml());
+                nextScene.playAudio();
                 if (nextScene.isHtml()) {
                     if (isDebug) System.out.println("*** isHTML ***");
                     changeHtml(nextScene.getPath(), false);
@@ -460,6 +465,7 @@ public class InputSelector extends JPopupMenu implements ActionListener
             main.setSceneNoLbl(String.valueOf(nextSceneNo));
             System.out.println("selectProcess: SceneNo=" + nextSceneNo);
             Scene nextScene = ConfigLoader.getInstance().getScenes().get(nextSceneNo);
+            nextScene.stopAudio();
             if (nextScene == null) {
                 throw new RpgException("指定のシーン番号が定義されていません。" + nextSceneNo);
             }

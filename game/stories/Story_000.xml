@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <story>
-    <description>はじめのタイトル表示を行いニューゲーム、コンテニューを選択、実行する</description>
-    <id>First</id>
-    <name>はじめの</name>
+    <id>Mukashibanasi1</id>
+    <name>title</name>
+    <description>昔話のタイトルイメージを表示する</description>
+    <sceneNo>0</sceneNo>
     <path>game/stories/html/title.html</path>
     <center>true</center>
-    <sceneNo>0</sceneNo>
     <sceneType>STORY</sceneType>
     <nextScene>1</nextScene>
     <canSelectNextScene>false</canSelectNextScene>
     <story></story>
+    <audioPath>game/stories/html/title.mp3</audioPath>
     <selects>
         <mongon>すすむ</mongon>
         <nextScene>1</nextScene>
