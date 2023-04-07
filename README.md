@@ -19,6 +19,7 @@
    * Formula.xml: 各種計算式を定義する。例：**POW(ちから) + WEV(武器攻撃力)**。
    * Items.xml：使用するアイテム、武器、防具、どうぐを定義、商品コードで各アイテムを判別する
    * storiesフォルダ: このフォルダ内にXXX.xmlを定義することでストーリーを定義する。
+   * audioPathタグをストーリー定義ファイルに記述、MP3ファイルを用意することで、音声の再生が可能
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/puzPSWqwT9k/0.jpg)](https://www.youtube.com/watch?v=puzPSWqwT9k)
 
