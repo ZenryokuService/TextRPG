@@ -342,7 +342,7 @@ public class XMLUtil
         
         monsterList = monsters.getMonsters();
         if (monsterList.size() == 0) {
-            throw new RpgException("プレーヤーが設定されていません" + path);
+            throw new RpgException("モンスターが設定されていません" + path);
         }
         return monsterList;
     }
@@ -474,18 +474,6 @@ public class XMLUtil
         return map;
     }
 
-    public static Scene loadJobs(File file) throws RpgException {
-        Scene story = (Scene) loadXml(file, Scene.class);
-        if (isEmpty(story.getStory()) && isEmpty(story.getPath())) {
-            throw new RpgException("story, pathのどちらかを定義してください。");
-        }
-        // PATHしてありの場合は対象のファイルを読み込む
-        if (isEmpty(story.getPath()) == false) {
-            story.setStory(loadText(story.getPath(), story.isCenter()));
-        }
-        return story;
-    }
-
     public static Map<String, MonsterType> loadMonsterType(String path) {
         Path p = Paths.get(path);
         MonsterTypes jobs = (MonsterTypes) loadXml(p, MonsterTypes.class);
@@ -493,6 +481,7 @@ public class XMLUtil
         List<MonsterType> jobList = jobs.getMonsterTypes();
         Map<String, MonsterType> map = new HashMap<>();
         for (MonsterType job : jobList) {
+            if (isDebug) System.out.println(job.getCommandList());
             map.put(job.getId(), job);
         }
         return map;
@@ -511,7 +500,7 @@ public class XMLUtil
         if (isEmpty(story.getStory()) && isEmpty(story.getPath())) {
             throw new RpgException("story, pathのどちらかを定義してください。");
         }
-        if (story.getSceneNo() == 7) {
+        if (isDebug && story.getSceneNo() == 7) {
             story.getSelects().forEach(s -> System.out.println(s.getFormula()));
         }
         // PATHしてありの場合は対象のファイルを読み込む
@@ -575,6 +564,51 @@ public class XMLUtil
             System.exit(-1);
         }
         Marshaller sharl = null;
+    }
+
+    public static List<Command> loadCommands(String directory, String fileName) throws RpgException {
+        File file = Paths.get(directory, fileName).toFile();
+        return loadCommands(file);
+    }
+    public static List<Command> loadCommands(File file) throws RpgException {
+        Commands cmds = (Commands) loadXml(file, Commands.class);
+        if (isDebug) System.out.println("loading: " + cmds.getCommandList().size());
+        // PATHしてありの場合は対象のファイルを読み込む
+        return cmds.getCommandList();
+    }
+
+    public static void exportCommandJaxb(String directory, String fileName) {
+        Path path = Paths.get(directory, fileName);
+        Commands commands = createCommands();
+
+        //worlds.setWorlds(list);
+        JAXBContext ctx = null;
+        try {
+            BufferedWriter writer = Files.newBufferedWriter(path);
+            ctx =  JAXBContext.newInstance(Commands.class);
+            Marshaller m = ctx.createMarshaller();
+            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            m.marshal(commands, writer);
+            JAXB.marshal(commands, path.toFile());
+            writer.close();
+        } catch (JAXBException | IOException e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
+        Marshaller sharl = null;
+    }
+
+    public static Commands createCommands() {
+        Commands commands = new Commands();
+        List<Command> commandList1 = new ArrayList<>();
+        commandList1.add(new Command("ATK", "こうげき", new Formula("ATK", "ATK", "HP")));
+        commandList1.add(new Command("BST", "大こうげき", new Formula("BST", "ATK + 3", "HP")));
+        commandList1.add(new Command("IKR", "戦士の怒り", new Formula("IKR", "ATK + 3", "HP", "+")));
+        commandList1.add(new Command("DEF", "ぼうぎょ", new Formula("DEF", "HP + 3", "HP", "+")));
+        commandList1.add(new Command("BAT", "たいあたり", new Formula("BAT", "ATK + 3", "HP")));
+        commandList1.add(new Command("STK", "ついばみ", new Formula("STK", "ATK + 3", "HP")));
+        commands.setCommandList(commandList1);
+        return commands;
     }
 
     public static MonsterTypes createMonsterTypes() {
@@ -720,7 +754,7 @@ public class XMLUtil
         player.setItems(items);
         // 状態
         
-        System.out.println(player.getName());
+        //System.out.println(player.getName());
         return player;
     }
     
@@ -769,7 +803,7 @@ public class XMLUtil
         player.setItems(items);
         // 状態
         
-        System.out.println(player.getName());
+        //System.out.println(player.getName());
         return player;
     }
     

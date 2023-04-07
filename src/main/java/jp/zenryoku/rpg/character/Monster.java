@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @Data
 @XmlRootElement( name="monster")
-@XmlType(propOrder={"no", "talk", "message", "type", "holdmoney"})
+@XmlType(propOrder={"no", "talk", "message", "type", "typeStr", "holdmoney"})
 public class Monster extends Player implements Cloneable, Serializable
 {
     /** 番号 */
@@ -33,6 +33,8 @@ public class Monster extends Player implements Cloneable, Serializable
     private String message;
     /** モンスタータイプ */
     private MonsterType type;
+    /** モンスタータイプのキー */
+    private String typeStr;
     /** お金 */
     private int holdmoney;
 
@@ -78,7 +80,7 @@ public class Monster extends Player implements Cloneable, Serializable
         status.get("MP").setValue(status.get("MMP").getValue());
     }
 
-    public void finalize() {
+    public void terminated() {
         level = 0;
         sex = null;
         status.clear();

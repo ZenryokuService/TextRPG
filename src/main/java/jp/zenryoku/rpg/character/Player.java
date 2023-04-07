@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  * @version (1.0)
  */
 @XmlRootElement( name="player")
-@XmlType(propOrder={"level", "name", "sex", "status", "items", "job", "state", "wepon", "armor", "money", "exp"})
+@XmlType(propOrder={"level", "name", "sex", "status", "items", "job", "jobStr",  "state", "wepon", "armor", "money", "exp"})
 @Data
 public class Player implements Cloneable
 {
@@ -42,6 +42,8 @@ public class Player implements Cloneable
     protected Map<String, Params> status;
     /** 所持アイテム */
     protected List<Item> items;
+    /** 職業ID */
+    protected String jobStr;
     /** 職業 */
     protected Job job;
     /** 状態 */
@@ -68,8 +70,7 @@ public class Player implements Cloneable
         state = new State();
     }
 
-    @Override
-    public void finalize() {
+    public void terminated() {
         level = 0;
         sex = null;
         status = null;
@@ -78,7 +79,6 @@ public class Player implements Cloneable
         job = null;
         wepon = null;
         armor = null;
-
     }
     public String getName() {
         return name;
@@ -98,6 +98,11 @@ public class Player implements Cloneable
         items.add(it);
     }
 
+    public boolean canHasMore() {
+        int maxSize = status.get("BPK").getValue();
+        int nowSize = items.size();
+        return nowSize < maxSize;
+    }
     public Player clone() {
         Player player = new Player(name);
         player.setLevel(level);
@@ -118,6 +123,7 @@ public class Player implements Cloneable
         String conv = convertFormula(formula);
         if (isDebug)  print(monster.getName() + ": ", monster);
         int res = (int) new ExpressionBuilder(conv).build().evaluate();
+        System.out.println("*** " + formula.getTarget() + "  ***");
         Params param = monster.getParams(formula.getTarget());
         int lastHp = param.getValue() - res;
         param.setValue(lastHp);

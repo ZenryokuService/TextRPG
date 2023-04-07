@@ -72,91 +72,20 @@
                     <value>1</value>
                 </value>
             </entry>
-            <entry>
-                <key>WEV</key>
-                <value>
-                    <key>WEV</key>
-                    <name>武器攻撃力</name>
-                    <value>2</value>
-                </value>
-            </entry>
-            <entry>
-                <key>ARV</key>
-                <value>
-                    <key>ARV</key>
-                    <name>防具防御力</name>
-                    <value>1</value>
-                </value>
-            </entry>
         </status>
-        <items>
-            <formula/>
-            <name>やくそう</name>
-        </items>
-        <items>
-            <formula/>
-            <name>どくそう</name>
-        </items>
-        <items>
-            <formula/>
-            <name>プロテイン</name>
-        </items>
-        <state>
-            <key>Normal</key>
-        </state>
-        <wepon>
-            <formula/>
-            <name>どうのつるぎ</name>
-            <value>12</value>
-        </wepon>
-        <armor>
-            <formula/>
-            <name>どうのよろい</name>
-            <value>7</value>
-        </armor>
+        <state>Normal</state>
+        <wepon></wepon>
+        <armor></armor>
         <talk>false</talk>
-        <type>
-            <description>ゆうきあるもの</description>
-            <id>SLM</id>
-            <name>スライム</name>
-            <commandList>
-                <formula>
-                    <formulaStr>ATK + 3</formulaStr>
-                    <target>HP</target>
-                </formula>
-                <id>BST</id>
-                <name>大こうげき</name>
-            </commandList>
-            <commandList>
-                <formula>
-                    <formulaStr>HP + 3</formulaStr>
-                    <target>HP</target>
-                </formula>
-                <id>INR</id>
-                <name>いのり</name>
-            </commandList>
-            <paramList>
-                <key>POW</key>
-                <name>ちから</name>
-                <value>100</value>
-            </paramList>
-            <paramList>
-                <key>AGI</key>
-                <name>すばやさ</name>
-                <value>120</value>
-            </paramList>
-            <paramList>
-                <key>INT</key>
-                <name>かしこさ</name>
-                <value>60</value>
-            </paramList>
-        </type>
+        <typeStr>INS</typeStr>
     </monsters>
     <monsters>
     	<no>1</no>
         <level>1</level>
         <name>スライム</name>
+        <talk>true</talk>
         <message>スライムなのだ</message>
+        <typeStr>SLM</typeStr>
         <money>5</money>
         <exp>5</exp>
         <status>
@@ -224,91 +153,22 @@
                     <value>1</value>
                 </value>
             </entry>
-            <entry>
-                <key>WEV</key>
-                <value>
-                    <key>WEV</key>
-                    <name>武器攻撃力</name>
-                    <value>2</value>
-                </value>
-            </entry>
-            <entry>
-                <key>ARV</key>
-                <value>
-                    <key>ARV</key>
-                    <name>防具防御力</name>
-                    <value>1</value>
-                </value>
-            </entry>
         </status>
-        <items>
-            <formula/>
-            <name>やくそう</name>
-        </items>
-        <items>
-            <formula/>
-            <name>どくそう</name>
-        </items>
-        <items>
-            <formula/>
-            <name>プロテイン</name>
-        </items>
         <state>
             <key>Normal</key>
         </state>
-        <wepon>
-            <formula/>
-            <name>どうのつるぎ</name>
-            <value>12</value>
-        </wepon>
-        <armor>
-            <formula/>
-            <name>どうのよろい</name>
-            <value>7</value>
-        </armor>
-        <talk>true</talk>
-        <type>
-            <description>ゆうきあるもの</description>
-            <id>SLM</id>
-            <name>スライム</name>
-            <commandList>
-                <formula>
-                    <formulaStr>ATK + 3</formulaStr>
-                    <target>HP</target>
-                </formula>
-                <id>BST</id>
-                <name>大こうげき</name>
-            </commandList>
-            <commandList>
-                <formula>
-                    <formulaStr>HP + 3</formulaStr>
-                    <target>HP</target>
-                </formula>
-                <id>INR</id>
-                <name>いのり</name>
-            </commandList>
-            <paramList>
-                <key>POW</key>
-                <name>ちから</name>
-                <value>100</value>
-            </paramList>
-            <paramList>
-                <key>AGI</key>
-                <name>すばやさ</name>
-                <value>120</value>
-            </paramList>
-            <paramList>
-                <key>INT</key>
-                <name>かしこさ</name>
-                <value>60</value>
-            </paramList>
-        </type>
+        <wepon></wepon>
+        <armor></armor>
     </monsters>
     <monsters>
     	<no>2</no>
         <level>1</level>
         <name>おおがらす</name>
         <message>くぇ～</message>
+        <talk>true</talk>
+        <typeStr>BIR</typeStr>
+        <wepon></wepon>
+        <armor></armor>
         <money>5</money>
         <exp>5</exp>
         <status>
@@ -376,91 +236,21 @@
                     <value>1</value>
                 </value>
             </entry>
-            <entry>
-                <key>WEV</key>
-                <value>
-                    <key>WEV</key>
-                    <name>武器攻撃力</name>
-                    <value>2</value>
-                </value>
-            </entry>
-            <entry>
-                <key>ARV</key>
-                <value>
-                    <key>ARV</key>
-                    <name>防具防御力</name>
-                    <value>1</value>
-                </value>
-            </entry>
         </status>
-        <items>
-            <formula/>
-            <name>やくそう</name>
-        </items>
-        <items>
-            <formula/>
-            <name>どくそう</name>
-        </items>
-        <items>
-            <formula/>
-            <name>プロテイン</name>
-        </items>
         <state>
             <key>Normal</key>
         </state>
-        <wepon>
-            <formula/>
-            <name>どうのつるぎ</name>
-            <value>12</value>
-        </wepon>
-        <armor>
-            <formula/>
-            <name>どうのよろい</name>
-            <value>7</value>
-        </armor>
-        <talk>true</talk>
-        <type>
-            <description>ゆうきあるもの</description>
-            <id>SLM</id>
-            <name>スライム</name>
-            <commandList>
-                <formula>
-                    <formulaStr>ATK + 3</formulaStr>
-                    <target>HP</target>
-                </formula>
-                <id>BST</id>
-                <name>大こうげき</name>
-            </commandList>
-            <commandList>
-                <formula>
-                    <formulaStr>HP + 3</formulaStr>
-                    <target>HP</target>
-                </formula>
-                <id>INR</id>
-                <name>いのり</name>
-            </commandList>
-            <paramList>
-                <key>POW</key>
-                <name>ちから</name>
-                <value>100</value>
-            </paramList>
-            <paramList>
-                <key>AGI</key>
-                <name>すばやさ</name>
-                <value>120</value>
-            </paramList>
-            <paramList>
-                <key>INT</key>
-                <name>かしこさ</name>
-                <value>60</value>
-            </paramList>
-        </type>
     </monsters>
     <monsters>
     	<no>3</no>
         <level>1</level>
         <name>タイガーラビット</name>
         <message>うさぎなんだな。。。</message>
+        <state>Normal</state>
+        <wepon></wepon>
+        <armor></armor>
+        <talk>true</talk>
+        <typeStr>BST</typeStr>
         <money>5</money>
         <exp>5</exp>
         <status>
@@ -528,91 +318,95 @@
                     <value>1</value>
                 </value>
             </entry>
-            <entry>
-                <key>WEV</key>
-                <value>
-                    <key>WEV</key>
-                    <name>武器攻撃力</name>
-                    <value>2</value>
-                </value>
-            </entry>
-            <entry>
-                <key>ARV</key>
-                <value>
-                    <key>ARV</key>
-                    <name>防具防御力</name>
-                    <value>1</value>
-                </value>
-            </entry>
         </status>
-        <items>
-            <formula/>
-            <name>やくそう</name>
-        </items>
-        <items>
-            <formula/>
-            <name>どくそう</name>
-        </items>
-        <items>
-            <formula/>
-            <name>プロテイン</name>
-        </items>
-        <state>
-            <key>Normal</key>
-        </state>
-        <wepon>
-            <formula/>
-            <name>どうのつるぎ</name>
-            <value>12</value>
-        </wepon>
-        <armor>
-            <formula/>
-            <name>どうのよろい</name>
-            <value>7</value>
-        </armor>
-        <talk>true</talk>
-        <type>
-            <description>ゆうきあるもの</description>
-            <id>SLM</id>
-            <name>スライム</name>
-            <commandList>
-                <formula>
-                    <formulaStr>ATK + 3</formulaStr>
-                    <target>HP</target>
-                </formula>
-                <id>BST</id>
-                <name>大こうげき</name>
-            </commandList>
-            <commandList>
-                <formula>
-                    <formulaStr>HP + 3</formulaStr>
-                    <target>HP</target>
-                </formula>
-                <id>INR</id>
-                <name>いのり</name>
-            </commandList>
-            <paramList>
-                <key>POW</key>
-                <name>ちから</name>
-                <value>100</value>
-            </paramList>
-            <paramList>
-                <key>AGI</key>
-                <name>すばやさ</name>
-                <value>120</value>
-            </paramList>
-            <paramList>
-                <key>INT</key>
-                <name>かしこさ</name>
-                <value>60</value>
-            </paramList>
-        </type>
     </monsters>
     <monsters>
         <no>4</no>
         <level>2</level>
+        <name>デジタル回線ABC</name>
+        <message>ただいまセール中です！</message>
+        <talk>true</talk>
+        <typeStr>BHU</typeStr>
+        <state>Normal</state>
+        <wepon></wepon>
+        <armor></armor>
+        <money>10</money>
+        <exp>10</exp>
+        <status>
+            <entry>
+                <key>MMP</key>
+                <value>
+                    <key>MMP</key>
+                    <name>最大マジックトポイント</name>
+                    <value>12</value>
+                </value>
+            </entry>
+            <entry>
+                <key>MP</key>
+                <value>
+                    <key>MP</key>
+                    <name>マジックトポイント</name>
+                    <value>12</value>
+                </value>
+            </entry>
+            <entry>
+                <key>AGI</key>
+                <value>
+                    <key>AGI</key>
+                    <name>すばやさ</name>
+                    <value>4</value>
+                </value>
+            </entry>
+            <entry>
+                <key>LUK</key>
+                <value>
+                    <key>LUK</key>
+                    <name>うんのよさ</name>
+                    <value>10</value>
+                </value>
+            </entry>
+            <entry>
+                <key>MHP</key>
+                <value>
+                    <key>MHP</key>
+                    <name>最大ヒットポイント</name>
+                    <value>12</value>
+                </value>
+            </entry>
+            <entry>
+                <key>HP</key>
+                <value>
+                    <key>HP</key>
+                    <name>ヒットポイント</name>
+                    <value>12</value>
+                </value>
+            </entry>
+            <entry>
+                <key>POW</key>
+                <value>
+                    <key>POW</key>
+                    <name>ちから</name>
+                    <value>6</value>
+                </value>
+            </entry>
+            <entry>
+                <key>INT</key>
+                <value>
+                    <key>INT</key>
+                    <name>かしこさ</name>
+                    <value>1</value>
+                </value>
+            </entry>
+        </status>
+    </monsters>
+    <monsters>
+        <no>5</no>
+        <level>2</level>
         <name>１層ボス</name>
         <message>２進数データを光や電気信号に変換するー！</message>
+        <state>Normal</state>
+        <talk>true</talk>
+        <typeStr>REP</typeStr>
         <money>5</money>
         <exp>5</exp>
         <status>
@@ -680,84 +474,85 @@
                     <value>1</value>
                 </value>
             </entry>
+        </status>
+    </monsters>
+    <monsters>
+        <no>-1</no>
+        <level>3</level>
+        <name>１層ボス</name>
+        <message>２進数データを光や電気信号に変換するー！</message>
+        <state>Normal</state>
+        <wepon></wepon>
+        <armor></armor>
+        <talk>true</talk>
+        <typeStr>DMN</typeStr>
+        <money>5</money>
+        <exp>5</exp>
+        <status>
             <entry>
-                <key>WEV</key>
+                <key>MMP</key>
                 <value>
-                    <key>WEV</key>
-                    <name>武器攻撃力</name>
-                    <value>2</value>
+                    <key>MMP</key>
+                    <name>最大マジックトポイント</name>
+                    <value>12</value>
                 </value>
             </entry>
             <entry>
-                <key>ARV</key>
+                <key>MP</key>
                 <value>
-                    <key>ARV</key>
-                    <name>防具防御力</name>
+                    <key>MP</key>
+                    <name>マジックトポイント</name>
+                    <value>12</value>
+                </value>
+            </entry>
+            <entry>
+                <key>AGI</key>
+                <value>
+                    <key>AGI</key>
+                    <name>すばやさ</name>
+                    <value>4</value>
+                </value>
+            </entry>
+            <entry>
+                <key>LUK</key>
+                <value>
+                    <key>LUK</key>
+                    <name>うんのよさ</name>
+                    <value>10</value>
+                </value>
+            </entry>
+            <entry>
+                <key>MHP</key>
+                <value>
+                    <key>MHP</key>
+                    <name>最大ヒットポイント</name>
+                    <value>12</value>
+                </value>
+            </entry>
+            <entry>
+                <key>HP</key>
+                <value>
+                    <key>HP</key>
+                    <name>ヒットポイント</name>
+                    <value>12</value>
+                </value>
+            </entry>
+            <entry>
+                <key>POW</key>
+                <value>
+                    <key>POW</key>
+                    <name>ちから</name>
+                    <value>6</value>
+                </value>
+            </entry>
+            <entry>
+                <key>INT</key>
+                <value>
+                    <key>INT</key>
+                    <name>かしこさ</name>
                     <value>1</value>
                 </value>
             </entry>
         </status>
-        <items>
-            <formula/>
-            <name>やくそう</name>
-        </items>
-        <items>
-            <formula/>
-            <name>どくそう</name>
-        </items>
-        <items>
-            <formula/>
-            <name>プロテイン</name>
-        </items>
-        <state>
-            <key>Normal</key>
-        </state>
-        <wepon>
-            <formula/>
-            <name>どうのつるぎ</name>
-            <value>12</value>
-        </wepon>
-        <armor>
-            <formula/>
-            <name>どうのよろい</name>
-            <value>7</value>
-        </armor>
-        <talk>true</talk>
-        <type>
-            <description>ゆうきあるもの</description>
-            <id>SLM</id>
-            <name>スライム</name>
-            <commandList>
-                <formula>
-                    <formulaStr>ATK + 3</formulaStr>
-                    <target>HP</target>
-                </formula>
-                <id>BST</id>
-                <name>大こうげき</name>
-            </commandList>
-            <commandList>
-                <formula>
-                    <formulaStr>HP + 3</formulaStr>
-                    <target>HP</target>
-                </formula>
-                <id>INR</id>
-                <name>いのり</name>
-            </commandList>
-            <paramList>
-                <key>POW</key>
-                <name>ちから</name>
-                <value>100</value>
-            </paramList>
-            <paramList>
-                <key>AGI</key>
-                <name>すばやさ</name>
-                <value>120</value>
-            </paramList>
-            <paramList>
-                <key>INT</key>
-                <name>かしこさ</name>
-                <value>60</value>
-            </paramList>
-        </type>
     </monsters>
 </monsters>

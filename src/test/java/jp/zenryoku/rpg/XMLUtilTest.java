@@ -1,7 +1,10 @@
 package jp.zenryoku.rpg;
 
+import jp.zenryoku.rpg.exception.RpgException;
 import jp.zenryoku.rpg.utils.XMLUtil;
 import org.junit.Test;
+
+import static org.junit.Assert.fail;
 
 public class XMLUtilTest {
     @Test
@@ -17,6 +20,20 @@ public class XMLUtilTest {
     @Test
     public void testExportJob() {
         XMLUtil.exportJobJaxb("config/bak", "bkJobs.xml");
+    }
+
+    @Test
+    public void testExportCommand() {
+        XMLUtil.exportCommandJaxb("config/bak", "bkCommands.xml");
+    }
+
+    @Test
+    public void testLoadCommand() {
+        try {
+            XMLUtil.loadCommands("config/bak", "bkCommands.xml");
+        } catch (RpgException e) {
+            fail(e.getMessage());
+        }
     }
 
     @Test

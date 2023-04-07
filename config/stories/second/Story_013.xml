@@ -2,7 +2,7 @@
 <story>
     <sceneNo>13</sceneNo>
     <sceneType>STORY</sceneType>
-    <nextScene>-1</nextScene>
+    <nextScene>14</nextScene>
     <center>false</center>
     <canSelectNextScene>false</canSelectNextScene>
   <id>Second</id>

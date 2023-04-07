@@ -7,7 +7,12 @@
         <!-- コマンド名 -->
         <name>たたかう</name>
         <!-- コマンド効果式 -->
-        <formula>ATK</formula>
+        <formula>
+            <id>ATK</id>
+            <formulaStr>ATK</formulaStr>
+            <target>HP</target>
+            <orient>-</orient>
+        </formula>
         <!-- 下の階層を持つ -->
         <hasChild>false</hasChild>
         <!-- 実行時のメッセージ -->
@@ -78,4 +83,85 @@
         <!-- 実行時のメッセージ -->
         <exeMessage>のくちばしで、つっついてきた</exeMessage>
     </command>
+    <command>
+        <formula>
+            <formulaStr>ATK + 3</formulaStr>
+            <id>BST</id>
+            <orient>-</orient>
+            <target>HP</target>
+        </formula>
+        <id>BST</id>
+        <name>大こうげき</name>
+    </command>
+    <command>
+        <formula>
+            <formulaStr>HP + 3</formulaStr>
+            <id>INR</id>
+            <orient>+</orient>
+            <target>HP</target>
+        </formula>
+        <id>INR</id>
+        <name>いのり</name>
+    </command>
+    <command>
+        <formula>
+            <formulaStr>ATK + 3</formulaStr>
+            <id>IKR</id>
+            <orient>-</orient>
+            <target>HP</target>
+        </formula>
+        <id>IKR</id>
+        <name>戦士の怒り</name>
+    </command>
+    <command>
+        <formula>
+            <formulaStr>ATK + 3</formulaStr>
+            <id>STK</id>
+            <orient>-</orient>
+            <target>HP</target>
+        </formula>
+        <id>STK</id>
+        <name>ついばみ</name>
+    </command>
+    <command>
+        <formula>
+            <formulaStr>POW + INT</formulaStr>
+            <id>SEQ</id>
+            <orient>-</orient>
+            <target>HP</target>
+        </formula>
+        <id>SEQ</id>
+        <name>せっきょう</name>
+    </command>
+    <command>
+        <formula>
+            <formulaStr>ATK + 3</formulaStr>
+            <id>FlyAtack</id>
+            <orient>-</orient>
+            <target>HP</target>
+        </formula>
+        <id>FlyAtack</id>
+        <name>とびかかる</name>
+    </command>
+    <command>
+        <formula>
+            <formulaStr>ATK + 3</formulaStr>
+            <id>BeastATK</id>
+            <orient>-</orient>
+            <target>HP</target>
+        </formula>
+        <id>BeastATK</id>
+        <name>けもののうごき</name>
+    </command>
+    <command>
+        <formula>
+            <formulaStr>ATK + 3</formulaStr>
+            <id>BeastATK</id>
+            <orient>-</orient>
+            <target>HP</target>
+        </formula>
+        <id>Degital</id>
+        <name>２進数こうげき</name>
+    </command>
+
 </class>

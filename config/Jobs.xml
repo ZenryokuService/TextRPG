@@ -3,33 +3,9 @@
     <job>
         <id>WAR</id>
         <name>せんし</name>
-        <commandList>
-            <formula>
-                <formulaStr>ATK</formulaStr>
-                <id>ATK</id>
-                <target>HP-</target>
-            </formula>
-            <id>ATK</id>
-            <name>こうげき</name>
-        </commandList>
-        <commandList>
-            <formula>
-                <formulaStr>ATK + 3</formulaStr>
-                <id>BST</id>
-                <target>HP-</target>
-            </formula>
-            <id>BST</id>
-            <name>大こうげき</name>
-        </commandList>
-        <commandList>
-            <formula>
-                <formulaStr>HP + 3</formulaStr>
-                <id>INE</id>
-                <target>HP+</target>
-            </formula>
-            <id>INR</id>
-            <name>いのり</name>
-        </commandList>
+        <commandStr>ATK</commandStr>
+        <commandStr>BST</commandStr>
+        <commandStr>DEF</commandStr>
         <paramList>
             <description>こうげき力</description>
             <index>0</index>
@@ -60,33 +36,11 @@
         </paramList>
     </job>
     <job>
-        <commandList>
-            <formula>
-                <formulaStr>ATK</formulaStr>
-                <id>ATK</id>
-                <target>HP-</target>
-            </formula>
-            <id>ATK</id>
-            <name>こうげき</name>
-        </commandList>
-        <commandList>
-            <formula>
-                <formulaStr>ATK + 3</formulaStr>
-                <id>BST</id>
-                <target>HP-</target>
-            </formula>
-            <id>BST</id>
-            <name>大こうげき</name>
-        </commandList>
-        <commandList>
-            <formula>
-                <formulaStr>HP + 3</formulaStr>
-                <id>INE</id>
-                <target>HP+</target>
-            </formula>
-            <id>INR</id>
-            <name>いのり</name>
-        </commandList>
+        <id>BRV</id>
+        <name>ゆうしゃ</name>
+        <commandStr>ATK</commandStr>
+        <commandStr>INR</commandStr>
+        <commandStr>BST</commandStr>
         <paramList>
             <description>こうげき力</description>
             <index>0</index>
@@ -114,6 +68,41 @@
             <key>LUK</key>
             <name>うんのよさ</name>
             <value>120</value>
+        </paramList>
+    </job>
+    <job>
+        <id>CLE</id>
+        <name>そうりょ</name>
+        <commandStr>ATK</commandStr>
+        <commandStr>INR</commandStr>
+        <commandStr>SEQ</commandStr>
+        <paramList>
+            <description>こうげき力</description>
+            <index>0</index>
+            <key>POW</key>
+            <name>ちから</name>
+            <value>120</value>
+        </paramList>
+        <paramList>
+            <description>すばやさ</description>
+            <index>0</index>
+            <key>AGI</key>
+            <name>すばやさ</name>
+            <value>100</value>
+        </paramList>
+        <paramList>
+            <description>まほうこうげき力</description>
+            <index>0</index>
+            <key>INT</key>
+            <name>かしこさ</name>
+            <value>120</value>
+        </paramList>
+        <paramList>
+            <description>うんのよさ</description>
+            <index>0</index>
+            <key>LUK</key>
+            <name>うんのよさ</name>
+            <value>100</value>
         </paramList>
     </job>
 </jobs>

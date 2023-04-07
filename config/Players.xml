@@ -3,7 +3,11 @@
     <player>
         <level>0</level>
         <name>シフト＝キー</name>
-        <sex>MAN</sex>
+        <sex>WOMAN</sex>
+        <jobStr>BRV</jobStr>
+        <state>
+            <key>Normal</key>
+        </state>
         <status>
             <entry>
                 <key>LV</key>
@@ -114,68 +118,15 @@
                 </value>
             </entry>
         </status>
-        <items>
-            <formula>
-                <formulaStr>HP + 10</formulaStr>
-            </formula>
-            <name>やくそう</name>
-        </items>
-        <items>
-            <formula>
-                <formulaStr>HP - 10</formulaStr>
-            </formula>
-            <name>どくそう</name>
-        </items>
-        <items>
-            <formula>
-                <formulaStr>POW + 1</formulaStr>
-            </formula>
-            <name>プロテイン</name>
-        </items>
-        <job>
-            <description>ゆうきあるもの</description>
-            <id>BRV</id>
-            <name>ゆうしゃ</name>
-            <commandList>
-                <formula>
-                    <formulaStr>ATK + 3</formulaStr>
-                    <target>HP</target>
-                </formula>
-                <id>BST</id>
-                <name>大こうげき</name>
-            </commandList>
-            <commandList>
-                <formula>
-                    <formulaStr>HP + 3</formulaStr>
-                    <target>HP</target>
-                </formula>
-                <id>INR</id>
-                <name>いのり</name>
-            </commandList>
-            <paramList>
-                <key>POW</key>
-                <name>ちから</name>
-                <value>100</value>
-            </paramList>
-            <paramList>
-                <key>AGI</key>
-                <name>すばやさ</name>
-                <value>120</value>
-            </paramList>
-            <paramList>
-                <key>INT</key>
-                <name>かしこさ</name>
-                <value>60</value>
-            </paramList>
-        </job>
-        <state>
-            <key>Normal</key>
-        </state>
     </player>
     <player>
         <level>0</level>
         <name>オルト＝キー</name>
-        <sex>MAN</sex>
+        <sex>WOMAN</sex>
+        <jobStr>WAR</jobStr>
+        <state>
+            <key>Normal</key>
+        </state>
         <status>
             <entry>
                 <key>LV</key>
@@ -256,24 +207,6 @@
                     <key>LUK</key>
                     <name>うんのよさ</name>
                     <value>10</value>
-                </value>
-            </entry>
-            <entry>
-                <key>WEV</key>
-                <value>
-                    <index>9</index>
-                    <key>WEV</key>
-                    <name>武器攻撃力</name>
-                    <value>2</value>
-                </value>
-            </entry>
-            <entry>
-                <key>ARV</key>
-                <value>
-                    <index>10</index>
-                    <key>ARV</key>
-                    <name>防具防御力</name>
-                    <value>1</value>
                 </value>
             </entry>
             <entry>
@@ -286,68 +219,15 @@
                 </value>
             </entry>
         </status>
-        <job>
-            <description>ゆうきあるもの</description>
-            <id>BRV</id>
-            <name>ゆうしゃ</name>
-            <commandList>
-                <formula>
-                    <formulaStr>ATK + 3</formulaStr>
-                    <target>HP</target>
-                </formula>
-                <id>BST</id>
-                <name>大こうげき</name>
-            </commandList>
-            <commandList>
-                <formula>
-                    <formulaStr>HP + 3</formulaStr>
-                    <target>HP</target>
-                </formula>
-                <id>INR</id>
-                <name>いのり</name>
-            </commandList>
-            <paramList>
-                <key>POW</key>
-                <name>ちから</name>
-                <value>100</value>
-            </paramList>
-            <paramList>
-                <key>AGI</key>
-                <name>すばやさ</name>
-                <value>120</value>
-            </paramList>
-            <paramList>
-                <key>INT</key>
-                <name>かしこさ</name>
-                <value>60</value>
-            </paramList>
-        </job>
-        <items>
-            <formula>
-                <formulaStr>HP + 10</formulaStr>
-            </formula>
-            <name>やくそう</name>
-        </items>
-        <items>
-            <formula>
-                <formulaStr>HP - 10</formulaStr>
-            </formula>
-            <name>どくそう</name>
-        </items>
-        <items>
-            <formula>
-                <formulaStr>POW + 1</formulaStr>
-            </formula>
-            <name>プロテイン</name>
-        </items>
-        <state>
-            <key>Normal</key>
-        </state>
     </player>
     <player>
         <level>0</level>
         <name>ナム＝ロック</name>
         <sex>MAN</sex>
+        <jobStr>CLE</jobStr>
+        <state>
+            <key>Normal</key>
+        </state>
         <status>
             <entry>
                 <key>LV</key>
@@ -458,62 +338,5 @@
                 </value>
             </entry>
         </status>
-       <job>
-            <description>ゆうきあるもの</description>
-            <id>BRV</id>
-            <name>ゆうしゃ</name>
-            <commandList>
-                <formula>
-                    <formulaStr>ATK + 3</formulaStr>
-                    <target>HP</target>
-                </formula>
-                <id>BST</id>
-                <name>大こうげき</name>
-            </commandList>
-            <commandList>
-                <formula>
-                    <formulaStr>HP + 3</formulaStr>
-                    <target>HP</target>
-                </formula>
-                <id>INR</id>
-                <name>いのり</name>
-            </commandList>
-            <paramList>
-                <key>POW</key>
-                <name>ちから</name>
-                <value>100</value>
-            </paramList>
-            <paramList>
-                <key>AGI</key>
-                <name>すばやさ</name>
-                <value>120</value>
-            </paramList>
-            <paramList>
-                <key>INT</key>
-                <name>かしこさ</name>
-                <value>60</value>
-            </paramList>
-        </job>
-        <items>
-            <formula>
-                <formulaStr>HP + 10</formulaStr>
-            </formula>
-            <name>やくそう</name>
-        </items>
-        <items>
-            <formula>
-                <formulaStr>HP - 10</formulaStr>
-            </formula>
-            <name>どくそう</name>
-        </items>
-        <items>
-            <formula>
-                <formulaStr>POW + 1</formulaStr>
-            </formula>
-            <name>プロテイン</name>
-        </items>
-        <state>
-            <key>Normal</key>
-        </state>
     </player>
 </players>

@@ -114,17 +114,6 @@ public class InputSelector extends JPopupMenu implements ActionListener
     @Override
     public void setVisible(boolean visible) {
         super.setVisible(visible);
-        if (visible) {
-            return;
-        }
-        try {
-            this.player = null;
-            this.bakNextScene = null;
-            this.monster = null;
-        } catch(Throwable t) {
-            System.out.println("ポップアップの削除に失敗しました");
-            System.exit(-1);
-        }
     }
 
     /**
@@ -204,7 +193,8 @@ public class InputSelector extends JPopupMenu implements ActionListener
         isBattle = false;
         switch (nextScene.getSceneType()) {
             case PLAYER_SELECT:
-                Scene.playerSelect(item, main);
+                player = Scene.playerSelect(item, main);
+                System.out.println("*** " + player.getName() + " ***");
             case SHOP:
                 // 文字表示のみなので何もしない。
             case STORY:
@@ -242,6 +232,7 @@ public class InputSelector extends JPopupMenu implements ActionListener
     }
 
     public void changeHtml(String path, boolean backText) throws RpgException {
+        // TODO-[TextRPGMainクラスへ移動するべき]
         JPanel textAreaPanel = (JPanel) main.selectComponent(TextRpgMain.TEXT_PANEL);
         textAreaPanel.getComponent(0).setVisible(false);
         File html = new File(path);
@@ -262,7 +253,7 @@ public class InputSelector extends JPopupMenu implements ActionListener
     }
 
     public void changeText() throws RpgException {
-        System.out.println("*** Testing ***");
+        // TODO-[TextRPGMainクラスへ移動するべき]
         JPanel textCom = (JPanel) main.selectComponent(TextRpgMain.TEXT_PANEL);
         textCom.removeAll();
         textCom.repaint();
@@ -274,20 +265,25 @@ public class InputSelector extends JPopupMenu implements ActionListener
             for (String shihinCd : list) {
                 System.out.println("--" + shihinCd);
                 Item it = ConfigLoader.getItemFormShohinCd(shihinCd);
-                if (isDebug) System.out.println("pre@areItem: " + it.getName());
+                if (isDebug) System.out.println("prepareItem: " + it.getName());
                 player.getItems().add(it);
             }
         }
     }
     /**
      * ストーリー内の"$player.XXX"を置換する。
+     * $player.name: プレーヤー名
+     * $config.money: お金の単位
      *
      * @param story 置換前のストーリー
      * @param play プレーヤー
      * @return 置換後のストーリー
      */
-    public String convertStory(String story, Player play) {
+    public String convertStory(String story, Player play) throws RpgException {
         String newStory = null;
+        Params money = ConfigLoader.getInstance().getCurrentMooney();
+        // お金の変換
+        story.replaceAll("\\$config.money", money.getKey());
         if (play != null) {
             newStory = story.replaceAll("\\$player.name", play.getName());
         } else {
@@ -364,13 +360,21 @@ public class InputSelector extends JPopupMenu implements ActionListener
             //isShopping = true;
         } else if (YES == menu.getNextSceneNo()) { // 「はい」を押下したとき
             if (isChecking) {// 「他にようはありますか？」→「はい」の処理
-                System.out.println("* YES & Check:true");
+                if (isDebug) System.out.println("* YES & Check:true");
                 textArea.setText(bakNextScene.getStory());
                 addSelectMenu(bakNextScene);
                 isChecking = false;
             } else { // 「これでよいですか？」→「はい」の処理
-                buyProcess(menu);
-                isChecking = true;
+                if (player.canHasMore()) {
+                    buyProcess(menu);
+                    isChecking = true;
+                } else {
+                    System.out.println("*** Testing ***");
+                    textArea.setText("");
+                    printText("持ち物がいっぱいのようです。他に要はありますか？" + SEP + bakNextScene.getStory());
+                    addSelectMenu(bakNextScene);
+                    isChecking = false;
+                }
             }
             openMenuWindow();
         } else if (NO == menu.getNextSceneNo()) { // 「いいえ」を押下したとき
@@ -440,7 +444,6 @@ public class InputSelector extends JPopupMenu implements ActionListener
             return;
         }
         int zan = player.getMoney() - sel.getMoney();
-        System.out.println(zan);
         player.setMoney(zan);
         System.out.println("BPK: " + max.getValue() + " List-; " + player.getItems().size());
         player.getItems().add(it);
@@ -513,9 +516,12 @@ public class InputSelector extends JPopupMenu implements ActionListener
     /**
      * コマンドオブジェクトを選択したときの処理
      */
-    private void presetCommandMenu() {
+    private void presetCommandMenu() throws RpgException {
         List<Command> cmdList = player.getJob().getCommandList();
         for (Command cmd : cmdList) {
+            if (cmd == null) {
+                throw new RpgException(player.getJob().getName() + "のコマンドがありません。");
+            }
             CommandMenu menu = new CommandMenu(cmd);
             menu.addActionListener(this);
             add(menu);
@@ -621,7 +627,7 @@ public class InputSelector extends JPopupMenu implements ActionListener
         player.addMoney(money);
         main.setPlayer(player);
         isBattle = false;
-        monster.finalize();
+        monster.terminated();
         monster = null;
         if (isDebug) System.out.println("インスタンスID4; " + monster);
         System.gc();

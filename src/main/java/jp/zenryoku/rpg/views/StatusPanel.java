@@ -121,7 +121,7 @@ public class StatusPanel extends JFrame implements ActionListener {
 
         Params[] arr = new Params[map.size()];
         for (String key : set) {
-            System.out.println(map.get(key));
+            if (isDebug) System.out.println("Sort: " + map.get(key));
             Params p = map.get(key);
             arr[p.getIndex()] = p;
         }

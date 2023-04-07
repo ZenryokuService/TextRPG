@@ -16,6 +16,8 @@ public class Formula
     private String formulaStr;
     /** ターゲット */
     private String target;
+    /** 方向性 */
+    private String orient;
     
     public Formula() {
     }
@@ -28,5 +30,14 @@ public class Formula
         this.id = id;
         this.formulaStr = formula;
         this.target = target;
+        this.orient = "-";
     }
+
+    public Formula(String id, String formula, String target, String orient) {
+        this.id = id;
+        this.formulaStr = formula;
+        this.target = target;
+        this.orient = orient;
+    }
+
 }

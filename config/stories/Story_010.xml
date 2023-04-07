@@ -12,7 +12,7 @@
       光の中から、モンスターが現れた！
   </story>
   <path></path>
-  <monsterNo>4</monsterNo>
+  <monsterNo>-1</monsterNo>
   <selects>
     <mongon>すすむ</mongon>
     <nextScene>11</nextScene>

@@ -2,17 +2,17 @@
 <story>
     <sceneNo>14</sceneNo>
     <sceneType>STORY</sceneType>
-    <nextScene>-1</nextScene>
+    <nextScene>15</nextScene>
     <center>false</center>
     <canSelectNextScene>false</canSelectNextScene>
   <id>Second</id>
-  <name>２層への移動シーン</name>
+  <name>２層はじめのシーン</name>
   <description>ゲーム開始時の画面</description>
   <story></story>
-    <path>config/stories/second/story_013.txt</path>
+    <path>config/stories/second/story_014.txt</path>
     <selects>
         <mongon>すすむ</mongon>
-        <nextScene>14</nextScene>
+        <nextScene>15</nextScene>
     </selects>
 
 </story>

@@ -22,6 +22,9 @@ public class AudioUtil {
         JavaFXInitializer.launch();
     }
     public AudioUtil(String path) throws RpgException {
+        if (path == null || "".equals(path)) {
+            return;
+        }
         try {
             URL url = Paths.get(path).toFile().toURI().toURL();
             Media media = new Media(url.toExternalForm());

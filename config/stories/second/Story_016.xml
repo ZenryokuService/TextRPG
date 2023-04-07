@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<story>
+    <sceneNo>16</sceneNo>
+    <sceneType>STORY</sceneType>
+    <nextScene>17</nextScene>
+    <center>false</center>
+    <canSelectNextScene>true</canSelectNextScene>
+    <id>Second</id>
+    <name>２層行動シーン</name>
+    <description>装備を行い、レベルアップなど行う</description>
+    <story>
+        さて、どうしようか？
+    </story>
+    <path></path>
+    <selects>
+        <mongon>レベル上げにいそしむ</mongon>
+        <nextScene>17</nextScene>
+    </selects>
+    <selects>
+        <mongon>ショップにもどる</mongon>
+        <nextScene>15</nextScene>
+    </selects>
+    <selects>
+        <mongon>一休みする</mongon>
+        <nextScene>18</nextScene>
+    </selects>
+    <selects>
+        <mongon>３層へ行く</mongon>
+        <nextScene>19</nextScene>
+    </selects>
+</story>

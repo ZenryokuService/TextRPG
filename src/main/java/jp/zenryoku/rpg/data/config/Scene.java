@@ -81,26 +81,30 @@ public class Scene extends StoryConfig
         this.description = description;
     }
 
+    public boolean hasAudio() {
+        return this.audioPath != null && "".equals(this.audioPath) == false;
+    }
     public void createPlayer() throws RpgException {
         audio = new AudioUtil(audioPath);
     }
 
     public void playAudio() throws RpgException{
-        if (audio != null) {
+        if (hasAudio()) {
             audio.play();
         }
     }
 
     public void stopAudio() throws RpgException{
-        if (audio != null) {
+        if (hasAudio()) {
             audio.stop();
         }
     }
 
-    public static void playerSelect(SelectMenu item, TextRpgMain main) throws RpgException {
+    public static Player playerSelect(SelectMenu item, TextRpgMain main) throws RpgException {
         String command = item.getActionCommand();
         Player player = ConfigLoader.getInstance().getPlayers().get(command);
         main.setPlayer(player);
+        return player;
     }
 
 }

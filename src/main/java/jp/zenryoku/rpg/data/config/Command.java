@@ -6,6 +6,8 @@ public class Command implements ConfigIF {
     private String id;
     private String name;
     private Formula formula;
+
+    private boolean hasChild;
     
     public Command() {
     }

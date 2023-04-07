@@ -39,6 +39,8 @@ public class ConfigLoader {
     private Worlds worlds;
     /** ストーリーマップ */
     private Map<Integer, Scene> scenes;
+    /** コマンドマップ */
+    private Map<String, Command> commandMap;
     /** 職業マップ */
     private Map<String, Job> jobs;
     /** プレーヤーマップ */
@@ -69,6 +71,8 @@ public class ConfigLoader {
         worlds.setWorlds(XMLUtil.loadWorldJaxb("config", "Worlds.xml"));
         // ストーリーの生成
         scenes = loadStories("config/stories/");
+        // コマンドの生成
+        commandMap = loadCommands("config", "Command.xml");
         // 職業の生成
         jobs = loadJobs("config", "Jobs.xml");
         // プレーヤーの生成
@@ -232,27 +236,71 @@ public class ConfigLoader {
      * @throws RpgException
      */
     public Map<String, Player> loadPlayers(String directory, String fileName) throws RpgException {
+        if (jobs == null || jobs.size() == 0) {
+            throw new RpgException("Job.xmlがロードされてません。" + jobs);
+        }
         Map<String, Player> map = new HashMap<>();
         List<Player> playerList = XMLUtil.loadPlayer(directory + "/" + fileName);
 
         for (Player player : playerList) {
+            Job job = jobs.get(player.getJobStr());
+            if (isDebug) System.out.println("*** " + job.getName() + " ***");
+            player.setJob(job);
             map.put(player.getName(), player);
         }
         return map;
     }
 
-    public Map<String, Job> loadJobs(String directory, String fileName) {
+    public Map<String, Job> loadJobs(String directory, String fileName) throws RpgException {
+        if (commandMap == null || commandMap.size() == 0) {
+            throw new RpgException("先にコマンドを生成してください。");
+        }
         String path = directory + "/" + fileName;
         Path p = Paths.get(path);
 
-        return XMLUtil.loadJobs(path);
+        Map<String, Job> map = XMLUtil.loadJobs(path);
+
+        Set<String> set = map.keySet();
+        for (String key : set) {
+            Job job = map.get(key);
+            List<String> commands = job.getCommandStr();
+            List<Command> cmdList = new ArrayList<>();
+            for (String cmd : commands) {
+                if (isDebug) System.out.println(job.getName() + " = Load cmd: " + cmd);
+                cmdList.add(commandMap.get(cmd));
+            }
+            job.setCommandList(cmdList);
+            cmdList = null;
+        }
+        return map;
+    }
+
+    public Map<String, Command> loadCommands(String directory, String fileName) throws RpgException {
+        List<Command> commandList = XMLUtil.loadCommands(directory, fileName);
+        Map<String, Command> map = new HashMap<>();
+
+        for (Command cmd : commandList) {
+            map.put(cmd.getId(), cmd);
+        }
+        return map;
     }
 
     public Map<String, MonsterType> loadMonsterType(String directory, String fileName) throws RpgException {
         String path = directory + "/" + fileName;
         Path p = Paths.get(path);
 
-        return XMLUtil.loadMonsterType(path);
+        Map<String, MonsterType> map = XMLUtil.loadMonsterType(path);
+        Set<String> set = map.keySet();
+        List<Command> cmdList = new ArrayList<>();
+        for (String key : set) {
+            MonsterType type = map.get(key);
+            List<String> cmds = type.getCommandStr();
+            for (String cmd : cmds) {
+                cmdList.add(commandMap.get(cmd));
+            }
+            type.setCommandList(cmdList);
+        }
+        return map;
     }
     /**
      * モンスター定義ファイルを読み込む
@@ -266,6 +314,9 @@ public class ConfigLoader {
         List<Monster> monsterList = XMLUtil.loadMonsters(directory + "/" + fileName);
 
         for (Monster mons : monsterList) {
+            if (isDebug) System.out.println("Type: " + mons.getTypeStr());
+            MonsterType type = monsterTypeMap.get(mons.getTypeStr());
+            mons.setType(type);
             map.put(mons.getNo(), mons);
         }
         return map;
@@ -291,6 +342,8 @@ public class ConfigLoader {
             paramsMap.put(params.getKey(), params);
         }
         MAX_PARAM_SIZE = maxSize;
+
+        List<Params> moneys = conf.getMoney();
         return conf;
     }
 
@@ -388,7 +441,6 @@ public class ConfigLoader {
             isItemOrWepOrArm = ARM;
         }
         if (b1 == false && b2 == false && b3 == false) {
-            System.out.println("*** Testing: " + shohinCd);
             throw new RpgException("想定外の商品コードです。" + shohinCd);
         }
         return isItemOrWepOrArm;

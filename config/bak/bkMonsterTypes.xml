@@ -7,6 +7,7 @@
             <formula>
                 <formulaStr>ATK</formulaStr>
                 <id>ATK</id>
+                <orient>-</orient>
                 <target>HP-</target>
             </formula>
             <id>ATK</id>
@@ -16,6 +17,7 @@
             <formula>
                 <formulaStr>ATK + 3</formulaStr>
                 <id>BST</id>
+                <orient>-</orient>
                 <target>HP-</target>
             </formula>
             <id>BST</id>
@@ -25,6 +27,7 @@
             <formula>
                 <formulaStr>HP + 3</formulaStr>
                 <id>INE</id>
+                <orient>-</orient>
                 <target>HP+</target>
             </formula>
             <id>INR</id>
@@ -66,6 +69,7 @@
             <formula>
                 <formulaStr>ATK</formulaStr>
                 <id>ATK</id>
+                <orient>-</orient>
                 <target>HP-</target>
             </formula>
             <id>ATK</id>
@@ -75,6 +79,7 @@
             <formula>
                 <formulaStr>ATK + 3</formulaStr>
                 <id>BST</id>
+                <orient>-</orient>
                 <target>HP-</target>
             </formula>
             <id>BST</id>
@@ -84,6 +89,7 @@
             <formula>
                 <formulaStr>HP + 3</formulaStr>
                 <id>INE</id>
+                <orient>-</orient>
                 <target>HP+</target>
             </formula>
             <id>INR</id>

@@ -16,6 +16,7 @@ import java.util.List;
  * テキストRPGのメインクラス。
  */
 public class TextRpgMain extends JFrame implements KeyListener, MouseListener {
+    private static final boolean isDebug = false;
     public static final String CMD_TEXT = "CMD_TEXT";
     private ConfigLoader config;
     /** 後にプレーヤー表示するパネルの名前 */
@@ -151,7 +152,7 @@ public class TextRpgMain extends JFrame implements KeyListener, MouseListener {
         Component resComponent = null;
         Component[] components = getContentPane().getComponents();
         for (Component com : components) {
-            System.out.println("First: " + com.getName());
+            if (isDebug) System.out.println("First: " + com.getName());
             // TODO-[このコードが気に入らない]
             if (com instanceof JPanel && ((JPanel) com).getComponents().length != 0) {
                 Component[] lv2Com = ((JPanel) com).getComponents();
@@ -182,7 +183,9 @@ public class TextRpgMain extends JFrame implements KeyListener, MouseListener {
         // シーンタイプを取得
         //story.getSceneType();
         try {
-            story.playAudio();
+            if (story.hasAudio()) {
+                story.playAudio();
+            }
             // . 入力を受けるポップアップメニュー
             inputSelector = new InputSelector(story,this);
             if (story.isHtml()) {

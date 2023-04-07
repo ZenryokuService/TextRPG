@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<commands>
+    <command>
+        <formula>
+            <formulaStr>ATK</formulaStr>
+            <id>ATK</id>
+            <orient>-</orient>
+            <target>HP</target>
+        </formula>
+        <id>ATK</id>
+        <name>こうげき</name>
+    </command>
+    <command>
+        <formula>
+            <formulaStr>ATK + 3</formulaStr>
+            <id>BST</id>
+            <orient>-</orient>
+            <target>HP</target>
+        </formula>
+        <id>BST</id>
+        <name>大こうげき</name>
+    </command>
+    <command>
+        <formula>
+            <formulaStr>ATK + 3</formulaStr>
+            <id>IKR</id>
+            <orient>+</orient>
+            <target>HP</target>
+        </formula>
+        <id>IKR</id>
+        <name>戦士の怒り</name>
+    </command>
+    <command>
+        <formula>
+            <formulaStr>HP + 3</formulaStr>
+            <id>DEF</id>
+            <orient>+</orient>
+            <target>HP</target>
+        </formula>
+        <id>DEF</id>
+        <name>ぼうぎょ</name>
+    </command>
+    <command>
+        <formula>
+            <formulaStr>ATK + 3</formulaStr>
+            <id>BAT</id>
+            <orient>-</orient>
+            <target>HP</target>
+        </formula>
+        <id>BAT</id>
+        <name>たいあたり</name>
+    </command>
+    <command>
+        <formula>
+            <formulaStr>ATK + 3</formulaStr>
+            <id>STK</id>
+            <orient>-</orient>
+            <target>HP</target>
+        </formula>
+        <id>STK</id>
+        <name>ついばみ</name>
+    </command>
+</commands>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<story>
+    <sceneNo>15</sceneNo>
+    <sceneType>SHOP</sceneType>
+    <nextScene>16</nextScene>
+    <center>false</center>
+    <canSelectNextScene>fasle</canSelectNextScene>
+  <id>Second</id>
+  <name>ショップ</name>
+  <description>2層のショップ</description>
+  <story>
+  いらしゃ～い！
+  ・やくそう：10 NIG
+  ・どうのよろい：50 NIG
+  ・ぬののふく：15 NIG
+  ・てつのつるぎ  ：100 NIG
+  ・てつのよろい：150 NIG
+  </story>
+  <path></path>
+  <selects>
+    <shohinCd>yakuso</shohinCd>
+    <money>10</money>
+  </selects>
+  <selects>
+    <shohinCd>donoarmor</shohinCd>
+    <money>50</money>
+  </selects>
+  <selects>
+    <shohinCd>nunonohuku</shohinCd>
+    <money>15</money>
+  </selects>
+  <selects>
+    <shohinCd>tetunosord</shohinCd>
+    <money>100</money>
+  </selects>
+  <selects>
+    <shohinCd>tetunoarmor</shohinCd>
+    <money>150</money>
+    <!-- 未指定でもよい -->
+    <nextScene>0</nextScene>
+  </selects>
+</story>
